@@ -7,6 +7,7 @@
   let selected = $state(0)
   let backendResults = $state([])
   let inputRef = $state()
+  let scope = $state('all')
 
   let commands = $derived([
     ...apps.map((app) => ({ id: app.id, name: app.name, type: 'app', group: 'Apps' })),
@@ -15,10 +16,16 @@
     { id: 'open-launcher', name: 'Open launcher', type: 'system', group: 'System' },
   ])
 
+  let scoped = $derived(
+    scope === 'system'
+      ? commands.filter((entry) => entry.type === 'system')
+      : commands
+  )
+
   let shown = $derived(
     query.trim()
-      ? commands.filter((entry) => entry.name.toLowerCase().includes(query.toLowerCase())).slice(0, 18)
-      : commands.slice(0, 18)
+      ? scoped.filter((entry) => entry.name.toLowerCase().includes(query.toLowerCase())).slice(0, 18)
+      : scoped.slice(0, 18)
   )
 
   $effect(() => {
@@ -27,7 +34,7 @@
 
   $effect(() => {
     const q = query.trim()
-    if (!q) {
+    if (!q || scope === 'system') {
       backendResults = []
       selected = 0
       return
@@ -39,7 +46,7 @@
       } catch (error) {
         console.log('Backend search failed:', error)
       }
-    }, 110)
+    }, 100)
 
     return () => clearTimeout(t)
   })
@@ -76,6 +83,10 @@
     }
     onclose()
   }
+
+  function initial(name) {
+    return (name || '?').slice(0, 1).toUpperCase()
+  }
 </script>
 
 <div class="overlay" onclick={(event) => event.target === event.currentTarget && onclose()} role="dialog" tabindex="0" onkeydown={keyNav}>
@@ -89,7 +100,11 @@
     </header>
 
     <div class="search">
-      <input type="text" bind:value={query} bind:this={inputRef} placeholder="Search apps, commands, and automations" />
+      <input type="text" bind:value={query} bind:this={inputRef} placeholder="Search apps or commands" />
+      <div class="scope-switch" role="tablist" aria-label="Scope">
+        <button class:active={scope === 'all'} onclick={() => (scope = 'all')}>All</button>
+        <button class:active={scope === 'system'} onclick={() => (scope = 'system')}>System</button>
+      </div>
       <div class="keys">
         <kbd>Esc</kbd>
         <kbd>Enter</kbd>
@@ -103,7 +118,7 @@
         {#each merged as item, idx}
           <button class="row" class:active={idx === selected} onclick={() => run(item)} onmouseenter={() => (selected = idx)}>
             <span class="row-main">
-              <span class="dot"></span>
+              <span class="dot">{initial(item.name)}</span>
               <span>{item.name}</span>
             </span>
             <small>{item.group}</small>
@@ -120,28 +135,28 @@
     inset: 0;
     display: flex;
     justify-content: center;
-    padding-top: min(14vh, 120px);
-    background: linear-gradient(180deg, rgba(5, 9, 20, 0.74), rgba(3, 6, 14, 0.84));
+    padding-top: min(12vh, 94px);
+    background: linear-gradient(180deg, rgba(5, 9, 20, 0.7), rgba(3, 6, 14, 0.82));
     backdrop-filter: blur(6px);
     z-index: 1900;
   }
 
   .palette {
-    width: min(860px, calc(100vw - 34px));
-    max-height: min(70vh, 620px);
-    border-radius: 24px;
-    border: 1px solid color-mix(in oklab, var(--accent-a) 36%, transparent);
+    width: min(880px, calc(100vw - 34px));
+    max-height: min(72vh, 640px);
+    border-radius: 20px;
+    border: 1px solid color-mix(in oklab, var(--accent-a) 34%, transparent);
     background:
       radial-gradient(120% 80% at 12% -10%, color-mix(in oklab, var(--accent-a) 16%, transparent), transparent 55%),
       radial-gradient(120% 80% at 92% -20%, color-mix(in oklab, var(--accent-b) 14%, transparent), transparent 58%),
       linear-gradient(180deg, color-mix(in oklab, #141d38 84%, transparent), color-mix(in oklab, #0b1228 86%, transparent));
-    box-shadow: 0 34px 80px rgba(2, 9, 22, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(20px) saturate(145%);
+    box-shadow: 0 30px 76px rgba(2, 9, 22, 0.68), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(18px) saturate(142%);
     color: #eff6ff;
     display: grid;
     grid-template-rows: auto auto 1fr;
     overflow: hidden;
-    animation: drop 170ms ease;
+    animation: drop 160ms ease;
   }
 
   header,
@@ -149,9 +164,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
-    padding: 14px 16px;
-    border-bottom: 1px solid color-mix(in oklab, #bdd2ff 16%, transparent);
+    gap: 10px;
+    padding: 12px 14px;
+    border-bottom: 1px solid color-mix(in oklab, var(--accent-a) 16%, transparent);
   }
 
   .eyebrow {
@@ -162,37 +177,64 @@
   }
 
   h2 {
-    margin: 6px 0 0;
-    font-size: 29px;
-    letter-spacing: -0.03em;
-    line-height: 1;
+    margin: 5px 0 0;
+    font-size: 24px;
+    letter-spacing: -0.02em;
+    line-height: 1.04;
   }
 
   .count,
   input,
   .row,
-  .empty {
-    border-radius: 12px;
-    border: 1px solid color-mix(in oklab, var(--accent-a) 23%, transparent);
+  .empty,
+  .scope-switch button,
+  .dot {
+    border-radius: 10px;
+    border: 1px solid color-mix(in oklab, var(--accent-a) 22%, transparent);
     background: color-mix(in oklab, #edf4ff 8%, transparent);
     color: inherit;
   }
 
   .count {
-    min-width: 40px;
-    min-height: 30px;
+    min-width: 36px;
+    min-height: 28px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
   }
 
   input {
     flex: 1;
-    min-height: 42px;
-    padding: 0 14px;
-    font-size: 15px;
+    min-height: 38px;
+    padding: 0 12px;
+    font-size: 14px;
+  }
+
+  .scope-switch {
+    display: inline-flex;
+    gap: 5px;
+    padding: 3px;
+    border-radius: 10px;
+    border: 1px solid color-mix(in oklab, var(--accent-a) 24%, transparent);
+    background: color-mix(in oklab, #edf4ff 4%, transparent);
+  }
+
+  .scope-switch button {
+    min-height: 26px;
+    padding: 0 10px;
+    border-radius: 8px;
+    border-color: transparent;
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  .scope-switch button.active {
+    background:
+      linear-gradient(120deg, color-mix(in oklab, var(--accent-a) 24%, transparent), color-mix(in oklab, var(--accent-b) 14%, transparent)),
+      color-mix(in oklab, #edf4ff 8%, transparent);
+    border-color: color-mix(in oklab, var(--accent-a) 42%, transparent);
   }
 
   .keys {
@@ -201,13 +243,13 @@
   }
 
   kbd {
-    min-width: 28px;
-    height: 26px;
+    min-width: 24px;
+    height: 24px;
     padding: 0 8px;
     border-radius: 8px;
     border: 1px solid color-mix(in oklab, var(--accent-a) 28%, transparent);
     background: color-mix(in oklab, #edf4ff 10%, transparent);
-    font-size: 11px;
+    font-size: 10px;
     color: color-mix(in oklab, #eef6ff 80%, transparent);
     font-family: 'Consolas', 'JetBrains Mono', monospace;
     display: inline-flex;
@@ -216,27 +258,27 @@
   }
 
   .rows {
-    padding: 10px;
+    padding: 9px;
     display: grid;
-    gap: 7px;
+    gap: 6px;
     overflow-y: auto;
   }
 
   .row {
-    min-height: 42px;
-    padding: 0 12px;
+    min-height: 38px;
+    padding: 0 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
-    font-size: 13px;
-    transition: transform 140ms ease, background-color 140ms ease, border-color 140ms ease;
+    font-size: 12px;
+    transition: transform 120ms ease, background-color 120ms ease, border-color 120ms ease;
   }
 
   .row-main {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -244,17 +286,23 @@
   }
 
   .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 100px;
-    background: color-mix(in oklab, var(--accent-a) 92%, white 8%);
-    box-shadow: 0 0 12px color-mix(in oklab, var(--accent-a) 56%, transparent);
+    width: 18px;
+    height: 18px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: 600;
     flex-shrink: 0;
+    background:
+      linear-gradient(120deg, color-mix(in oklab, var(--accent-a) 26%, transparent), color-mix(in oklab, var(--accent-b) 16%, transparent)),
+      color-mix(in oklab, #edf4ff 8%, transparent);
   }
 
   .row small {
     color: color-mix(in oklab, #f2f7ff 55%, transparent);
-    font-size: 11px;
+    font-size: 10px;
   }
 
   .row.active,
@@ -267,18 +315,18 @@
   }
 
   .empty {
-    min-height: 44px;
+    min-height: 42px;
     padding: 0 12px;
     display: inline-flex;
     align-items: center;
     color: color-mix(in oklab, #eff6ff 62%, transparent);
-    font-size: 13px;
+    font-size: 12px;
   }
 
   @keyframes drop {
     from {
       opacity: 0;
-      transform: translateY(-8px) scale(0.985);
+      transform: translateY(-7px) scale(0.99);
     }
     to {
       opacity: 1;

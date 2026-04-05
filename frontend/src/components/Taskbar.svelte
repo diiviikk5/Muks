@@ -9,7 +9,7 @@
 
   let systemInfo = $state({ battery: null, username: 'User', hostname: 'Windows' })
   let pinnedApps = $derived(pinnedIds.map((id) => apps.find((app) => app.id === id)).filter(Boolean).slice(0, 6))
-  let liveWindows = $derived(windows.slice(0, 6))
+  let liveWindows = $derived(windows.slice(0, 5))
   let activeWorkspace = $state(0)
 
   function formatTime(date) {
@@ -53,6 +53,12 @@
       await fn()
     }
   }
+
+  function label(text) {
+    const t = (text || '').trim()
+    if (!t) return 'A'
+    return t.slice(0, 1).toUpperCase()
+  }
 </script>
 
 <div class="shell-frame">
@@ -63,8 +69,8 @@
     </div>
 
     <div class="workspace-strip" role="tablist" aria-label="Workspaces">
-      {#each workspaceLabels as label, index}
-        <button class="workspace" class:active={index === activeWorkspace} onclick={() => (activeWorkspace = index)}>{label}</button>
+      {#each workspaceLabels as labelText, index}
+        <button class="workspace" class:active={index === activeWorkspace} onclick={() => (activeWorkspace = index)}>{labelText}</button>
       {/each}
     </div>
 
@@ -77,21 +83,22 @@
   </div>
 
   <div class="dock glass">
-    <div class="dock-apps">
+    <div class="dock-lane">
       {#each pinnedApps as app}
         <button class="app-chip" onclick={stopAnd(() => launchApp(app.id))} title={app.name}>
-          <span class="dot"></span>
+          <span class="app-icon">{label(app.name)}</span>
           <span>{app.name}</span>
         </button>
       {/each}
-    </div>
 
-    <div class="dock-windows">
+      <span class="divider" aria-hidden="true"></span>
+
       {#if liveWindows.length === 0}
         <div class="empty">No active windows</div>
       {:else}
         {#each liveWindows as w}
           <div class="window-chip" class:focused={w.isFocused} onclick={stopAnd(() => focusWindow(w.id))} role="button" tabindex="0" onkeydown={(e) => e.key === 'Enter' && focusWindow(w.id)}>
+            <span class="window-icon">{label(w.title)}</span>
             <span class="title">{w.title}</span>
             <div class="window-actions">
               <button type="button" onclick={(e) => windowAction(w.id, 'minimize', e)}>_</button>
@@ -229,14 +236,11 @@
     transform: translateX(-50%);
     width: min(1240px, calc(100vw - 34px));
     border-radius: 18px;
-    min-height: 96px;
+    min-height: 56px;
     padding: 7px;
-    display: grid;
-    gap: 7px;
   }
 
-  .dock-apps,
-  .dock-windows {
+  .dock-lane {
     display: flex;
     align-items: center;
     gap: 7px;
@@ -244,15 +248,24 @@
     scrollbar-width: none;
   }
 
-  .dock-apps::-webkit-scrollbar,
-  .dock-windows::-webkit-scrollbar {
+  .dock-lane::-webkit-scrollbar {
     display: none;
+  }
+
+  .divider {
+    width: 1px;
+    height: 26px;
+    background: color-mix(in oklab, var(--accent-a) 30%, transparent);
+    flex-shrink: 0;
+    margin: 0 3px;
   }
 
   .app-chip,
   .window-chip,
   .empty,
-  .window-actions button {
+  .window-actions button,
+  .app-icon,
+  .window-icon {
     border: 1px solid color-mix(in oklab, var(--accent-a) 18%, transparent);
     background: color-mix(in oklab, #eff4ff 7%, transparent);
     color: #eff5ff;
@@ -261,7 +274,7 @@
 
   .app-chip {
     min-height: 34px;
-    padding: 0 10px;
+    padding: 0 8px;
     display: inline-flex;
     align-items: center;
     gap: 7px;
@@ -270,22 +283,31 @@
     cursor: pointer;
   }
 
-  .dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 99px;
-    background: color-mix(in oklab, var(--accent-a) 88%, white 12%);
-    box-shadow: 0 0 9px color-mix(in oklab, var(--accent-a) 64%, transparent);
+  .app-icon,
+  .window-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 0;
+    flex-shrink: 0;
+    background:
+      linear-gradient(135deg, color-mix(in oklab, var(--accent-a) 34%, transparent), color-mix(in oklab, var(--accent-b) 18%, transparent)),
+      color-mix(in oklab, #eff4ff 7%, transparent);
   }
 
   .window-chip {
-    min-height: 36px;
+    min-height: 34px;
     min-width: 220px;
     max-width: 310px;
-    padding: 0 10px;
+    padding: 0 8px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 7px;
     cursor: pointer;
   }
 
@@ -307,20 +329,21 @@
 
   .window-actions {
     display: flex;
-    gap: 5px;
+    gap: 4px;
   }
 
   .window-actions button {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     display: grid;
     place-items: center;
-    font-size: 11px;
+    font-size: 10px;
     cursor: pointer;
+    padding: 0;
   }
 
   .empty {
-    min-height: 36px;
+    min-height: 34px;
     padding: 0 10px;
     display: inline-flex;
     align-items: center;

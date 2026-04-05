@@ -3,14 +3,15 @@
 
   let { apps, windows = [], activePreset, onSelectPreset, onclose } = $props()
   let query = $state('')
+  let viewMode = $state('featured')
 
   const featuredIds = ['explorer', 'browser', 'terminal', 'code', 'settings', 'notepad']
 
-  let featuredApps = $derived(apps.filter((app) => featuredIds.includes(app.id)).slice(0, 6))
+  let featuredApps = $derived(apps.filter((app) => featuredIds.includes(app.id)).slice(0, 8))
   let filteredApps = $derived(
     query.trim()
-      ? apps.filter((app) => app.name.toLowerCase().includes(query.toLowerCase())).slice(0, 36)
-      : apps.slice(0, 36)
+      ? apps.filter((app) => app.name.toLowerCase().includes(query.toLowerCase())).slice(0, 60)
+      : apps.slice(0, 60)
   )
   let liveWindows = $derived(windows.slice(0, 5))
 
@@ -21,6 +22,10 @@
       console.log('Launch error:', error)
     }
     onclose()
+  }
+
+  function initials(name) {
+    return (name || '?').slice(0, 1).toUpperCase()
   }
 </script>
 
@@ -36,6 +41,10 @@
 
   <div class="search-wrap">
     <input type="text" placeholder="Search apps" bind:value={query} />
+    <div class="mode-switch" role="tablist" aria-label="Launcher view">
+      <button class:active={viewMode === 'featured'} onclick={() => (viewMode = 'featured')}>Pinned</button>
+      <button class:active={viewMode === 'all'} onclick={() => (viewMode = 'all')}>All</button>
+    </div>
     <div class="hints">
       <kbd>Alt</kbd>
       <span>+</span>
@@ -45,25 +54,30 @@
 
   <div class="content">
     <section class="panel stage">
-      <h3>Featured</h3>
-      <div class="hero-grid">
-        {#each featuredApps as app}
-          <button class="hero-card" onclick={() => launch(app)}>
-            <span class="seed"></span>
-            <div>
-              <strong>{app.name}</strong>
-              <small>Open instantly</small>
-            </div>
-          </button>
-        {/each}
-      </div>
+      {#if viewMode === 'featured'}
+        <h3>Pinned</h3>
+        <div class="hero-grid">
+          {#each featuredApps as app}
+            <button class="hero-card" onclick={() => launch(app)}>
+              <span class="seed">{initials(app.name)}</span>
+              <div>
+                <strong>{app.name}</strong>
+                <small>Open instantly</small>
+              </div>
+            </button>
+          {/each}
+        </div>
 
-      <h3>Catalog</h3>
+        <h3>Catalog</h3>
+      {:else}
+        <h3>All Apps</h3>
+      {/if}
+
       <div class="catalog-list">
         {#each filteredApps as app}
           <button class="catalog-row" onclick={() => launch(app)}>
             <span class="row-left">
-              <span class="seed small"></span>
+              <span class="seed small">{initials(app.name)}</span>
               <span>{app.name}</span>
             </span>
             <small>{app.source}</small>
@@ -131,7 +145,7 @@
     position: absolute;
     left: 50%;
     top: 74px;
-    bottom: 118px;
+    bottom: 78px;
     transform: translateX(-50%);
     width: min(1240px, calc(100vw - 72px));
     border-radius: 24px;
@@ -188,7 +202,9 @@
   .stack button,
   .window-row,
   .metrics div,
-  .muted {
+  .muted,
+  .mode-switch button,
+  .seed {
     border: 1px solid color-mix(in oklab, var(--accent-a) 22%, transparent);
     border-radius: 12px;
     background: color-mix(in oklab, #edf3ff 6%, transparent);
@@ -206,7 +222,8 @@
   .close:hover,
   .hero-card:hover,
   .catalog-row:hover,
-  .stack button:hover {
+  .stack button:hover,
+  .mode-switch button:hover {
     transform: translateY(-1px);
     background: color-mix(in oklab, #edf3ff 12%, transparent);
   }
@@ -216,6 +233,32 @@
     min-height: 40px;
     padding: 0 13px;
     font-size: 14px;
+  }
+
+  .mode-switch {
+    display: inline-flex;
+    gap: 6px;
+    padding: 3px;
+    border-radius: 10px;
+    border: 1px solid color-mix(in oklab, var(--accent-a) 24%, transparent);
+    background: color-mix(in oklab, #edf3ff 4%, transparent);
+  }
+
+  .mode-switch button {
+    min-height: 28px;
+    padding: 0 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    cursor: pointer;
+    border-color: transparent;
+    transition: transform 120ms ease, background-color 120ms ease;
+  }
+
+  .mode-switch button.active {
+    background:
+      linear-gradient(120deg, color-mix(in oklab, var(--accent-a) 22%, transparent), color-mix(in oklab, var(--accent-b) 13%, transparent)),
+      color-mix(in oklab, #edf3ff 7%, transparent);
+    border-color: color-mix(in oklab, var(--accent-a) 40%, transparent);
   }
 
   .hints {
@@ -303,7 +346,7 @@
 
   .hero-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 8px;
     margin-bottom: 2px;
   }
@@ -331,17 +374,24 @@
   }
 
   .seed {
-    width: 8px;
-    height: 8px;
-    border-radius: 99px;
-    background: color-mix(in oklab, var(--accent-a) 90%, white 10%);
-    box-shadow: 0 0 12px color-mix(in oklab, var(--accent-a) 60%, transparent);
+    width: 20px;
+    height: 20px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
     flex-shrink: 0;
+    background:
+      linear-gradient(120deg, color-mix(in oklab, var(--accent-a) 28%, transparent), color-mix(in oklab, var(--accent-b) 16%, transparent)),
+      color-mix(in oklab, #edf3ff 7%, transparent);
   }
 
   .seed.small {
-    width: 7px;
-    height: 7px;
+    width: 16px;
+    height: 16px;
+    font-size: 9px;
   }
 
   .catalog-list {
@@ -353,7 +403,7 @@
   }
 
   .catalog-row {
-    min-height: 38px;
+    min-height: 36px;
     padding: 0 10px;
     display: flex;
     align-items: center;
@@ -449,11 +499,11 @@
     text-transform: capitalize;
   }
 
-  @media (max-width: 980px) {
+  @media (max-width: 1100px) {
     .menu-shell {
       width: calc(100vw - 26px);
       top: 68px;
-      bottom: 108px;
+      bottom: 68px;
     }
 
     .content {
@@ -461,7 +511,11 @@
     }
 
     .hero-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .hints {
+      display: none;
     }
   }
 
