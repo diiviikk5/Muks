@@ -170,6 +170,7 @@
     {time}
     apps={appCatalog}
     {windows}
+    expanded={showStartMenu || showCommandPalette}
     presetName={preset.name}
     onToggleStart={toggleStartMenu}
     onToggleCommandPalette={toggleCommandPalette}

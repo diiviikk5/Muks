@@ -2,7 +2,7 @@
   import { invoke } from '@tauri-apps/api/core'
   import { onMount } from 'svelte'
 
-  let { time, apps, windows, presetName, onToggleStart, onToggleCommandPalette, onToggleAI } = $props()
+  let { time, apps, windows, expanded = false, presetName, onToggleStart, onToggleCommandPalette, onToggleAI } = $props()
 
   const pinnedIds = ['explorer', 'browser', 'terminal', 'code', 'settings', 'notepad']
   const workspaceLabels = ['Studio', 'Flow', 'Focus', 'Play']
@@ -61,26 +61,28 @@
   }
 </script>
 
-<div class="shell-frame">
-  <div class="topbar glass">
-    <div class="left-cluster">
-      <button class="chip strong" onclick={stopAnd(onToggleStart)}>Vortex</button>
-      <button class="chip" onclick={stopAnd(onToggleCommandPalette)}>Search</button>
-    </div>
+<div class="shell-frame" class:expanded>
+  {#if expanded}
+    <div class="topbar glass">
+      <div class="left-cluster">
+        <button class="chip strong" onclick={stopAnd(onToggleStart)}>Vortex</button>
+        <button class="chip" onclick={stopAnd(onToggleCommandPalette)}>Search</button>
+      </div>
 
-    <div class="workspace-strip" role="tablist" aria-label="Workspaces">
-      {#each workspaceLabels as labelText, index}
-        <button class="workspace" class:active={index === activeWorkspace} onclick={() => (activeWorkspace = index)}>{labelText}</button>
-      {/each}
-    </div>
+      <div class="workspace-strip" role="tablist" aria-label="Workspaces">
+        {#each workspaceLabels as labelText, index}
+          <button class="workspace" class:active={index === activeWorkspace} onclick={() => (activeWorkspace = index)}>{labelText}</button>
+        {/each}
+      </div>
 
-    <div class="right-cluster">
-      <button class="chip" onclick={stopAnd(onToggleAI)}>AI</button>
-      <div class="clock">{formatTime(time)}</div>
-      <div class="chip tiny">{presetName}</div>
-      <div class="chip tiny">{systemInfo.battery == null ? '--' : `${systemInfo.battery}%`}</div>
+      <div class="right-cluster">
+        <button class="chip" onclick={stopAnd(onToggleAI)}>AI</button>
+        <div class="clock">{formatTime(time)}</div>
+        <div class="chip tiny">{presetName}</div>
+        <div class="chip tiny">{systemInfo.battery == null ? '--' : `${systemInfo.battery}%`}</div>
+      </div>
     </div>
-  </div>
+  {/if}
 
   <div class="taskbar horizontal bottom">
     <div class="weg-items-container">
@@ -250,6 +252,10 @@
     padding: var(--config-padding);
     overflow-x: auto;
     scrollbar-width: none;
+  }
+
+  .shell-frame:not(.expanded) .taskbar {
+    width: min(1240px, calc(100vw - 22px));
   }
 
   .taskbar > .weg-items-container::-webkit-scrollbar {
