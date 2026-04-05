@@ -14,27 +14,16 @@
   })
 
   let pinnedApps = $derived(
-    pinnedIds
-      .map((id) => apps.find((app) => app.id === id))
-      .filter(Boolean)
-      .slice(0, 6)
+    pinnedIds.map((id) => apps.find((app) => app.id === id)).filter(Boolean).slice(0, 7)
   )
 
-  let liveWindows = $derived(windows.slice(0, 5))
+  let liveWindows = $derived(windows.slice(0, 6))
 
   function formatTime(date) {
     return date.toLocaleTimeString('en-US', {
       hour: '2-digit',
       minute: '2-digit',
       hour12: false,
-    })
-  }
-
-  function formatDate(date) {
-    return date.toLocaleDateString('en-US', {
-      weekday: 'short',
-      day: 'numeric',
-      month: 'short',
     })
   }
 
@@ -85,36 +74,33 @@
   }
 </script>
 
-<div class="top-strip">
-  <div class="seg left">
-    <button class="seg-btn" onclick={stopAnd(onToggleStart)}>Vortex</button>
-    <button class="seg-btn" onclick={stopAnd(onToggleCommandPalette)}>Search</button>
+<div class="topbar">
+  <div class="left-tools">
+    <button class="tool primary" onclick={stopAnd(onToggleStart)}>Vortex</button>
+    <button class="tool" onclick={stopAnd(onToggleCommandPalette)}>Search</button>
   </div>
 
-  <div class="seg center">
-    <span>{formatDate(time)}</span>
-    <strong>{formatTime(time)}</strong>
-  </div>
+  <div class="clock-pill">{formatTime(time)}</div>
 
-  <div class="seg right">
-    <button class="seg-btn" onclick={stopAnd(onToggleAI)}>AI</button>
-    <span>{systemInfo.battery == null ? '--' : `${systemInfo.battery}%`}</span>
+  <div class="right-tools">
+    <button class="tool" onclick={stopAnd(onToggleAI)}>AI</button>
+    <div class="stat">{systemInfo.battery == null ? '--' : `${systemInfo.battery}%`}</div>
   </div>
 </div>
 
 <div class="dock-shell" role="banner">
-  <div class="icon-row">
+  <div class="track pinned-track">
     {#each pinnedApps as app}
-      <button class="icon-pill" title={app.name} onclick={stopAnd(() => launchApp(app.id))}>
-        <span class="icon-dot"></span>
+      <button class="app-pill" title={app.name} onclick={stopAnd(() => launchApp(app.id))}>
+        <span class="dot"></span>
         <span>{app.name}</span>
       </button>
     {/each}
   </div>
 
-  <div class="window-row">
+  <div class="track windows-track">
     {#if liveWindows.length === 0}
-      <div class="window-empty">No active windows</div>
+      <div class="empty">No active windows</div>
     {:else}
       {#each liveWindows as window}
         <div
@@ -126,8 +112,8 @@
           onkeydown={(event) => event.key === 'Enter' && focusWindow(window.id)}
           title={window.title}
         >
-          <span class="window-title">{window.title}</span>
-          <div class="window-tools">
+          <span class="title">{window.title}</span>
+          <div class="actions">
             <button type="button" onclick={(event) => windowAction(window.id, 'minimize', event)}>_</button>
             <button type="button" onclick={(event) => windowAction(window.id, 'close', event)}>x</button>
           </div>
@@ -138,114 +124,119 @@
 </div>
 
 <style>
-  .top-strip {
+  .topbar {
     position: absolute;
-    left: 14px;
-    right: 14px;
     top: 8px;
-    height: 32px;
-    border-radius: 14px;
-    background: rgba(35, 40, 74, 0.72);
-    border: 1px solid rgba(175, 196, 255, 0.26);
+    left: 12px;
+    right: 12px;
+    height: 34px;
+    border-radius: 15px;
+    border: 1px solid rgba(173, 194, 255, 0.24);
+    background: rgba(33, 37, 64, 0.72);
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     padding: 0 8px;
     gap: 8px;
-    color: #dce5ff;
-    backdrop-filter: blur(12px) saturate(128%);
-    z-index: 60;
+    backdrop-filter: blur(12px) saturate(125%);
+    z-index: 80;
   }
 
-  .seg {
+  .left-tools,
+  .right-tools {
     display: flex;
     align-items: center;
     gap: 6px;
-    font-size: 11px;
   }
 
-  .seg.center {
-    justify-content: center;
-    min-width: 170px;
-  }
-
-  .seg.right {
+  .right-tools {
     justify-content: flex-end;
   }
 
-  .seg-btn {
-    height: 22px;
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    border-radius: 8px;
+  .tool,
+  .stat,
+  .clock-pill {
+    height: 24px;
+    border-radius: 9px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     background: rgba(255, 255, 255, 0.08);
-    color: inherit;
+    color: #e3eaff;
     font-size: 11px;
-    padding: 0 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 9px;
+  }
+
+  .tool {
     cursor: pointer;
   }
 
-  .seg strong {
-    font-size: 12px;
-    color: #eff4ff;
+  .tool.primary {
+    background: linear-gradient(135deg, rgba(127, 200, 255, 0.25), rgba(230, 168, 211, 0.16));
+  }
+
+  .clock-pill {
+    min-width: 120px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
   }
 
   .dock-shell {
     position: absolute;
-    left: 14px;
-    right: 14px;
-    bottom: 12px;
-    height: 80px;
-    padding: 8px;
+    left: 12px;
+    right: 12px;
+    bottom: 10px;
+    height: 84px;
+    border-radius: 22px;
+    border: 1px solid rgba(173, 194, 255, 0.24);
+    background: rgba(31, 35, 60, 0.74);
+    backdrop-filter: blur(16px) saturate(130%);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.42);
     display: grid;
     grid-template-rows: 1fr 1fr;
-    gap: 6px;
-    border-radius: 20px;
-    border: 1px solid rgba(171, 194, 255, 0.24);
-    background: rgba(30, 34, 58, 0.72);
-    backdrop-filter: blur(16px) saturate(126%);
-    box-shadow: 0 14px 26px rgba(0, 0, 0, 0.38);
+    gap: 5px;
+    padding: 8px;
     color: #e8efff;
-    z-index: 55;
+    z-index: 70;
   }
 
-  .icon-row,
-  .window-row {
+  .track {
     display: flex;
     align-items: center;
     gap: 6px;
-    overflow-x: auto;
     min-width: 0;
+    overflow-x: auto;
   }
 
-  .icon-pill,
+  .app-pill,
   .window-pill,
-  .window-empty {
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    border-radius: 11px;
-    background: rgba(255, 255, 255, 0.07);
+  .empty {
+    height: 28px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    background: rgba(255, 255, 255, 0.08);
   }
 
-  .icon-pill {
-    height: 26px;
-    padding: 0 8px;
+  .app-pill {
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    padding: 0 8px;
     color: inherit;
     cursor: pointer;
     font-size: 11px;
   }
 
-  .icon-dot {
+  .dot {
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: #7ec8ff;
-    box-shadow: 0 0 8px rgba(126, 200, 255, 0.62);
+    background: #7fc8ff;
+    box-shadow: 0 0 8px rgba(127, 200, 255, 0.6);
   }
 
   .window-pill {
-    height: 26px;
     min-width: 170px;
     max-width: 240px;
     padding: 0 7px;
@@ -256,11 +247,11 @@
   }
 
   .window-pill.focused {
-    border-color: rgba(126, 200, 255, 0.55);
-    background: rgba(126, 200, 255, 0.2);
+    border-color: rgba(127, 200, 255, 0.55);
+    background: rgba(127, 200, 255, 0.22);
   }
 
-  .window-title {
+  .title {
     flex: 1;
     min-width: 0;
     overflow: hidden;
@@ -269,29 +260,28 @@
     font-size: 11px;
   }
 
-  .window-tools {
+  .actions {
     display: flex;
     gap: 5px;
     margin-left: 8px;
   }
 
-  .window-tools button {
+  .actions button {
     width: 17px;
     height: 17px;
     border: none;
     border-radius: 6px;
-    background: rgba(255, 255, 255, 0.11);
-    color: rgba(234, 242, 255, 0.86);
+    background: rgba(255, 255, 255, 0.12);
+    color: rgba(232, 240, 255, 0.88);
     font-size: 11px;
     cursor: pointer;
   }
 
-  .window-empty {
-    height: 26px;
+  .empty {
     padding: 0 10px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    color: rgba(214, 227, 255, 0.66);
+    color: rgba(202, 214, 246, 0.7);
     font-size: 11px;
   }
 </style>

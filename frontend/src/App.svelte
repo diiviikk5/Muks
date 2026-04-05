@@ -23,7 +23,7 @@
 
   async function loadAppCatalog() {
     try {
-      appCatalog = await invoke('apps_search', { query: '', limit: 300 })
+      appCatalog = await invoke('apps_search', { query: '', limit: 320 })
     } catch (error) {
       console.log('Failed to load app catalog:', error)
     }
@@ -37,11 +37,11 @@
     }
   }
 
-  function showStatus(message) {
+  function notify(message) {
     statusMessage = message
     setTimeout(() => {
       if (statusMessage === message) statusMessage = ''
-    }, 2400)
+    }, 2200)
   }
 
   onMount(() => {
@@ -57,7 +57,7 @@
       time = new Date()
     }, 1000)
 
-    const windowPoll = setInterval(loadWindows, 2500)
+    const windowPoll = setInterval(loadWindows, 2200)
 
     const handleKeydown = (event) => {
       if (event.altKey && event.code === 'Space') {
@@ -82,7 +82,7 @@
         loadAppCatalog()
       }),
       listen('theme.changed', () => {
-        showStatus('Theme applied')
+        notify('Theme applied')
       }),
     ]
 
@@ -115,18 +115,19 @@
   }
 
   function handleAIAction() {
-    showStatus('AI is intentionally disabled in this build.')
+    notify('AI module is disabled in this build.')
   }
 
   function handleAIRequest(query) {
-    showStatus(`Saved request: ${query}`)
+    notify(`Saved request: ${query}`)
   }
 </script>
 
 <div class="shell-container" onclick={closeMenus} onkeydown={(event) => event.key === 'Escape' && closeMenus()} role="presentation">
-  <div class="shell-backdrop" aria-hidden="true"></div>
-  <div class="ambient-ring ring-a" aria-hidden="true"></div>
-  <div class="ambient-ring ring-b" aria-hidden="true"></div>
+  <div class="backdrop"></div>
+  <div class="halo halo-a"></div>
+  <div class="halo halo-b"></div>
+  <div class="scanline"></div>
 
   <Taskbar
     {time}
@@ -146,7 +147,7 @@
   {/if}
 
   {#if statusMessage}
-    <div class="status-indicator">{statusMessage}</div>
+    <div class="toast">{statusMessage}</div>
   {/if}
 </div>
 
@@ -161,53 +162,61 @@
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    --bg-0: #0f1020;
-    --bg-1: #1b1c33;
-    --panel: rgba(31, 33, 55, 0.7);
-    --panel-soft: rgba(255, 255, 255, 0.06);
-    --stroke: rgba(177, 196, 255, 0.24);
-    --text: #e9ecff;
-    --muted: rgba(205, 214, 247, 0.68);
-    --accent-cyan: #7ec8ff;
-    --accent-pink: #e79ac9;
+    --bg-0: #0f1122;
+    --bg-1: #171a32;
+    --panel: rgba(27, 31, 55, 0.74);
+    --stroke: rgba(170, 193, 255, 0.22);
+    --text: #eaf0ff;
+    --muted: rgba(203, 215, 246, 0.7);
+    --accent: #7fc8ff;
+    --accent-soft: rgba(127, 200, 255, 0.25);
+    --pink: #e6a8d3;
   }
 
-  .shell-backdrop {
+  .backdrop,
+  .halo,
+  .scanline {
     position: absolute;
+    pointer-events: none;
+  }
+
+  .backdrop {
     inset: 0;
     background:
-      linear-gradient(180deg, rgba(18, 20, 41, 0.92), rgba(14, 15, 30, 0.95)),
-      radial-gradient(circle at 88% -20%, rgba(126, 200, 255, 0.2), transparent 52%),
-      radial-gradient(circle at -10% -15%, rgba(231, 154, 201, 0.18), transparent 56%);
-    pointer-events: none;
+      radial-gradient(circle at 12% -30%, rgba(127, 200, 255, 0.24), transparent 46%),
+      radial-gradient(circle at 88% -26%, rgba(230, 168, 211, 0.2), transparent 52%),
+      linear-gradient(180deg, rgba(15, 17, 34, 0.94), rgba(12, 13, 27, 0.96));
   }
 
-  .ambient-ring {
-    position: absolute;
+  .halo {
+    border: 1px solid rgba(173, 194, 255, 0.08);
     border-radius: 999px;
-    border: 1px solid rgba(169, 191, 255, 0.08);
-    pointer-events: none;
   }
 
-  .ring-a {
+  .halo-a {
     width: 760px;
     height: 760px;
-    left: -240px;
-    top: -320px;
+    left: -210px;
+    top: -340px;
   }
 
-  .ring-b {
-    width: 540px;
-    height: 540px;
-    right: -140px;
-    top: -180px;
+  .halo-b {
+    width: 560px;
+    height: 560px;
+    right: -130px;
+    top: -210px;
   }
 
-  .status-indicator {
+  .scanline {
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.015) 0, rgba(255, 255, 255, 0) 20%);
+  }
+
+  .toast {
     position: fixed;
     right: 18px;
-    bottom: 106px;
-    z-index: 1200;
+    bottom: 104px;
+    z-index: 1300;
     padding: 8px 12px;
     border-radius: 12px;
     border: 1px solid var(--stroke);
@@ -215,6 +224,6 @@
     color: var(--text);
     font-size: 12px;
     backdrop-filter: blur(12px) saturate(120%);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
   }
 </style>

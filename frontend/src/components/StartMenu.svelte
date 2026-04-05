@@ -2,7 +2,6 @@
   import { invoke } from '@tauri-apps/api/core'
 
   let { apps, onclose } = $props()
-
   let query = $state('')
 
   const featuredIds = ['explorer', 'browser', 'terminal', 'code', 'settings', 'notepad']
@@ -10,11 +9,10 @@
 
   let featuredApps = $derived(apps.filter((app) => featuredIds.includes(app.id)).slice(0, 6))
   let quickApps = $derived(apps.filter((app) => quickIds.includes(app.id)).slice(0, 3))
-
   let filteredApps = $derived(
     query.trim()
-      ? apps.filter((app) => app.name.toLowerCase().includes(query.toLowerCase())).slice(0, 20)
-      : apps.slice(0, 20)
+      ? apps.filter((app) => app.name.toLowerCase().includes(query.toLowerCase())).slice(0, 24)
+      : apps.slice(0, 24)
   )
 
   async function launch(app) {
@@ -28,21 +26,21 @@
 </script>
 
 <div class="menu-shell" onclick={(event) => event.stopPropagation()} onkeydown={(event) => event.key === 'Escape' && onclose()} role="dialog" tabindex="-1">
-  <div class="menu-header">
+  <header>
     <div>
       <span class="kicker">Launcher</span>
-      <h2>Desktop Control</h2>
+      <h2>Desktop Command Center</h2>
     </div>
-    <button class="close-btn" onclick={onclose} aria-label="Close menu">x</button>
+    <button class="close" onclick={onclose}>x</button>
+  </header>
+
+  <div class="search-wrap">
+    <input type="text" placeholder="Search apps or workflows" bind:value={query} />
   </div>
 
-  <div class="search-row">
-    <input type="text" placeholder="Search apps" bind:value={query} />
-  </div>
-
-  <div class="menu-grid">
-    <section class="panel left">
-      <div class="panel-title">Featured</div>
+  <div class="content">
+    <section class="panel main">
+      <h3>Featured</h3>
       <div class="tiles">
         {#each featuredApps as app}
           <button class="tile" onclick={() => launch(app)}>
@@ -52,10 +50,10 @@
         {/each}
       </div>
 
-      <div class="panel-title">All Apps</div>
+      <h3>Catalog</h3>
       <div class="list">
         {#each filteredApps as app}
-          <button class="list-item" onclick={() => launch(app)}>
+          <button class="row" onclick={() => launch(app)}>
             <span>{app.name}</span>
             <small>{app.source}</small>
           </button>
@@ -63,19 +61,25 @@
       </div>
     </section>
 
-    <aside class="panel right">
-      <div class="panel-title">Quick</div>
-      <div class="quick">
+    <aside class="panel side">
+      <h3>Quick</h3>
+      <div class="stack">
         {#each quickApps as app}
           <button onclick={() => launch(app)}>{app.name}</button>
         {/each}
       </div>
 
-      <div class="panel-title">Profiles</div>
-      <div class="presets">
-        <button>Minimal Glass</button>
-        <button>Cyber Night</button>
-        <button>Fluent Calm</button>
+      <h3>Profiles</h3>
+      <div class="stack">
+        <button>Nebula</button>
+        <button>Fluent Glass</button>
+        <button>Studio Dark</button>
+      </div>
+
+      <h3>Status</h3>
+      <div class="stats">
+        <div><span>Indexed</span><strong>{apps.length}</strong></div>
+        <div><span>Runtime</span><strong>Live</strong></div>
       </div>
     </aside>
   </div>
@@ -85,22 +89,22 @@
   .menu-shell {
     position: absolute;
     left: 50%;
-    bottom: 102px;
+    bottom: 100px;
     transform: translateX(-50%);
-    width: min(1020px, calc(100vw - 20px));
+    width: min(1040px, calc(100vw - 20px));
     max-height: 74vh;
-    overflow: hidden;
     border-radius: 26px;
-    border: 1px solid rgba(169, 191, 255, 0.24);
-    background: rgba(26, 29, 49, 0.84);
+    border: 1px solid rgba(174, 196, 255, 0.24);
+    background: rgba(29, 33, 56, 0.84);
     backdrop-filter: blur(16px) saturate(126%);
-    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
-    color: #e9edff;
+    box-shadow: 0 28px 68px rgba(0, 0, 0, 0.52);
+    color: #ebefff;
     z-index: 120;
+    overflow: hidden;
   }
 
-  .menu-header,
-  .search-row {
+  header,
+  .search-wrap {
     padding: 12px 14px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     display: flex;
@@ -109,32 +113,30 @@
   }
 
   .kicker,
-  .panel-title {
+  h3 {
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: rgba(208, 218, 248, 0.66);
+    color: rgba(207, 217, 247, 0.66);
   }
 
   h2 {
     margin: 3px 0 0;
     font-size: 24px;
-    line-height: 1;
   }
 
-  .close-btn,
+  .close,
   input,
   .tile,
-  .list-item,
-  .quick button,
-  .presets button {
-    border: 1px solid rgba(255, 255, 255, 0.09);
+  .row,
+  .stack button {
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 11px;
     background: rgba(255, 255, 255, 0.06);
     color: inherit;
   }
 
-  .close-btn {
+  .close {
     width: 28px;
     height: 28px;
     cursor: pointer;
@@ -146,84 +148,103 @@
     padding: 0 12px;
   }
 
-  .menu-grid {
-    display: grid;
-    grid-template-columns: 1.45fr 0.8fr;
-    gap: 10px;
+  .content {
     padding: 10px;
+    display: grid;
+    grid-template-columns: 1.5fr 0.8fr;
+    gap: 10px;
   }
 
   .panel {
-    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
     background: rgba(255, 255, 255, 0.03);
     padding: 10px;
+    min-height: 0;
+  }
+
+  h3 {
+    margin: 0 0 8px;
   }
 
   .tiles {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 7px;
-    margin: 8px 0 12px;
-  }
-
-  .tile,
-  .list-item,
-  .quick button,
-  .presets button {
-    cursor: pointer;
+    margin-bottom: 12px;
   }
 
   .tile {
     height: 34px;
     display: flex;
     align-items: center;
-    gap: 7px;
+    gap: 8px;
     padding: 0 9px;
     text-align: left;
-    font-size: 12px;
+    cursor: pointer;
   }
 
   .dot {
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: #7ec8ff;
+    background: #7fc8ff;
   }
 
   .list {
     display: grid;
     gap: 6px;
-    max-height: 300px;
+    max-height: 310px;
     overflow-y: auto;
   }
 
-  .list-item {
+  .row {
     min-height: 36px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 9px;
+    padding: 0 10px;
     font-size: 12px;
+    cursor: pointer;
   }
 
-  .list-item small {
-    color: rgba(208, 218, 248, 0.62);
+  .row small {
     font-size: 10px;
+    color: rgba(207, 217, 247, 0.64);
   }
 
-  .quick,
-  .presets {
+  .stack {
     display: grid;
     gap: 7px;
-    margin: 8px 0 12px;
+    margin-bottom: 12px;
   }
 
-  .quick button,
-  .presets button {
+  .stack button {
     height: 34px;
     text-align: left;
     padding: 0 10px;
     font-size: 12px;
+    cursor: pointer;
+  }
+
+  .stats {
+    display: grid;
+    gap: 7px;
+  }
+
+  .stats div {
+    height: 34px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+  }
+
+  .stats span {
+    color: rgba(207, 217, 247, 0.68);
   }
 </style>

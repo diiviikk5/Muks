@@ -76,22 +76,22 @@
   }
 </script>
 
-<div class="palette-overlay" onclick={(event) => event.target === event.currentTarget && onclose()} role="dialog" tabindex="0" onkeydown={keyNav}>
+<div class="overlay" onclick={(event) => event.target === event.currentTarget && onclose()} role="dialog" tabindex="0" onkeydown={keyNav}>
   <div class="palette">
-    <div class="top">
+    <div class="head">
       <div>
         <span class="kicker">Palette</span>
-        <h2>Fast Commands</h2>
+        <h2>Fast Actions</h2>
       </div>
-      <div class="badge">{merged.length}</div>
+      <div class="count">{merged.length}</div>
     </div>
 
     <div class="search">
-      <input type="text" bind:value={query} bind:this={inputRef} placeholder="Search command or app" />
+      <input type="text" bind:value={query} bind:this={inputRef} placeholder="Search app or command" />
       <kbd>Esc</kbd>
     </div>
 
-    <div class="results">
+    <div class="rows">
       {#each merged as item, idx}
         <button class="row" class:active={idx === selected} onclick={() => run(item)} onmouseenter={() => (selected = idx)}>
           <span>{item.name}</span>
@@ -103,30 +103,30 @@
 </div>
 
 <style>
-  .palette-overlay {
+  .overlay {
     position: fixed;
     inset: 0;
-    padding-top: 100px;
+    padding-top: 96px;
     display: flex;
     justify-content: center;
-    background: rgba(8, 10, 18, 0.58);
+    background: rgba(9, 10, 20, 0.6);
     z-index: 1400;
   }
 
   .palette {
     width: min(740px, calc(100vw - 20px));
-    max-height: 500px;
+    max-height: 510px;
     border-radius: 22px;
-    border: 1px solid rgba(171, 194, 255, 0.24);
-    background: rgba(27, 30, 50, 0.9);
+    border: 1px solid rgba(173, 194, 255, 0.24);
+    background: rgba(29, 33, 56, 0.9);
     backdrop-filter: blur(16px) saturate(126%);
-    box-shadow: 0 26px 64px rgba(0, 0, 0, 0.55);
-    color: #e8edff;
+    box-shadow: 0 26px 62px rgba(0, 0, 0, 0.55);
+    color: #e9edff;
     display: grid;
     grid-template-rows: auto auto 1fr;
   }
 
-  .top,
+  .head,
   .search {
     padding: 12px 14px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -146,19 +146,18 @@
   h2 {
     margin: 3px 0 0;
     font-size: 22px;
-    line-height: 1;
   }
 
-  .badge,
+  .count,
   input,
   .row {
-    border: 1px solid rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.06);
     color: inherit;
   }
 
-  .badge {
+  .count {
     min-width: 32px;
     height: 24px;
     display: grid;
@@ -166,21 +165,21 @@
     font-size: 11px;
   }
 
-  .search input {
+  input {
     flex: 1;
     height: 36px;
     padding: 0 10px;
   }
 
-  .search kbd {
+  kbd {
     padding: 5px 8px;
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.08);
-    color: rgba(215, 228, 255, 0.74);
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(216, 227, 250, 0.76);
     font-size: 11px;
   }
 
-  .results {
+  .rows {
     padding: 8px;
     display: grid;
     gap: 6px;
@@ -193,19 +192,18 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    text-align: left;
     cursor: pointer;
     font-size: 12px;
   }
 
   .row.active,
   .row:hover {
-    background: rgba(126, 200, 255, 0.22);
-    border-color: rgba(126, 200, 255, 0.45);
+    background: rgba(127, 200, 255, 0.24);
+    border-color: rgba(127, 200, 255, 0.44);
   }
 
   .row small {
+    color: rgba(208, 218, 248, 0.65);
     font-size: 10px;
-    color: rgba(208, 218, 248, 0.64);
   }
 </style>
