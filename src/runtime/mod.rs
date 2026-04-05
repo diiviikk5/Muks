@@ -1,5 +1,6 @@
 mod app_index;
 mod rules;
+mod windows_os;
 
 use crate::config::{self, AppConfigV1};
 use crate::system::{discover_apps, launch_target, resolve_app_target, AppEntry};
@@ -7,6 +8,7 @@ use anyhow::Result;
 use parking_lot::RwLock;
 use rules::{default_rules, AppRule};
 use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
 use std::time::{Instant, SystemTime, UNIX_EPOCH};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -96,6 +98,8 @@ struct RuntimeState {
     active_workspace_id: String,
     workspaces: Vec<WorkspaceInfo>,
     windows: Vec<WindowInfo>,
+    window_workspace: HashMap<String, String>,
+    focus_history: Vec<String>,
     rules: Vec<AppRule>,
     themes: Vec<ThemeInfo>,
     plugins: Vec<PluginInfo>,
@@ -139,6 +143,8 @@ impl AppRuntime {
                     },
                 ],
                 windows: Vec::new(),
+                window_workspace: HashMap::new(),
+                focus_history: Vec::new(),
                 rules: default_rules(),
                 themes: vec![
                     ThemeInfo {
@@ -182,6 +188,7 @@ impl AppRuntime {
 
     pub fn bootstrap(&self) {
         let _ = self.refresh_app_index();
+        let _ = self.sync_windows_from_os();
         let mut state = self.state.write();
         state.healthy = true;
         state.startup_time_ms = state.started_at.elapsed().as_millis();
@@ -322,35 +329,14 @@ impl AppRuntime {
 
     pub fn windows_list(&self) -> Vec<WindowInfo> {
         self.bump_command_count();
+        let _ = self.sync_windows_from_os();
         self.state.read().windows.clone()
     }
 
     pub fn windows_act(&self, window_id: &str, action: &str) -> Result<(), String> {
         self.bump_command_count();
-        let mut state = self.state.write();
-
-        let Some(target_index) = state.windows.iter().position(|window| window.id == window_id) else {
-            return Err(format!("window `{}` not found", window_id));
-        };
-
-        match action {
-            "focus" => {
-                for item in state.windows.iter_mut() {
-                    item.is_focused = false;
-                }
-                if let Some(window) = state.windows.get_mut(target_index) {
-                    window.is_focused = true;
-                }
-            }
-            "close" => {
-                state.windows.retain(|item| item.id != window_id);
-            }
-            "minimize" | "maximize" => {}
-            other => {
-                return Err(format!("unsupported window action `{}`", other));
-            }
-        }
-
+        windows_os::perform_action(window_id, action)?;
+        let _ = self.sync_windows_from_os();
         Ok(())
     }
 
@@ -371,6 +357,9 @@ impl AppRuntime {
         };
 
         window.workspace_id = workspace_id.to_string();
+        state
+            .window_workspace
+            .insert(window_id.to_string(), workspace_id.to_string());
         Ok(())
     }
 
@@ -513,6 +502,51 @@ impl AppRuntime {
         plugin.enabled = enabled;
         plugin.health = if enabled { "healthy" } else { "disabled" }.to_string();
         Ok(plugin.clone())
+    }
+
+    pub fn sync_windows_from_os(&self) -> usize {
+        let samples = windows_os::capture_windows();
+        let mut state = self.state.write();
+        let active_workspace = state.active_workspace_id.clone();
+
+        state.windows = samples
+            .iter()
+            .map(|sample| {
+                let workspace_id = state
+                    .window_workspace
+                    .get(&sample.id)
+                    .cloned()
+                    .unwrap_or_else(|| active_workspace.clone());
+
+                WindowInfo {
+                    id: sample.id.clone(),
+                    title: sample.title.clone(),
+                    workspace_id,
+                    is_focused: sample.is_focused,
+                }
+            })
+            .collect();
+
+        if let Some(focused_id) = state
+            .windows
+            .iter()
+            .find(|window| window.is_focused)
+            .map(|window| window.id.clone())
+        {
+            if state
+                .focus_history
+                .last()
+                .map(|id| id != &focused_id)
+                .unwrap_or(true)
+            {
+                state.focus_history.push(focused_id);
+                if state.focus_history.len() > 100 {
+                    let _ = state.focus_history.remove(0);
+                }
+            }
+        }
+
+        state.windows.len()
     }
 
     fn bump_command_count(&self) {

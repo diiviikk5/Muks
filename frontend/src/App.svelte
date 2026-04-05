@@ -12,6 +12,7 @@
   let appCatalog = $state([])
   let statusMessage = $state('')
   let themes = $state([])
+  let windows = $state([])
 
   let shellState = $state({
     mode: 'normal',
@@ -58,6 +59,14 @@
       themes = await invoke('themes_list')
     } catch (error) {
       console.log('Failed to load themes:', error)
+    }
+  }
+
+  async function loadWindows() {
+    try {
+      windows = await invoke('windows_sync')
+    } catch (error) {
+      console.log('Failed to load windows:', error)
     }
   }
 
@@ -114,6 +123,7 @@
     loadShellState()
     loadAppCatalog()
     loadThemes()
+    loadWindows()
 
     invoke('shell_subscribe').catch((error) => {
       console.log('Subscribe command failed:', error)
@@ -122,6 +132,7 @@
     const timer = setInterval(() => {
       time = new Date()
     }, 1000)
+    const windowPoll = setInterval(loadWindows, 2500)
 
     const handleKeydown = (event) => {
       if (event.altKey && event.code === 'Space') {
@@ -151,6 +162,9 @@
       listen('workspace.changed', () => {
         loadShellState()
       }),
+      listen('windows.changed', (event) => {
+        windows = event.payload
+      }),
       listen('theme.changed', async () => {
         await loadThemes()
       }),
@@ -162,6 +176,7 @@
 
     return () => {
       clearInterval(timer)
+      clearInterval(windowPoll)
       window.removeEventListener('keydown', handleKeydown)
       Promise.all(unlistenPromises).then((unsubscribers) => {
         unsubscribers.forEach((unsub) => unsub())
@@ -250,6 +265,7 @@
   <Taskbar
     {time}
     apps={appCatalog}
+    {windows}
     onToggleStart={toggleStartMenu}
     onToggleCommandPalette={toggleCommandPalette}
     onToggleAI={handleAIAction}

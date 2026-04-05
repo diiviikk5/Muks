@@ -2,7 +2,7 @@
   import { invoke } from '@tauri-apps/api/core'
   import { onMount } from 'svelte'
 
-  let { time, apps, onToggleStart, onToggleCommandPalette, onToggleAI } = $props()
+  let { time, apps, windows, onToggleStart, onToggleCommandPalette, onToggleAI } = $props()
 
   const pinnedIds = ['explorer', 'browser', 'terminal', 'code', 'settings', 'notepad']
 
@@ -45,6 +45,14 @@
     }
   }
 
+  async function handleWindowAction(windowId, action) {
+    try {
+      await invoke('windows_act', { windowId, action })
+    } catch (error) {
+      console.log('Window action error:', error)
+    }
+  }
+
   async function loadSystemInfo() {
     try {
       systemInfo = await invoke('get_system_info')
@@ -73,7 +81,7 @@
       <div class="brand-mark">V</div>
       <div class="brand-copy">
         <strong>VORTEX Shell</strong>
-        <span>{systemInfo.hostname} · {systemInfo.username}</span>
+        <span>{systemInfo.hostname} / {systemInfo.username}</span>
       </div>
     </button>
 
@@ -89,6 +97,10 @@
       <div class="workspace-card">
         <span class="workspace-label">AI</span>
         <strong>Backend pending</strong>
+      </div>
+      <div class="workspace-card">
+        <span class="workspace-label">Live Windows</span>
+        <strong>{windows.length} tracked</strong>
       </div>
     </div>
 
@@ -138,6 +150,29 @@
       </div>
     </div>
   </div>
+
+  {#if windows.length > 0}
+    <div class="window-row">
+      {#each windows.slice(0, 8) as window}
+        <div
+          class="window-pill"
+          class:focused={window.isFocused}
+          title={window.title}
+          onclick={stopAnd(() => handleWindowAction(window.id, 'focus'))}
+          onkeydown={(event) => event.key === 'Enter' && handleWindowAction(window.id, 'focus')}
+          role="button"
+          tabindex="0"
+        >
+          <span class="window-dot"></span>
+          <span>{window.title}</span>
+          <span class="window-actions">
+            <button type="button" onclick={stopAnd(() => handleWindowAction(window.id, 'minimize'))}>_</button>
+            <button type="button" onclick={stopAnd(() => handleWindowAction(window.id, 'close'))}>x</button>
+          </span>
+        </div>
+      {/each}
+    </div>
+  {/if}
 </div>
 
 <style>
@@ -226,7 +261,7 @@
 
   .workspace-strip {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 8px;
   }
 
@@ -272,7 +307,8 @@
   .quick-chip:hover,
   .dock-button:hover,
   .app-pill:hover,
-  .brand-card:hover {
+  .brand-card:hover,
+  .window-pill:hover {
     background: rgba(255, 255, 255, 0.1);
     transform: translateY(-1px);
   }
@@ -320,5 +356,64 @@
 
   .system-chip.emphasis {
     background: rgba(255, 255, 255, 0.08);
+  }
+
+  .window-row {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+  }
+
+  .window-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    border-radius: 13px;
+    padding: 8px 10px;
+    min-width: 180px;
+    max-width: 260px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #dfe9ff;
+    cursor: pointer;
+    font-size: 11px;
+  }
+
+  .window-pill.focused {
+    background: rgba(91, 155, 255, 0.2);
+    border: 1px solid rgba(91, 155, 255, 0.38);
+  }
+
+  .window-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #8bc0ff;
+    box-shadow: 0 0 8px rgba(91, 155, 255, 0.6);
+    flex: 0 0 auto;
+  }
+
+  .window-pill > span:nth-child(2) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+    flex: 1;
+  }
+
+  .window-actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  .window-actions button {
+    border: none;
+    border-radius: 8px;
+    width: 20px;
+    height: 20px;
+    color: rgba(230, 239, 255, 0.82);
+    background: rgba(255, 255, 255, 0.08);
+    font-weight: 700;
+    cursor: pointer;
   }
 </style>

@@ -84,6 +84,7 @@ pub fn run() {
             apps_refresh_index,
             apps_launch,
             windows_list,
+            windows_sync,
             windows_act,
             windows_move_to_workspace,
             workspaces_list,
@@ -232,6 +233,13 @@ fn apps_launch(
 #[tauri::command]
 fn windows_list(runtime: tauri::State<'_, AppRuntime>) -> Vec<WindowInfo> {
     runtime.windows_list()
+}
+
+#[tauri::command]
+fn windows_sync(app: tauri::AppHandle, runtime: tauri::State<'_, AppRuntime>) -> Vec<WindowInfo> {
+    let windows = runtime.windows_list();
+    emit_topic(&app, TOPIC_WINDOWS_CHANGED, &windows);
+    windows
 }
 
 #[tauri::command]
