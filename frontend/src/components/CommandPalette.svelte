@@ -1,4 +1,4 @@
-<script>
+﻿<script>
   import { invoke } from '@tauri-apps/api/core'
 
   let { apps, onclose, onExecute } = $props()
@@ -9,15 +9,16 @@
   let inputRef = $state()
 
   let commands = $derived([
-    ...apps.map((app) => ({ id: app.id, name: app.name, type: 'app', group: 'App' })),
+    ...apps.map((app) => ({ id: app.id, name: app.name, type: 'app', group: 'Apps' })),
     { id: 'open-settings', name: 'Open settings', type: 'system', group: 'System' },
     { id: 'toggle-mode', name: 'Toggle shell mode', type: 'system', group: 'System' },
+    { id: 'open-launcher', name: 'Open launcher', type: 'system', group: 'System' },
   ])
 
   let shown = $derived(
     query.trim()
-      ? commands.filter((entry) => entry.name.toLowerCase().includes(query.toLowerCase())).slice(0, 16)
-      : commands.slice(0, 16)
+      ? commands.filter((entry) => entry.name.toLowerCase().includes(query.toLowerCase())).slice(0, 18)
+      : commands.slice(0, 18)
   )
 
   $effect(() => {
@@ -28,6 +29,7 @@
     const q = query.trim()
     if (!q) {
       backendResults = []
+      selected = 0
       return
     }
 
@@ -37,7 +39,7 @@
       } catch (error) {
         console.log('Backend search failed:', error)
       }
-    }, 120)
+    }, 110)
 
     return () => clearTimeout(t)
   })
@@ -45,7 +47,7 @@
   let merged = $derived([
     ...shown,
     ...backendResults.map((app) => ({ id: app.id, name: app.name, type: 'app', group: 'Live' })),
-  ].slice(0, 20))
+  ].slice(0, 24))
 
   function keyNav(event) {
     if (event.key === 'ArrowDown') {
@@ -78,26 +80,36 @@
 
 <div class="overlay" onclick={(event) => event.target === event.currentTarget && onclose()} role="dialog" tabindex="0" onkeydown={keyNav}>
   <div class="palette">
-    <div class="head">
+    <header>
       <div>
-        <span class="kicker">Palette</span>
-        <h2>Fast Actions</h2>
+        <span class="eyebrow">Command Palette</span>
+        <h2>Type. Jump. Execute.</h2>
       </div>
       <div class="count">{merged.length}</div>
-    </div>
+    </header>
 
     <div class="search">
-      <input type="text" bind:value={query} bind:this={inputRef} placeholder="Search app or command" />
-      <kbd>Esc</kbd>
+      <input type="text" bind:value={query} bind:this={inputRef} placeholder="Search apps, commands, and automations" />
+      <div class="keys">
+        <kbd>Esc</kbd>
+        <kbd>Enter</kbd>
+      </div>
     </div>
 
     <div class="rows">
-      {#each merged as item, idx}
-        <button class="row" class:active={idx === selected} onclick={() => run(item)} onmouseenter={() => (selected = idx)}>
-          <span>{item.name}</span>
-          <small>{item.group}</small>
-        </button>
-      {/each}
+      {#if merged.length === 0}
+        <div class="empty">No matches. Try a different query.</div>
+      {:else}
+        {#each merged as item, idx}
+          <button class="row" class:active={idx === selected} onclick={() => run(item)} onmouseenter={() => (selected = idx)}>
+            <span class="row-main">
+              <span class="dot"></span>
+              <span>{item.name}</span>
+            </span>
+            <small>{item.group}</small>
+          </button>
+        {/each}
+      {/if}
     </div>
   </div>
 </div>
@@ -106,104 +118,171 @@
   .overlay {
     position: fixed;
     inset: 0;
-    padding-top: 96px;
     display: flex;
     justify-content: center;
-    background: rgba(9, 10, 20, 0.6);
-    z-index: 1400;
+    padding-top: min(14vh, 120px);
+    background: linear-gradient(180deg, rgba(5, 9, 20, 0.74), rgba(3, 6, 14, 0.84));
+    backdrop-filter: blur(6px);
+    z-index: 1900;
   }
 
   .palette {
-    width: min(740px, calc(100vw - 20px));
-    max-height: 510px;
-    border-radius: 22px;
-    border: 1px solid rgba(173, 194, 255, 0.24);
-    background: rgba(29, 33, 56, 0.9);
-    backdrop-filter: blur(16px) saturate(126%);
-    box-shadow: 0 26px 62px rgba(0, 0, 0, 0.55);
-    color: #e9edff;
+    width: min(860px, calc(100vw - 34px));
+    max-height: min(70vh, 620px);
+    border-radius: 24px;
+    border: 1px solid color-mix(in oklab, #99bcff 36%, transparent);
+    background:
+      radial-gradient(120% 80% at 12% -10%, color-mix(in oklab, #89c7ff 16%, transparent), transparent 55%),
+      radial-gradient(120% 80% at 92% -20%, color-mix(in oklab, #b390ff 14%, transparent), transparent 58%),
+      linear-gradient(180deg, color-mix(in oklab, #141d38 84%, transparent), color-mix(in oklab, #0b1228 86%, transparent));
+    box-shadow: 0 34px 80px rgba(2, 9, 22, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px) saturate(145%);
+    color: #eff6ff;
     display: grid;
     grid-template-rows: auto auto 1fr;
+    overflow: hidden;
+    animation: drop 170ms ease;
   }
 
-  .head,
+  header,
   .search {
-    padding: 12px 14px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
+    gap: 12px;
+    padding: 14px 16px;
+    border-bottom: 1px solid color-mix(in oklab, #bdd2ff 16%, transparent);
   }
 
-  .kicker {
+  .eyebrow {
     font-size: 11px;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: rgba(208, 218, 248, 0.66);
+    color: color-mix(in oklab, #eef6ff 56%, transparent);
   }
 
   h2 {
-    margin: 3px 0 0;
-    font-size: 22px;
+    margin: 6px 0 0;
+    font-size: 29px;
+    letter-spacing: -0.03em;
+    line-height: 1;
   }
 
   .count,
   input,
-  .row {
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.06);
+  .row,
+  .empty {
+    border-radius: 12px;
+    border: 1px solid color-mix(in oklab, #c2d6ff 23%, transparent);
+    background: color-mix(in oklab, #edf4ff 8%, transparent);
     color: inherit;
   }
 
   .count {
-    min-width: 32px;
-    height: 24px;
-    display: grid;
-    place-items: center;
-    font-size: 11px;
+    min-width: 40px;
+    min-height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
   }
 
   input {
     flex: 1;
-    height: 36px;
-    padding: 0 10px;
+    min-height: 42px;
+    padding: 0 14px;
+    font-size: 15px;
+  }
+
+  .keys {
+    display: inline-flex;
+    gap: 6px;
   }
 
   kbd {
-    padding: 5px 8px;
+    min-width: 28px;
+    height: 26px;
+    padding: 0 8px;
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.1);
-    color: rgba(216, 227, 250, 0.76);
+    border: 1px solid color-mix(in oklab, #c5d9ff 28%, transparent);
+    background: color-mix(in oklab, #edf4ff 10%, transparent);
     font-size: 11px;
+    color: color-mix(in oklab, #eef6ff 80%, transparent);
+    font-family: 'Consolas', 'JetBrains Mono', monospace;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .rows {
-    padding: 8px;
+    padding: 10px;
     display: grid;
-    gap: 6px;
+    gap: 7px;
     overflow-y: auto;
   }
 
   .row {
-    min-height: 36px;
-    padding: 0 10px;
+    min-height: 42px;
+    padding: 0 12px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 13px;
+    transition: transform 140ms ease, background-color 140ms ease, border-color 140ms ease;
+  }
+
+  .row-main {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 100px;
+    background: color-mix(in oklab, #8fc9ff 92%, white 8%);
+    box-shadow: 0 0 12px color-mix(in oklab, #8fc9ff 56%, transparent);
+    flex-shrink: 0;
+  }
+
+  .row small {
+    color: color-mix(in oklab, #f2f7ff 55%, transparent);
+    font-size: 11px;
   }
 
   .row.active,
   .row:hover {
-    background: rgba(127, 200, 255, 0.24);
-    border-color: rgba(127, 200, 255, 0.44);
+    background:
+      linear-gradient(120deg, color-mix(in oklab, #89c4ff 26%, transparent), color-mix(in oklab, #bb94ff 16%, transparent)),
+      color-mix(in oklab, #edf4ff 8%, transparent);
+    border-color: color-mix(in oklab, #9ec2ff 50%, transparent);
+    transform: translateY(-1px);
   }
 
-  .row small {
-    color: rgba(208, 218, 248, 0.65);
-    font-size: 10px;
+  .empty {
+    min-height: 44px;
+    padding: 0 12px;
+    display: inline-flex;
+    align-items: center;
+    color: color-mix(in oklab, #eff6ff 62%, transparent);
+    font-size: 13px;
+  }
+
+  @keyframes drop {
+    from {
+      opacity: 0;
+      transform: translateY(-8px) scale(0.985);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
   }
 </style>

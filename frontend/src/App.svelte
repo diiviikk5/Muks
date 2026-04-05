@@ -1,4 +1,4 @@
-<script>
+﻿<script>
   import { onMount } from 'svelte'
   import { invoke } from '@tauri-apps/api/core'
   import { listen } from '@tauri-apps/api/event'
@@ -23,7 +23,7 @@
 
   async function loadAppCatalog() {
     try {
-      appCatalog = await invoke('apps_search', { query: '', limit: 320 })
+      appCatalog = await invoke('apps_search', { query: '', limit: 360 })
     } catch (error) {
       console.log('Failed to load app catalog:', error)
     }
@@ -49,15 +49,13 @@
     loadAppCatalog()
     loadWindows()
 
-    invoke('shell_subscribe').catch((error) => {
-      console.log('Subscribe command failed:', error)
-    })
+    invoke('shell_subscribe').catch(() => {})
 
     const timer = setInterval(() => {
       time = new Date()
     }, 1000)
 
-    const windowPoll = setInterval(loadWindows, 2200)
+    const windowPoll = setInterval(loadWindows, 1800)
 
     const handleKeydown = (event) => {
       if (event.altKey && event.code === 'Space') {
@@ -81,18 +79,13 @@
       listen('apps.index.updated', () => {
         loadAppCatalog()
       }),
-      listen('theme.changed', () => {
-        notify('Theme applied')
-      }),
     ]
 
     return () => {
       clearInterval(timer)
       clearInterval(windowPoll)
       window.removeEventListener('keydown', handleKeydown)
-      Promise.all(unlistenPromises).then((unsubscribers) => {
-        unsubscribers.forEach((unsub) => unsub())
-      })
+      Promise.all(unlistenPromises).then((unsubs) => unsubs.forEach((u) => u()))
     }
   })
 
@@ -115,19 +108,19 @@
   }
 
   function handleAIAction() {
-    notify('AI module is disabled in this build.')
+    notify('AI copilot is staged for M5 plugin rollout.')
   }
 
   function handleAIRequest(query) {
-    notify(`Saved request: ${query}`)
+    notify(`Captured request: ${query}`)
   }
 </script>
 
-<div class="shell-container" onclick={closeMenus} onkeydown={(event) => event.key === 'Escape' && closeMenus()} role="presentation">
-  <div class="backdrop"></div>
-  <div class="halo halo-a"></div>
-  <div class="halo halo-b"></div>
-  <div class="scanline"></div>
+<div class="shell" onclick={closeMenus} onkeydown={(event) => event.key === 'Escape' && closeMenus()} role="presentation">
+  <div class="atmosphere"></div>
+  <div class="glow glow-left"></div>
+  <div class="glow glow-right"></div>
+  <div class="scan-grid"></div>
 
   <Taskbar
     {time}
@@ -139,7 +132,7 @@
   />
 
   {#if showStartMenu}
-    <StartMenu apps={appCatalog} onclose={closeMenus} />
+    <StartMenu apps={appCatalog} windows={windows} onclose={closeMenus} />
   {/if}
 
   {#if showCommandPalette}
@@ -155,75 +148,97 @@
   :global(html),
   :global(body) {
     background: transparent;
+    font-family: 'Segoe UI Variable Display', 'Bahnschrift', 'Trebuchet MS', sans-serif;
   }
 
-  .shell-container {
+  .shell {
     position: relative;
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    --bg-0: #0f1122;
-    --bg-1: #171a32;
-    --panel: rgba(27, 31, 55, 0.74);
-    --stroke: rgba(170, 193, 255, 0.22);
-    --text: #eaf0ff;
-    --muted: rgba(203, 215, 246, 0.7);
-    --accent: #7fc8ff;
-    --accent-soft: rgba(127, 200, 255, 0.25);
-    --pink: #e6a8d3;
+    --text-main: #eff4ff;
+    --text-soft: color-mix(in oklab, #eff4ff 58%, transparent);
+    --line-soft: color-mix(in oklab, #9ab9ff 22%, transparent);
+    --line-strong: color-mix(in oklab, #92b2ff 42%, transparent);
+    --panel-hi: color-mix(in oklab, #11172c 72%, transparent);
+    --panel-lo: color-mix(in oklab, #0a1023 62%, transparent);
+    --accent-cyan: oklch(0.8 0.08 236);
+    --accent-gold: oklch(0.83 0.1 82);
+    --accent-purple: oklch(0.72 0.09 298);
+    color: var(--text-main);
   }
 
-  .backdrop,
-  .halo,
-  .scanline {
+  .atmosphere,
+  .glow,
+  .scan-grid {
     position: absolute;
+    inset: 0;
     pointer-events: none;
   }
 
-  .backdrop {
-    inset: 0;
+  .atmosphere {
     background:
-      radial-gradient(circle at 12% -30%, rgba(127, 200, 255, 0.24), transparent 46%),
-      radial-gradient(circle at 88% -26%, rgba(230, 168, 211, 0.2), transparent 52%),
-      linear-gradient(180deg, rgba(15, 17, 34, 0.94), rgba(12, 13, 27, 0.96));
+      radial-gradient(1300px 640px at 12% -20%, color-mix(in oklab, var(--accent-cyan) 20%, transparent), transparent 62%),
+      radial-gradient(1100px 520px at 96% -20%, color-mix(in oklab, var(--accent-purple) 24%, transparent), transparent 60%),
+      radial-gradient(960px 440px at 50% 120%, color-mix(in oklab, var(--accent-gold) 13%, transparent), transparent 66%),
+      linear-gradient(168deg, #070b18 0%, #080d20 40%, #060916 100%);
   }
 
-  .halo {
-    border: 1px solid rgba(173, 194, 255, 0.08);
-    border-radius: 999px;
+  .glow {
+    opacity: 0.5;
+    animation: drift 26s ease-in-out infinite;
   }
 
-  .halo-a {
-    width: 760px;
-    height: 760px;
-    left: -210px;
-    top: -340px;
+  .glow-left {
+    inset: -22% auto auto -16%;
+    width: 46vw;
+    height: 56vh;
+    background: radial-gradient(circle at 28% 36%, color-mix(in oklab, var(--accent-cyan) 36%, transparent), transparent 70%);
   }
 
-  .halo-b {
-    width: 560px;
-    height: 560px;
-    right: -130px;
-    top: -210px;
+  .glow-right {
+    inset: auto -12% -30% auto;
+    width: 54vw;
+    height: 58vh;
+    animation-delay: -8s;
+    background: radial-gradient(circle at 60% 30%, color-mix(in oklab, var(--accent-purple) 34%, transparent), transparent 72%);
   }
 
-  .scanline {
-    inset: 0;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.015) 0, rgba(255, 255, 255, 0) 20%);
+  .scan-grid {
+    opacity: 0.3;
+    background-image:
+      linear-gradient(90deg, color-mix(in oklab, #d2e5ff 6%, transparent) 1px, transparent 1px),
+      linear-gradient(0deg, color-mix(in oklab, #d2e5ff 5%, transparent) 1px, transparent 1px);
+    background-size: 96px 96px;
+    mask-image: linear-gradient(180deg, transparent 0%, black 28%, black 74%, transparent 100%);
   }
 
   .toast {
     position: fixed;
     right: 18px;
-    bottom: 104px;
-    z-index: 1300;
-    padding: 8px 12px;
-    border-radius: 12px;
-    border: 1px solid var(--stroke);
-    background: var(--panel);
-    color: var(--text);
+    bottom: 100px;
+    z-index: 1400;
+    min-height: 34px;
+    padding: 0 14px;
+    border-radius: 14px;
+    border: 1px solid var(--line-strong);
+    background: linear-gradient(180deg, var(--panel-hi), var(--panel-lo));
+    box-shadow: 0 20px 35px rgba(2, 6, 16, 0.55);
+    backdrop-filter: blur(16px) saturate(135%);
+    color: var(--text-main);
     font-size: 12px;
-    backdrop-filter: blur(12px) saturate(120%);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+    letter-spacing: 0.03em;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  @keyframes drift {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+      transform: translate3d(0, 2.4%, 0) scale(1.05);
+    }
   }
 </style>

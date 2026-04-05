@@ -1,19 +1,18 @@
-<script>
+﻿<script>
   import { invoke } from '@tauri-apps/api/core'
 
-  let { apps, onclose } = $props()
+  let { apps, windows = [], onclose } = $props()
   let query = $state('')
 
   const featuredIds = ['explorer', 'browser', 'terminal', 'code', 'settings', 'notepad']
-  const quickIds = ['terminal', 'explorer', 'settings']
 
   let featuredApps = $derived(apps.filter((app) => featuredIds.includes(app.id)).slice(0, 6))
-  let quickApps = $derived(apps.filter((app) => quickIds.includes(app.id)).slice(0, 3))
   let filteredApps = $derived(
     query.trim()
-      ? apps.filter((app) => app.name.toLowerCase().includes(query.toLowerCase())).slice(0, 24)
-      : apps.slice(0, 24)
+      ? apps.filter((app) => app.name.toLowerCase().includes(query.toLowerCase())).slice(0, 28)
+      : apps.slice(0, 28)
   )
+  let liveWindows = $derived(windows.slice(0, 4))
 
   async function launch(app) {
     try {
@@ -25,36 +24,47 @@
   }
 </script>
 
-<div class="menu-shell" onclick={(event) => event.stopPropagation()} onkeydown={(event) => event.key === 'Escape' && onclose()} role="dialog" tabindex="-1">
+<div class="menu-shell" onclick={(event) => event.stopPropagation()} onkeydown={(event) => event.key === 'Escape' && onclose()} role="dialog" tabindex="-1" aria-label="Launcher">
   <header>
-    <div>
-      <span class="kicker">Launcher</span>
-      <h2>Desktop Command Center</h2>
+    <div class="title-wrap">
+      <span class="eyebrow">Vortex Launcher</span>
+      <h2>Everything, right now</h2>
+      <p>Low-latency launch, active window control, and profile-ready layouts.</p>
     </div>
     <button class="close" onclick={onclose}>x</button>
   </header>
 
   <div class="search-wrap">
-    <input type="text" placeholder="Search apps or workflows" bind:value={query} />
+    <input type="text" placeholder="Type to launch apps or jump into a workflow" bind:value={query} />
+    <div class="hints">
+      <kbd>Alt</kbd>
+      <span>+</span>
+      <kbd>Space</kbd>
+      <small>Palette</small>
+    </div>
   </div>
 
   <div class="content">
-    <section class="panel main">
+    <section class="panel stage">
       <h3>Featured</h3>
-      <div class="tiles">
+      <div class="hero-grid">
         {#each featuredApps as app}
-          <button class="tile" onclick={() => launch(app)}>
-            <span class="dot"></span>
-            <span>{app.name}</span>
+          <button class="hero-card" onclick={() => launch(app)}>
+            <span class="seed"></span>
+            <strong>{app.name}</strong>
+            <small>Open instantly</small>
           </button>
         {/each}
       </div>
 
       <h3>Catalog</h3>
-      <div class="list">
+      <div class="catalog-list">
         {#each filteredApps as app}
-          <button class="row" onclick={() => launch(app)}>
-            <span>{app.name}</span>
+          <button class="catalog-row" onclick={() => launch(app)}>
+            <span class="row-left">
+              <span class="seed small"></span>
+              <span>{app.name}</span>
+            </span>
             <small>{app.source}</small>
           </button>
         {/each}
@@ -62,25 +72,47 @@
     </section>
 
     <aside class="panel side">
-      <h3>Quick</h3>
-      <div class="stack">
-        {#each quickApps as app}
-          <button onclick={() => launch(app)}>{app.name}</button>
-        {/each}
-      </div>
+      <section>
+        <h3>Profiles</h3>
+        <div class="stack">
+          <button>Nix Mist</button>
+          <button>Glass Horizon</button>
+          <button>Mono Focus</button>
+        </div>
+      </section>
 
-      <h3>Profiles</h3>
-      <div class="stack">
-        <button>Nebula</button>
-        <button>Fluent Glass</button>
-        <button>Studio Dark</button>
-      </div>
+      <section>
+        <h3>Live Windows</h3>
+        <div class="stack">
+          {#if liveWindows.length === 0}
+            <div class="muted">No active windows</div>
+          {:else}
+            {#each liveWindows as item}
+              <div class="window-row">
+                <span>{item.title}</span>
+              </div>
+            {/each}
+          {/if}
+        </div>
+      </section>
 
-      <h3>Status</h3>
-      <div class="stats">
-        <div><span>Indexed</span><strong>{apps.length}</strong></div>
-        <div><span>Runtime</span><strong>Live</strong></div>
-      </div>
+      <section>
+        <h3>Status</h3>
+        <div class="metrics">
+          <div>
+            <span>Indexed</span>
+            <strong>{apps.length}</strong>
+          </div>
+          <div>
+            <span>Theme</span>
+            <strong>Nebula</strong>
+          </div>
+          <div>
+            <span>Engine</span>
+            <strong>Rust Live</strong>
+          </div>
+        </div>
+      </section>
     </aside>
   </div>
 </div>
@@ -89,162 +121,299 @@
   .menu-shell {
     position: absolute;
     left: 50%;
-    bottom: 100px;
+    bottom: 128px;
     transform: translateX(-50%);
-    width: min(1040px, calc(100vw - 20px));
-    max-height: 74vh;
-    border-radius: 26px;
-    border: 1px solid rgba(174, 196, 255, 0.24);
-    background: rgba(29, 33, 56, 0.84);
-    backdrop-filter: blur(16px) saturate(126%);
-    box-shadow: 0 28px 68px rgba(0, 0, 0, 0.52);
-    color: #ebefff;
-    z-index: 120;
+    width: min(1220px, calc(100vw - 30px));
+    max-height: min(78vh, 920px);
+    border-radius: 30px;
+    border: 1px solid color-mix(in oklab, #9dbdff 34%, transparent);
+    background:
+      radial-gradient(120% 90% at 8% 0%, color-mix(in oklab, #8dc5ff 14%, transparent), transparent 58%),
+      radial-gradient(110% 100% at 95% 0%, color-mix(in oklab, #b58fff 12%, transparent), transparent 60%),
+      linear-gradient(180deg, color-mix(in oklab, #141d38 74%, transparent), color-mix(in oklab, #0d1329 78%, transparent));
+    box-shadow: 0 40px 90px rgba(2, 8, 18, 0.62), inset 0 1px 0 rgba(255, 255, 255, 0.09);
+    backdrop-filter: blur(20px) saturate(145%);
+    color: #eef5ff;
+    z-index: 170;
     overflow: hidden;
+    animation: rise 180ms ease;
   }
 
   header,
   .search-wrap {
-    padding: 12px 14px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 12px;
+    padding: 16px 18px;
+    border-bottom: 1px solid color-mix(in oklab, #bdd1ff 16%, transparent);
   }
 
-  .kicker,
+  .eyebrow,
   h3 {
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: rgba(207, 217, 247, 0.66);
+    letter-spacing: 0.14em;
+    color: color-mix(in oklab, #eef5ff 58%, transparent);
   }
 
-  h2 {
-    margin: 3px 0 0;
-    font-size: 24px;
+  .title-wrap h2 {
+    margin: 6px 0 0;
+    font-size: 38px;
+    line-height: 0.96;
+    letter-spacing: -0.03em;
+  }
+
+  .title-wrap p {
+    margin: 10px 0 0;
+    color: color-mix(in oklab, #f2f7ff 67%, transparent);
+    font-size: 14px;
   }
 
   .close,
   input,
-  .tile,
-  .row,
-  .stack button {
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 11px;
-    background: rgba(255, 255, 255, 0.06);
+  .hero-card,
+  .catalog-row,
+  .stack button,
+  .window-row,
+  .metrics div,
+  .muted {
+    border: 1px solid color-mix(in oklab, #bdd1ff 22%, transparent);
+    border-radius: 14px;
+    background: color-mix(in oklab, #edf3ff 7%, transparent);
     color: inherit;
   }
 
   .close {
-    width: 28px;
-    height: 28px;
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
     cursor: pointer;
+    transition: transform 150ms ease, background-color 150ms ease;
+  }
+
+  .close:hover,
+  .hero-card:hover,
+  .catalog-row:hover,
+  .stack button:hover {
+    transform: translateY(-1px);
+    background: color-mix(in oklab, #edf3ff 14%, transparent);
   }
 
   input {
     width: 100%;
-    height: 38px;
-    padding: 0 12px;
+    min-height: 46px;
+    padding: 0 16px;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    background: color-mix(in oklab, #edf3ff 9%, transparent);
+  }
+
+  .hints {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    color: color-mix(in oklab, #eff6ff 70%, transparent);
+    font-size: 11px;
+  }
+
+  kbd {
+    min-width: 24px;
+    height: 24px;
+    padding: 0 8px;
+    border-radius: 8px;
+    border: 1px solid color-mix(in oklab, #c3d6ff 28%, transparent);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: color-mix(in oklab, #edf3ff 10%, transparent);
+    font-size: 11px;
+    font-family: 'Consolas', 'JetBrains Mono', monospace;
   }
 
   .content {
-    padding: 10px;
+    padding: 14px;
     display: grid;
-    grid-template-columns: 1.5fr 0.8fr;
-    gap: 10px;
+    grid-template-columns: minmax(0, 1.7fr) minmax(280px, 0.9fr);
+    gap: 14px;
+    min-height: 0;
   }
 
   .panel {
-    border-radius: 14px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    background: rgba(255, 255, 255, 0.03);
-    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid color-mix(in oklab, #bdd1ff 16%, transparent);
+    background: color-mix(in oklab, #f2f7ff 4%, transparent);
+    padding: 14px;
     min-height: 0;
   }
 
   h3 {
-    margin: 0 0 8px;
+    margin: 0 0 10px;
   }
 
-  .tiles {
+  .hero-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 7px;
-    margin-bottom: 12px;
+    gap: 10px;
+    margin-bottom: 16px;
   }
 
-  .tile {
-    height: 34px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 0 9px;
+  .hero-card {
+    min-height: 72px;
+    padding: 10px 12px;
+    display: grid;
+    gap: 4px;
     text-align: left;
     cursor: pointer;
+    transition: transform 150ms ease, background-color 150ms ease;
   }
 
-  .dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #7fc8ff;
+  .hero-card strong {
+    font-size: 14px;
+    letter-spacing: 0.01em;
   }
 
-  .list {
+  .hero-card small {
+    color: color-mix(in oklab, #eef5ff 62%, transparent);
+    font-size: 11px;
+  }
+
+  .seed {
+    width: 10px;
+    height: 10px;
+    border-radius: 99px;
+    background: color-mix(in oklab, #8cc7ff 90%, white 10%);
+    box-shadow: 0 0 16px color-mix(in oklab, #8cc7ff 60%, transparent);
+  }
+
+  .seed.small {
+    width: 8px;
+    height: 8px;
+  }
+
+  .catalog-list {
     display: grid;
-    gap: 6px;
-    max-height: 310px;
+    gap: 8px;
+    max-height: 365px;
     overflow-y: auto;
+    scrollbar-width: thin;
   }
 
-  .row {
-    min-height: 36px;
+  .catalog-row {
+    min-height: 40px;
+    padding: 0 12px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 0 10px;
-    font-size: 12px;
+    justify-content: space-between;
     cursor: pointer;
+    transition: transform 150ms ease, background-color 150ms ease;
+    font-size: 13px;
   }
 
-  .row small {
-    font-size: 10px;
-    color: rgba(207, 217, 247, 0.64);
+  .row-left {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .catalog-row small {
+    color: color-mix(in oklab, #f0f6ff 52%, transparent);
+    font-size: 11px;
+    text-transform: lowercase;
+  }
+
+  .side {
+    display: grid;
+    align-content: start;
+    gap: 14px;
   }
 
   .stack {
     display: grid;
-    gap: 7px;
-    margin-bottom: 12px;
+    gap: 8px;
+  }
+
+  .stack button,
+  .window-row,
+  .muted {
+    min-height: 38px;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
   }
 
   .stack button {
-    height: 34px;
-    text-align: left;
-    padding: 0 10px;
-    font-size: 12px;
     cursor: pointer;
+    text-align: left;
+    transition: transform 150ms ease, background-color 150ms ease;
   }
 
-  .stats {
+  .window-row {
+    color: color-mix(in oklab, #f0f6ff 76%, transparent);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .muted {
+    color: color-mix(in oklab, #f0f6ff 58%, transparent);
+  }
+
+  .metrics {
     display: grid;
-    gap: 7px;
+    gap: 8px;
   }
 
-  .stats div {
-    height: 34px;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    background: rgba(255, 255, 255, 0.05);
-    padding: 0 10px;
+  .metrics div {
+    min-height: 38px;
+    padding: 0 12px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: 12px;
   }
 
-  .stats span {
-    color: rgba(207, 217, 247, 0.68);
+  .metrics span {
+    color: color-mix(in oklab, #eef5ff 58%, transparent);
+  }
+
+  .metrics strong {
+    font-size: 12px;
+    font-weight: 650;
+    letter-spacing: 0.03em;
+  }
+
+  @media (max-width: 980px) {
+    .menu-shell {
+      bottom: 114px;
+      max-height: calc(100vh - 148px);
+    }
+
+    .title-wrap h2 {
+      font-size: 30px;
+    }
+
+    .content {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateX(-50%) translateY(8px) scale(0.99);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0) scale(1);
+    }
   }
 </style>

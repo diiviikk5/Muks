@@ -1,63 +1,48 @@
-<script>
+﻿<script>
   import { invoke } from '@tauri-apps/api/core'
   import { onMount } from 'svelte'
 
   let { time, apps, windows, onToggleStart, onToggleCommandPalette, onToggleAI } = $props()
 
   const pinnedIds = ['explorer', 'browser', 'terminal', 'code', 'settings', 'notepad']
+  const workspaceLabels = ['Studio', 'Flow', 'Focus', 'Play']
 
-  let systemInfo = $state({
-    battery: null,
-    charging: false,
-    username: 'User',
-    hostname: 'Windows',
-  })
-
-  let pinnedApps = $derived(
-    pinnedIds.map((id) => apps.find((app) => app.id === id)).filter(Boolean).slice(0, 7)
-  )
-
-  let liveWindows = $derived(windows.slice(0, 6))
+  let systemInfo = $state({ battery: null, username: 'User', hostname: 'Windows' })
+  let pinnedApps = $derived(pinnedIds.map((id) => apps.find((app) => app.id === id)).filter(Boolean).slice(0, 6))
+  let liveWindows = $derived(windows.slice(0, 7))
+  let activeWorkspace = $state(0)
 
   function formatTime(date) {
-    return date.toLocaleTimeString('en-US', {
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: false,
-    })
+    return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false })
+  }
+
+  function formatDate(date) {
+    return date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })
   }
 
   async function loadSystemInfo() {
     try {
       systemInfo = await invoke('get_system_info')
-    } catch (error) {
-      console.log('System info error:', error)
-    }
+    } catch {}
   }
 
   async function launchApp(appId) {
     try {
       await invoke('apps_launch', { appId })
-    } catch (error) {
-      console.log('Launch app error:', error)
-    }
+    } catch {}
   }
 
   async function focusWindow(windowId) {
     try {
       await invoke('windows_act', { windowId, action: 'focus' })
-    } catch (error) {
-      console.log('Focus window error:', error)
-    }
+    } catch {}
   }
 
   async function windowAction(windowId, action, event) {
     event.stopPropagation()
     try {
       await invoke('windows_act', { windowId, action })
-    } catch (error) {
-      console.log('Window action error:', error)
-    }
+    } catch {}
   }
 
   onMount(() => {
@@ -74,214 +59,307 @@
   }
 </script>
 
-<div class="topbar">
-  <div class="left-tools">
-    <button class="tool primary" onclick={stopAnd(onToggleStart)}>Vortex</button>
-    <button class="tool" onclick={stopAnd(onToggleCommandPalette)}>Search</button>
-  </div>
+<div class="shell-stripe">
+  <div class="topbar glass-card">
+    <div class="cluster left">
+      <button class="seg primary" onclick={stopAnd(onToggleStart)}>Vortex</button>
+      <button class="seg" onclick={stopAnd(onToggleCommandPalette)}>Search</button>
+    </div>
 
-  <div class="clock-pill">{formatTime(time)}</div>
-
-  <div class="right-tools">
-    <button class="tool" onclick={stopAnd(onToggleAI)}>AI</button>
-    <div class="stat">{systemInfo.battery == null ? '--' : `${systemInfo.battery}%`}</div>
-  </div>
-</div>
-
-<div class="dock-shell" role="banner">
-  <div class="track pinned-track">
-    {#each pinnedApps as app}
-      <button class="app-pill" title={app.name} onclick={stopAnd(() => launchApp(app.id))}>
-        <span class="dot"></span>
-        <span>{app.name}</span>
-      </button>
-    {/each}
-  </div>
-
-  <div class="track windows-track">
-    {#if liveWindows.length === 0}
-      <div class="empty">No active windows</div>
-    {:else}
-      {#each liveWindows as window}
-        <div
-          class="window-pill"
-          class:focused={window.isFocused}
-          role="button"
-          tabindex="0"
-          onclick={stopAnd(() => focusWindow(window.id))}
-          onkeydown={(event) => event.key === 'Enter' && focusWindow(window.id)}
-          title={window.title}
-        >
-          <span class="title">{window.title}</span>
-          <div class="actions">
-            <button type="button" onclick={(event) => windowAction(window.id, 'minimize', event)}>_</button>
-            <button type="button" onclick={(event) => windowAction(window.id, 'close', event)}>x</button>
-          </div>
-        </div>
+    <div class="cluster center workspace-strip" role="tablist" aria-label="Workspaces">
+      {#each workspaceLabels as label, index}
+        <button class="workspace" class:active={index === activeWorkspace} onclick={() => (activeWorkspace = index)}>{label}</button>
       {/each}
-    {/if}
+    </div>
+
+    <div class="cluster right">
+      <button class="seg" onclick={stopAnd(onToggleAI)}>AI</button>
+      <div class="meta">
+        <strong>{formatTime(time)}</strong>
+        <span>{formatDate(time)}</span>
+      </div>
+      <div class="battery">{systemInfo.battery == null ? '--' : `${systemInfo.battery}%`}</div>
+    </div>
+  </div>
+
+  <div class="dock glass-card">
+    <div class="dock-lane apps">
+      {#each pinnedApps as app}
+        <button class="dock-chip" onclick={stopAnd(() => launchApp(app.id))} title={app.name}>
+          <span class="pulse"></span>
+          <span>{app.name}</span>
+        </button>
+      {/each}
+    </div>
+
+    <div class="dock-lane windows">
+      {#if liveWindows.length === 0}
+        <div class="empty">No active windows</div>
+      {:else}
+        {#each liveWindows as w}
+          <div class="window-chip" class:focused={w.isFocused} onclick={stopAnd(() => focusWindow(w.id))} role="button" tabindex="0" onkeydown={(e) => e.key === 'Enter' && focusWindow(w.id)}>
+            <span class="title">{w.title}</span>
+            <div class="window-actions">
+              <button type="button" onclick={(e) => windowAction(w.id, 'minimize', e)}>_</button>
+              <button type="button" onclick={(e) => windowAction(w.id, 'close', e)}>x</button>
+            </div>
+          </div>
+        {/each}
+      {/if}
+    </div>
   </div>
 </div>
 
 <style>
-  .topbar {
+  .shell-stripe {
     position: absolute;
-    top: 8px;
-    left: 12px;
-    right: 12px;
-    height: 34px;
-    border-radius: 15px;
-    border: 1px solid rgba(173, 194, 255, 0.24);
-    background: rgba(33, 37, 64, 0.72);
+    inset: 12px 14px 12px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  .glass-card {
+    pointer-events: auto;
+    border-radius: 22px;
+    border: 1px solid color-mix(in oklab, #97b6ff 34%, transparent);
+    background:
+      linear-gradient(180deg, color-mix(in oklab, #111a33 70%, transparent), color-mix(in oklab, #0b1227 66%, transparent)),
+      linear-gradient(140deg, color-mix(in oklab, #7bb7ff 8%, transparent), color-mix(in oklab, #ae7dff 9%, transparent));
+    box-shadow: 0 22px 44px rgba(2, 7, 18, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(17px) saturate(140%);
+  }
+
+  .topbar {
+    height: 62px;
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    padding: 0 8px;
-    gap: 8px;
-    backdrop-filter: blur(12px) saturate(125%);
-    z-index: 80;
+    padding: 0 10px;
+    gap: 10px;
   }
 
-  .left-tools,
-  .right-tools {
+  .cluster {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
+    min-width: 0;
   }
 
-  .right-tools {
+  .center {
+    justify-content: center;
+  }
+
+  .right {
     justify-content: flex-end;
   }
 
-  .tool,
-  .stat,
-  .clock-pill {
-    height: 24px;
-    border-radius: 9px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.08);
-    color: #e3eaff;
-    font-size: 11px;
+  .seg,
+  .workspace,
+  .battery,
+  .meta {
+    border-radius: 13px;
+    border: 1px solid color-mix(in oklab, #b8ceff 25%, transparent);
+    background: color-mix(in oklab, #edf3ff 8%, transparent);
+    color: #eef4ff;
+    min-height: 36px;
+    padding: 0 14px;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    padding: 0 9px;
+    font-size: 13px;
+    letter-spacing: 0.02em;
   }
 
-  .tool {
+  .seg,
+  .workspace {
     cursor: pointer;
+    transition: transform 140ms ease, background-color 140ms ease, border-color 140ms ease;
   }
 
-  .tool.primary {
-    background: linear-gradient(135deg, rgba(127, 200, 255, 0.25), rgba(230, 168, 211, 0.16));
+  .seg:hover,
+  .workspace:hover,
+  .dock-chip:hover,
+  .window-chip:hover {
+    transform: translateY(-1px);
   }
 
-  .clock-pill {
-    min-width: 120px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
+  .seg.primary {
+    background:
+      linear-gradient(140deg, color-mix(in oklab, #82bfff 26%, transparent), color-mix(in oklab, #b78fff 20%, transparent)),
+      color-mix(in oklab, #edf3ff 8%, transparent);
+    border-color: color-mix(in oklab, #8ab9ff 48%, transparent);
+    font-weight: 600;
   }
 
-  .dock-shell {
-    position: absolute;
-    left: 12px;
-    right: 12px;
-    bottom: 10px;
-    height: 84px;
-    border-radius: 22px;
-    border: 1px solid rgba(173, 194, 255, 0.24);
-    background: rgba(31, 35, 60, 0.74);
-    backdrop-filter: blur(16px) saturate(130%);
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.42);
+  .workspace-strip {
+    gap: 6px;
+    padding: 5px;
+    border-radius: 15px;
+    border: 1px solid color-mix(in oklab, #9ab8ff 32%, transparent);
+    background: color-mix(in oklab, #ecf2ff 5%, transparent);
+  }
+
+  .workspace {
+    border: 1px solid transparent;
+    background: transparent;
+    min-height: 30px;
+    padding: 0 12px;
+    font-size: 12px;
+    color: color-mix(in oklab, #eff5ff 75%, transparent);
+  }
+
+  .workspace.active {
+    background: color-mix(in oklab, #9bc4ff 24%, transparent);
+    border-color: color-mix(in oklab, #93bcff 44%, transparent);
+    color: #f4f8ff;
+  }
+
+  .meta {
     display: grid;
-    grid-template-rows: 1fr 1fr;
-    gap: 5px;
-    padding: 8px;
-    color: #e8efff;
-    z-index: 70;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    padding: 0 12px;
+    min-height: 36px;
   }
 
-  .track {
+  .meta strong {
+    font-size: 14px;
+    font-weight: 680;
+    line-height: 1;
+  }
+
+  .meta span {
+    color: color-mix(in oklab, #edf4ff 58%, transparent);
+    font-size: 11px;
+    line-height: 1;
+  }
+
+  .battery {
+    min-width: 56px;
+    justify-content: center;
+    font-weight: 600;
+  }
+
+  .dock {
+    align-self: end;
+    min-height: 118px;
+    padding: 8px;
+    display: grid;
+    gap: 8px;
+  }
+
+  .dock-lane {
     display: flex;
     align-items: center;
-    gap: 6px;
-    min-width: 0;
+    gap: 8px;
     overflow-x: auto;
+    scrollbar-width: none;
   }
 
-  .app-pill,
-  .window-pill,
-  .empty {
-    height: 28px;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.11);
-    background: rgba(255, 255, 255, 0.08);
+  .dock-lane::-webkit-scrollbar {
+    display: none;
   }
 
-  .app-pill {
+  .dock-chip,
+  .window-chip,
+  .empty,
+  .window-actions button {
+    border: 1px solid color-mix(in oklab, #b8ccff 20%, transparent);
+    background: color-mix(in oklab, #eef4ff 7%, transparent);
+    border-radius: 12px;
+    color: #eff4ff;
+  }
+
+  .dock-chip {
+    min-height: 40px;
+    padding: 0 13px;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 0 8px;
-    color: inherit;
     cursor: pointer;
-    font-size: 11px;
+    white-space: nowrap;
+    font-size: 13px;
+    transition: transform 140ms ease, background-color 140ms ease;
   }
 
-  .dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #7fc8ff;
-    box-shadow: 0 0 8px rgba(127, 200, 255, 0.6);
+  .pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 99px;
+    background: color-mix(in oklab, #8cc4ff 92%, white 8%);
+    box-shadow: 0 0 11px color-mix(in oklab, #8cc4ff 72%, transparent);
+    flex-shrink: 0;
   }
 
-  .window-pill {
-    min-width: 170px;
-    max-width: 240px;
-    padding: 0 7px;
+  .window-chip {
+    min-width: 240px;
+    max-width: 320px;
+    min-height: 40px;
+    padding: 0 10px;
     display: flex;
     align-items: center;
-    color: inherit;
+    gap: 8px;
     cursor: pointer;
+    transition: transform 140ms ease, background-color 140ms ease, border-color 140ms ease;
   }
 
-  .window-pill.focused {
-    border-color: rgba(127, 200, 255, 0.55);
-    background: rgba(127, 200, 255, 0.22);
+  .window-chip.focused {
+    background:
+      linear-gradient(130deg, color-mix(in oklab, #8fc4ff 28%, transparent), color-mix(in oklab, #b18bff 18%, transparent)),
+      color-mix(in oklab, #eef4ff 7%, transparent);
+    border-color: color-mix(in oklab, #94beff 46%, transparent);
   }
 
   .title {
-    flex: 1;
     min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: 11px;
+    font-size: 12px;
+    letter-spacing: 0.02em;
   }
 
-  .actions {
+  .window-actions {
     display: flex;
-    gap: 5px;
-    margin-left: 8px;
+    gap: 6px;
   }
 
-  .actions button {
-    width: 17px;
-    height: 17px;
-    border: none;
-    border-radius: 6px;
-    background: rgba(255, 255, 255, 0.12);
-    color: rgba(232, 240, 255, 0.88);
-    font-size: 11px;
+  .window-actions button {
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    display: grid;
+    place-items: center;
+    font-size: 12px;
     cursor: pointer;
   }
 
   .empty {
-    padding: 0 10px;
+    min-height: 40px;
+    padding: 0 14px;
     display: inline-flex;
     align-items: center;
-    color: rgba(202, 214, 246, 0.7);
-    font-size: 11px;
+    color: color-mix(in oklab, #eff4ff 68%, transparent);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+  }
+
+  @media (max-width: 1200px) {
+    .workspace-strip {
+      display: none;
+    }
+
+    .topbar {
+      grid-template-columns: 1fr auto;
+    }
+
+    .center {
+      display: none;
+    }
+
+    .window-chip {
+      min-width: 210px;
+    }
   }
 </style>
