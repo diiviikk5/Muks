@@ -1,0 +1,378 @@
+action:
+  confirm: ኧረ
+  confirm_body: ይህ እርምጃ ሊቀለበስ አይችልም.
+apps_configurations:
+  app:
+    bindings: ማሰሪያ (ሁለቱንም አማራጮች ልብ ይበሉ)
+    category: ምድብ
+    category_placeholder: የለም
+    monitor: ተቆጣጠር
+    monitor_placeholder: የለም
+    name: ስም
+    ok_create: ፍጠር
+    ok_edit: ዝመና
+    ok_readonly: እንደ አዲስ ያርትዑ
+    options:
+      NoInteractive: በይነተገናኝ የለም
+      VdPinned: በሁሉም የስራ ቦታዎች ውስጥ አሳይ
+      WmFloat: Twm - ተንሳፋፊ ጅምር
+      WmForce: Twm - ኃይል ያስተዳድሩ
+      WmUnmanage: Twm - አለመግባባት
+    options_label: ተጨማሪ አማራጮች
+    title_create: '{{{ስም} መፍጠር}}'
+    title_edit: አርት editing {{ስም}}}
+    title_readonly: '{{{}}}}'
+    weg_options_label: የመርከሪያ / የተግባር አሞሌ አማራጮች
+    wm_options_label: የመስኮት አቀናባሪ አማራጮች
+    workspace: የስራ ቦታ
+    workspace_placeholder: የለም
+  bundled_msg: >-
+    እነዚህ የታሸጉ ውቅሮች አርት edity ት አይደሉም እናም ያለ ማበጀት ምርጥ ተሞክሮዎን ለማቅረብ የተቀየሱ ናቸው. በጣም
+    የተለመዱ ትግበራዎችን በራስ-ሰር ያዋቅሩታል.
+  bundled_title: የመተግበሪያ ውቅረት በጥይት የተደመሰሰ
+  confirm_delete: እርግጠኛ ነዎት ይህንን ውቅር / ቶች መሰረዝ ይፈልጋሉ?
+  confirm_delete_title: መሰረዝ ያረጋግጡ
+  delete: ሰርዝ
+  export: ወደ ውጭ ይላኩ
+  export_full: ቅንብሮችን በመላክ በትግበራ
+  extra_info: >-
+    Seelen UI በአንድ መተግበሪያ አንድ መለያ ብቻ ነው የሚጠቀመው (የመጀመሪያው ግጥሚያ ተገኝቷል) ስለዚህ እንዴት
+    እንደሚገለጹ ቅደም ተከተላቸው አስፈላጊ ነው፣ የቅርብ ጊዜዎቹ የተጨመሩት ቅድሚያ ይሰጣቸዋል፣ ምክንያቱም ሰንጠረዡ ከቅርቡ
+    ወደ አሮጌው በነባሪ የተደረደረ ነው።
+  identifier:
+    add_block: ብሎክ ያክሉ
+    and: እና
+    id: መለያ
+    kind: መለየት በ
+    matching_strategy: ተዛማጅ ስትራቴጂ
+    matching_strategy_option:
+      contains: ይይዛል
+      ends_with: በዚህ ያበቃል
+      equals: እኩል ነው።
+      regex: መደበኛ አገላለጽ
+      starts_with: ይጀምራል
+    negation: ማዛመድን
+    or: ወይም
+    remove: ብሎክ ሰርዝ
+    type:
+      class: ክፍል
+      exe: Ex
+      path: መንገድ
+      title: ርዕስ
+  import: ማስመጣት
+  import_full: በትግበራ ​​ቅንብሮች ያስመጡ
+  new: አዲስ
+  search: ፍለጋ
+  swap: መቀያየር
+cancel: ይቅር
+close: ገጠመ
+delete: ሰርዝ
+devtools:
+  app_folders: የመተግበሪያ አቃፊዎች
+  custom_config_file: ብጁ ውቅያ ፋይልን ይጫኑ
+  data_folder: የውሂብ አቃፊ
+  enable: የገንቢ መሳሪያዎችን ያንቁ
+  install_folder: የመጫን አቃፊ
+  load: ጭነት
+  settings_file: የቅንብሮች ፋይል
+  simulate_perm:
+    label: የመግብር ፍቃድ ጥያቄን አስመስለው
+    result_allowed: ✓ ፍቃድ ተሰጥቷል።
+    result_denied: ✗ ፍቃድ ተከልክሏል።
+    trigger: አስመስለው
+    widget_id_placeholder: '@ደራሲ/መግብር-ስም'
+extras:
+  clear_icons: የስርዓት አዶዎች መሸጎጫ
+  clear_icons_tooltip: ዳግም ማስጀመር በሁሉም ፍርግሞች ላይ ሙሉ በሙሉ እንዲተገበር ሊፈልግ ይችላል
+  exit: ማቆም / መውጣት
+  links: ኦፊሴላዊ አገናኞች
+  relaunch: እንደገና መነገር
+  version: ስሪት
+  version_fixed: >-
+    አፕሊኬሽኑ እና WebView2 Runtime ስሪቶች ተስተካክለዋል። ይህ ማለት አፕሊኬሽኑ ዝመናዎችን አይቀበልም እና የዌብ
+    ቪው2 Runtime በዊንዶውስ ዝመናዎች በራስ-ሰር አይዘመንም ማለት ነው።
+general:
+  accent_color: የዝግጅት ቀለም
+  date_format: የቀን ቅርጸት
+  date_format_how_to: የቀን ቅርጸት እንዴት እንደሚፃፍ?
+  hardware_acceleration: የሃርድዌር ማጣደፍ
+  hardware_acceleration_description: >-
+    የሃርድዌር ማጣደፍን ማሰናከል የማህደረ ትውስታ አጠቃቀምን ይቀንሳል፣ ነገር ግን የአፈጻጸም ችግሮችን ሊያስከትል ይችላል።
+    የቀጥታ የግድግዳ ወረቀቶችን የማይጠቀሙ ከሆነ ለማሰናከል ደህንነቱ የተጠበቀ ነው።
+  icon_pack:
+    available: የሚገኙ የአዶ ጥቅሎች
+    selected: ንቁ አዶ ጥቅሎች
+  language: ቋንቋ
+  monday: ሰኞ
+  performance_mode:
+    on_battery: ባትሪ ላይ
+    on_energy_saver: በሃይል ቆጣቢ ላይ
+    options:
+      disabled: ተሰናክሏል
+      extreme: በጣም
+      minimal: አነስተኛ
+    plugged: ተሰኪ ወይም መሙላት
+  polling_interval: የስርዓት ምርጫ ክፍተት
+  polling_interval_description: >-
+    Seelen UI እንደ ሲፒዩ፣ RAM፣ አውታረ መረብ እና የዲስክ እንቅስቃሴ ያሉ የስርዓት ሀብቶችን ምን ያህል ጊዜ
+    (በሴኮንዶች ውስጥ) ይፈትሻል። አነስ ያለ ቁጥር ብዙ ተደጋጋሚ ዝመናዎች ማለት ነው፣ ነገር ግን ትንሽ ከፍ ያለ የሃብት
+    አጠቃቀም ማለት ነው።
+  saturday: ቅዳሜ
+  start_of_week: የሳምንቱ መጀመሪያ
+  startup: ጅምር ላይ ይሮጡ?
+  sunday: እሁድ
+  theme:
+    available: የሚገኙ ገጽታዎች
+    selected: ንቁ ገጽታዎች
+header:
+  labels:
+    config: ውቅሮች
+    developer: ለገንቢዎች
+    extras: ተጨማሪዎች
+    general: አጠቃላይ
+    home: ቤት
+    icon_pack_editor: የተሸጡ አዶዎች
+    iconpack: አዶዎች ፓኬጆች
+    monitors: ተቆጣጣሪዎች
+    plugin: ተሰኪዎች
+    resources: ሀብቶች
+    shortcuts: አቋራጮች
+    soundpack: የድምፅ ማካካሻዎች
+    specific_apps: በቅንብሮች በትግበራ
+    theme: ገጽታዎች
+    virtual_desk: ምናባዊ ዴስክቶፕስ
+    wallpaper: የግድግዳ ወረቀቶች
+    widget: ፍርግሞች
+home:
+  new_resources: አዲስ ሀብቶች
+inherit: ውርስ
+inProgress: በሂደት ላይ...
+insert: ያስገቡ
+loading: በመጫን ላይ ...
+miscellaneous: ልዩነቶች
+monitors_configurations:
+  label: ይቆጣጠሩ {{አው.ፊ.}}}}
+more: ተጨማሪ
+'no': አይ
+open: ክፈት
+quit: አቁም
+remove: ያስወግዱ
+reset_all_to_default: ሁሉንም ወደ ነባሪ እሴቶች ዳግም ያስጀምሩ
+reset_to_default: ወደ ነባሪ እሴት ዳግም ያስጀምሩ
+resources:
+  app_outdated: ይህ ሀብት በአግባቡ እንዲሠራ አዲስ የአዲስ ስሪት ይፈልጋል.
+  corrupted_wallpaper: ድንክዬ ማውጣት አልተሳካም - የተበላሸ ወይም የማይደገፍ የቪዲዮ ቅርጸት
+  delete: ምንጭን ሰርዝ
+  discover: ተጨማሪ ሀብቶችን ያግኙ
+  has_update: ዝመና ይገኛል
+  high_impact: በአፈፃፀም ላይ ከፍተኛ ተጽዕኖ
+  import_wallpapers: የአካባቢያዊ የግድግዳ ወረቀቶች ያስመጡ
+  open_folder: ክፍት የመረጃ ምንጭ አቃፊ
+  outdated: ይህ የመረጃ ሀብት ለተረጋጋሪ ዌይ ስሪት ለተጨማሪ ስሪት የተሰራ ሲሆን በትክክል ላይሰራ ይችላል.
+  see_on_website: በድር ጣቢያው ላይ ይመልከቱ
+review_request:
+  not_now: አሁን አይደለም
+  sure: በእርግጠኝነት!
+  title: በ Seelen UI እየተዝናኑ ነው?
+save: አስቀምጥ
+save_and_restart: አስቀምጥ & እንደገና ያስጀምሩ
+search: ፈልግ
+see_more: ተጨማሪ ይመልከቱ
+shortcuts:
+  duplicate_error: ይህ አቋራጭ የተባዛ ነው።
+  enable: አብሮገነብ አቋራጭ አቋራጭ ስርዓት
+  enable_tooltip: የእራስዎን አቋራጮችን ስርዓት የሚተገበሩበትን የእራስዎን አቋራጮዎች ስርዓት የሚተገበሩ ከሆነ ያሰናክሉ
+  labels:
+    create_new_workspace: አዲስ የስራ ቦታ ይፍጠሩ
+    cycle_stack_next: ቀጣይ የዑደት ቁልል
+    cycle_stack_prev: ዑደት ቀድሟል
+    cycle_wallpaper_next: ወደ ቀጣዩ የግድግዳ ወረቀት ይለውጡ
+    cycle_wallpaper_prev: ወደ ቀዳሚው የግድግዳ ወረቀት ይቀይሩ
+    decrease_height: ቁመት ቀንሷል
+    decrease_width: ስፋት መቀነስ
+    destroy_current_workspace: የአሁኑን የስራ ቦታ አጥፋ
+    focus_bottom: ወደ ታች ትኩረት
+    focus_latest: የቅርብ ጊዜዎችን ያተኩሩ
+    focus_left: ትኩረት ቀርቷል
+    focus_right: በትክክል ትኩረት ያድርጉ
+    focus_top: ትኩረት
+    increase_height: ቁመት ይጨምሩ
+    increase_width: ስፋት መጨመር
+    misc_force_quit: ኃይል አቁሟል
+    misc_force_restart: አስገባ
+    misc_open_settings: ክፍት ቅንብሮች
+    misc_toggle_lock_tracing: መቆለፊያ መቆለፊያ (ምዝግብ ማስታወሻዎች)
+    misc_toggle_win_event_tracing: የ UNSCUCT PORTERSERSESTERE (ምዝግብ ማስታወሻዎች)
+    move_to_workspace: ወደ የሥራ ቦታ ይሂዱ {{0}}}
+    move_window_down: መስኮት ወደ ታች ያንቀሳቅሱ
+    move_window_left: መስኮት ወደ ግራ ይሂዱ
+    move_window_right: መስኮት ወደ ቀኝ ያንቀሳቅሱ
+    move_window_up: መስኮት ወደ ላይ ያንቀሳቅሱ
+    pause_tiling: የቆዳ መስኮት አቀናባሪ ለአፍታ አቁም
+    reserve_bottom: የተጠባበቅ ክፍል
+    reserve_float: የተጠባባቂ ተንሳፋፊ
+    reserve_left: የተቆራረጠ
+    reserve_right: መብት
+    reserve_stack: የተጠባባቂ ቁልል
+    reserve_top: የላይኛው ክፍል
+    restore_sizes: መጠኖች ወደነበሩበት ይመልሱ
+    send_to_workspace: ወደ የሥራ ቦታ {{0}}}}
+    start_weg_app: የትኩረት ወይም የትግበራ ትግበራ {{0}}}
+    switch_to_next_workspace: ወደ ቀጣዩ የስራ ቦታ ይቀይሩ
+    switch_to_previous_workspace: ወደ ቀዳሚው የስራ ቦታ ይቀይሩ
+    switch_workspace: ወደ የሥራ ቦታ ቀይር {{0}}}
+    toggle_float: የመስኮት ተንሳፋፊ ሁነታን ይቀያይሩ
+    toggle_monocle: የስራ ቦታ ቦታን ይቀያይሩ
+  readonly_tooltip: ይህ የተነበበ ብቻ አቋራጭ ነው
+  reset: ወደ ነባሪዎች ዳግም ያስጀምሩ
+sides:
+  bottom: ታች
+  left: ግራ
+  right: ቀኝ
+  top: ከላይ
+toolbar:
+  auto_hide: ራስ-ሰር መደበቅ
+  delay_to_hide: ለመደበቅ መዘግየት
+  delay_to_show: ለማሳየት መዘግየት
+  dock_side: አቀማመጥ
+  enable: Fangance የመሳሪያ አሞሌን ያንቁ
+  hide_mode:
+    always: ሁሌም
+    never: በጭራሽ
+    on_overlap: መደራረብ ላይ
+  item_size: የንጥል መጠን
+  label: የመሣሪያ አሞሌ
+  margin: የኅዳግ መጠን
+  padding: የፓዲንግ መጠን
+  placeholder: {}
+update:
+  available: ዝመና ይገኛል!
+  channel: ጣቢያውን አዘምን
+  downloading: ማውረድ ...
+wall:
+  backgrounds: የግድግዳ ወረቀቶች
+  blur: ብዥታ
+  cancel: ሰርዝ
+  close: ገጠመ
+  collection_name: የስብስብ ስም
+  collections: ስብስቦች
+  contrast: ንፅፅር
+  corrupted_wallpapers_message: የተበላሹ የግድግዳ ወረቀቶች፣ እነዚህን መሰረዝ ያስቡበት፡-
+  create: ፍጠር
+  create_collection: ስብስብ ይፍጠሩ
+  default_collection: ነባሪ ስብስብ
+  delete_collection: ስብስብን ሰርዝ
+  edit_collection: ስብስብ አርትዕ
+  enable: የግድግዳ ወረቀት ሥራ አስኪያጅን ያንቁ
+  extend: የመጀመሪያ ደረጃን ያራዝሙ
+  fit:
+    contain: መያዝ
+    cover: ሽፋን
+    fill: ሙላ
+  flipHorizontal: አግድም
+  flipVertical: ቀጥ ያለ አቀባዊ
+  generating_thumbnails: የግድግዳ ወረቀት ድንክዬዎችን በማመንጨት ላይ
+  hours: ሰዓታት
+  interval: የግድግዳ ወረቀት እያንዳንዱን ይለውጡ
+  minutes: ደቂቃዎች
+  monitor_collection: ስብስብን ተቆጣጠር
+  multimonitor_behaviour: ባለብዙ መቆጣጠሪያ ባህሪ
+  muted: ድምጸ-ከል ቪዲዮ ኦዲዮ
+  no_background: በመከራየት የፊት ገጽታውን ዳራ በመጠቀም ባዶ ተንሸራታች ትዕይንት.
+  no_collections: እስካሁን ምንም ስብስቦች አልተፈጠሩም። ለመፍጠር የ+ ቁልፍን ጠቅ ያድርጉ።
+  objectFit: ዳራ ተስማሚ
+  objectPosition: የጀርባ አቀማመጥ
+  overlayColor: የተደራቢ ቀለም
+  overlayMixBlendMode: የተደራቢ ድብልቅ ድብልቅ ድብልቅ ሁኔታ
+  per_monitor: በእያንዳንዱ ማሳያ
+  playback: መልሶ ማጫወት ፍጥነት
+  position:
+    bottom: ታች
+    center: ማዕከል
+    left: ግራ
+    right: ቀኝ
+    top: ከላይ
+  processing_video: ቪዲዮን በመስራት ላይ
+  random: የዘፈቀደ ተንሸራታች ትዕይንት
+  saturation: ማሞቂያ
+  seconds: ሰከንዶች
+  select_collection: ስብስብ ይምረጡ
+  thumbnail_generation_complete: ድንክዬ ማመንጨት ተጠናቋል
+  thumbnail_generation_finished: ድንክዬ ማመንጨት በተሳካ ሁኔታ ተጠናቅቋል
+  wallpaper_collection: የግድግዳ ወረቀት ስብስብ
+  wallpaper_settings: የግድግዳ ወረቀት ቅንጅቶች
+  withOverlay: በተደራቢ
+  workspace_collections: የስራ ቦታ ስብስቦች
+weg:
+  auto_hide: ራስ-ሰር መደበቅ
+  delay_to_hide: ለመደበቅ መዘግየት
+  delay_to_show: ለማሳየት መዘግየት
+  dock_side: አቀማመጥ
+  enable: መትከያ / ተግባር አሞሌን ያንቁ
+  filtering: ዕቃ ማጣሪያ
+  gap: ክፍተት
+  hide_mode:
+    always: ሁሌም
+    never: በጭራሽ
+    on_overlap: መደራረብ ላይ
+  items:
+    gap: በእቃዎች መካከል ቦታ
+    label: ዕቃዎች
+    pinned_visibility:
+      always: ሁሌም
+      label: የተሰኩ ዕቃዎች ታይነት
+      when_primary: መቆጣጠሪያው ቀዳሚ ሲሆን
+    show_instance_counter: ክፍት የመስኮቶች ቆጣሪ አሳይ
+    show_window_title: ክፍት የመስኮት ርዕስ አሳይ (አግድም ብቻ)
+    size: የንጥል መጠን
+    split_windows: ዊንዶውስ ክፋይ (በአንድ መስኮት አንድ ንጥል)
+    temporal_visibility:
+      all: ሁሉም
+      label: ያልተሰካ እቃዎች ታይነት
+      on_monitor: በሞኒተር ላይ
+    visible_separators: የሚታዩ መለያዎች
+  label: Dock / Accorbar
+  margin: ህዳግ
+  mode:
+    full_width: የሙሉ ማያ ገጽ ስፋት
+    min_content: በተቻለ መጠን ትንሽ
+  padding: ፓድ
+  show_end_task: በተግባር አሞሌ ውስጥ የመጨረሻውን ተግባር ያሳዩ
+  width: ስፋት
+welcome:
+  give_a_review: ግምገማ ስጥ
+  message: >-
+    Seelen UI ለዊንዶውስ ነፃ እና ክፍት ምንጭ ዴስክቶፕ አካባቢ ነው። እዚህ ዴስክቶፕዎ እንዴት እንደሚመስል እና
+    ባህሪው ላይ ሙሉ ቁጥጥር አለዎት፣ ይህም እያንዳንዱን ዝርዝር ከስራ ሂደትዎ እና ዘይቤዎ ጋር ለማዛመድ እንዲያበጁ
+    ያስችልዎታል።
+  ok: እንጀምር!
+  review: >-
+    Seelen UIን መጠቀም ከወደዱ፣ በመደብሩ ላይ ግምገማ ለመተው ያስቡበት — የእርስዎ አስተያየት ፕሮጀክቱ እንዲያድግ
+    እና እንዲሻሻል ይረዳል።
+  title: ወደ Seelen UI እንኳን በደህና መጡ!
+widget:
+  enable: ይህን ንዑስ ፕሮግራም ያንቁ
+  enable_for_monitor: በዚህ መቆጣጠሪያ ላይ ያንቁ
+  instances: ሁኔታዎች
+wm:
+  animations:
+    duration: እነማ ቆይታ (MS)
+    ease_function: አኒሜሽን ኢኮኖሚ ተግባር
+    enable: የመስኮት እነማዎችን አንቃ
+  author: ደራሲ ደራሲ
+  border:
+    enable: የመስኮት ድንበር አንቃ
+    offset: ድንበር ማካካሻ
+    width: ድንበር ስፋት
+  description: መግለጫ
+  drag_behavior: ጎትት ባህሪ
+  drag_behavior_options:
+    sort: ደርድር (በመጎተት ላይ መስኮቶችን እንደገና ይዘዙ)
+    swap: ስዋፕ (በመጎተት መጨረሻ ላይ መስኮቶችን ይቀያይሩ)
+  enable: የታሸገ መስኮት አቀናባሪን ያንቁ
+  layout: አቀማመጥ
+  resize_delta: ዴልታ (%)
+  space_between_containers: በእቃ መጫዎቻዎች መካከል ያለው ቦታ
+  workspace_offset: የስራ ቦታዎች ማካካሻ (ማርጂኖች)
+  workspace_padding: የስራ ቦታዎች ፓድ
+'yes': አዎ

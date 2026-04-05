@@ -1,0 +1,35 @@
+app_menu:
+  close: Lukk
+  close_multiple: Lukk alle
+  copy_handles: Kopier håndtak
+  kill: Drep prosessen
+  kill_multiple: Drep alle prosesser
+  open_file_location: Åpne fil plassering
+  pin: Pin
+  pin_to_center: Pin til sentrum
+  pin_to_left: Pin til venstre
+  pin_to_right: Pin til høyre
+  run_as: Kjør som administrator
+  unpin: Upinn
+context_menu:
+  remove_module: Fjern modulen
+  reorder_disable: Lås oppgavelinje
+  reorder_enable: Lås opp oppgavelinje
+media:
+  not_playing: Ingenting spiller
+show_desktop:
+  label: Vis skrivebord
+start:
+  label: Start-menyen
+taskbar_menu:
+  add_file: Pin tilpasset fil
+  desktop: Legg til skrivebordsmodul
+  media: Legg til mediemodul
+  settings: Innstillinger
+  start: Legg til startmodul
+  task_manager: Oppgavebehandling
+  trash_bin: Legg til papirkurvmodul
+trash_bin:
+  empty_bin: Tøm papirkurven
+weg:
+  empty: Ingen elementer å vise

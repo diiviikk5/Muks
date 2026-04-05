@@ -1,0 +1,59 @@
+%common {
+  padding: 0.25em 0.5em;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+
+  &:active {
+    transform: translateY(2px);
+  }
+}
+
+div[data-behavior="group"] {
+  display: flex;
+
+  > button:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  > button:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+button[data-skin="transparent"] {
+  @extend %common;
+  border: 1px solid transparent;
+
+  &:hover {
+    background-color: var(--slu-std-ui-hover-overlay);
+  }
+
+  &:active {
+    background-color: var(--slu-std-ui-pressed-overlay);
+  }
+}
+
+button[data-skin="solid"] {
+  @extend %common;
+  background-color: var(--slu-std-ui-color);
+  border: 1px solid var(--slu-std-ui-color);
+  color: var(--color-gray-100);
+
+  &:hover {
+    background-color: var(--slu-std-ui-hover-color);
+    border: 1px solid var(--slu-std-ui-hover-color);
+  }
+}
+
+button[data-skin="default"] {
+  @extend %common;
+  border: 1px solid var(--color-gray-300);
+
+  &:hover {
+    border: 1px solid var(--slu-std-ui-hover-color);
+  }
+}

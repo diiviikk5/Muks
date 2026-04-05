@@ -1,0 +1,16 @@
+.ft-bar {
+  background-color: transparent;
+}
+
+.ft-bar-item {
+  color: var(--color-fixed-gray-100);
+  background-color: var(--color-fixed-gray-900);
+  border-radius: 10px;
+  padding: 2px 8px;
+  height: 25px;
+
+  &.ft-bar-item-clickable {
+    padding: 2px 8px;
+    border-radius: 10px;
+  }
+}

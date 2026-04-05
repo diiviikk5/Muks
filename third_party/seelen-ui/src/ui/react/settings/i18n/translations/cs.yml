@@ -1,0 +1,391 @@
+action:
+  confirm: Jsi si jistý?
+  confirm_body: Tuto akci nelze vrátit zpět.
+apps_configurations:
+  app:
+    bindings: Vazba (jsou vyžadovány obě možnosti)
+    category: Kategorie
+    category_placeholder: Žádný
+    monitor: Monitor
+    monitor_placeholder: Žádný
+    name: Název
+    ok_create: Vytvořit
+    ok_edit: Aktualizovat
+    ok_readonly: Upravit jako nové
+    options:
+      NoInteractive: Žádná interaktivní
+      VdPinned: Zobrazit ve všech pracovních prostorech
+      WmFloat: Twm - Spustit plovoucí
+      WmForce: Twm - Force Manage
+      WmUnmanage: Twm – Unmanage
+    options_label: Další možnosti
+    title_create: Vytváření {{name}}
+    title_edit: Úpravy {{name}}
+    title_readonly: Prohlížení {{name}}
+    weg_options_label: Možnosti lišty/hlavního panelu
+    wm_options_label: Možnosti správce oken
+    workspace: Pracovní prostor
+    workspace_placeholder: Žádný
+  bundled_msg: >-
+    Tyto sdružené konfigurace nejsou upravitelné a jsou navrženy tak, aby vám
+    poskytly nejlepší zkušenost bez přizpůsobení. Automaticky pro  Vás
+    nakonfigurují nejběžnější aplikace.
+  bundled_title: Konfigurace aplikace spojená s Seelen
+  confirm_delete: Určitě chcete tuto konfiguraci smazat?
+  confirm_delete_title: Potvrďte smazání
+  delete: Smazat
+  export: Exportovat
+  export_full: Export nastavení podle aplikace
+  extra_info: >-
+    SEELEN UI používá pouze jeden identifikátor na aplikaci (první nalezený),
+    takže pořadí v tom, jak jsou specifikovány, je důležité, nejnovější přidaná
+    bude upřednostňována, protože tabulka je ve výchozím nastavení tříděna od
+    nejnovější po nejstarší.
+  identifier:
+    add_block: Přidat blok
+    and: A
+    id: Identifikátor
+    kind: Identifikovat podle
+    matching_strategy: Srovnávací strategie
+    matching_strategy_option:
+      contains: Obsahuje
+      ends_with: Končí s
+      equals: Rovná se
+      regex: Regulární výraz
+      starts_with: Začíná s
+    negation: Negovat odpovídající
+    or: NEBO
+    remove: Odstranit blok
+    type:
+      class: Třída
+      exe: Exe
+      path: Cesta
+      title: Titulek
+  import: Importovat
+  import_full: Import nastavení podle aplikace
+  new: Nový
+  search: Vyhledat
+  swap: Prohodit
+cancel: Zrušit
+close: Zavřít
+delete: Vymazat
+devtools:
+  app_folders: Složky aplikací
+  custom_config_file: Načíst vlastní konfigurační soubor
+  data_folder: Datová složka
+  enable: Povolit vývojové nástroje
+  install_folder: Instalační složka
+  load: Načíst
+  settings_file: Nastavení souboru
+  simulate_perm:
+    label: Simulovat žádost o povolení widgetu
+    result_allowed: ✓ Povolení uděleno
+    result_denied: ✗ Povolení odepřeno
+    trigger: Simulovat
+    widget_id_placeholder: '@autor/název-widgetu'
+extras:
+  clear_icons: Vymazání mezipaměti systémových ikon
+  clear_icons_tooltip: Aby se plně projevily všechny widgety, mohlo by být nutné restartování.
+  exit: Ukončit
+  links: Oficiální odkazy
+  relaunch: Znovu spustit
+  version: Verze
+  version_fixed: >-
+    Verze aplikace a WebView2 Runtime jsou opraveny. To znamená, že aplikace
+    nebude přijímat aktualizace a WebView2 Runtime nebude automaticky
+    aktualizován aktualizacemi Windows.
+general:
+  accent_color: Barvný nádech
+  date_format: Formát datumu
+  date_format_how_to: Jak napsat formát data?
+  hardware_acceleration: Hardwarová akcelerace
+  hardware_acceleration_description: >-
+    Zakázání hardwarové akcelerace sníží využití paměti, ale může způsobit
+    problémy s výkonem. Je bezpečné zakázat, pokud nebudete používat živé
+    tapety.
+  icon_pack:
+    available: Dostupné balíčky ikon
+    selected: Aktivní balíčky ikon
+  language: Jazyk
+  monday: pondělí
+  performance_mode:
+    on_battery: Na baterii
+    on_energy_saver: Na spořič energie
+    options:
+      disabled: Deaktivované
+      extreme: Extrémní
+      minimal: Minimální
+    plugged: Připojené nebo nabíjení
+  polling_interval: Interval dotazování systému
+  polling_interval_description: >-
+    Jak často (v sekundách) uživatelské rozhraní Seelen kontroluje systémové
+    prostředky, jako je CPU, RAM, síť a aktivita disku. Menší číslo znamená
+    častější aktualizace, ale o něco vyšší využití zdrojů.
+  saturday: sobota
+  start_of_week: Začátek týdne
+  startup: Spoustit při každém startu?
+  sunday: neděle
+  theme:
+    available: Dostupné motivy
+    selected: Aktivní motivy
+header:
+  labels:
+    config: Konfigurace
+    developer: Pro vývojáře
+    extras: Doplňky
+    general: Všeobecné
+    home: Domov
+    icon_pack_editor: Ikony v mezipaměti
+    iconpack: Balíčky ikon
+    monitors: Monitory
+    plugin: Zásuvné moduly
+    resources: Zdroje
+    shortcuts: Zkratky
+    soundpack: Zvukové balíčky
+    specific_apps: Nastavení podle aplikace
+    theme: Témata
+    virtual_desk: Virtuální plochy
+    wallpaper: Tapety na plochu
+    widget: Widgety
+home:
+  new_resources: Nové zdroje
+inherit: Zdědit
+inProgress: Probíhá ...
+insert: Vložit
+loading: Načítání...
+miscellaneous: Smíšený
+monitors_configurations:
+  label: Monitor {{index}}
+more: Více
+'no': Žádný
+open: Otevřeno
+quit: Přestat
+remove: Odstranit
+reset_all_to_default: Obnovení všech výchozích hodnot
+reset_to_default: Obnovení výchozí hodnoty
+resources:
+  app_outdated: >-
+    Tento zdroj vyžaduje pro správnou funkci novější verzi uživatelského
+    rozhraní Seelen.
+  corrupted_wallpaper: >-
+    Nepodařilo se extrahovat miniaturu – poškozený nebo nepodporovaný formát
+    videa
+  delete: Odstranit zdroj
+  discover: Objevte další zdroje
+  has_update: K dispozici je aktualizace
+  high_impact: Vysoký dopad na výkon
+  import_wallpapers: Import místních tapet
+  open_folder: Otevření složky se zdroji
+  outdated: >-
+    Tento zdroj byl navržen pro starší verzi uživatelského rozhraní Seelen a
+    nemusí fungovat správně.
+  see_on_website: Viz na webu
+review_request:
+  not_now: Teď ne
+  sure: Jasně!
+  title: Líbí se vám uživatelské rozhraní Seelen?
+save: Uložit
+save_and_restart: Uložit a restartovat
+search: Vyhledávání
+see_more: Viz více
+shortcuts:
+  duplicate_error: Tato zkratka je duplicitní
+  enable: Povolení vestavěného systému zkratek
+  enable_tooltip: >-
+    Zakázat, pokud budete implementovat vlastní systém zkratek pomocí klienta
+    Seelen UI.
+  labels:
+    create_new_workspace: Vytvoření nového pracovního prostoru
+    cycle_stack_next: Cyklus Stack Další
+    cycle_stack_prev: Cyklus Stack Předchozí
+    cycle_wallpaper_next: Změna na další tapetu
+    cycle_wallpaper_prev: Změna na předchozí tapetu
+    decrease_height: Snížení výšky
+    decrease_width: Snížení šířky
+    destroy_current_workspace: Zničit aktuální pracovní prostor
+    focus_bottom: Zaměření Dno
+    focus_latest: Zaměřte se na nejnovější
+    focus_left: Zaostřeno vlevo
+    focus_right: Zaměřit se na pravou stranu
+    focus_top: Zaměření Top
+    increase_height: Zvýšení výšky
+    increase_width: Zvětšení šířky
+    misc_force_quit: Síla přestat
+    misc_force_restart: Vynutit restart
+    misc_open_settings: Otevřít nastavení
+    misc_toggle_lock_tracing: Přepínání sledování zámků (protokoly)
+    misc_toggle_win_event_tracing: Přepnutí sledování událostí Win (protokoly)
+    move_to_workspace: Přesun do pracovního prostoru {{0}}
+    move_window_down: Přesunutí okna do spodní části
+    move_window_left: Přesunutí okna doleva
+    move_window_right: Přesunutí okna doprava
+    move_window_up: Přesunutí okna na začátek
+    pause_tiling: Pozastavení Správce dlaždicového okna
+    reserve_bottom: Rezerva Dno
+    reserve_float: Rezervní plovák
+    reserve_left: Rezerva vlevo
+    reserve_right: Právo na rezervaci
+    reserve_stack: Zásobník rezerv
+    reserve_top: Reserve Top
+    restore_sizes: Obnovení velikostí
+    send_to_workspace: Odeslat do pracovního prostoru {{0}}
+    start_weg_app: Zaměření nebo spuštění aplikace {{0}}
+    switch_to_next_workspace: Přepnutí na další pracovní plochu
+    switch_to_previous_workspace: Přepnutí na předchozí pracovní plochu
+    switch_workspace: Přepnutí na pracovní plochu {{0}}
+    toggle_float: Přepínání režimu plovoucího okna
+    toggle_monocle: Přepínání režimu Monokl na pracovní ploše
+  readonly_tooltip: Toto je zkratka pouze pro čtení
+  reset: Obnovení výchozího nastavení
+sides:
+  bottom: Spodek
+  left: Vlevo
+  right: Vpravo
+  top: Svršek
+toolbar:
+  auto_hide: Automaticky skrýt
+  delay_to_hide: Zpoždění schování
+  delay_to_show: Zpoždění zobrazení
+  dock_side: Pozice
+  enable: Povolte ozdobný panel nástrojů
+  hide_mode:
+    always: Vždy
+    never: Nikdy
+    on_overlap: Na překrytí
+  item_size: Velikost položky
+  label: Panel nástrojů
+  margin: Velikost okraje
+  padding: Velikost vycpávky
+  placeholder: {}
+update:
+  available: Aktualizace k dispozici!
+  channel: Aktualizovat kanál
+  downloading: Stahování ...
+wall:
+  backgrounds: Tapety
+  blur: Rozmazání
+  cancel: Zrušit
+  close: Blízko
+  collection_name: Název sbírky
+  collections: Sbírky
+  contrast: Kontrast
+  corrupted_wallpapers_message: 'Poškozené tapety, zvažte smazání těchto:'
+  create: Vytvořit
+  create_collection: Vytvořit sbírku
+  default_collection: Výchozí kolekce
+  delete_collection: Smazat sbírku
+  edit_collection: Upravit sbírku
+  enable: Povolit správce tapet
+  extend: Prodloužit primární
+  fit:
+    contain: Obsahuje
+    cover: Obálka
+    fill: Naplňte
+  flipHorizontal: Flip Horizontální
+  flipVertical: Flip Vertical
+  generating_thumbnails: Generování miniatur tapet
+  hours: hodiny
+  interval: Změňte tapetu každých
+  minutes: minuty
+  monitor_collection: Sbírka monitorů
+  multimonitor_behaviour: Multimonitorové chování
+  muted: Ztlumit zvuk videa
+  no_background: Prázdná prezentace, použití pozadí motivu.
+  no_collections: Dosud nebyly vytvořeny žádné sbírky. Kliknutím na tlačítko + jej vytvoříte.
+  objectFit: Pozadí Fit
+  objectPosition: Pozice v pozadí
+  overlayColor: Barva překrytí
+  overlayMixBlendMode: Režim prolnutí překryvné směsi
+  per_monitor: Na monitor
+  playback: Rychlost přehrávání
+  position:
+    bottom: Spodní část
+    center: Středisko
+    left: Vlevo
+    right: Vpravo
+    top: Nahoru
+  processing_video: Zpracování videa
+  random: Randomize prezentace
+  saturation: Nasycení
+  seconds: sekundy
+  select_collection: Vyberte Sbírka
+  thumbnail_generation_complete: Generování náhledů dokončeno
+  thumbnail_generation_finished: Generování náhledů bylo úspěšně dokončeno
+  wallpaper_collection: Kolekce tapet
+  wallpaper_settings: Nastavení tapety
+  withOverlay: S překrytím
+  workspace_collections: Kolekce pracovního prostoru
+weg:
+  auto_hide: Automatické skrytí
+  delay_to_hide: Zpoždění schování
+  delay_to_show: Zpoždění zobrazení
+  dock_side: Pozice
+  enable: Povolte lištu/hlavní panel
+  filtering: Filtrování položek
+  gap: Mezera
+  hide_mode:
+    always: Vždy
+    never: Nikdy
+    on_overlap: Při překrytí
+  items:
+    gap: Prostor mezi položkami
+    label: Položky
+    pinned_visibility:
+      always: Vždy
+      label: Viditelnost připnutých položek
+      when_primary: Když je monitor primární
+    show_instance_counter: Zobrazit počítadlo otevřených oken
+    show_window_title: Zobrazit název otevřeného okna (pouze horizontálně)
+    size: Velikost položky
+    split_windows: Rozdělit okna (jedna položka na okno)
+    temporal_visibility:
+      all: Vše
+      label: Viditelnost nepřipnutých položek
+      on_monitor: Na monitoru
+    visible_separators: Viditelné oddělovače
+  label: Lišta/Hlavní panel
+  margin: Okraj
+  mode:
+    full_width: Celá šířka obrazovky
+    min_content: Malý jak jen může být
+  padding: Padding
+  show_end_task: Zobrazení koncové úlohy na hlavním panelu
+  width: Šířka
+welcome:
+  give_a_review: Dejte recenzi
+  message: >-
+    Seelen UI je bezplatné a open source desktopové prostředí pro Windows. Zde
+    máte plnou kontrolu nad tím, jak váš desktop vypadá a chová se, což vám
+    umožňuje přizpůsobit každý detail tak, aby odpovídal vašemu pracovnímu
+    postupu a stylu.
+  ok: Začněme!
+  review: >-
+    Pokud rádi používáte Seelen UI, zvažte zanechání recenze v obchodě – vaše
+    zpětná vazba pomáhá projektu růst a zlepšovat se.
+  title: Vítejte v uživatelském rozhraní Seelen!
+widget:
+  enable: Povolení tohoto widgetu
+  enable_for_monitor: Povolit na tomto monitoru
+  instances: Instance
+wm:
+  animations:
+    duration: Animace doba trvání (MS)
+    ease_function: Funkce uvolňování animace
+    enable: Povolit animace okna
+  author: Autor
+  border:
+    enable: Povolte hranici okna
+    offset: Posun hranice
+    width: Šířka hranice
+  description: Popis
+  drag_behavior: Chování přetažení
+  drag_behavior_options:
+    sort: Řadit (změnit pořadí oken při přetahování)
+    swap: Zaměnit (vyměnit okna na konci přetažení)
+  enable: Povolit správce oken
+  layout: Rozložení
+  resize_delta: Změna velikosti (%)
+  space_between_containers: Prostor mezi kontejnery
+  workspace_offset: Posun pracovních prostor (marže)
+  workspace_padding: Padding pracovních prostorů
+'yes': Ano

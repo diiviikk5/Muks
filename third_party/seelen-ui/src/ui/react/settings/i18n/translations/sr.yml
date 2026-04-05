@@ -1,0 +1,392 @@
+action:
+  confirm: Јесте ли сигурни?
+  confirm_body: Ова радња се не може поништити.
+apps_configurations:
+  app:
+    bindings: Везивање (белешка су обе опције потребне)
+    category: Категорија
+    category_placeholder: Ниједан
+    monitor: Монитор
+    monitor_placeholder: Ниједан
+    name: Назив
+    ok_create: Креирај
+    ok_edit: ажурирање
+    ok_readonly: Уреди као ново
+    options:
+      NoInteractive: Но Интерацтиве
+      VdPinned: Прикажи у свим радним просторима
+      WmFloat: Твм - Почни да плуташ
+      WmForce: Твм - Форце Манаге
+      WmUnmanage: Твм - Унманаге
+    options_label: Додатне опције
+    title_create: Стварање {{наме}}
+    title_edit: Уређивање {{наме}}
+    title_readonly: Гледајући {{наме}}
+    weg_options_label: Опције прикључке / траке задатака
+    wm_options_label: Опције Виндов Манагер опције
+    workspace: Радни простор
+    workspace_placeholder: Ниједан
+  bundled_msg: >-
+    Ове пакетне конфигурације нису уређене и дизајниране су да вам пруже најбоље
+    искуство без прилагођавања. Они аутоматски конфигуришу најчешће апликације
+    за вас.
+  bundled_title: Апликација конфигурација у пакету са СЕЕЛЕН-ом
+  confirm_delete: Јесте ли сигурни да желите да избришете ову конфигурацију / с?
+  confirm_delete_title: Потврдити брисање
+  delete: Избрисати
+  export: Извоз
+  export_full: Подешавања извоза по апликацији
+  extra_info: >-
+    СЕЕЛЕН УИ Користите само један идентификатор по апликацији (први меч
+    пронађен), тако да је налог у начину на који је специфичан, приоритет ће
+    бити приоритетно, јер је назначено да је табела сортирана подразумевано из
+    Старе.
+  identifier:
+    add_block: Додај блок
+    and: И
+    id: Идентификатор
+    kind: Идентификовати
+    matching_strategy: Стратегија подударања
+    matching_strategy_option:
+      contains: Садржи
+      ends_with: Завршава са
+      equals: Једнако
+      regex: Регуларни израз
+      starts_with: Почиње са
+    negation: Негирајте подударање
+    or: Или
+    remove: Избрисати блок
+    type:
+      class: Класа
+      exe: Еке
+      path: Пут
+      title: Наслов
+  import: Увоз
+  import_full: Подешавања увоза по апликацији
+  new: Нова
+  search: Претрага
+  swap: Замена
+cancel: Поништити, отказати
+close: Затворити
+delete: Избрисати
+devtools:
+  app_folders: Мапе за апликације
+  custom_config_file: Учитајте прилагођену конфигуријску датотеку
+  data_folder: Мапа података
+  enable: Омогућите алате за програмере
+  install_folder: Инсталациона мапа
+  load: Оптеретити
+  settings_file: Подешавања
+  simulate_perm:
+    label: Симулирајте захтев за дозволу за виџет
+    result_allowed: ✓ Дозвола је дата
+    result_denied: ✗ Дозвола одбијена
+    trigger: Симулирајте
+    widget_id_placeholder: '@аутхор/видгет-наме'
+extras:
+  clear_icons: Цлеар Систем Ицонс Цацхе
+  clear_icons_tooltip: >-
+    Могло би се поновно покретање моћи да у потпуности ступи на снагу на све
+    видгете
+  exit: Престанак / излаз
+  links: Званичне везе
+  relaunch: Поновити
+  version: Верзија
+  version_fixed: >-
+    Верзије апликације и ВебВиев2 Рунтиме су поправљене. То значи да апликација
+    неће примати ажурирања и да ВебВиев2 Рунтиме неће бити аутоматски ажуриран
+    ажурирањима за Виндовс.
+general:
+  accent_color: Боја нагласности
+  date_format: Формат датума
+  date_format_how_to: Како написати формат датума?
+  hardware_acceleration: Хардверско убрзање
+  hardware_acceleration_description: >-
+    Онемогућавање хардверског убрзања ће смањити употребу меморије, али може
+    изазвати проблеме са перформансама. Безбедно је онемогућити ако не желите да
+    користите живе позадине.
+  icon_pack:
+    available: Доступни пакети икона
+    selected: Активни пакети икона
+  language: Језик
+  monday: понедељак
+  performance_mode:
+    on_battery: На батерији
+    on_energy_saver: На уштеду енергије
+    options:
+      disabled: Инвалидски
+      extreme: Екстремни
+      minimal: Минималан
+    plugged: Прикључен или пуњење
+  polling_interval: Интервал анкетирања система
+  polling_interval_description: >-
+    Колико често (у секундама) Сеелен УИ проверава системске ресурсе као што су
+    ЦПУ, РАМ, мрежа и активност диска. Мањи број значи чешће ажурирање, али
+    нешто већу употребу ресурса.
+  saturday: Субота
+  start_of_week: Почетак недеље
+  startup: Ради на покретању?
+  sunday: недеља
+  theme:
+    available: Доступне теме
+    selected: Активне теме
+header:
+  labels:
+    config: Конфигурације
+    developer: За програмере
+    extras: Додаци
+    general: Генерал
+    home: Дом
+    icon_pack_editor: Кеширане иконе
+    iconpack: Паковање икона
+    monitors: Монитори
+    plugin: Додаци
+    resources: Ресурси
+    shortcuts: Пречице
+    soundpack: Звучна паковања
+    specific_apps: Подешавања по апликацији
+    theme: Тема
+    virtual_desk: Виртуелни радне површине
+    wallpaper: Позадине
+    widget: Видгети
+home:
+  new_resources: Нови ресурси
+inherit: Наследити
+inProgress: У току...
+insert: Уметнути
+loading: Учитавање ...
+miscellaneous: Остало
+monitors_configurations:
+  label: Монитор {{Индек}}
+more: Више
+'no': Не
+open: Отворен
+quit: Одустати
+remove: Скинути
+reset_all_to_default: Ресетујте све за подразумеване вредности
+reset_to_default: Ресетујте на подразумевану вредност
+resources:
+  app_outdated: Овај ресурс захтева новију верзију СЕЕЛЕН-а да ради правилно.
+  corrupted_wallpaper: Екстраховање сличице није успело – оштећен или неподржан видео формат
+  delete: Избриши ресурс
+  discover: Откријте више ресурса
+  has_update: Доступно је ажурирање
+  high_impact: Велики утицај на перформансе
+  import_wallpapers: Увоз локалне позадине
+  open_folder: Отворите мапу ресурса
+  outdated: >-
+    Овај ресурс је дизајниран за старију верзију СЕЕЛЕН УИ и можда неће радити
+    исправно.
+  see_on_website: Погледајте на веб страници
+review_request:
+  not_now: Не сада
+  sure: Наравно!
+  title: Уживате у корисничком интерфејсу Сеелен?
+save: сачувати
+save_and_restart: Сачувај и поново покрените
+search: Тражи
+see_more: Видети више
+shortcuts:
+  duplicate_error: Ова пречица је дуплирана
+  enable: Омогућите уграђене системе пречаца
+  enable_tooltip: >-
+    Онемогућите ако ћете имплементирати сопствени систем пречаца помоћу СЕЕЛЕН
+    УИ клијента
+  labels:
+    create_new_workspace: Креирајте нови радни простор
+    cycle_stack_next: Следећи положај циклуса
+    cycle_stack_prev: Цицле Стацк Претходно
+    cycle_wallpaper_next: Промените се на следећу позадину
+    cycle_wallpaper_prev: Промена у претходне позадине
+    decrease_height: Смањите висину
+    decrease_width: Смањите ширину
+    destroy_current_workspace: Уништите тренутни радни простор
+    focus_bottom: На дно фокуса
+    focus_latest: Фокусирати најновије
+    focus_left: Фокус је остављен
+    focus_right: Фокусирати право
+    focus_top: Фокусирати врх
+    increase_height: Повећати висину
+    increase_width: Повећати ширину
+    misc_force_quit: Престанак
+    misc_force_restart: Поново покренути
+    misc_open_settings: Отвори подешавања
+    misc_toggle_lock_tracing: Укључите тражење закључавања (трупци)
+    misc_toggle_win_event_tracing: Пребацивање тражења догађаја Вин (Дневци)
+    move_to_workspace: Пређите на радни простор {{0}}
+    move_window_down: Померите прозор до дна
+    move_window_left: Померите прозор на лево
+    move_window_right: Померите прозор удесно
+    move_window_up: Померите прозор на врх
+    pause_tiling: Паузирајте менаџер прозора
+    reserve_bottom: Резервисати дно
+    reserve_float: Резерват
+    reserve_left: Резерват лево
+    reserve_right: Резервисати право
+    reserve_stack: Резервни сноп
+    reserve_top: Резервисати врх
+    restore_sizes: Вратите величине
+    send_to_workspace: Пошаљи на радни простор {{0}}
+    start_weg_app: Фокусирајте или започните апликацију {{0}}
+    switch_to_next_workspace: Пређите на следећи радни простор
+    switch_to_previous_workspace: Пређите на претходни радни простор
+    switch_workspace: Пређите на радни простор {{0}}
+    toggle_float: Укључивање прозора Флоат режим
+    toggle_monocle: Укључите режим Монокла Моноцле Воркспаце
+  readonly_tooltip: Ово је пречица само за читање
+  reset: Ресетујте на подразумеване вредности
+sides:
+  bottom: Дно
+  left: Лево
+  right: Јел тако
+  top: На врху
+toolbar:
+  auto_hide: Аутоматска кожа
+  delay_to_hide: Одложите да се сакријете
+  delay_to_show: Одлагање приказивања
+  dock_side: Положај
+  enable: Омогућите фанци траку са алаткама
+  hide_mode:
+    always: Увек
+    never: Никада
+    on_overlap: На преклапање
+  item_size: Величина артикла
+  label: Алатна трака
+  margin: Величина маргине
+  padding: Паддинг Сизе
+  placeholder: {}
+update:
+  available: Ажурирање доступно!
+  channel: Ажурирај канал
+  downloading: Преузимање ...
+wall:
+  backgrounds: Позадине
+  blur: Замутити
+  cancel: Откажи
+  close: Затвори
+  collection_name: Назив колекције
+  collections: Збирке
+  contrast: Контраст
+  corrupted_wallpapers_message: 'Оштећене позадине, размислите о брисању ових:'
+  create: Креирај
+  create_collection: Направите колекцију
+  default_collection: Подразумевана колекција
+  delete_collection: Избриши колекцију
+  edit_collection: Уреди колекцију
+  enable: Омогућите менаџера позадина
+  extend: Продужите примарни
+  fit:
+    contain: Садрзати
+    cover: Покривати
+    fill: Нанети
+  flipHorizontal: Флип хоризонтално
+  flipVertical: Вертикални
+  generating_thumbnails: Генерисање сличица позадине
+  hours: сати
+  interval: Промените позадину сваком
+  minutes: минут
+  monitor_collection: Монитор Цоллецтион
+  multimonitor_behaviour: Мултимонитор Бехавиор
+  muted: Искључите звук видео записа
+  no_background: Празан презентацију, уместо тога користећи прибор за тему.
+  no_collections: >-
+    Још увек није направљена ниједна збирка. Кликните на дугме + да бисте га
+    креирали.
+  objectFit: Позадина погодна
+  objectPosition: Позадински положај
+  overlayColor: Прекривање боје
+  overlayMixBlendMode: Режим прекривене мешавине помешања
+  per_monitor: По монитору
+  playback: Брзина репродукције
+  position:
+    bottom: Дно
+    center: Центер
+    left: Лево
+    right: У праву
+    top: На врху
+  processing_video: Обрада видео записа
+  random: Рандомизе СлидеСхов
+  saturation: Засићење
+  seconds: секунди
+  select_collection: Изаберите Колекција
+  thumbnail_generation_complete: Генерисање сличица је завршено
+  thumbnail_generation_finished: Генерисање сличица је успешно завршено
+  wallpaper_collection: Колекција тапета
+  wallpaper_settings: Подешавања позадине
+  withOverlay: Са прекривањем
+  workspace_collections: Збирке радног простора
+weg:
+  auto_hide: Аутоматска кожа
+  delay_to_hide: Одложите да бисте се сакрили
+  delay_to_show: Одлагање приказивања
+  dock_side: Положај
+  enable: Омогући прикључак / траку задатака
+  filtering: Филтрирање предмета
+  gap: Празнина
+  hide_mode:
+    always: Увек
+    never: Никада
+    on_overlap: На преклапање
+  items:
+    gap: Простор између предмета
+    label: Предмети
+    pinned_visibility:
+      always: Увек
+      label: Видљивост закачених ставки
+      when_primary: Када је монитор примарни
+    show_instance_counter: Прикажи отворите прозори
+    show_window_title: Прикажи назив отвореног прозора (само хоризонтално)
+    size: Величина предмета
+    split_windows: Подели прозоре (једна ставка по прозору)
+    temporal_visibility:
+      all: Све
+      label: Видљивост откачених ставки
+      on_monitor: На монитору
+    visible_separators: Видљиви сепаратори
+  label: Доцк / трака задатака
+  margin: Маргина
+  mode:
+    full_width: Пуна ширина екрана
+    min_content: Мала колико може бити
+  padding: Подлокнути
+  show_end_task: Прикажи крајњи задатак на траци задатака
+  width: Ширина
+welcome:
+  give_a_review: Дајте рецензију
+  message: >-
+    Сеелен УИ је бесплатно десктоп окружење отвореног кода за Виндовс. Овде
+    имате потпуну контролу над изгледом и понашањем ваше радне површине, што вам
+    омогућава да прилагодите сваки детаљ како би одговарао вашем току рада и
+    стилу.
+  ok: Почнимо!
+  review: >-
+    Ако уживате у коришћењу корисничког интерфејса Сеелен, размислите о томе да
+    оставите рецензију у продавници — ваше повратне информације помажу да
+    пројекат расте и унапређује се.
+  title: Добродошли у Сеелен УИ!
+widget:
+  enable: Омогућите овај виџет
+  enable_for_monitor: Омогући на овом монитору
+  instances: Случајеви
+wm:
+  animations:
+    duration: Трајање анимације (МС)
+    ease_function: Олакшања анимације
+    enable: Омогућите анимације прозора
+  author: Аутор
+  border:
+    enable: Омогућите границу прозора
+    offset: Помак на границу
+    width: Ширина границе
+  description: Опис
+  drag_behavior: Драг Бехавиор
+  drag_behavior_options:
+    sort: Сортирај (промени редослед прозора током превлачења)
+    swap: Замени (замени прозоре на крају превлачења)
+  enable: Омогућите менаџера прозора
+  layout: Изглед
+  resize_delta: Промените величину Делта (%)
+  space_between_containers: Простор између контејнера
+  workspace_offset: Оффсет радних простора (маржи)
+  workspace_padding: Облога за радне просторе
+'yes': Да

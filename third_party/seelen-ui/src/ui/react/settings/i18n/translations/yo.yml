@@ -1,0 +1,381 @@
+action:
+  confirm: Ṣe o da ọ loju?
+  confirm_body: Iṣe yii ko le ṣe atunṣe.
+apps_configurations:
+  app:
+    bindings: Dide (Ṣe akiyesi awọn aṣayan mejeeji ni a nilo)
+    category: Ẹya
+    category_placeholder: Ko si
+    monitor: Aṣabojuto
+    monitor_placeholder: Ko si
+    name: Orukọ
+    ok_create: Lati ṣẹda
+    ok_edit: Imudojuiwọn
+    ok_readonly: Satunkọ bi tuntun
+    options:
+      NoInteractive: Ko si ohun-ini
+      VdPinned: Fihan ninu gbogbo awọn ibi-iṣẹ
+      WmFloat: TWM - Bẹrẹ lilefoofo loju omi
+      WmForce: TWM - Ṣakoso ipa
+      WmUnmanage: TWM - aigbagbọ
+    options_label: Awọn aṣayan afikun
+    title_create: Ṣiṣẹda {Orukọ}}
+    title_edit: Ṣiṣatunṣe {{Orukọ}}
+    title_readonly: Wiwo {{Orukọ}}
+    weg_options_label: Dock / Awọn aṣayan Iṣẹ-ṣiṣe
+    wm_options_label: Awọn aṣayan Iṣẹ Iṣẹ window
+    workspace: Ibi-iṣẹ
+    workspace_placeholder: Ko si
+  bundled_msg: >-
+    Awọn atunto ti a dapọ mọ ko ṣe deede ati pe a ṣe apẹrẹ lati fun ọ ni iriri
+    ti o dara julọ laisi isọdi. Wọn tunto awọn ohun elo ti o wọpọ julọ fun ọ.
+  bundled_title: Ohun elo app ṣepọ pẹlu Selen
+  confirm_delete: Ṣe o da ọ loju pe o fẹ lati pa iṣeto rẹ / s?
+  confirm_delete_title: Jẹrisi paarẹ
+  delete: Paarẹ
+  export: Firanṣẹ si ilẹ okeere
+  export_full: Awọn eto okeere nipasẹ ohun elo
+  extra_info: >-
+    Sisen UI Nikan idakan kan fun app (ere akọkọ ti a rii) nitorinaa ni alaye ni
+    pataki, bi a ṣe le ṣe akiyesi tabili ti o wa ni lẹsẹsẹ nipasẹ aiyipada si
+    atijọ.
+  identifier:
+    add_block: Fi dègbé
+    and: Ati
+    id: Idamo
+    kind: Ṣe idanimọ nipasẹ
+    matching_strategy: Ibaamu iṣiro
+    matching_strategy_option:
+      contains: Ni ninu
+      ends_with: O pari pẹlu
+      equals: O dọgba
+      regex: Ikosile deede
+      starts_with: Bẹrẹ pẹlu
+    negation: Ibaramu tuntun
+    or: Tabi
+    remove: Paarẹ Brow
+    type:
+      class: Kilasi
+      exe: Exe
+      path: Ona
+      title: Akọle
+  import: Aṣagbewọle lati ilẹ okeere
+  import_full: Awọn Eto Wọle sii nipasẹ ohun elo
+  new: Tuntun
+  search: Ṣewadii
+  swap: Eepo
+cancel: Fagilee
+close: Sunmọ
+delete: Paarẹ
+devtools:
+  app_folders: Awọn folda App
+  custom_config_file: Fifuye faili atunto aṣa
+  data_folder: Folda data
+  enable: Mu awọn irinṣẹ Oláàmúdà ṣiṣẹ
+  install_folder: Filese Fifi sori ẹrọ
+  load: Ẹru
+  settings_file: Faili eto
+  simulate_perm:
+    label: Ṣe afiwe Ibeere Gbigbanilaaye ẹrọ ailorukọ
+    result_allowed: ✓ Gbigbanilaaye
+    result_denied: ✗ Ti kọ igbanilaaye
+    trigger: Ṣe afarawe
+    widget_id_placeholder: '@author / ailorukọ-orukọ'
+extras:
+  clear_icons: Ko awọn ilana eto kuro
+  clear_icons_tooltip: A le nilo atunbere lati ṣe ipa ni kikun lori gbogbo awọn ẹrọ ailorukọ
+  exit: Duro / Jade
+  links: Awọn ọna asopọ osise
+  relaunch: Ṣadi
+  version: Ẹya
+  version_fixed: >-
+    Ohun elo naa ati awọn ẹya asiko ṣiṣe WebView2 jẹ ti o wa titi. Eyi tumọ si
+    pe ohun elo naa kii yoo gba awọn imudojuiwọn ati WebView2 Runtime kii yoo ni
+    imudojuiwọn laifọwọyi pẹlu awọn imudojuiwọn Windows.
+general:
+  accent_color: Awọ ara
+  date_format: Ọna kika ọjọ
+  date_format_how_to: Bawo ni lati kọ ọna kika ọjọ kan?
+  hardware_acceleration: Hardware isare
+  hardware_acceleration_description: >-
+    Pa ohun elo imudara yoo dinku lilo iranti, ṣugbọn o le fa awọn ọran iṣẹ. Ṣe
+    ailewu lati mu ṣiṣẹ ti o ko ba lo iṣẹṣọ ogiri laaye.
+  icon_pack:
+    available: Awọn akopọ Aami ti o wa
+    selected: Awọn akopọ Aami ti nṣiṣe lọwọ
+  language: Ede
+  monday: Monday
+  performance_mode:
+    on_battery: Lori batiri
+    on_energy_saver: Lori Ipamọ Agbara
+    options:
+      disabled: Abirun
+      extreme: Ipẹkun
+      minimal: Ayọkuro
+    plugged: Pulọọgi tabi gbigba agbara
+  polling_interval: Aarin idibo eto
+  polling_interval_description: >-
+    Igba melo (ni iṣẹju-aaya) Seelen UI ṣe ayẹwo awọn orisun eto bii Sipiyu,
+    Ramu, nẹtiwọọki, ati iṣẹ disk. Nọmba ti o kere julọ tumọ si awọn imudojuiwọn
+    loorekoore, ṣugbọn lilo awọn orisun diẹ ga julọ.
+  saturday: Satidee
+  start_of_week: Ibẹrẹ Ọsẹ
+  startup: Ṣiṣe lori ibẹrẹ?
+  sunday: Sunday
+  theme:
+    available: Awọn akori to wa
+    selected: Awọn akori ti nṣiṣe lọwọ
+header:
+  labels:
+    config: Awọn atunto
+    developer: Fun Awọn Difelopa
+    extras: Imurarẹ
+    general: Gbogboogbo
+    home: Ile
+    icon_pack_editor: Awọn aami ti a kọ silẹ
+    iconpack: Awọn akopọ aami
+    monitors: Awọn diirarito
+    plugin: Afikun
+    resources: Awọn orisun
+    shortcuts: Awọn ọna abuja
+    soundpack: Awọn akopọ ohun
+    specific_apps: Eto nipasẹ ohun elo
+    theme: Awọn akori
+    virtual_desk: Awọn orisun itẹwe foju
+    wallpaper: Ogiri ogiri
+    widget: Ẹrọ ẹrọ
+home:
+  new_resources: Awọn orisun Tuntun
+inherit: Jogun
+inProgress: Ni ilọsiwaju ...
+insert: Fisi
+loading: Loading ...
+miscellaneous: Oriṣiriṣi
+monitors_configurations:
+  label: Adirẹsi {{Ṣe atọka}}
+more: Diẹ sii
+'no': Kọ
+open: Ṣii
+quit: Lọ kuro
+remove: Yọkuro
+reset_all_to_default: Tun gbogbo rẹ si awọn iye aifọwọyi
+reset_to_default: Tunto si iye aiyipada
+resources:
+  app_outdated: Afikun yii nilo ẹya tuntun ti Sisen UI lati ṣiṣẹ daradara.
+  corrupted_wallpaper: >-
+    Kuna lati jade eekanna atanpako - ibajẹ tabi ọna kika fidio ti ko ṣe
+    atilẹyin
+  delete: Paarẹ awọn olu
+  discover: Ṣawari awọn orisun diẹ sii
+  has_update: Imudojuiwọn wa
+  high_impact: Ipa giga lori iṣẹ ṣiṣe
+  import_wallpapers: Gbe awọn iṣẹṣọ ogiri agbegbe wọle
+  open_folder: Ṣii folda Ipilẹṣẹ
+  outdated: A ṣe orisun yii fun ẹya atijọ ti Silen Ui ati pe ko le ma ṣiṣẹ daradara.
+  see_on_website: Wo lori aaye ayelujara
+review_request:
+  not_now: Ko bayi
+  sure: Daju!
+  title: Ngbadun Seelen UI?
+save: Fipamọ
+save_and_restart: Fipamọ & Tun bẹrẹ
+search: Wa
+see_more: Wo diẹ sii
+shortcuts:
+  duplicate_error: Ọna abuja yii jẹ pidánpidán
+  enable: Mu ṣiṣẹ eto awọn ọna abuja
+  enable_tooltip: Muu Ti o ba yoo ṣe eto awọn ọna ọna abuja tirẹ nipa lilo alajọṣepọ UI
+  labels:
+    create_new_workspace: Ṣẹda ibi-iṣẹ tuntun
+    cycle_stack_next: Awọn akopọ iyipo atẹle
+    cycle_stack_prev: Awọn akopọ ọmọ ni iṣaaju
+    cycle_wallpaper_next: Yipada si iṣẹṣọ ogiri atẹle
+    cycle_wallpaper_prev: Yipada si iṣẹṣọ ogiri iṣaaju
+    decrease_height: Dinku iga
+    decrease_width: DIVEELE WA
+    destroy_current_workspace: Pa ip [lọwọlọwọ run
+    focus_bottom: Idojukọ Idojukọ
+    focus_latest: Idojukọ
+    focus_left: Idojukọ osi
+    focus_right: Dojukọ ọtun
+    focus_top: Dojukọ oke
+    increase_height: Igasoke giga
+    increase_width: Gbooro
+    misc_force_quit: Fi agbara mu
+    misc_force_restart: Fi ipa mu
+    misc_open_settings: Ṣi Eto
+    misc_toggle_lock_tracing: Titiipa titiipa (awọn àkọọlẹ)
+    misc_toggle_win_event_tracing: Tongo Win Iṣẹlẹ iṣẹlẹ (awọn àkọọlẹ)
+    move_to_workspace: Gbe lọ si ibi-iṣẹ {{0}
+    move_window_down: Gbe window si isalẹ
+    move_window_left: Gbe window si osi
+    move_window_right: Gbe window si ọtun
+    move_window_up: Gbe window si oke
+    pause_tiling: Sinmi Took Window Manace
+    reserve_bottom: Isalẹ ifipamọ
+    reserve_float: Dase leefofo loju omi
+    reserve_left: Reserve osi
+    reserve_right: Reserve ọtun
+    reserve_stack: Ipilẹ akopọ
+    reserve_top: Reserve oke
+    restore_sizes: Pada awọn titobi
+    send_to_workspace: Firanṣẹ si Accepace {{0}
+    start_weg_app: Idojukọ tabi bẹrẹ ohun elo {0}}
+    switch_to_next_workspace: Yipada si ibi-iṣẹ t'okan
+    switch_to_previous_workspace: Yipada si ibi-iṣẹ iṣaaju
+    switch_workspace: Yipada si ibi-iṣẹ {0}
+    toggle_float: Oniropin window leefofo loju omi
+    toggle_monocle: Toggle Servicepace Ipo Monocle
+  readonly_tooltip: Eyi jẹ ọna abuja-kika
+  reset: Tun si awọn aseku
+sides:
+  bottom: Isalẹ
+  left: Osi
+  right: Titọ
+  top: Oke
+toolbar:
+  auto_hide: Ibi ipamọ aifọwọyi
+  delay_to_hide: Idaduro lati tọju
+  delay_to_show: Idaduro lati ṣafihan
+  dock_side: Ipo
+  enable: Mu ṣiṣẹ irinṣẹ irinṣẹ Fancy ṣiṣẹ
+  hide_mode:
+    always: Nigbagbogbo
+    never: Kò
+    on_overlap: Lori agbekọja
+  item_size: Iwọn Nkan
+  label: Ọpa irinṣẹ
+  margin: Ala Iwon
+  padding: Padding Iwon
+  placeholder: {}
+update:
+  available: Imudojuiwọn wa!
+  channel: Ohun elo imudojuiwọn
+  downloading: Gbigba lati ayelujara ...
+wall:
+  backgrounds: Ogiri ogiri
+  blur: Abẹ
+  cancel: Fagilee
+  close: Sunmọ
+  collection_name: Orukọ gbigba
+  collections: Awọn akojọpọ
+  contrast: Ifiwera
+  corrupted_wallpapers_message: 'Awọn iṣẹṣọ ogiri ti bajẹ, ronu piparẹ awọn wọnyi:'
+  create: Ṣẹda
+  create_collection: Ṣẹda Gbigba
+  default_collection: Gbigba aiyipada
+  delete_collection: Pa Gbigba
+  edit_collection: Ṣatunkọ Gbigba
+  enable: Mu oluṣakoso ogiri ṣiṣẹ
+  extend: Fa akọkọ
+  fit:
+    contain: Ni ninu
+    cover: Ideri
+    fill: Kun
+  flipHorizontal: Isipade pejọ
+  flipVertical: Yi inaro
+  generating_thumbnails: Awọn eekanna atanpako Iṣẹṣọ ogiri
+  hours: wakati
+  interval: Ayipada ogiri ni gbogbo
+  minutes: iṣẹju
+  monitor_collection: Atẹle Gbigba
+  multimonitor_behaviour: Multimonitor Ihuwasi
+  muted: Free Voio fidio
+  no_background: Sifo Yisile, lilo abẹlẹ idile dipo.
+  no_collections: Ko si awọn akojọpọ ti a ṣẹda sibẹsibẹ. Tẹ bọtini + lati ṣẹda ọkan.
+  objectFit: Abẹla abẹlẹ
+  objectPosition: Ipo abẹlẹ
+  overlayColor: Awọ botay
+  overlayMixBlendMode: Igbẹpọ dapọ Ipo Ipa
+  per_monitor: Fun atẹle
+  playback: Iyara ṣiṣiṣẹsẹhin
+  position:
+    bottom: Isalẹ
+    center: Ile-iṣẹ
+    left: Osi
+    right: Titọ
+    top: Oke
+  processing_video: Fidio ti n ṣiṣẹ
+  random: Afikun ifaworanhan
+  saturation: Itẹlọrun
+  seconds: aaya
+  select_collection: Yan Gbigba
+  thumbnail_generation_complete: Ipilẹ eekanna atanpako Pari
+  thumbnail_generation_finished: Iran eekanna atanpako ti pari ni aṣeyọri
+  wallpaper_collection: Gbigba ogiri
+  wallpaper_settings: Eto Iṣẹṣọ ogiri
+  withOverlay: Pẹlu apọju
+  workspace_collections: Awọn akojọpọ aaye iṣẹ
+weg:
+  auto_hide: Ibi ipamọ aifọwọyi
+  delay_to_hide: Idaduro lati tọju
+  delay_to_show: Idaduro lati ṣafihan
+  dock_side: Ipo
+  enable: Muu dock / forkbar
+  filtering: Sisẹ Nkan
+  gap: Alafo
+  hide_mode:
+    always: Nigbagbogbo
+    never: Kò
+    on_overlap: Lori agbekọja
+  items:
+    gap: Aaye laarin awọn ohun kan
+    label: Awọn ohun
+    pinned_visibility:
+      always: Nigbagbogbo
+      label: Pini Awọn nkan Hihan
+      when_primary: Nigbati atẹle jẹ akọkọ
+    show_instance_counter: Fihan ṣiṣi Windows
+    show_window_title: Ṣe afihan akọle window (petele nikan)
+    size: Iwọn nkan
+    split_windows: Pipin Windows (ohun kan fun window)
+    temporal_visibility:
+      all: Gbogbo
+      label: Hihan Awọn nkan ti a ko pin
+      on_monitor: Lori Atẹle
+    visible_separators: Awọn iyatọ ti o han
+  label: Dock / forkbar
+  margin: Ẹlẹsin
+  mode:
+    full_width: Iboju kikun iwọn
+    min_content: Kekere bi o ti le jẹ
+  padding: Fidigọdi silẹ
+  show_end_task: Fihan iṣẹ ṣiṣe ni iṣẹ-ṣiṣe
+  width: Fifẹ
+welcome:
+  give_a_review: Fun Atunwo
+  message: >-
+    Seelen UI jẹ ọfẹ ati agbegbe tabili orisun ṣiṣi fun Windows. Nibi o ni
+    iṣakoso ni kikun lori bii tabili tabili rẹ ṣe n wo ati ihuwasi, gbigba ọ
+    laaye lati ṣe akanṣe gbogbo alaye lati baamu iṣan-iṣẹ ati aṣa rẹ.
+  ok: Jẹ ká bẹrẹ!
+  review: >-
+    Ti o ba gbadun lilo Seelen UI, ronu fifi atunyẹwo silẹ lori ile itaja - esi
+    rẹ ṣe iranlọwọ fun iṣẹ akanṣe lati dagba ati ilọsiwaju.
+  title: Kaabọ si Seelen UI!
+widget:
+  enable: Mu ẹrọ ailorukọ yii ṣiṣẹ
+  enable_for_monitor: Mu ṣiṣẹ lori atẹle yii
+  instances: Awọn iṣẹlẹ
+wm:
+  animations:
+    duration: Akoko Idaraya (MS)
+    ease_function: Iṣẹ to dara pupọ
+    enable: Jeki awọn ohun idanilaraya window
+  author: Onkọwe ọkunrin
+  border:
+    enable: Jeki aala window
+    offset: Iparun aala
+    width: Iwọn aala
+  description: Isapejuwe
+  drag_behavior: Fa Iwa
+  drag_behavior_options:
+    sort: Too (tunto awọn window lakoko ti o nfa)
+    swap: Paṣipaa (paṣipaa awọn window ni ipari fifa)
+  enable: Jeki oludari window
+  layout: Agbekalẹ
+  resize_delta: Tun ṣe Delta (%)
+  space_between_containers: Aaye laarin awọn apoti
+  workspace_offset: Awọn iṣẹ Iṣẹ-iṣẹ (awọn ala)
+  workspace_padding: Awọn iṣẹ itasi
+'yes': Bẹẹni

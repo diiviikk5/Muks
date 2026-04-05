@@ -1,0 +1,387 @@
+action:
+  confirm: តើអ្នកប្រាកដទេ?
+  confirm_body: សកម្មភាពនេះមិនអាចធ្វើវិញបានទេ។
+apps_configurations:
+  app:
+    bindings: ការចង (ចំណាំជម្រើសទាំងពីរត្រូវបានទាមទារ)
+    category: ប្រភេទ
+    category_placeholder: គ្មាន
+    monitor: ម៉ូនីទ័រ
+    monitor_placeholder: គ្មាន
+    name: ឈ្មោះ
+    ok_create: បង្កើត
+    ok_edit: ធ្វើបច្ចុប្បន្នភាព
+    ok_readonly: កែសម្រួលដូចថ្មី។
+    options:
+      NoInteractive: គ្មានអន្តរកម្ម
+      VdPinned: បង្ហាញនៅក្នុងកន្លែងធ្វើការទាំងអស់
+      WmFloat: TWM - ចាប់ផ្តើមអណ្តែត
+      WmForce: TWM - គ្រប់គ្រងកម្លាំង
+      WmUnmanage: TWM - Unmanage
+    options_label: ជម្រើសបន្ថែម
+    title_create: ការបង្កើត {{name}}
+    title_edit: ការកែសម្រួល {{ឈ្មោះ}}
+    title_readonly: កំពុងមើល {{name}}
+    weg_options_label: ជម្រើសចត / ភារកិច្ច
+    wm_options_label: ជម្រើសកម្មវិធីគ្រប់គ្រងបង្អួច
+    workspace: កន្លែងធ្វើការ
+    workspace_placeholder: គ្មាន
+  bundled_msg: >-
+    ការ​កំណត់​រចនាសម្ព័ន្ធ​ជា​កញ្ចប់​ទាំង​នេះ​មិន​អាច​កែ​សម្រួល​បាន​ទេ
+    ហើយ​ត្រូវ​បាន​រចនា​ឡើង​ដើម្បី​ផ្ដល់​ឱ្យ​អ្នក​នូវ​បទ​ពិសោធ​ដ៏​ល្អ​បំផុត​ដោយ​មិន​ចាំបាច់​ប្ដូរ​តាម​បំណង។
+    ពួកគេកំណត់រចនាសម្ព័ន្ធកម្មវិធីធម្មតាបំផុតសម្រាប់អ្នកដោយស្វ័យប្រវត្តិ។
+  bundled_title: កម្មវិធីកំណត់រចនាសម្ព័ន្ធបានរួមបញ្ចូលជាមួយ Seelen
+  confirm_delete: តើអ្នកប្រាកដថាចង់លុបការកំណត់រចនាសម្ព័ន្ធនេះទេ?
+  confirm_delete_title: បញ្ជាក់ការលុប
+  delete: លុប
+  export: នាំចេញ
+  export_full: ការនាំចេញការនាំចេញតាមពាក្យសុំ
+  extra_info: >-
+    Seeen UI ប្រើគ្រឿងសម្គាល់តែមួយប៉ុណ្ណោះក្នុងមួយកម្មវិធីមួយ
+    (រកឃើញការប្រកួតដំបូង)
+    ដូច្នេះការបញ្ជាទិញក្នុងរបៀបណាដែលមានលក្ខណៈសំខាន់គឺសំខាន់បំផុតនោះនៅពេលដែលការកត់ចំណាំតារាងត្រូវបានតម្រៀបតាមលំនាំដើមពីចុងក្រោយ។
+  identifier:
+    add_block: បន្ថែមប្លុក
+    and: និង
+    id: អ្នកកំណត់អត្តសញ្ញាណ
+    kind: កំណត់អត្តសញ្ញាណដោយ
+    matching_strategy: យុទ្ធសាស្ត្រផ្គូផ្គង
+    matching_strategy_option:
+      contains: មាន
+      ends_with: បញ្ចប់ដោយ
+      equals: ស្មើ
+      regex: ការបញ្ចេញមតិទៀងទាត់
+      starts_with: ចាប់ផ្តើមជាមួយ
+    negation: ការផ្គូផ្គងអវិជ្ជមាន
+    or: ឬ
+    remove: លុបប្លុក
+    type:
+      class: ថ្នាក់
+      exe: Exe
+      path: ផ្លូវ
+      title: ចំណងជើង
+  import: នាំចូល
+  import_full: ការកំណត់នាំចូលតាមពាក្យសុំ
+  new: ថ្មី។
+  search: ស្វែងរក
+  swap: ប្តូរ
+cancel: បោះបង់
+close: បិត
+delete: លុប
+devtools:
+  app_folders: ថតកម្មវិធី
+  custom_config_file: ផ្ទុកឯកសារកំណត់រចនាសម្ព័ន្ធផ្ទាល់ខ្លួន
+  data_folder: ថតទិន្នន័យ
+  enable: បើកឧបករណ៍អ្នកអភិវឌ្ឍន៍
+  install_folder: ថតឯកសារដំឡើង
+  load: ផ្ទុក
+  settings_file: ឯកសារការកំណត់
+  simulate_perm:
+    label: ក្លែងធ្វើសំណើការអនុញ្ញាតធាតុក្រាហ្វិក
+    result_allowed: ✓មានការអនុញ្ញាត
+    result_denied: ✗ ការអនុញ្ញាតត្រូវបានបដិសេធ
+    trigger: ក្លែងធ្វើ
+    widget_id_placeholder: '@author/widget-name'
+extras:
+  clear_icons: សម្អាតឃ្លាំងសម្ងាត់ប្រព័ន្ធ
+  clear_icons_tooltip: >-
+    ការចាប់ផ្តើមឡើងវិញអាចត្រូវបានតម្រូវឱ្យមានប្រសិទ្ធិភាពពេញលេញលើធាតុក្រាហ្វិកទាំងអស់
+  exit: ចេញ/ចេញ
+  links: តំណភ្ជាប់ផ្លូវការ
+  relaunch: បើកដំណើរការឡើងវិញ
+  version: កំណែ
+  version_fixed: >-
+    កំណែកម្មវិធី និង WebView2 Runtime ត្រូវបានជួសជុល។
+    នេះមានន័យថាកម្មវិធីនឹងមិនទទួលបានការអាប់ដេតទេ ហើយ WebView2 Runtime
+    នឹងមិនត្រូវបានអាប់ដេតដោយស្វ័យប្រវត្តិជាមួយនឹងការអាប់ដេតវីនដូទេ។
+general:
+  accent_color: ពណ៌សង្កត់សំឡេង
+  date_format: ទ្រង់ទ្រាយកាលបរិច្ឆេទ
+  date_format_how_to: តើធ្វើដូចម្តេចដើម្បីសរសេរទម្រង់កាលបរិច្ឆេទ?
+  hardware_acceleration: ការបង្កើនល្បឿនផ្នែករឹង
+  hardware_acceleration_description: >-
+    ការបិទការបង្កើនល្បឿនផ្នែករឹងនឹងកាត់បន្ថយការប្រើប្រាស់អង្គចងចាំ
+    ប៉ុន្តែអាចបណ្តាលឱ្យមានបញ្ហាដំណើរការ។ មានសុវត្ថិភាពក្នុងការបិទ
+    ប្រសិនបើអ្នកមិនប្រើផ្ទាំងរូបភាពផ្ទាល់។
+  icon_pack:
+    available: កញ្ចប់រូបតំណាងដែលមាន
+    selected: កញ្ចប់រូបតំណាងសកម្ម
+  language: ភាសា
+  monday: ថ្ងៃច័ន្ទ
+  performance_mode:
+    on_battery: នៅលើថ្ម
+    on_energy_saver: នៅលើអ្នកសន្សំថាមពល
+    options:
+      disabled: កាយវិកលកម្ផ
+      extreme: ខ្លាមងបមផុត
+      minimal: ដេលអឹមតីម
+    plugged: ដោតឬសាក
+  polling_interval: ចន្លោះពេលបោះឆ្នោតប្រព័ន្ធ
+  polling_interval_description: >-
+    ញឹកញាប់ប៉ុណ្ណា (គិតជាវិនាទី) Seelen UI ពិនិត្យធនធានប្រព័ន្ធដូចជា CPU, RAM,
+    បណ្តាញ និងសកម្មភាពថាស។ ចំនួនតូចជាងនេះមានន័យថា
+    ការធ្វើបច្ចុប្បន្នភាពញឹកញាប់ជាងមុន ប៉ុន្តែការប្រើប្រាស់ធនធានខ្ពស់ជាងបន្តិច។
+  saturday: ថ្ងៃសៅរ៍
+  start_of_week: ការចាប់ផ្តើមនៃសប្តាហ៍
+  startup: ដំណើរការនៅពេលចាប់ផ្ដើម?
+  sunday: ថ្ងៃអាទិត្យ
+  theme:
+    available: ស្បែកដែលអាចប្រើបាន
+    selected: ស្បែកសកម្ម
+header:
+  labels:
+    config: ការកំណត់រចនាសម្ព័ន្ធ
+    developer: សម្រាប់អ្នកអភិវឌ្ឍន៍
+    extras: ការបន្ថែម
+    general: ទូទៅ
+    home: ផ្ទហ
+    icon_pack_editor: រូបតំណាងឃ្លាំងសម្ងាត់
+    iconpack: រូបតំណាងកញ្ចប់
+    monitors: ម៉ូនីទ័រ
+    plugin: រអារ
+    resources: ធនធាន
+    shortcuts: ផ្លូវកាត់
+    soundpack: កញ្ចប់សំលេង
+    specific_apps: ការកំណត់តាមពាក្យសុំ
+    theme: ស្បែក
+    virtual_desk: ផ្ទៃតុនិម្មិត
+    wallpaper: ផាបផេច
+    widget: ធាតុក្រាហ្វិក
+home:
+  new_resources: ធនធានថ្មី
+inherit: តតយលមរតក
+inProgress: កំពុង​ដំណើរការ...
+insert: រចក
+loading: កំពុង​ផ្ទុក...
+miscellaneous: ដេលមានផ្នេកខុសក្នា
+monitors_configurations:
+  label: ម៉ូនីទ័រ {{សន្ទស្សន៍}}
+more: រេចីនចាង
+'no': ដេលក្ផាន
+open: បើក
+quit: ឈប់
+remove: រមកមិ avad ចេញ
+reset_all_to_default: កំណត់ឡើងវិញទាំងអស់ទៅតម្លៃលំនាំដើម
+reset_to_default: កំណត់ឡើងវិញទៅតម្លៃលំនាំដើម
+resources:
+  app_outdated: ធនធាននេះតម្រូវឱ្យមានកំណែថ្មីនៃ Seelen UI ដែលអាចធ្វើការបានត្រឹមត្រូវ។
+  corrupted_wallpaper: បរាជ័យក្នុងការទាញយករូបភាពតូច - ទ្រង់ទ្រាយវីដេអូខូច ឬមិនគាំទ្រ
+  delete: លុបធនធាន
+  discover: ស្វែងយល់ពីធនធានបន្ថែម
+  has_update: ការធ្វើបច្ចុប្បន្នភាពមាន
+  high_impact: ឥទ្ធិពលខ្ពស់លើការអនុវត្ត
+  import_wallpapers: នាំចូលផ្ទាំងរូបភាពក្នុងស្រុក
+  open_folder: បើកថតធនធាន
+  outdated: >-
+    ធនធាននេះត្រូវបានរចនាឡើងសម្រាប់កំណែចាស់របស់ Seeen UI
+    ហើយប្រហែលជាមិនដំណើរការត្រឹមត្រូវទេ។
+  see_on_website: សូមមើលនៅលើគេហទំព័រ
+review_request:
+  not_now: មិនមែនឥឡូវនេះទេ។
+  sure: ប្រាកដណាស់!
+  title: រីករាយជាមួយ Seelen UI?
+save: រក្សាទុក
+save_and_restart: រក្សាទុក & ចាប់ផ្តើមឡើងវិញ
+search: ស្វែងរក
+see_more: មើលច្រើនទៀត
+shortcuts:
+  duplicate_error: ផ្លូវកាត់នេះត្រូវបានចម្លង
+  enable: បើកដំណើរការប្រព័ន្ធផ្លូវកាត់ដែលភ្ជាប់មកជាមួយ
+  enable_tooltip: >-
+    បិទប្រសិនបើអ្នកនឹងអនុវត្តប្រព័ន្ធផ្លូវកាត់ផ្ទាល់ខ្លួនរបស់អ្នកដោយប្រើម៉ាស៊ីនភ្ញៀវយូណេយូយូ
+  labels:
+    create_new_workspace: បង្កើតកន្លែងធ្វើការថ្មី
+    cycle_stack_next: វដ្តជង់បន្ទាប់បន្ទាប់
+    cycle_stack_prev: ជង់មុនវដ្តមុន
+    cycle_wallpaper_next: ប្តូរទៅផ្ទាំងរូបភាពបន្ទាប់
+    cycle_wallpaper_prev: ប្តូរទៅផ្ទាំងរូបភាពមុន
+    decrease_height: បន្ថយកម្ពស់
+    decrease_width: ថយចុះទទឹង
+    destroy_current_workspace: បំផ្លាញកន្លែងធ្វើការបច្ចុប្បន្ន
+    focus_bottom: ផ្តោតលើផ្នែកខាងក្រោម
+    focus_latest: ផ្តោតចុងក្រោយ
+    focus_left: ផ្តោតអារម្មណ៍ខាងឆ្វេង
+    focus_right: ផ្តោតសិទ្ធិត្រឹមត្រូវ
+    focus_top: ផ្តោតលើកំពូល
+    increase_height: បង្កើនកម្ពស់
+    increase_width: បង្កើនទទឹង
+    misc_force_quit: បង្ខំឱ្យឈប់
+    misc_force_restart: បង្ខំឱ្យចាប់ផ្តើមឡើងវិញ
+    misc_open_settings: បើកការកំណត់
+    misc_toggle_lock_tracing: បិទបើកការចាក់សោរ (កំណត់ហេតុ)
+    misc_toggle_win_event_tracing: បិទ / បើកព្រឹត្តិការណ៍ឈ្នះ (កំណត់ហេតុ)
+    move_to_workspace: ផ្លាស់ទីទៅកន្លែងធ្វើការ {{0}}
+    move_window_down: ផ្លាស់ទីបង្អួចទៅបាត
+    move_window_left: ផ្លាស់ទីបង្អួចទៅឆ្វេង
+    move_window_right: ផ្លាស់ទីបង្អួចទៅស្តាំ
+    move_window_up: ផ្លាស់ទីបង្អួចទៅខាងលើ
+    pause_tiling: ផ្អាកកម្មវិធីគ្រប់គ្រងបង្អួច
+    reserve_bottom: បាតបម្រុង
+    reserve_float: អណ្តែតអណ្តែត
+    reserve_left: បំរុងទុកខាងឆ្វេង
+    reserve_right: រក្សាសិទ្ធិ
+    reserve_stack: ជង់បម្រុង
+    reserve_top: បម្រុងខាងលើ
+    restore_sizes: ស្តារទំហំ
+    send_to_workspace: ផ្ញើទៅកន្លែងធ្វើការ {{0}}
+    start_weg_app: ផ្តោតអារម្មណ៍ឬចាប់ផ្តើមកម្មវិធី {{0}}
+    switch_to_next_workspace: ប្តូរទៅកន្លែងធ្វើការបន្ទាប់
+    switch_to_previous_workspace: ប្តូរទៅកន្លែងធ្វើការមុន
+    switch_workspace: ប្តូរទៅកន្លែងធ្វើការ {{0}}
+    toggle_float: បិទបើករបៀបអណ្តែតបង្អួច
+    toggle_monocle: បិទបើករបៀបម៉ូនីកឃែរ
+  readonly_tooltip: នេះគឺជាផ្លូវកាត់ដែលបានតែអាន
+  reset: កំណត់ឡើងវិញនូវលំនាំដើម
+sides:
+  bottom: បាត
+  left: ឆ្វេង
+  right: ត្រូវហើយ។
+  top: កំពូល
+toolbar:
+  auto_hide: លាក់ដោយស្វ័យប្រវត្តិ
+  delay_to_hide: ពន្យារពេលដើម្បីលាក់
+  delay_to_show: ពន្យាពេលក្នុងការបង្ហាញ
+  dock_side: តីតាមង
+  enable: បើករបារឧបករណ៍ពុម្ពអក្សរក្បូរក្បាច់
+  hide_mode:
+    always: ជានិច្ច
+    never: មិនដែល
+    on_overlap: នៅលើការត្រួតស៊ីគ្នា។
+  item_size: ទំហំធាតុ
+  label: របាររបន៍របយ័ត្ន។ រប
+  margin: ទំហំរឹម
+  padding: ទំហំទ្រនាប់
+  placeholder: {}
+update:
+  available: មានបច្ចុប្បន្នភាព!
+  channel: ឆានែលធ្វើបច្ចុប្បន្នភាព
+  downloading: ទាញយក ...
+wall:
+  backgrounds: ផាបផេច
+  blur: ព្រមម៉ុន
+  cancel: បោះបង់
+  close: បិទ
+  collection_name: ឈ្មោះបណ្តុំ
+  collections: បណ្តុំ
+  contrast: ធេវីអាេយមានផាបផ្ទុយក្នា
+  corrupted_wallpapers_message: ផ្ទាំងរូបភាពខូច សូមពិចារណាលុបទាំងនេះ៖
+  create: បង្កើត
+  create_collection: បង្កើតបណ្តុំ
+  default_collection: ការប្រមូលលំនាំដើម
+  delete_collection: លុបបណ្តុំ
+  edit_collection: កែសម្រួលបណ្តុំ
+  enable: បើកដំណើរការកម្មវិធីគ្រប់គ្រងផ្ទាំងរូបភាព
+  extend: ពង្រីកបឋម
+  fit:
+    contain: មាន
+    cover: រកប
+    fill: ញាត់
+  flipHorizontal: ត្រឡប់ផ្ដេក
+  flipVertical: ត្រឡប់បញ្ឈរ
+  generating_thumbnails: ការបង្កើតរូបភាពតូចៗនៃផ្ទាំងរូបភាព
+  hours: ម៉ោង
+  interval: ផ្លាស់ប្តូរផ្ទាំងរូបភាពរៀងរាល់
+  minutes: បីតោ
+  monitor_collection: ការប្រមូលម៉ូនីទ័រ
+  multimonitor_behaviour: ឥរិយាបថពហុម៉ូនីទ័រ
+  muted: អូឌីយ៉ូវីដេអូបិទ
+  no_background: ការបញ្ចាំងស្លាយទទេដោយប្រើផ្ទៃខាងក្រោយរបស់ស្បែកជំនួសវិញ។
+  no_collections: មិនទាន់បានបង្កើតបណ្តុំនៅឡើយទេ។ ចុចប៊ូតុង + ដើម្បីបង្កើតមួយ។
+  objectFit: សមផ្ទៃខាងក្រោយសមស្រប
+  objectPosition: ទីតាំងផ្ទៃខាងក្រោយ
+  overlayColor: ពណ៌គម្រប
+  overlayMixBlendMode: លាបពណ៌លាយបញ្ចូលគ្នា
+  per_monitor: ក្នុងមួយម៉ូនីទ័រ
+  playback: ល្បឿនចាក់សារថ្មី
+  position:
+    bottom: ក្ដិត / បាត
+    center: ផ្ចិត
+    left: ឆេវង
+    right: ខាងស្ដាម
+    top: ឯផ្ទលើ
+  processing_video: ដំណើរការវីដេអូ
+  random: ការបញ្ចាំងស្លាយចៃដន្យដោយចៃដន្យ
+  saturation: ផាបថបតរ
+  seconds: វិនាទី
+  select_collection: ជ្រើសរើសបណ្តុំ
+  thumbnail_generation_complete: ការបង្កើតរូបភាពតូចបានបញ្ចប់
+  thumbnail_generation_finished: ការបង្កើតរូបភាពតូចបានបញ្ចប់ដោយជោគជ័យ
+  wallpaper_collection: ការប្រមូលផ្ទាំងរូបភាព
+  wallpaper_settings: ការកំណត់ផ្ទាំងរូបភាព
+  withOverlay: ជាមួយនឹងការត្រួតលើគ្នា
+  workspace_collections: ការប្រមូលកន្លែងធ្វើការ
+weg:
+  auto_hide: លាក់ដោយស្វ័យប្រវត្តិ
+  delay_to_hide: ពន្យារពេលដើម្បីលាក់
+  delay_to_show: ពន្យាពេលក្នុងការបង្ហាញ
+  dock_side: តីតាមង
+  enable: បើកដំណើរការ Dock/Taskbar
+  filtering: ការត្រងធាតុ
+  gap: គម្លាត
+  hide_mode:
+    always: ជានិច្ច
+    never: មិនដែល
+    on_overlap: នៅលើការត្រួតស៊ីគ្នា។
+  items:
+    gap: ចន្លោះរវាងធាតុ
+    label: ធាតុ
+    pinned_visibility:
+      always: ជានិច្ច
+      label: ភាពមើលឃើញធាតុដែលបានខ្ទាស់
+      when_primary: នៅពេលដែលម៉ូនីទ័រគឺបឋម
+    show_instance_counter: បង្ហាញការបើកខ្សែវីនដូ
+    show_window_title: បង្ហាញចំណងជើងបើកបង្អួច (មានតែផ្តេកប៉ុណ្ណោះ)
+    size: ទំហំធាតុ
+    split_windows: បំបែកវីនដូ (ធាតុមួយក្នុងមួយបង្អួច)
+    temporal_visibility:
+      all: ទាំងអស់។
+      label: ភាពមើលឃើញធាតុដែលមិនបានខ្ទាស់
+      on_monitor: នៅលើម៉ូនីទ័រ
+    visible_separators: សញ្ញាបំបែកដែលអាចមើលឃើញ
+  label: ចត/របារភារកិច្ច
+  margin: រឹម
+  mode:
+    full_width: ទទឹងពេញអេក្រង់
+    min_content: តូចតាមដែលអាចធ្វើបាន
+  padding: ទ្រនាប់
+  show_end_task: បង្ហាញភារកិច្ចបញ្ចប់នៅក្នុងរបារភារកិច្ច
+  width: ទទឹង
+welcome:
+  give_a_review: ផ្តល់ការពិនិត្យឡើងវិញ
+  message: >-
+    Seelen UI គឺជាបរិស្ថានផ្ទៃតុឥតគិតថ្លៃ និងប្រភពបើកចំហសម្រាប់ Windows ។
+    នៅទីនេះអ្នកមានការគ្រប់គ្រងពេញលេញលើរបៀបដែលផ្ទៃតុរបស់អ្នកមើលទៅ និងឥរិយាបទ
+    ដែលអនុញ្ញាតឱ្យអ្នកកំណត់រាល់ព័ត៌មានលម្អិតដើម្បីផ្គូផ្គងលំហូរការងារ
+    និងរចនាប័ទ្មរបស់អ្នក។
+  ok: តោះចាប់ផ្តើម!
+  review: >-
+    ប្រសិនបើអ្នករីករាយនឹងការប្រើប្រាស់ Seelen UI
+    សូមពិចារណាចាកចេញពីការពិនិត្យឡើងវិញនៅលើហាង —
+    មតិកែលម្អរបស់អ្នកជួយឱ្យគម្រោងរីកចម្រើន និងប្រសើរឡើង។
+  title: សូមស្វាគមន៍មកកាន់ Seelen UI!
+widget:
+  enable: បើកដំណើរការធាតុក្រាហ្វិកនេះ
+  enable_for_monitor: បើកដំណើរការម៉ូនីទ័រនេះ
+  instances: ករណីបុម
+wm:
+  animations:
+    duration: រយៈពេលចលនា (MS)
+    ease_function: មុខងារបន្ធូរបន្ថយចលនា
+    enable: បើកចលនាចលនារបស់បង្អួច
+  author: អ្នកនិពន្ធ
+  border:
+    enable: បើកស៊ុមបង្អួច
+    offset: ព្រំដែនអុហ្វសិត
+    width: ទទឹងព្រំដែន
+  description: ការពិពណ៌នា
+  drag_behavior: ឥរិយាបទអូស
+  drag_behavior_options:
+    sort: តម្រៀប (តម្រៀបបង្អួចឡើងវិញពេលកំពុងអូស)
+    swap: ប្តូរ (ប្តូរបង្អួចនៅលើចុងអូស)
+  enable: បើកដំណើរការកម្មវិធីគ្រប់គ្រងបង្អួច
+  layout: ប្លង់
+  resize_delta: ប្តូរទំហំដីសណ្តរ (%)
+  space_between_containers: ចន្លោះរវាងកុងតឺន័រ
+  workspace_offset: កន្លែងធ្វើការអុហ្វសិត (រឹម)
+  workspace_padding: ចន្លោះកន្លែងធ្វើការ
+'yes': បាត

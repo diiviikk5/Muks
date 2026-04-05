@@ -1,0 +1,389 @@
+action:
+  confirm: Vai esat pārliecināts?
+  confirm_body: Šo darbību nevar atsaukt.
+apps_configurations:
+  app:
+    bindings: Iesiešana (ņemiet vērā, ka ir vajadzīgas abas opcijas)
+    category: Kategorija
+    category_placeholder: Neviens
+    monitor: Kontrolēt
+    monitor_placeholder: Neviens
+    name: Nosaukt
+    ok_create: Radīt
+    ok_edit: Atjaunināt
+    ok_readonly: Rediģēt kā jaunu
+    options:
+      NoInteractive: Nav interaktīvu
+      VdPinned: Rādīt visās darbvietās
+      WmFloat: Twm — Sākt peldēt
+      WmForce: "Twm\_— piespiedu pārvaldība"
+      WmUnmanage: "Twm\_— nepārvaldīt"
+    options_label: Papildu iespējas
+    title_create: Izveidot {{name}}
+    title_edit: Rediģēšana {{name}}
+    title_readonly: Skatoties {{name}}
+    weg_options_label: Doka/uzdevumjoslas iespējas
+    wm_options_label: Logu pārvaldnieka opcijas
+    workspace: Darba vieta
+    workspace_placeholder: Neviens
+  bundled_msg: >-
+    Šīs komplektētās konfigurācijas nav rediģējamas un ir paredzētas, lai
+    sniegtu jums vislabāko pieredzi bez pielāgošanas. Tie automātiski konfigurē
+    jums visizplatītākās lietojumprogrammas.
+  bundled_title: Lietotnes konfigurācija, kas komplektēta ar Seelen
+  confirm_delete: Vai esat pārliecināts, ka vēlaties izdzēst šo konfigurāciju/-as?
+  confirm_delete_title: Apstipriniet izdzēst
+  delete: Dzēst
+  export: Eksportēt
+  export_full: Eksportēt iestatījumus pēc lietojumprogrammas
+  extra_info: >-
+    Seelen lietotāja saskarnē katrai lietotnei tiek izmantots tikai viens
+    identifikators (atrasta pirmā atbilstība), tāpēc ir svarīga secība, kādā tie
+    tiek norādīti, un jaunākajam pievienotajam tiks piešķirta prioritāte, jo
+    ņemiet vērā, ka tabula pēc noklusējuma tiek kārtota no jaunākā uz veco.
+  identifier:
+    add_block: Pievienot bloku
+    and: UN
+    id: Identifikators
+    kind: Identificēt ar
+    matching_strategy: Atbilstības stratēģija
+    matching_strategy_option:
+      contains: Satur
+      ends_with: Beidzas ar
+      equals: Vienāds
+      regex: Regulārā izteiksme
+      starts_with: Sākas ar
+    negation: Negatīva atbilstība
+    or: Vai
+    remove: Dzēst bloku
+    type:
+      class: Klase
+      exe: Exe
+      path: Ceļš
+      title: Nosaukums
+  import: Importēt
+  import_full: Iestatījumu importēšana pēc lietojumprogrammas
+  new: Jauns
+  search: Meklēt
+  swap: Apmaiņa
+cancel: Atcelt
+close: Tuvs
+delete: Dzēst
+devtools:
+  app_folders: Lietotņu mapes
+  custom_config_file: Ielādēt pielāgotu konfigurācijas failu
+  data_folder: Datu mape
+  enable: Iespējot izstrādātāju rīkus
+  install_folder: Instalēšanas mape
+  load: Slodze
+  settings_file: Iestatīšanas fails
+  simulate_perm:
+    label: Simulēt logrīka atļaujas pieprasījumu
+    result_allowed: ✓ Atļauja piešķirta
+    result_denied: ✗ Atļauja liegta
+    trigger: Simulēt
+    widget_id_placeholder: '@autors/logrīka nosaukums'
+extras:
+  clear_icons: Iztīrīt sistēmas ikonu kešatmiņu
+  clear_icons_tooltip: >-
+    Varētu būt nepieciešams restartēt, lai tas pilnībā stātos spēkā visos
+    logrīkos.
+  exit: Atmest/iziet
+  links: Oficiālas saites
+  relaunch: Atsākšana
+  version: Versija
+  version_fixed: >-
+    Lietojumprogramma un WebView2 Runtime versijas ir fiksētas. Tas nozīmē, ka
+    lietojumprogramma nesaņems atjauninājumus un WebView2 Runtime netiks
+    automātiski atjaunināts ar Windows atjauninājumiem.
+general:
+  accent_color: Akcents
+  date_format: Datuma formāts
+  date_format_how_to: Kā uzrakstīt datuma formātu?
+  hardware_acceleration: Aparatūras paātrinājums
+  hardware_acceleration_description: >-
+    Aparatūras paātrinājuma atspējošana samazinās atmiņas lietojumu, taču var
+    izraisīt veiktspējas problēmas. To ir droši atspējot, ja neizmantojat dzīvās
+    tapetes.
+  icon_pack:
+    available: Pieejamie ikonu komplekti
+    selected: Aktīvās ikonu pakotnes
+  language: Valoda
+  monday: pirmdiena
+  performance_mode:
+    on_battery: Uz akumulatora
+    on_energy_saver: Par enerģijas taupīšanu
+    options:
+      disabled: Nespējīgs
+      extreme: Galējs
+      minimal: Minimāls
+    plugged: Pievienots vai uzlādēts
+  polling_interval: Sistēmas aptaujas intervāls
+  polling_interval_description: >-
+    Cik bieži (sekundēs) Seelen UI pārbauda sistēmas resursus, piemēram, CPU,
+    RAM, tīkla un diska darbību. Mazāks skaitlis nozīmē biežākus atjauninājumus,
+    bet nedaudz lielāku resursu izmantošanu.
+  saturday: sestdiena
+  start_of_week: Nedēļas sākums
+  startup: Skriet startup?
+  sunday: svētdiena
+  theme:
+    available: Pieejamie motīvi
+    selected: Aktīvās tēmas
+header:
+  labels:
+    config: Konfigurācijas
+    developer: Izstrādātājiem
+    extras: Papildaprīkojums
+    general: Ģenerāldirektors
+    home: Mājas
+    icon_pack_editor: Ikonas kešatmiņā
+    iconpack: Ikonu paketes
+    monitors: Monitori
+    plugin: Spraudņi
+    resources: Resursi
+    shortcuts: Saīsnes
+    soundpack: Skaņu paketes
+    specific_apps: Iestatījumi pēc lietojumprogrammas
+    theme: Tēmas
+    virtual_desk: Virtuālie darbvirsmas
+    wallpaper: Tapetes
+    widget: Logrīki
+home:
+  new_resources: Jauni resursi
+inherit: Mantot
+inProgress: Notiek ...
+insert: Ievietot
+loading: Iekraušana ...
+miscellaneous: Dažāds
+monitors_configurations:
+  label: Monitors {{indekss}}
+more: Vairāk
+'no': Ne
+open: Atvērt
+quit: Atmest
+remove: Noņemt
+reset_all_to_default: Visu noklusējuma vērtību atiestatīšana
+reset_to_default: Atiestatīt noklusējuma vērtību
+resources:
+  app_outdated: Lai šis resurss darbotos pareizi, nepieciešama jaunāka Seelen UI versija.
+  corrupted_wallpaper: "Neizdevās izvilkt sīktēlu\_— bojāts vai neatbalstīts video formāts"
+  delete: Dzēst resursu
+  discover: Atklājiet vairāk resursu
+  has_update: Ir pieejams atjauninājums
+  high_impact: Liela ietekme uz veiktspēju
+  import_wallpapers: Importēt vietējās tapetes
+  open_folder: Atvērt resursu mapi
+  outdated: >-
+    Šis resurss ir izstrādāts vecākai Seelen UI versijai un var nedarboties
+    pareizi.
+  see_on_website: Skatīt vietnē
+review_request:
+  not_now: Ne tagad
+  sure: Protams!
+  title: Vai jums patīk Seelen UI?
+save: Ietaupīt
+save_and_restart: Saglabāt un restartēt
+search: Meklēt
+see_more: Skatīt vairāk
+shortcuts:
+  duplicate_error: Šī saīsne ir dublēta
+  enable: Iespējot iebūvēto saīsņu sistēmu
+  enable_tooltip: >-
+    Atspējot, ja jūs ieviesīsit savu saīsņu sistēmu, izmantojot Seelen UI
+    klientu
+  labels:
+    create_new_workspace: Izveidojiet jaunu darbvietu
+    cycle_stack_next: Nākamais cikla kaudze
+    cycle_stack_prev: Velosipēdu kaudze iepriekšējā
+    cycle_wallpaper_next: Mainiet uz nākamo fona attēlu
+    cycle_wallpaper_prev: Mainiet uz iepriekšējo fona attēlu
+    decrease_height: Samazināt augstumu
+    decrease_width: Samazināt platumu
+    destroy_current_workspace: Iznīcināt pašreizējo darbvietu
+    focus_bottom: Fokusēt apakšā
+    focus_latest: Fokuss jaunākais
+    focus_left: Fokusēt pa kreisi
+    focus_right: Fokusēt pa labi
+    focus_top: Fokusa tops
+    increase_height: Palielināt augstumu
+    increase_width: Palielināt platumu
+    misc_force_quit: Spēks atmest
+    misc_force_restart: Piespiedu restartēšana
+    misc_open_settings: Atvērti iestatījumi
+    misc_toggle_lock_tracing: Pārslēdziet slēdzenes izsekošanu (baļķi)
+    misc_toggle_win_event_tracing: Pārslēdziet uzvaru notikumu izsekošanu (žurnāli)
+    move_to_workspace: Pārvietojieties uz darbvietu {{0}}
+    move_window_down: Pārvietojiet logu uz leju
+    move_window_left: Pārvietojiet logu pa kreisi
+    move_window_right: Pārvietojiet logu uz labo pusi
+    move_window_up: Pārvietojiet logu uz augšu
+    pause_tiling: Pauzēt flīzes logu pārvaldnieku
+    reserve_bottom: Rezervēt apakšdaļu
+    reserve_float: Rezerves pludiņš
+    reserve_left: Rezervēt pa kreisi
+    reserve_right: Rezervēt pa labi
+    reserve_stack: Rezerves kaudze
+    reserve_top: Rezerves tops
+    restore_sizes: Atjaunot izmērus
+    send_to_workspace: Nosūtīt uz darbvietu {{0}}
+    start_weg_app: Fokusēt vai sākt lietojumprogrammu {{0}}
+    switch_to_next_workspace: Pārslēdzieties uz nākamo darbvietu
+    switch_to_previous_workspace: Pārslēdzieties uz iepriekšējo darbvietu
+    switch_workspace: Pārslēdzieties uz darbvietu {{0}}
+    toggle_float: Pārslēdziet loga pludiņa režīmu
+    toggle_monocle: Pārslēdziet darbvietas monokla režīmu
+  readonly_tooltip: Tas ir tikai lasāms saīsne
+  reset: Atiestatīt uz noklusējuma
+sides:
+  bottom: Dibens
+  left: Atstāts
+  right: Pa labi
+  top: Tops
+toolbar:
+  auto_hide: Auto paslēpt
+  delay_to_hide: Aizkavē paslēpties
+  delay_to_show: Kavēšanās parādīt
+  dock_side: Pozīcija
+  enable: Iespējot izdomātu rīkjoslu
+  hide_mode:
+    always: Vienmēr
+    never: Nekad
+    on_overlap: Uz pārklāšanās
+  item_size: Preces izmērs
+  label: Rīkjosla
+  margin: Piemales lielums
+  padding: Polsterējuma izmērs
+  placeholder: {}
+update:
+  available: Pieejams atjauninājums!
+  channel: Atjaunināt kanālu
+  downloading: Lejupielāde ...
+wall:
+  backgrounds: Tapetes
+  blur: Blur
+  cancel: Atcelt
+  close: Aizvērt
+  collection_name: Kolekcijas nosaukums
+  collections: Kolekcijas
+  contrast: Kontrasts
+  corrupted_wallpapers_message: 'Bojātas tapetes, apsveriet iespēju dzēst šīs tapetes:'
+  create: Izveidot
+  create_collection: Izveidot kolekciju
+  default_collection: Noklusējuma kolekcija
+  delete_collection: Dzēst kolekciju
+  edit_collection: Rediģēt kolekciju
+  enable: Iespējot fona attēlu pārvaldnieku
+  extend: Pagarināt primāro
+  fit:
+    contain: Satur
+    cover: Vāks
+    fill: Aizpildiet
+  flipHorizontal: Flip horizontāli
+  flipVertical: Flip vertikālais
+  generating_thumbnails: Tapešu sīktēlu ģenerēšana
+  hours: laiks
+  interval: Mainiet fona attēlus katru
+  minutes: protokols
+  monitor_collection: Monitoru kolekcija
+  multimonitor_behaviour: Vairāku monitoru uzvedība
+  muted: Izslēgt video audio
+  no_background: Tukša slaidrāde, tā vietā izmantojot tēmas fonu.
+  no_collections: >-
+    Vēl nav izveidota neviena kolekcija. Noklikšķiniet uz pogas +, lai to
+    izveidotu.
+  objectFit: Fona fona atbilstība
+  objectPosition: Pamatinformācija Pozīcija
+  overlayColor: Pārklājuma krāsa
+  overlayMixBlendMode: Pārklājuma sajaukšanas režīms
+  per_monitor: Uz monitoru
+  playback: Atskaņošanas ātrums
+  position:
+    bottom: Apakšējā daļa
+    center: Centrs
+    left: Kreisā
+    right: Tiesības
+    top: Top
+  processing_video: Notiek video apstrāde
+  random: Randomizējiet slaidrādi
+  saturation: Piesātinājums
+  seconds: sekundes
+  select_collection: Atlasiet Kolekcija
+  thumbnail_generation_complete: Sīktēlu ģenerēšana ir pabeigta
+  thumbnail_generation_finished: Sīktēlu ģenerēšana ir veiksmīgi pabeigta
+  wallpaper_collection: Tapešu kolekcija
+  wallpaper_settings: Tapetes iestatījumi
+  withOverlay: Ar pārklājumu
+  workspace_collections: Darbvietu kolekcijas
+weg:
+  auto_hide: Auto paslēpt
+  delay_to_hide: Aizkavē paslēpties
+  delay_to_show: Kavēšanās parādīt
+  dock_side: Pozīcija
+  enable: Iespējot doku/uzdevumjoslu
+  filtering: Vienumu filtrēšana
+  gap: Plaisa
+  hide_mode:
+    always: Vienmēr
+    never: Nekad
+    on_overlap: Uz pārklāšanās
+  items:
+    gap: Vieta starp priekšmetiem
+    label: Priekšmeti
+    pinned_visibility:
+      always: Vienmēr
+      label: Piesprausto vienumu redzamība
+      when_primary: Kad monitors ir primārais
+    show_instance_counter: Rādīt atvērto logu skaitītāju
+    show_window_title: Rādīt atvērta loga virsrakstu (tikai horizontāli)
+    size: Vienuma izmērs
+    split_windows: Sadalīti logi (viens vienums katrā logā)
+    temporal_visibility:
+      all: Visi
+      label: Atsprausto vienumu redzamība
+      on_monitor: Uz monitora
+    visible_separators: Redzami atdalītāji
+  label: Doks/uzdevumjosla
+  margin: Robeža
+  mode:
+    full_width: Pilna ekrāna platums
+    min_content: Cik mazs var būt
+  padding: Polsterējums
+  show_end_task: Parādīt beigu uzdevumu uzdevumjoslā
+  width: Platums
+welcome:
+  give_a_review: Sniedziet atsauksmi
+  message: >-
+    Seelen UI ir bezmaksas atvērtā koda darbvirsmas vide operētājsistēmai
+    Windows. Šeit jums ir pilnīga kontrole pār jūsu darbvirsmas izskatu un
+    darbību, ļaujot pielāgot katru detaļu, lai tā atbilstu jūsu darbplūsmai un
+    stilam.
+  ok: Sāksim!
+  review: "Ja jums patīk izmantot Seelen UI, apsveriet iespēju atstāt atsauksmi par veikalu\_— jūsu atsauksmes palīdz projektam augt un uzlaboties."
+  title: Laipni lūdzam Seelen lietotāja saskarnē!
+widget:
+  enable: Ieslēgt šo logrīku
+  enable_for_monitor: Ieslēgt šajā monitorā
+  instances: Instances
+wm:
+  animations:
+    duration: Animācijas ilgums (MS)
+    ease_function: Animācijas atvieglošanas funkcija
+    enable: Iespējot loga animācijas
+  author: Autors
+  border:
+    enable: Iespējot loga robežu
+    offset: Robežas kompensācija
+    width: Apmales platums
+  description: Apraksts
+  drag_behavior: Vilkšanas uzvedība
+  drag_behavior_options:
+    sort: Kārtot (pārkārtot logus, velkot)
+    swap: Apmainīt (apmainīt logus vilkšanas beigās)
+  enable: Iespējot flīzēšanas logu pārvaldnieku
+  layout: Izkārtojums
+  resize_delta: Delta izmēra maiņa (%)
+  space_between_containers: Telpa starp konteineriem
+  workspace_offset: Darbvietu kompensācija (malas)
+  workspace_padding: Darbvietas polsterējums
+'yes': Jā

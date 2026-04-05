@@ -1,0 +1,379 @@
+action:
+  confirm: คุณแน่ใจหรือไม่?
+  confirm_body: การกระทำนี้ไม่สามารถยกเลิกได้
+apps_configurations:
+  app:
+    bindings: การเชื่อม (หมายเหตุทั้งสองตัวเลือกเป็นสิ่งจำเป็น)
+    category: หมวดหมู่
+    category_placeholder: ไม่มี
+    monitor: เฝ้าสังเกต
+    monitor_placeholder: ไม่มี
+    name: ชื่อ
+    ok_create: สร้าง
+    ok_edit: อัปเดต
+    ok_readonly: แก้ไขเป็นใหม่
+    options:
+      NoInteractive: ไม่มีการโต้ตอบ
+      VdPinned: แสดงในพื้นที่ทำงานทั้งหมด
+      WmFloat: Twm - เริ่มลอยตัว
+      WmForce: Twm - บังคับจัดการ
+      WmUnmanage: Twm - ยกเลิกการจัดการ
+    options_label: ตัวเลือกพิเศษ
+    title_create: การสร้าง {{ชื่อ}}
+    title_edit: การแก้ไข {{ชื่อ}}
+    title_readonly: การดู {{ชื่อ}}
+    weg_options_label: ตัวเลือกท่าเทียบเรือ/บาร์
+    wm_options_label: ตัวเลือกตัวจัดการหน้าต่าง
+    workspace: พื้นที่ทำงาน
+    workspace_placeholder: ไม่มี
+  bundled_msg: >-
+    การกำหนดค่าแบบรวมเหล่านี้ไม่สามารถแก้ไขได้และได้รับการออกแบบมาเพื่อให้คุณได้รับประสบการณ์ที่ดีที่สุดโดยไม่ต้องปรับแต่ง
+    พวกเขากำหนดค่าแอปพลิเคชันที่พบบ่อยที่สุดสำหรับคุณโดยอัตโนมัติ
+  bundled_title: แอพกำหนดค่ามาพร้อมกับ Seelen
+  confirm_delete: แน่ใจหรือว่าต้องการลบการกำหนดค่านี้/s?
+  confirm_delete_title: ยืนยันการลบ
+  delete: ลบ
+  export: ส่งออก
+  export_full: การตั้งค่าการส่งออกโดยแอปพลิเคชัน
+  extra_info: >-
+    SEELEN UI ใช้ตัวระบุเพียงหนึ่งตัวต่อแอป (พบนัดแรก)
+    ดังนั้นคำสั่งซื้อเฉพาะนั้นมีความสำคัญการเพิ่มล่าสุดจะได้รับการจัดลำดับความสำคัญเนื่องจากหมายเหตุตารางจะถูกเรียงลำดับโดยค่าเริ่มต้นจากล่าสุดถึงเก่า
+  identifier:
+    add_block: เพิ่มบล็อก
+    and: และ
+    id: ตัวระบุ
+    kind: ระบุโดย
+    matching_strategy: กลยุทธ์การจับคู่
+    matching_strategy_option:
+      contains: ประกอบด้วย
+      ends_with: ปิดท้ายด้วย
+      equals: เท่ากับ
+      regex: การแสดงออกปกติ
+      starts_with: เริ่มต้นด้วย
+    negation: คัดค้านการจับคู่
+    or: หรือ
+    remove: ลบบล็อก
+    type:
+      class: ระดับ
+      exe: เอ็กซ์
+      path: เส้นทาง
+      title: ชื่อ
+  import: นำเข้า
+  import_full: นำเข้าการตั้งค่าโดยแอปพลิเคชัน
+  new: ใหม่
+  search: ค้นหา
+  swap: แลกเปลี่ยน
+cancel: ยกเลิก
+close: ปิด
+delete: ลบ
+devtools:
+  app_folders: โฟลเดอร์แอพ
+  custom_config_file: โหลดไฟล์กำหนดค่าที่กำหนดเอง
+  data_folder: โฟลเดอร์ข้อมูล
+  enable: เปิดใช้งานเครื่องมือนักพัฒนาซอฟต์แวร์
+  install_folder: โฟลเดอร์การติดตั้ง
+  load: โหลด
+  settings_file: ไฟล์การตั้งค่า
+  simulate_perm:
+    label: จำลองคำขออนุญาตวิดเจ็ต
+    result_allowed: ✓ ได้รับอนุญาตแล้ว
+    result_denied: ✗ การอนุญาตถูกปฏิเสธ
+    trigger: จำลอง
+    widget_id_placeholder: '@author/widget-name'
+extras:
+  clear_icons: ล้างไอคอนระบบแคช
+  clear_icons_tooltip: การรีสตาร์ทอาจจำเป็นต้องมีผลอย่างเต็มที่กับวิดเจ็ตทั้งหมด
+  exit: ออก/ออก
+  links: ลิงค์อย่างเป็นทางการ
+  relaunch: เปิดใหม่
+  version: รุ่น
+  version_fixed: >-
+    เวอร์ชันของแอปพลิเคชันและ WebView2 Runtime ได้รับการแก้ไขแล้ว
+    ซึ่งหมายความว่าแอปพลิเคชันจะไม่ได้รับการอัพเดตและ WebView2 Runtime
+    จะไม่ได้รับการอัปเดตโดยอัตโนมัติด้วยการอัปเดต Windows
+general:
+  accent_color: สีเน้น
+  date_format: รูปแบบวันที่
+  date_format_how_to: จะเขียนรูปแบบวันที่ได้อย่างไร?
+  hardware_acceleration: การเร่งความเร็วด้วยฮาร์ดแวร์
+  hardware_acceleration_description: >-
+    การปิดใช้งานการเร่งด้วยฮาร์ดแวร์จะลดการใช้หน่วยความจำ
+    แต่อาจทำให้เกิดปัญหาด้านประสิทธิภาพได้
+    ปลอดภัยในการปิดใช้งานหากคุณจะไม่ใช้วอลเปเปอร์เคลื่อนไหว
+  icon_pack:
+    available: ชุดไอคอนที่มีอยู่
+    selected: ชุดไอคอนที่ใช้งานอยู่
+  language: ภาษา
+  monday: วันจันทร์
+  performance_mode:
+    on_battery: บนแบตเตอรี่
+    on_energy_saver: ประหยัดพลังงาน
+    options:
+      disabled: พิการ
+      extreme: สุดขีด
+      minimal: น้อยที่สุด
+    plugged: เสียบหรือชาร์จ
+  polling_interval: ช่วงเวลาการสำรวจระบบ
+  polling_interval_description: >-
+    Seelen UI ตรวจสอบทรัพยากรระบบ เช่น CPU, RAM, เครือข่าย
+    และกิจกรรมดิสก์บ่อยแค่ไหน (เป็นวินาที)
+    จำนวนที่น้อยกว่าหมายถึงการอัปเดตบ่อยขึ้น แต่การใช้ทรัพยากรสูงขึ้นเล็กน้อย
+  saturday: วันเสาร์
+  start_of_week: เริ่มต้นสัปดาห์
+  startup: วิ่งเมื่อเริ่มต้น?
+  sunday: วันอาทิตย์
+  theme:
+    available: ธีมที่มีจำหน่าย
+    selected: ธีมที่ใช้งานอยู่
+header:
+  labels:
+    config: การกำหนดค่า
+    developer: สำหรับนักพัฒนา
+    extras: ความพิเศษ
+    general: ทั่วไป
+    home: บ้าน
+    icon_pack_editor: ไอคอนแคช
+    iconpack: ไอคอนแพ็ค
+    monitors: จอภาพ
+    plugin: ปลั๊กอิน
+    resources: ทรัพยากร
+    shortcuts: ทางลัด
+    soundpack: ชุดเสียง
+    specific_apps: การตั้งค่าโดยแอปพลิเคชัน
+    theme: ธีม
+    virtual_desk: เดสก์ท็อปเสมือนจริง
+    wallpaper: วอลเปเปอร์
+    widget: วิดเจ็ต
+home:
+  new_resources: ทรัพยากรใหม่
+inherit: สืบทอด
+inProgress: กำลังดำเนินการ...
+insert: แทรก
+loading: กำลังโหลด ...
+miscellaneous: เบ็ดเตล็ด
+monitors_configurations:
+  label: ตรวจสอบ {{index}}
+more: มากกว่า
+'no': เลขที่
+open: เปิด
+quit: ล้มเลิก
+remove: ลบ
+reset_all_to_default: รีเซ็ตเป็นค่าเริ่มต้นทั้งหมด
+reset_to_default: รีเซ็ตเป็นค่าเริ่มต้น
+resources:
+  app_outdated: ทรัพยากรนี้ต้องการ Seelen UI รุ่นใหม่กว่าเพื่อทำงานอย่างถูกต้อง
+  corrupted_wallpaper: ไม่สามารถแยกภาพขนาดย่อได้ - รูปแบบวิดีโอเสียหายหรือไม่รองรับ
+  delete: ลบทรัพยากร
+  discover: ค้นพบทรัพยากรเพิ่มเติม
+  has_update: มีการอัปเดต
+  high_impact: มีผลกระทบสูงต่อประสิทธิภาพ
+  import_wallpapers: นำเข้าวอลเปเปอร์ในท้องถิ่น
+  open_folder: เปิดโฟลเดอร์ทรัพยากร
+  outdated: ทรัพยากรนี้ได้รับการออกแบบมาสำหรับ Seelen UI รุ่นเก่าและอาจทำงานไม่ถูกต้อง
+  see_on_website: ดูบนเว็บไซต์
+review_request:
+  not_now: ไม่ใช่ตอนนี้
+  sure: แน่นอน!
+  title: เพลิดเพลินกับ Seelen UI หรือไม่?
+save: บันทึก
+save_and_restart: บันทึกและรีสตาร์ท
+search: ค้นหา
+see_more: ดูเพิ่มเติม
+shortcuts:
+  duplicate_error: ทางลัดนี้ซ้ำกัน
+  enable: เปิดใช้งานระบบทางลัดในตัว
+  enable_tooltip: ปิดการใช้งานหากคุณจะใช้ระบบทางลัดของคุณเองโดยใช้ไคลเอนต์ SEELEN UI
+  labels:
+    create_new_workspace: สร้างพื้นที่ทำงานใหม่
+    cycle_stack_next: วงจรสแต็คถัดไป
+    cycle_stack_prev: Cycle Stack ก่อนหน้านี้
+    cycle_wallpaper_next: เปลี่ยนเป็นวอลล์เปเปอร์ถัดไป
+    cycle_wallpaper_prev: เปลี่ยนเป็นวอลล์เปเปอร์ก่อนหน้า
+    decrease_height: ลดความสูง
+    decrease_width: ลดความกว้าง
+    destroy_current_workspace: ทำลายพื้นที่ทำงานปัจจุบัน
+    focus_bottom: โฟกัสด้านล่าง
+    focus_latest: โฟกัสล่าสุด
+    focus_left: โฟกัสซ้าย
+    focus_right: โฟกัสขวา
+    focus_top: โฟกัสด้านบน
+    increase_height: เพิ่มความสูง
+    increase_width: เพิ่มความกว้าง
+    misc_force_quit: บังคับให้เลิก
+    misc_force_restart: บังคับให้รีสตาร์ท
+    misc_open_settings: เปิดการตั้งค่า
+    misc_toggle_lock_tracing: สลับการติดตามล็อค (บันทึก)
+    misc_toggle_win_event_tracing: สลับการติดตามเหตุการณ์ (บันทึก)
+    move_to_workspace: ย้ายไปที่ WorksPace {{0}}
+    move_window_down: ย้ายหน้าต่างไปด้านล่าง
+    move_window_left: ย้ายหน้าต่างไปทางซ้าย
+    move_window_right: ย้ายหน้าต่างไปทางขวา
+    move_window_up: ย้ายหน้าต่างไปด้านบน
+    pause_tiling: หยุดชั่วคราวตัวจัดการหน้าต่างปูกระเบื้อง
+    reserve_bottom: สำรองด้านล่าง
+    reserve_float: สำรองลอย
+    reserve_left: สำรองซ้าย
+    reserve_right: สำรองสิทธิ
+    reserve_stack: กองสำรอง
+    reserve_top: สำรองด้านบน
+    restore_sizes: คืนค่าขนาด
+    send_to_workspace: ส่งไปยัง WorksPace {{0}}
+    start_weg_app: โฟกัสหรือเริ่มแอปพลิเคชัน {{0}}
+    switch_to_next_workspace: เปลี่ยนเป็นพื้นที่ทำงานถัดไป
+    switch_to_previous_workspace: เปลี่ยนไปใช้พื้นที่ทำงานก่อนหน้า
+    switch_workspace: สลับไปที่ WorksPace {{0}}
+    toggle_float: สลับโหมดลอยหน้าต่าง
+    toggle_monocle: สลับโหมดเวิร์กสเปซ Monocle
+  readonly_tooltip: นี่คือทางลัดแบบอ่านอย่างเดียว
+  reset: รีเซ็ตเป็นค่าเริ่มต้น
+sides:
+  bottom: ด้านล่าง
+  left: ซ้าย
+  right: ขวา
+  top: สูงสุด
+toolbar:
+  auto_hide: ซ่อนอัตโนมัติ
+  delay_to_hide: ล่าช้าในการซ่อน
+  delay_to_show: ล่าช้าในการแสดง
+  dock_side: ตำแหน่ง
+  enable: เปิดใช้งานแถบเครื่องมือแฟนซี
+  hide_mode:
+    always: เสมอ
+    never: ไม่เคย
+    on_overlap: เมื่อทับซ้อนกัน
+  item_size: ขนาดรายการ
+  label: แถบเครื่องมือ
+  margin: ขนาดระยะขอบ
+  padding: ขนาดบุนวม
+  placeholder: {}
+update:
+  available: อัปเดตพร้อมใช้งาน!
+  channel: อัปเดตช่อง
+  downloading: ดาวน์โหลด ...
+wall:
+  backgrounds: วอลเปเปอร์
+  blur: เบลอ
+  cancel: ยกเลิก
+  close: ปิด
+  collection_name: ชื่อคอลเลกชัน
+  collections: คอลเลกชัน
+  contrast: ตัดกัน
+  corrupted_wallpapers_message: 'วอลเปเปอร์ที่เสียหาย โปรดพิจารณาลบสิ่งเหล่านี้:'
+  create: สร้าง
+  create_collection: สร้างคอลเลกชัน
+  default_collection: คอลเลกชันเริ่มต้น
+  delete_collection: ลบคอลเลกชั่น
+  edit_collection: แก้ไขคอลเลกชัน
+  enable: เปิดใช้งานผู้จัดการวอลล์เปเปอร์
+  extend: ขยายหลัก
+  fit:
+    contain: บรรจุ
+    cover: ปิดบัง
+    fill: เติม
+  flipHorizontal: พลิกแนวนอน
+  flipVertical: พลิกแนวตั้ง
+  generating_thumbnails: กำลังสร้างรูปขนาดย่อของวอลเปเปอร์
+  hours: ชั่วโมง
+  interval: เปลี่ยนวอลล์เปเปอร์ทุก ๆ
+  minutes: นาที
+  monitor_collection: ตรวจสอบคอลเลกชัน
+  multimonitor_behaviour: พฤติกรรมของจอภาพหลายจอ
+  muted: ปิดเสียงวิดีโอ
+  no_background: สไลด์โชว์เปล่าโดยใช้พื้นหลังของธีมแทน
+  no_collections: ยังไม่มีการสร้างคอลเลกชัน คลิกปุ่ม + เพื่อสร้าง
+  objectFit: พื้นหลังพอดี
+  objectPosition: ตำแหน่งพื้นหลัง
+  overlayColor: สีซ้อนทับ
+  overlayMixBlendMode: โหมดผสมมิกซ์ซ้อนทับ
+  per_monitor: ต่อจอภาพ
+  playback: ความเร็วในการเล่น
+  position:
+    bottom: ด้านล่าง
+    center: ศูนย์
+    left: ซ้าย
+    right: ขวา
+    top: สูงสุด
+  processing_video: กำลังประมวลผลวิดีโอ
+  random: สุ่มสไลด์โชว์
+  saturation: ความอิ่มตัว
+  seconds: ไม่กี่วินาที
+  select_collection: เลือกคอลเลกชัน
+  thumbnail_generation_complete: การสร้างภาพขนาดย่อเสร็จสมบูรณ์
+  thumbnail_generation_finished: การสร้างภาพขนาดย่อเสร็จสิ้นเรียบร้อยแล้ว
+  wallpaper_collection: คอลเลกชันวอลล์เปเปอร์
+  wallpaper_settings: การตั้งค่าวอลเปเปอร์
+  withOverlay: ด้วยการซ้อนทับ
+  workspace_collections: คอลเลกชันพื้นที่ทำงาน
+weg:
+  auto_hide: ซ่อนอัตโนมัติ
+  delay_to_hide: ล่าช้าในการซ่อน
+  delay_to_show: ล่าช้าในการแสดง
+  dock_side: ตำแหน่ง
+  enable: เปิดใช้งาน Dock/Task -Babar
+  filtering: การกรองรายการ
+  gap: ช่องว่าง
+  hide_mode:
+    always: เสมอ
+    never: ไม่เคย
+    on_overlap: เมื่อทับซ้อนกัน
+  items:
+    gap: ช่องว่างระหว่างรายการ
+    label: รายการ
+    pinned_visibility:
+      always: เสมอ
+      label: การมองเห็นรายการที่ปักหมุด
+      when_primary: เมื่อมอนิเตอร์เป็นเครื่องหลัก
+    show_instance_counter: แสดงตัวนับ Windows Open
+    show_window_title: แสดงชื่อเปิดหน้าต่าง (แนวนอนเท่านั้น)
+    size: ขนาดรายการ
+    split_windows: แยก Windows (หนึ่งรายการต่อหน้าต่าง)
+    temporal_visibility:
+      all: ทั้งหมด
+      label: การมองเห็นรายการที่เลิกปักหมุด
+      on_monitor: บนจอภาพ
+    visible_separators: ตัวแยกที่มองเห็นได้
+  label: แท่นวาง/บาร์
+  margin: ระยะขอบ
+  mode:
+    full_width: ความกว้างเต็มหน้าจอ
+    min_content: เล็กเท่าที่จะทำได้
+  padding: การขยายความ
+  show_end_task: แสดงงานสิ้นสุดในแถบงาน
+  width: ความกว้าง
+welcome:
+  give_a_review: ให้รีวิว
+  message: >-
+    Seelen UI เป็นสภาพแวดล้อมเดสก์ท็อปแบบโอเพ่นซอร์สฟรีสำหรับ Windows ที่นี่
+    คุณสามารถควบคุมลักษณะและลักษณะการทำงานของเดสก์ท็อปของคุณได้อย่างเต็มที่
+    ช่วยให้คุณสามารถปรับแต่งทุกรายละเอียดให้ตรงกับขั้นตอนการทำงานและสไตล์ของคุณ
+  ok: เริ่มกันเลย!
+  review: >-
+    หากคุณสนุกกับการใช้ UI ของ Seelen ลองเขียนรีวิวไว้ที่ร้านค้า
+    ความคิดเห็นของคุณจะช่วยให้โปรเจ็กต์เติบโตและปรับปรุงได้
+  title: ยินดีต้อนรับสู่ Seelen UI!
+widget:
+  enable: เปิดใช้งานวิดเจ็ตนี้
+  enable_for_monitor: เปิดใช้งานบนจอภาพนี้
+  instances: อินสแตนซ์
+wm:
+  animations:
+    duration: ระยะเวลาการเคลื่อนไหว (MS)
+    ease_function: ฟังก์ชั่นการผ่อนคลายภาพเคลื่อนไหว
+    enable: เปิดใช้งานภาพเคลื่อนไหวของหน้าต่าง
+  author: ผู้เขียน
+  border:
+    enable: เปิดใช้งานเส้นขอบของหน้าต่าง
+    offset: ชดเชยพรมแดน
+    width: ความกว้างชายแดน
+  description: คำอธิบาย
+  drag_behavior: พฤติกรรมการลาก
+  drag_behavior_options:
+    sort: จัดเรียง (เรียงลำดับหน้าต่างใหม่ขณะลาก)
+    swap: สลับ (สลับหน้าต่างที่ปลายลาก)
+  enable: เปิดใช้งานตัวจัดการหน้าต่างปูกระเบื้อง
+  layout: เค้าโครง
+  resize_delta: ปรับขนาดเดลต้า (%)
+  space_between_containers: ช่องว่างระหว่างภาชนะบรรจุ
+  workspace_offset: พื้นที่ทำงานออฟเซ็ต (ระยะขอบ)
+  workspace_padding: ช่องว่างพื้นที่ทำงาน
+'yes': ใช่

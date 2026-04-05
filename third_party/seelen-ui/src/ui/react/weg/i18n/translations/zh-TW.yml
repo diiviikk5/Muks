@@ -1,0 +1,35 @@
+app_menu:
+  close: 關閉
+  close_multiple: 關閉全部
+  copy_handles: 複製把手
+  kill: 殺死過程
+  kill_multiple: 殺死所有過程
+  open_file_location: 打開文件位置
+  pin: 別針
+  pin_to_center: 引腳到中心
+  pin_to_left: 引腳向左
+  pin_to_right: 銷釘向右
+  run_as: 作為管理員運行
+  unpin: Uncin
+context_menu:
+  remove_module: 移除模塊
+  reorder_disable: 鎖任務欄
+  reorder_enable: 解鎖任務欄
+media:
+  not_playing: 什麼都沒有玩
+show_desktop:
+  label: 顯示桌面
+start:
+  label: 開始菜單
+taskbar_menu:
+  add_file: 引導自定義文件
+  desktop: 添加桌面模塊
+  media: 添加媒體模塊
+  settings: 設定
+  start: 添加開始模塊
+  task_manager: 工作管理員
+  trash_bin: 新增回收站模組
+trash_bin:
+  empty_bin: 清空回收站
+weg:
+  empty: 沒有顯示的物品

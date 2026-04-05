@@ -1,0 +1,395 @@
+action:
+  confirm: Ishonasizmi?
+  confirm_body: Ushbu harakatni bekor qilib bo'lmaydi.
+apps_configurations:
+  app:
+    bindings: Bog'lash (eslatma ikkalasi ham talab qilinadi)
+    category: Tili
+    category_placeholder: Hech biri
+    monitor: Monitor
+    monitor_placeholder: Hech biri
+    name: Ism
+    ok_create: Yaratmoq
+    ok_edit: Yangilamoq
+    ok_readonly: Yangi sifatida tahrirlash
+    options:
+      NoInteractive: Interaktiv interfaol yo'q
+      VdPinned: Barcha ish joylarida ko'rsatish
+      WmFloat: TWM - suzishni boshlang
+      WmForce: TWM - kuchni boshqarish
+      WmUnmanage: TWM - Ungelaj
+    options_label: Qo'shimcha variantlar
+    title_create: '{{Ism}} yaratish'
+    title_edit: '{{Ismi}} tahrirlash'
+    title_readonly: Ko'rish {{ism}}
+    weg_options_label: Dok / vazifalar paneli
+    wm_options_label: Oyna boshqaruvchisi variantlari
+    workspace: Ish maydoni
+    workspace_placeholder: Hech biri
+  bundled_msg: >-
+    Ushbu yig'ilgan konfiguratsiyalar tahrirlanmaydi va sizga eng yaxshi
+    tajribani taqdim etishsiz taqdim etish uchun mo'ljallangan. Ular avtomatik
+    ravishda siz uchun eng keng tarqalgan dasturlarni sozlaydi.
+  bundled_title: Dastur konfigurasi Seelen bilan bog'langan
+  confirm_delete: Ushbu konfiguratsiyani o'chirishni xohlayotganingizga ishonchingiz komilmi?
+  confirm_delete_title: O'chirishni tasdiqlang
+  delete: O'chirmoq
+  export: Eksport
+  export_full: Ilova orqali eksport sozlamalari
+  extra_info: >-
+    Seelen UI har bir ilovada faqat bitta identifikatordan foydalanadi (birinchi
+    moslik topildi), shuning uchun qanday belgilanish tartibi muhim, oxirgi
+    qoʻshilganlar ustuvor boʻladi, chunki jadval sukut boʻyicha oxirgidan
+    eskisiga saralanganligini unutmang.
+  identifier:
+    add_block: Blokni qo'shish
+    and: Va
+    id: Identifikator
+    kind: Aniqlang
+    matching_strategy: Mos keladigan strategiya
+    matching_strategy_option:
+      contains: Tarkibida
+      ends_with: bilan tugaydi
+      equals: Teng
+      regex: Muntazam ifoda
+      starts_with: bilan boshlanadi
+    negation: Mos kelmaslik
+    or: Yoki
+    remove: Blokni o'chirish
+    type:
+      class: Sinf
+      exe: Exe
+      path: Yo'l
+      title: Sarlavha
+  import: Import
+  import_full: Ilova orqali import sozlamalari
+  new: Yangi
+  search: Qidirmoq
+  swap: Almashmoq
+cancel: Bekor qilmoq
+close: Yaqin
+delete: O'chirmoq
+devtools:
+  app_folders: Ilova papkalari
+  custom_config_file: Custom Config faylini yuklang
+  data_folder: Ma'lumotlar papkasi
+  enable: Ishlab chiqaruvchi vositalarni yoqish
+  install_folder: O'rnatish papkasini o'rnatish
+  load: Yuklamoq
+  settings_file: Sozlamalar fayli
+  simulate_perm:
+    label: Vidjetga ruxsat so‘rovini simulyatsiya qilish
+    result_allowed: ✓ Ruxsat berilgan
+    result_denied: ✗ Ruxsat rad etildi
+    trigger: Simulyatsiya qilish
+    widget_id_placeholder: '@muallif/vidjet nomi'
+extras:
+  clear_icons: Tozalash tizimi piktogrammalari kesh
+  clear_icons_tooltip: >-
+    Barcha vidjetlarga to'liq ta'sir qilish uchun qayta boshlash talab qilinishi
+    mumkin
+  exit: Chiqish / chiqish
+  links: Rasmiy havolalar
+  relaunch: Qolma
+  version: Versiya
+  version_fixed: >-
+    Ilova va WebView2 Runtime versiyalari aniqlangan. Bu shuni anglatadiki,
+    ilova yangilanishlarni olmaydi va WebView2 Runtime Windows yangilanishlari
+    bilan avtomatik ravishda yangilanmaydi.
+general:
+  accent_color: Urg'u rangi
+  date_format: Sana formati
+  date_format_how_to: Sana formatini qanday yozish kerak?
+  hardware_acceleration: Uskuna tezlashuvi
+  hardware_acceleration_description: >-
+    Uskuna tezlashtirishni o'chirib qo'yish xotiradan foydalanishni kamaytiradi,
+    lekin ishlash bilan bog'liq muammolarga olib kelishi mumkin. Jonli fon
+    rasmlarini ishlatmasangiz, o'chirib qo'yish xavfsiz.
+  icon_pack:
+    available: Mavjud piktogramma to'plamlari
+    selected: Faol piktogramma to'plamlari
+  language: Til
+  monday: dushanba
+  performance_mode:
+    on_battery: Batareyada
+    on_energy_saver: Energiya tejash bo'yicha
+    options:
+      disabled: Nogiron
+      extreme: Haddan tashqari
+      minimal: Minimal
+    plugged: Ulangan yoki zaryadlash
+  polling_interval: Tizim so'rovi oralig'i
+  polling_interval_description: >-
+    Seelen UI protsessor, operativ xotira, tarmoq va disk faoliyati kabi tizim
+    resurslarini qanchalik tez-tez tekshiradi (soniyalarda). Kichikroq raqam
+    tez-tez yangilanishlarni anglatadi, lekin biroz yuqoriroq resurslardan
+    foydalanish.
+  saturday: shanba
+  start_of_week: Hafta boshi
+  startup: Ishga tushirishda ishlaydimi?
+  sunday: yakshanba
+  theme:
+    available: Mavjud mavzular
+    selected: Faol mavzular
+header:
+  labels:
+    config: Konfiguratsiya
+    developer: Ishlab chiquvchilar uchun
+    extras: Ekstraza
+    general: Umumiy
+    home: Uy
+    icon_pack_editor: Keshlangan piktogrammalar
+    iconpack: Ikonka paketlari
+    monitors: Monitorlar
+    plugin: Plaginlar
+    resources: Resurslar
+    shortcuts: Yorliqlar
+    soundpack: Ovozli paketlar
+    specific_apps: Ilova orqali sozlash
+    theme: Mavzular
+    virtual_desk: Virtual ish stollari
+    wallpaper: Fon rasmlari
+    widget: Vidjetlar
+home:
+  new_resources: Yangi manbalar
+inherit: Meros qilib olmoq
+inProgress: Jarayonda...
+insert: Qo'shmoq
+loading: Yuklash ...
+miscellaneous: Har xil
+monitors_configurations:
+  label: '{{Indeks}}'
+more: Ko'proq
+'no': Yo'q
+open: Ochiq
+quit: Ketmoq
+remove: Olib tashlamoq
+reset_all_to_default: Barcha standart qiymatlarni qayta o'rnating
+reset_to_default: Standart qiymatni qayta o'rnating
+resources:
+  app_outdated: Ushbu resurs Seelen UIning yangi versiyasini kerakli ishlashga talab qiladi.
+  corrupted_wallpaper: >-
+    Eskizni chiqarib boʻlmadi - buzilgan yoki qoʻllab-quvvatlanmaydigan video
+    formati
+  delete: Resurslarni o'chirish
+  discover: Ko'proq resurslarni kashf eting
+  has_update: Yangilanish mavjud
+  high_impact: Ishlashning yuqori ta'siri
+  import_wallpapers: Mahalliy fon rasmlarini import qilish
+  open_folder: Resurslar jildini oching
+  outdated: >-
+    Ushbu manba Seelen UIning eski versiyasi uchun mo'ljallangan va to'g'ri
+    ishlamasligi mumkin.
+  see_on_website: Veb-saytda ko'ring
+review_request:
+  not_now: Hozir emas
+  sure: Albatta!
+  title: Seelen UI yoqyapsizmi?
+save: Tejash
+save_and_restart: Saqlang va qayta yoqing
+search: Qidiruv
+see_more: Ko'proq ko'rish
+shortcuts:
+  duplicate_error: Bu yorliq takrorlanadi
+  enable: Ichki yorliqlar tizimini yoqing
+  enable_tooltip: >-
+    Seelen Ui mijozidan foydalanib o'zingizning yorliq tizimingizni amalga
+    oshirsangiz, o'chiring
+  labels:
+    create_new_workspace: Yangi ish maydonini yarating
+    cycle_stack_next: Keyingi tsikl stakan
+    cycle_stack_prev: Oldingi tsikl stakan
+    cycle_wallpaper_next: Keyingi devor qog'ozi o'zgartiring
+    cycle_wallpaper_prev: Oldingi fon rasmiga o'zgartirish
+    decrease_height: Balandlikni kamaytirish
+    decrease_width: Kenglikni kamaytirish
+    destroy_current_workspace: Hozirgi ish maydonini yo'q qiling
+    focus_bottom: Fokus suvi
+    focus_latest: Eng so'nggi
+    focus_left: Fince chap
+    focus_right: Joylashtirish
+    focus_top: Face Top
+    increase_height: Balandlikni oshirish
+    increase_width: Kenglikni oshirish
+    misc_force_quit: Kuch berish
+    misc_force_restart: Kuchni qayta boshlang
+    misc_open_settings: Ochiq sozlamalar
+    misc_toggle_lock_tracing: Qulfni qaytarish (jurnallar)
+    misc_toggle_win_event_tracing: Tap The The The The Trecing (jurnallar)
+    move_to_workspace: Ish maydoni uchun {{0}}
+    move_window_down: Oynani pastga siljiting
+    move_window_left: Oynani chapga siljiting
+    move_window_right: Oynani o'ngga siljiting
+    move_window_up: Oynani yuqoriga siljiting
+    pause_tiling: Tiling oynasi menejeri
+    reserve_bottom: Zaxira pastki
+    reserve_float: Suzmoq
+    reserve_left: Zaxira chap
+    reserve_right: Qo'riqxona
+    reserve_stack: Zaxira to'plami
+    reserve_top: Zaxira tepasi
+    restore_sizes: O'lchamlarini tiklash
+    send_to_workspace: Ish maydoni uchun {{0}}
+    start_weg_app: Fokus yoki dasturni boshlash {{0}}
+    switch_to_next_workspace: Keyingi ish joyiga o'tish
+    switch_to_previous_workspace: Oldingi ish joyiga o'tish
+    switch_workspace: Ish maydoni {{0}}
+    toggle_float: Oynaning sath rejimini o'zgartiring
+    toggle_monocle: Ish maydoni Monokle rejimini o'zgartiring
+  readonly_tooltip: Bu faqat o'qish faqat yorliqidir
+  reset: Standartlarga qayta o'rnating
+sides:
+  bottom: Pastki
+  left: Chapda
+  right: To'g'ri
+  top: Eng yuqori
+toolbar:
+  auto_hide: Avtomatik yashirish
+  delay_to_hide: Yashirish uchun kechikish
+  delay_to_show: Ko'rsatish uchun kechikish
+  dock_side: Pozitsiya
+  enable: Fashr asboblar panelini yoqing
+  hide_mode:
+    always: Har doim
+    never: Hech qachon
+    on_overlap: Bir-biriga yopishgan holda
+  item_size: Element hajmi
+  label: Asboblar paneli
+  margin: Marja hajmi
+  padding: To'ldirish hajmi
+  placeholder: {}
+update:
+  available: Yangilanish mavjud!
+  channel: Kanalni yangilash
+  downloading: Yuklab olish ...
+wall:
+  backgrounds: Fon rasmlari
+  blur: Puflamoq
+  cancel: Bekor qilish
+  close: Yopish
+  collection_name: To'plam nomi
+  collections: To'plamlar
+  contrast: Qarama-qarshilik
+  corrupted_wallpapers_message: 'Buzilgan fon rasmlari, ularni o''chirishni o''ylab ko''ring:'
+  create: Yaratish
+  create_collection: To'plam yaratish
+  default_collection: Birlamchi toʻplam
+  delete_collection: To'plamni o'chirish
+  edit_collection: To'plamni tahrirlash
+  enable: Fon rasmi menejerini yoqing
+  extend: Birlamchini kengaytiring
+  fit:
+    contain: O'z ichiga olgan
+    cover: Qopqoq
+    fill: To'ldirmoq
+  flipHorizontal: Gorizontalental
+  flipVertical: Vertikal vertikal
+  generating_thumbnails: Fon rasmi eskizlari yaratilmoqda
+  hours: soat
+  interval: Har bir devor rasmini o'zgartiring
+  minutes: daqiqa
+  monitor_collection: Monitor to'plami
+  multimonitor_behaviour: Multimonitor xatti-harakati
+  muted: Ovozni o'chirish
+  no_background: O'rniga slaydshown, ularning o'rniga formatdan foydalanib.
+  no_collections: >-
+    Hozircha hech qanday kolleksiya yaratilmagan. Uni yaratish uchun + tugmasini
+    bosing.
+  objectFit: Fon mos
+  objectPosition: Fon holati
+  overlayColor: Overlay rang
+  overlayMixBlendMode: Ortiqcha aralashtirish rejimini aralashtiring
+  per_monitor: Monitor uchun
+  playback: Qayta tinglash tezligi
+  position:
+    bottom: Pastki
+    center: Markaz
+    left: Chapda
+    right: To'g'ri
+    top: Eng yuqori
+  processing_video: Videoga ishlov berilmoqda
+  random: Tasodifiy slayd-shou
+  saturation: To'yinganlik
+  seconds: soniya
+  select_collection: To'plamni tanlang
+  thumbnail_generation_complete: Eskiz yaratish tugallandi
+  thumbnail_generation_finished: Eskiz yaratish muvaffaqiyatli yakunlandi
+  wallpaper_collection: Fon rasmi to'plami
+  wallpaper_settings: Fon rasmi sozlamalari
+  withOverlay: Qopqoq bilan
+  workspace_collections: Ish maydoni to'plamlari
+weg:
+  auto_hide: Avtomatik yashirish
+  delay_to_hide: Yashirish uchun kechikish
+  delay_to_show: Ko'rsatish uchun kechikish
+  dock_side: Pozitsiya
+  enable: Dock / vazifalar panelini yoqing
+  filtering: Mahsulotni filtrlash
+  gap: Bo'shliq
+  hide_mode:
+    always: Har doim
+    never: Hech qachon
+    on_overlap: Bir-biriga yopishgan holda
+  items:
+    gap: Buyumlar orasidagi bo'shliq
+    label: Narsalar
+    pinned_visibility:
+      always: Har doim
+      label: Belgilangan elementlarning ko'rinishi
+      when_primary: Monitor asosiy bo'lganda
+    show_instance_counter: Ochiq Windows hisoblagichini ko'rsatish
+    show_window_title: Ochiq deraza nomini ko'rsatish (faqat gorizontal)
+    size: Element hajmi
+    split_windows: Windowsni ajratish (har bir oynada bitta element)
+    temporal_visibility:
+      all: Hammasi
+      label: Ochilmagan elementlarning ko'rinishi
+      on_monitor: Monitorda
+    visible_separators: Ko'rinadigan ajratuvchi
+  label: Dok / vazifalar paneli
+  margin: Marja
+  mode:
+    full_width: To'liq ekran kengligi
+    min_content: Iloji boricha kichik
+  padding: Plomba
+  show_end_task: Vazifalar panelida tugatish vazifasini ko'rsating
+  width: Kenglik
+welcome:
+  give_a_review: Sharh bering
+  message: >-
+    Seelen UI Windows uchun bepul va ochiq manbali ish stoli muhitidir. Bu yerda
+    siz ish stolingiz qanday koʻrinishi va oʻzini tutishini toʻliq nazorat qila
+    olasiz, bu sizga har bir detalni ish jarayoni va uslubingizga mos ravishda
+    sozlash imkonini beradi.
+  ok: Boshlaymiz!
+  review: >-
+    Agar siz Seelen UI-dan foydalanishni yoqtirsangiz, do'konda sharh qoldiring
+    - fikr-mulohazalaringiz loyihani rivojlantirish va yaxshilashga yordam
+    beradi.
+  title: Seelen UI-ga xush kelibsiz!
+widget:
+  enable: Bu vidjetni yoqing
+  enable_for_monitor: Ushbu monitorga yoqish
+  instances: Mustaqil holatlar
+wm:
+  animations:
+    duration: Animatsiya muddati (MS)
+    ease_function: Animatsiya engillashtirish funktsiyasi
+    enable: Oyna animatsiyalarini yoqing
+  author: Muallif
+  border:
+    enable: Oynaning chegarasini yoqing
+    offset: Chegara ofset
+    width: Chegara kengligi
+  description: Tavsif
+  drag_behavior: Harakatni tortish
+  drag_behavior_options:
+    sort: Saralash (tortish paytida oynalarni qayta tartiblash)
+    swap: Almashtirish (drag oxirida oynalarni almashtirish)
+  enable: Tiling oyna boshqaruvchisini yoqing
+  layout: Tartib
+  resize_delta: Delta (%) ni o'zgartiring
+  space_between_containers: Idishlar orasidagi bo'shliq
+  workspace_offset: Ishxonalar ofset (marjalar)
+  workspace_padding: Ish plakding
+'yes': Ha

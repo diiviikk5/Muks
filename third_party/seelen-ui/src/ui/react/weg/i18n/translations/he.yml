@@ -1,0 +1,35 @@
+app_menu:
+  close: סגור
+  close_multiple: סגור הכל
+  copy_handles: העתק ידיות
+  kill: הרוג תהליך
+  kill_multiple: הרוג את כל התהליכים
+  open_file_location: פתח את מיקום הקובץ
+  pin: הצמד
+  pin_to_center: הצמד למרכז
+  pin_to_left: הצמד לשמאל
+  pin_to_right: הצמד לימין
+  run_as: הפעל כמנהל
+  unpin: בטל הצמדה
+context_menu:
+  remove_module: הסר מודול
+  reorder_disable: נעל את שורת המשימות
+  reorder_enable: ביטול נעילת שורת המשימות
+media:
+  not_playing: שום דבר לא משחק
+show_desktop:
+  label: הצג את שולחן העבודה
+start:
+  label: תפריט התחל
+taskbar_menu:
+  add_file: הצמד קובץ מותאם אישית
+  desktop: הוסף מודול שולחן עבודה
+  media: הוסף מודול מדיה
+  settings: הגדרות
+  start: הוסף מודול התחל
+  task_manager: מנהל משימות
+  trash_bin: הוסף מודול סל המיחזור
+trash_bin:
+  empty_bin: ריק סל המיחזור
+weg:
+  empty: אין פריטים להצגה

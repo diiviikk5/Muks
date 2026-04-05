@@ -1,0 +1,383 @@
+action:
+  confirm: ਤੁਹਾਨੂੰ ਪੂਰਾ ਵਿਸ਼ਵਾਸ ਹੈ?
+  confirm_body: ਇਸ ਕਿਰਿਆ ਨੂੰ ਵਾਪਸ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ.
+apps_configurations:
+  app:
+    bindings: ਬਾਈਡਿੰਗ (ਨੋਟ ਕਰੋ ਕਿ ਦੋਵੇਂ ਵਿਕਲਪ ਲੋੜੀਂਦੇ ਹਨ)
+    category: ਸ਼੍ਰੇਣੀ
+    category_placeholder: ਕੋਈ ਨਹੀਂ
+    monitor: ਮਾਨੀਟਰ
+    monitor_placeholder: ਕੋਈ ਨਹੀਂ
+    name: ਨਾਮ
+    ok_create: ਬਣਾਓ
+    ok_edit: ਅਪਡੇਟ
+    ok_readonly: ਨਵੇਂ ਵਜੋਂ ਸੰਪਾਦਿਤ ਕਰੋ
+    options:
+      NoInteractive: ਕੋਈ ਇੰਟਰਐਕਟਿਵ ਨਹੀਂ
+      VdPinned: ਸਾਰੇ ਵਰਕਸਪੇਸ ਵਿੱਚ ਦਿਖਾਓ
+      WmFloat: Twm - ਫਲੋਟਿੰਗ ਸ਼ੁਰੂ ਕਰੋ
+      WmForce: Twm - ਫੋਰਸ ਪ੍ਰਬੰਧਨ
+      WmUnmanage: Twm - ਅਪ੍ਰਬੰਧਿਤ
+    options_label: ਵਾਧੂ ਵਿਕਲਪ
+    title_create: '{{name}} ਬਣਾਉਣਾ'
+    title_edit: ਸੰਪਾਦਨ {ime neame}
+    title_readonly: '{{name}} ਦੇਖ ਰਹੇ ਹਾਂ'
+    weg_options_label: ਡੌਕ / ਟਾਸਕਬਾਰ ਚੋਣਾਂ
+    wm_options_label: ਵਿੰਡੋ ਮੈਨੇਜਰ ਦੇ ਵਿਕਲਪ
+    workspace: ਵਰਕਸਪੇਸ
+    workspace_placeholder: ਕੋਈ ਨਹੀਂ
+  bundled_msg: >-
+    ਇਹ ਬੰਡਲ ਕੀਤੀਆਂ ਸੰਰਚਨਾਵਾਂ ਸੰਪਾਦਨਯੋਗ ਨਹੀਂ ਹਨ ਅਤੇ ਤੁਹਾਨੂੰ ਅਨੁਕੂਲਿਤ ਕੀਤੇ ਬਿਨਾਂ
+    ਵਧੀਆ ਅਨੁਭਵ ਪ੍ਰਦਾਨ ਕਰਨ ਲਈ ਤਿਆਰ ਕੀਤੀਆਂ ਗਈਆਂ ਹਨ। ਉਹ ਤੁਹਾਡੇ ਲਈ ਸਭ ਤੋਂ ਆਮ
+    ਐਪਲੀਕੇਸ਼ਨਾਂ ਨੂੰ ਸਵੈਚਲਿਤ ਤੌਰ 'ਤੇ ਕੌਂਫਿਗਰ ਕਰਦੇ ਹਨ।
+  bundled_title: ਐਪ ਕੌਂਫਿਗ ਸੀਲੇਨ ਨਾਲ ਬੰਡਲ ਕੀਤੀ ਗਈ
+  confirm_delete: ਕੀ ਤੁਸੀਂ ਯਕੀਨੀ ਤੌਰ 'ਤੇ ਇਸ ਸੰਰਚਨਾ/s ਨੂੰ ਮਿਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?
+  confirm_delete_title: ਮਿਟਾਉਣ ਦੀ ਪੁਸ਼ਟੀ ਕਰੋ
+  delete: ਮਿਟਾਓ
+  export: ਨਿਰਯਾਤ
+  export_full: ਐਪਲੀਕੇਸ਼ਨ ਦੁਆਰਾ ਸੈਟਿੰਗਜ਼ ਨਿਰਯਾਤ ਕਰੋ
+  extra_info: ਵੇਖਣਯੋਗ UI ਪ੍ਰਤੀ ਐਪ ਨੂੰ ਸਿਰਫ ਇਕ ਪਛਾਣਕਰਤਾ ਦੀ ਵਰਤੋਂ ਕਰਦੇ ਹਨ
+  identifier:
+    add_block: ਬਲਾਕ ਸ਼ਾਮਲ ਕਰੋ
+    and: ਅਤੇ
+    id: ਪਛਾਣਕਰਤਾ
+    kind: ਦੁਆਰਾ ਪਛਾਣੋ
+    matching_strategy: ਮੈਚਿੰਗ ਰਣਨੀਤੀ
+    matching_strategy_option:
+      contains: ਸ਼ਾਮਿਲ ਹੈ
+      ends_with: ਨਾਲ ਖਤਮ ਹੁੰਦਾ ਹੈ
+      equals: ਬਰਾਬਰ ਹੈ
+      regex: ਨਿਯਮਤ ਸਮੀਕਰਨ
+      starts_with: ਨਾਲ ਸ਼ੁਰੂ ਹੁੰਦਾ ਹੈ
+    negation: ਨੈਗੇਟ ਮੈਚਿੰਗ
+    or: ਜਾਂ
+    remove: ਬਲਾਕ ਮਿਟਾਓ
+    type:
+      class: ਕਲਾਸ
+      exe: ਐਕਸ
+      path: ਮਾਰਗ
+      title: ਸਿਰਲੇਖ
+  import: ਆਯਾਤ ਕਰੋ
+  import_full: ਐਪਲੀਕੇਸ਼ਨ ਦੁਆਰਾ ਸੈਟਿੰਗਾਂ ਆਯਾਤ ਕਰੋ
+  new: ਨਵਾਂ
+  search: ਖੋਜ
+  swap: ਸਵੈਪ
+cancel: ਰੱਦ ਕਰੋ
+close: ਨੇੜੇ
+delete: ਮਿਟਾਓ
+devtools:
+  app_folders: ਐਪ ਫੋਲਡਰ
+  custom_config_file: ਕਸਟਮ ਕੌਂਫਿਗ ਫਾਈਲ ਲੋਡ ਕਰੋ
+  data_folder: ਡਾਟਾ ਫੋਲਡਰ
+  enable: ਡਿਵੈਲਪਰ ਟੂਲਸ ਨੂੰ ਸਮਰੱਥ ਬਣਾਓ
+  install_folder: ਇੰਸਟਾਲੇਸ਼ਨ ਫੋਲਡਰ
+  load: ਲੋਡ ਕਰੋ
+  settings_file: ਸੈਟਿੰਗਜ਼ ਫਾਈਲ
+  simulate_perm:
+    label: ਵਿਜੇਟ ਅਨੁਮਤੀ ਬੇਨਤੀ ਦੀ ਨਕਲ ਕਰੋ
+    result_allowed: ✓ ਇਜਾਜ਼ਤ ਦਿੱਤੀ ਗਈ
+    result_denied: ✗ ਇਜਾਜ਼ਤ ਅਸਵੀਕਾਰ ਕੀਤੀ ਗਈ
+    trigger: ਸਿਮੂਲੇਟ
+    widget_id_placeholder: '@author/widget-name'
+extras:
+  clear_icons: ਸਿਸਟਮ ਆਈਕਾਨ ਕੈਚੇ ਸਾਫ਼ ਕਰੋ
+  clear_icons_tooltip: ਸਾਰੇ ਵਿਜੇਟਸ 'ਤੇ ਪੂਰੀ ਤਰ੍ਹਾਂ ਲਾਗੂ ਹੋਣ ਲਈ ਇੱਕ ਰੀਸਟਾਰਟ ਦੀ ਜ਼ਰੂਰਤ ਹੋ ਸਕਦੀ ਹੈ
+  exit: ਛੱਡੋ/ਬਾਹਰ ਨਿਕਲੋ
+  links: ਅਧਿਕਾਰਤ ਲਿੰਕ
+  relaunch: ਮੁੜ-ਲਾਂਚ ਕਰੋ
+  version: ਸੰਸਕਰਣ
+  version_fixed: >-
+    ਐਪਲੀਕੇਸ਼ਨ ਅਤੇ WebView2 ਰਨਟਾਈਮ ਸੰਸਕਰਣ ਸਥਿਰ ਹਨ। ਇਸਦਾ ਮਤਲਬ ਹੈ ਕਿ ਐਪਲੀਕੇਸ਼ਨ
+    ਅੱਪਡੇਟ ਪ੍ਰਾਪਤ ਨਹੀਂ ਕਰੇਗੀ ਅਤੇ WebView2 ਰਨਟਾਈਮ ਨੂੰ ਵਿੰਡੋਜ਼ ਅੱਪਡੇਟ ਨਾਲ ਆਪਣੇ ਆਪ
+    ਅੱਪਡੇਟ ਨਹੀਂ ਕੀਤਾ ਜਾਵੇਗਾ।
+general:
+  accent_color: ਲਹਿਜ਼ਾ ਰੰਗ ਦਾ ਰੰਗ
+  date_format: ਤਾਰੀਖ ਦਾ ਫਾਰਮੈਟ
+  date_format_how_to: ਇੱਕ ਮਿਤੀ ਫਾਰਮੈਟ ਕਿਵੇਂ ਲਿਖਣਾ ਹੈ?
+  hardware_acceleration: ਹਾਰਡਵੇਅਰ ਪ੍ਰਵੇਗ
+  hardware_acceleration_description: >-
+    ਹਾਰਡਵੇਅਰ ਪ੍ਰਵੇਗ ਨੂੰ ਅਸਮਰੱਥ ਕਰਨ ਨਾਲ ਮੈਮੋਰੀ ਦੀ ਵਰਤੋਂ ਘੱਟ ਜਾਵੇਗੀ, ਪਰ ਪ੍ਰਦਰਸ਼ਨ
+    ਸੰਬੰਧੀ ਸਮੱਸਿਆਵਾਂ ਪੈਦਾ ਹੋ ਸਕਦੀਆਂ ਹਨ। ਜੇਕਰ ਤੁਸੀਂ ਲਾਈਵ ਵਾਲਪੇਪਰਾਂ ਦੀ ਵਰਤੋਂ ਨਹੀਂ
+    ਕਰਦੇ ਹੋ ਤਾਂ ਅਯੋਗ ਕਰਨਾ ਸੁਰੱਖਿਅਤ ਹੈ।
+  icon_pack:
+    available: ਉਪਲਬਧ ਆਈਕਨ ਪੈਕ
+    selected: ਐਕਟਿਵ ਆਈਕਨ ਪੈਕ
+  language: ਭਾਸ਼ਾ
+  monday: ਸੋਮਵਾਰ
+  performance_mode:
+    on_battery: ਬੈਟਰੀ ਤੇ
+    on_energy_saver: Energy ਰਜਾ ਸੇਵਰ ਤੇ
+    options:
+      disabled: ਅਯੋਗ
+      extreme: ਅੱਤ
+      minimal: ਘੱਟੋ ਘੱਟ
+    plugged: ਪਲੱਗ ਕੀਤਾ ਜਾਂ ਚਾਰਜ ਕਰਨਾ
+  polling_interval: ਸਿਸਟਮ ਪੋਲਿੰਗ ਅੰਤਰਾਲ
+  polling_interval_description: >-
+    ਕਿੰਨੀ ਵਾਰ (ਸਕਿੰਟਾਂ ਵਿੱਚ) ਸੀਲੇਨ UI CPU, RAM, ਨੈੱਟਵਰਕ, ਅਤੇ ਡਿਸਕ ਗਤੀਵਿਧੀ ਵਰਗੇ
+    ਸਿਸਟਮ ਸਰੋਤਾਂ ਦੀ ਜਾਂਚ ਕਰਦਾ ਹੈ। ਇੱਕ ਛੋਟੀ ਸੰਖਿਆ ਦਾ ਮਤਲਬ ਹੈ ਵਧੇਰੇ ਵਾਰ-ਵਾਰ
+    ਅੱਪਡੇਟ, ਪਰ ਥੋੜਾ ਵੱਧ ਸਰੋਤ ਵਰਤੋਂ।
+  saturday: ਸ਼ਨੀਵਾਰ
+  start_of_week: ਹਫ਼ਤੇ ਦੀ ਸ਼ੁਰੂਆਤ
+  startup: ਸਟਾਰਟਅੱਪ 'ਤੇ ਚਲਾਉਣਾ?
+  sunday: ਐਤਵਾਰ
+  theme:
+    available: ਉਪਲਬਧ ਥੀਮ
+    selected: ਕਿਰਿਆਸ਼ੀਲ ਥੀਮ
+header:
+  labels:
+    config: ਸੰਰਚਨਾ
+    developer: ਡਿਵੈਲਪਰਾਂ ਲਈ
+    extras: ਵਾਧੂ
+    general: ਜਨਰਲ
+    home: ਘਰ
+    icon_pack_editor: ਕੈਸ਼ਡ ਆਈਕਾਨ
+    iconpack: ਆਈਕਾਨ ਪੈਕ
+    monitors: ਨਿਗਰਾਨੀ ਕਰਦਾ ਹੈ
+    plugin: ਪਲੱਗਇਨ
+    resources: ਸਰੋਤ
+    shortcuts: ਸ਼ਾਰਟਕੱਟ
+    soundpack: ਧੁਨੀ ਪੈਕ
+    specific_apps: ਐਪਲੀਕੇਸ਼ਨ ਦੁਆਰਾ ਸੈਟਿੰਗਾਂ
+    theme: ਥੀਮ
+    virtual_desk: ਵਰਚੁਅਲ ਡੈਸਕਟਾਪ
+    wallpaper: ਵਾਲਪੇਪਰ
+    widget: ਵਿਜੇਟਸ
+home:
+  new_resources: ਨਵੇਂ ਸਰੋਤ
+inherit: ਵਿਰਾਸਤ
+inProgress: ਤਰੱਕੀ ਹੋ ਰਹੀ ਹੈ...
+insert: ਸੰਮਿਲਿਤ ਕਰੋ
+loading: ਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ...
+miscellaneous: ਫੁਟਕਲ
+monitors_configurations:
+  label: ਨਿਗਰਾਨੀ {{ਇੰਡੈਕਸ}
+more: ਹੋਰ
+'no': ਨਹੀਂ
+open: ਖੋਲ੍ਹੋ
+quit: ਛੱਡੋ
+remove: ਹਟਾਓ
+reset_all_to_default: ਸਾਰੇ ਡਿਫੌਲਟ ਮੁੱਲਾਂ ਤੇ ਰੀਸੈਟ ਕਰੋ
+reset_to_default: ਡਿਫੌਲਟ ਵੈਲਯੂ ਤੇ ਰੀਸੈਟ ਕਰੋ
+resources:
+  app_outdated: ਇਸ ਸਰੋਤ ਲਈ ਸਹੀ ਤਰ੍ਹਾਂ ਕੰਮ ਕਰਨ ਲਈ ਇੱਕ ਨਵੇਂ ਸੰਸਕਰਣ ਦੀ ਜ਼ਰੂਰਤ ਹੈ.
+  corrupted_wallpaper: ਥੰਬਨੇਲ ਨੂੰ ਐਕਸਟਰੈਕਟ ਕਰਨ ਵਿੱਚ ਅਸਫਲ - ਖਰਾਬ ਜਾਂ ਅਸਮਰਥਿਤ ਵੀਡੀਓ ਫਾਰਮੈਟ
+  delete: ਸਰੋਤ ਨੂੰ ਮਿਟਾਓ
+  discover: ਹੋਰ ਸਰੋਤਾਂ ਦੀ ਖੋਜ ਕਰੋ
+  has_update: ਇੱਕ ਅਪਡੇਟ ਉਪਲਬਧ ਹੈ
+  high_impact: ਪ੍ਰਦਰਸ਼ਨ 'ਤੇ ਉੱਚ ਪ੍ਰਭਾਵ
+  import_wallpapers: ਸਥਾਨਕ ਵਾਲਪੇਪਰ ਆਯਾਤ ਕਰੋ
+  open_folder: ਓਪਨ ਸਰੋਤ ਫੋਲਡਰ
+  outdated: >-
+    ਇਹ ਸਰੋਤ ਸੰਸਥ UI ਦੇ ਪੁਰਾਣੇ ਸੰਸਕਰਣ ਲਈ ਤਿਆਰ ਕੀਤਾ ਗਿਆ ਸੀ ਅਤੇ ਸ਼ਾਇਦ ਸਹੀ ਤਰ੍ਹਾਂ
+    ਕੰਮ ਨਾ ਕਰੇ.
+  see_on_website: ਵੈੱਬਸਾਈਟ 'ਤੇ ਦੇਖੋ
+review_request:
+  not_now: ਹਾਲੇ ਨਹੀਂ
+  sure: ਯਕੀਨਨ!
+  title: ਸੀਲੇਨ UI ਦਾ ਆਨੰਦ ਮਾਣ ਰਹੇ ਹੋ?
+save: ਸੇਵ ਕਰੋ
+save_and_restart: ਸੇਵ ਅਤੇ ਰੀਸਟਾਰਟ
+search: ਖੋਜ
+see_more: ਹੋਰ ਦੇਖੋ
+shortcuts:
+  duplicate_error: ਇਹ ਸ਼ਾਰਟਕੱਟ ਡੁਪਲੀਕੇਟ ਹੈ
+  enable: ਬਿਲਟ-ਇਨ ਸ਼ਾਰਟਕੱਟ ਸਿਸਟਮ ਨੂੰ ਸਮਰੱਥ ਕਰੋ
+  enable_tooltip: >-
+    ਅਯੋਗ ਕਰੋ ਜੇ ਤੁਸੀਂ ਵੇਖਿਆ UI ਕਲਾਇੰਟ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਆਪਣੇ ਖੁਦ ਦੇ ਸ਼ੌਰਟਕਟ ਸਿਸਟਮ
+    ਨੂੰ ਲਾਗੂ ਕਰੋਗੇ
+  labels:
+    create_new_workspace: ਨਵਾਂ ਵਰਕਸਪੇਸ ਬਣਾਓ
+    cycle_stack_next: ਸਾਈਕਲ ਸਟੈਕ ਅੱਗੇ
+    cycle_stack_prev: ਸਾਈਕਲ ਸਟੈਕ ਪਿਛਲੇ
+    cycle_wallpaper_next: ਅਗਲੇ ਵਾਲਪੇਪਰ ਵਿੱਚ ਬਦਲੋ
+    cycle_wallpaper_prev: ਪਿਛਲੇ ਵਾਲਪੇਪਰ ਵਿੱਚ ਬਦਲੋ
+    decrease_height: ਉਚਾਈ ਨੂੰ ਘਟਾਓ
+    decrease_width: ਚੌੜਾਈ
+    destroy_current_workspace: ਮੌਜੂਦਾ ਵਰਕਸਪੇਸ ਨੂੰ ਨਸ਼ਟ ਕਰੋ
+    focus_bottom: ਫੋਕਸ ਤਲ
+    focus_latest: ਤਾਜ਼ਾ ਫੋਕਸ
+    focus_left: ਖੱਬੇ ਧਿਆਨ ਰੱਖੋ
+    focus_right: ਸਹੀ ਫੋਕਸ
+    focus_top: ਫੋਕਸ ਚੋਟੀ ਦੇ
+    increase_height: ਉਚਾਈ ਵਧਾਓ
+    increase_width: ਚੌੜਾਈ ਵਧਾਓ
+    misc_force_quit: ਰੱਦ
+    misc_force_restart: ਫੋਰਸ ਚਾਲੂ
+    misc_open_settings: ਸੈਟਿੰਗਾਂ ਖੋਲ੍ਹੋ
+    misc_toggle_lock_tracing: ਟੌਗਲ ਲਾਕ ਟਰੇਸਿੰਗ (ਲੌਗ)
+    misc_toggle_win_event_tracing: ਵਿਨ ਈਵੈਂਟ ਟਰੇਸਿੰਗ (ਲੌਗ) ਨੂੰ ਟੌਗਲ ਕਰੋ
+    move_to_workspace: ਵਰਕਸਪੇਸ ਵਿੱਚ ਜਾਓ {{0}}}
+    move_window_down: ਵਿੰਡੋ ਨੂੰ ਹੇਠਾਂ ਭੇਜੋ
+    move_window_left: ਵਿੰਡੋ ਨੂੰ ਖੱਬੇ ਵੱਲ ਭੇਜੋ
+    move_window_right: ਵਿੰਡੋ ਨੂੰ ਸੱਜੇ ਭੇਜੋ
+    move_window_up: ਵਿੰਡੋ ਨੂੰ ਸਿਖਰ ਤੇ ਲੈ ਜਾਓ
+    pause_tiling: ਵਿੰਡੋ ਮੈਨੇਜਰ ਨੂੰ ਰੋਕੋ
+    reserve_bottom: ਰਿਜ਼ਰਵ ਥੱਲੇ
+    reserve_float: ਰਿਜ਼ਰਵ ਫਲੋਟ
+    reserve_left: ਰਿਜ਼ਰਵ ਬਚਿਆ
+    reserve_right: ਰਿਜ਼ਰਵ ਸਹੀ
+    reserve_stack: ਰਿਜ਼ਰਵ ਸਟੈਕ
+    reserve_top: ਰਿਜ਼ਰਵ ਟਾਪ
+    restore_sizes: ਅਕਾਰ ਨੂੰ ਬਹਾਲ ਕਰੋ
+    send_to_workspace: ਵਰਕਸਪੇਸ ਨੂੰ ਭੇਜੋ {{0}}
+    start_weg_app: ਫੋਕਸ ਜਾਂ ਐਪਲੀਕੇਸ਼ਨ ਅਰੰਭ ਕਰੋ {{0}}
+    switch_to_next_workspace: ਅਗਲੇ ਵਰਕਸਪੇਸ ਤੇ ਜਾਓ
+    switch_to_previous_workspace: ਪਿਛਲੇ ਵਰਕਸਪੇਸ ਤੇ ਜਾਓ
+    switch_workspace: ਵਰਕਸਪੇਸ ਵਿੱਚ ਸਵਿੱਚ ਕਰੋ {{0}}}
+    toggle_float: ਵਿੰਡੋ ਫਲੋਟ ਮੋਡ ਬਦਲੋ
+    toggle_monocle: ਵਰਕਸਪੇਸ ਮੋਨੋਕਲ ਮੋਡ ਟੌਗਲ ਕਰੋ
+  readonly_tooltip: ਇਹ ਸਿਰਫ ਇਕੋ ਸ਼ਾਰਟਕੱਟ ਹੈ
+  reset: ਡਿਫੌਲਟਸ ਤੇ ਰੀਸੈਟ ਕਰੋ
+sides:
+  bottom: ਹੇਠਾਂ
+  left: ਖੱਬੇ
+  right: ਸੱਜਾ
+  top: ਸਿਖਰ
+toolbar:
+  auto_hide: ਆਟੋ ਓਹਲੇ
+  delay_to_hide: ਛੁਪਾਉਣ ਲਈ ਦੇਰੀ
+  delay_to_show: ਦਿਖਾਉਣ ਵਿੱਚ ਦੇਰੀ
+  dock_side: ਸਥਿਤੀ
+  enable: ਫੈਂਸੀ ਟੂਲਬਾਰ ਨੂੰ ਸਮਰੱਥ ਬਣਾਓ
+  hide_mode:
+    always: ਹਮੇਸ਼ਾ
+    never: ਕਦੇ ਨਹੀਂ
+    on_overlap: ਓਵਰਲੈਪ 'ਤੇ
+  item_size: ਆਈਟਮ ਦਾ ਆਕਾਰ
+  label: ਟੂਲਬਾਰ
+  margin: ਹਾਸ਼ੀਏ ਦਾ ਆਕਾਰ
+  padding: ਪੈਡਿੰਗ ਆਕਾਰ
+  placeholder: {}
+update:
+  available: ਅਪਡੇਟ ਉਪਲਬਧ!
+  channel: ਚੈਨਲ ਅਪਡੇਟ ਕਰੋ
+  downloading: ਡਾ ing ਨਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ...
+wall:
+  backgrounds: ਵਾਲਪੇਪਰ
+  blur: ਧੁੰਦਲਾ
+  cancel: ਰੱਦ ਕਰੋ
+  close: ਬੰਦ ਕਰੋ
+  collection_name: ਸੰਗ੍ਰਹਿ ਦਾ ਨਾਮ
+  collections: ਸੰਗ੍ਰਹਿ
+  contrast: ਇਸ ਦੇ ਉਲਟ
+  corrupted_wallpapers_message: 'ਖਰਾਬ ਵਾਲਪੇਪਰ, ਇਹਨਾਂ ਨੂੰ ਮਿਟਾਉਣ ''ਤੇ ਵਿਚਾਰ ਕਰੋ:'
+  create: ਬਣਾਓ
+  create_collection: ਸੰਗ੍ਰਹਿ ਬਣਾਓ
+  default_collection: ਪੂਰਵ-ਨਿਰਧਾਰਤ ਸੰਗ੍ਰਹਿ
+  delete_collection: ਸੰਗ੍ਰਹਿ ਮਿਟਾਓ
+  edit_collection: ਸੰਗ੍ਰਹਿ ਦਾ ਸੰਪਾਦਨ ਕਰੋ
+  enable: ਵਾਲਪੇਪਰ ਮੈਨੇਜਰ ਨੂੰ ਸਮਰੱਥ ਕਰੋ
+  extend: ਪ੍ਰਾਇਮਰੀ ਵਧਾਓ
+  fit:
+    contain: ਸ਼ਾਮਲ
+    cover: ਕਵਰ
+    fill: ਭਰੋ
+  flipHorizontal: ਹਰੀਜੱਟਲ ਫਲਿੱਪ ਕਰੋ
+  flipVertical: ਲੰਬਕਾਰੀ ਫਲਿੱਪ ਕਰੋ
+  generating_thumbnails: ਵਾਲਪੇਪਰ ਥੰਬਨੇਲ ਤਿਆਰ ਕੀਤੇ ਜਾ ਰਹੇ ਹਨ
+  hours: ਘੰਟੇ
+  interval: ਵਾਲਪੇਪਰ ਬਦਲੋ
+  minutes: ਮਿੰਟ
+  monitor_collection: ਨਿਗਰਾਨ ਸੰਗ੍ਰਹਿ
+  multimonitor_behaviour: ਮਲਟੀਮੋਨੀਟਰ ਵਿਵਹਾਰ
+  muted: ਵੀਡੀਓ ਆਡੀਓ ਨੂੰ ਮਿਊਟ ਕਰੋ
+  no_background: ਇਸ ਦੀ ਬਜਾਏ ਥੀਮ ਦੇ ਬੈਕਗ੍ਰਾਉਂਡ ਦੀ ਵਰਤੋਂ ਕਰਦਿਆਂ, ਖਾਲੀ ਸਲਾਈਡ ਸ਼ੋਅ ਕਰੋ.
+  no_collections: ਅਜੇ ਤੱਕ ਕੋਈ ਸੰਗ੍ਰਹਿ ਨਹੀਂ ਬਣਾਇਆ ਗਿਆ। ਇੱਕ ਬਣਾਉਣ ਲਈ + ਬਟਨ 'ਤੇ ਕਲਿੱਕ ਕਰੋ।
+  objectFit: ਪਿਛੋਕੜ ਫਿਟ
+  objectPosition: ਪਿਛੋਕੜ ਦੀ ਸਥਿਤੀ
+  overlayColor: ਓਵਰਲੇ ਰੰਗ
+  overlayMixBlendMode: ਓਵਰਲੇਅ ਮਿਕਸ ਬਰੇਂਡ ਮੋਡ
+  per_monitor: ਪ੍ਰਤੀ ਮਾਨੀਟਰ
+  playback: ਪਲੇਬੈਕ ਸਪੀਡ
+  position:
+    bottom: ਤਲ
+    center: ਕੇਂਦਰ
+    left: ਖੱਬੇ
+    right: ਸੱਜੇ
+    top: ਸਿਖਰ
+  processing_video: ਵੀਡੀਓ 'ਤੇ ਪ੍ਰਕਿਰਿਆ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ
+  random: ਸਿਲਾਈਡ ਸਲਾਈਡ ਸ਼ੋਅ
+  saturation: ਸੰਤ੍ਰਿਪਤ
+  seconds: ਸਕਿੰਟ
+  select_collection: ਸੰਗ੍ਰਹਿ ਚੁਣੋ
+  thumbnail_generation_complete: ਥੰਬਨੇਲ ਜਨਰੇਸ਼ਨ ਪੂਰਾ ਹੋਇਆ
+  thumbnail_generation_finished: ਥੰਬਨੇਲ ਬਣਾਉਣਾ ਸਫਲਤਾਪੂਰਵਕ ਸਮਾਪਤ ਹੋ ਗਿਆ ਹੈ
+  wallpaper_collection: ਵਾਲਪੇਪਰ ਸੰਗ੍ਰਹਿ
+  wallpaper_settings: ਵਾਲਪੇਪਰ ਸੈਟਿੰਗਾਂ
+  withOverlay: ਓਵਰਲੇਅ ਦੇ ਨਾਲ
+  workspace_collections: ਵਰਕਸਪੇਸ ਸੰਗ੍ਰਹਿ
+weg:
+  auto_hide: ਆਟੋ ਓਹਲੇ
+  delay_to_hide: ਛੁਪਾਉਣ ਲਈ ਦੇਰੀ
+  delay_to_show: ਦਿਖਾਉਣ ਵਿੱਚ ਦੇਰੀ
+  dock_side: ਸਥਿਤੀ
+  enable: ਡੌਕ/ਟਾਸਕਬਾਰ ਨੂੰ ਸਮਰੱਥ ਬਣਾਓ
+  filtering: ਆਈਟਮ ਫਿਲਟਰਿੰਗ
+  gap: ਪਾੜਾ
+  hide_mode:
+    always: ਹਮੇਸ਼ਾ
+    never: ਕਦੇ ਨਹੀਂ
+    on_overlap: ਓਵਰਲੈਪ 'ਤੇ
+  items:
+    gap: ਆਈਟਮਾਂ ਵਿਚਕਾਰ ਸਪੇਸ
+    label: ਇਕਾਈ
+    pinned_visibility:
+      always: ਹਮੇਸ਼ਾ
+      label: ਪਿੰਨ ਕੀਤੀਆਂ ਆਈਟਮਾਂ ਦੀ ਦਿੱਖ
+      when_primary: ਜਦੋਂ ਮਾਨੀਟਰ ਪ੍ਰਾਇਮਰੀ ਹੁੰਦਾ ਹੈ
+    show_instance_counter: ਓਪਨ ਵਿੰਡੋਜ਼ ਕਾਉਂਟਰ ਦਿਖਾਓ
+    show_window_title: ਓਪਨ ਵਿੰਡੋ ਦਾ ਸਿਰਲੇਖ ਦਿਖਾਓ (ਸਿਰਫ ਖਿਤਿਜੀ)
+    size: ਆਈਟਮ ਦਾ ਆਕਾਰ
+    split_windows: ਵਿੰਡੋਜ਼ ਨੂੰ ਸਪਲਿਟ ਕਰੋ (ਪ੍ਰਤੀ ਵਿੰਡੋ ਇੱਕ ਆਈਟਮ)
+    temporal_visibility:
+      all: ਸਾਰੇ
+      label: ਅਨਪਿੰਨ ਕੀਤੀਆਂ ਆਈਟਮਾਂ ਦੀ ਦਿੱਖ
+      on_monitor: ਮਾਨੀਟਰ 'ਤੇ
+    visible_separators: ਦਿਖਣਯੋਗ ਵਿਭਾਜਕ
+  label: ਡੌਕ/ਟਾਸਕਬਾਰ
+  margin: ਹਾਸ਼ੀਏ
+  mode:
+    full_width: ਪੂਰੀ ਸਕ੍ਰੀਨ ਚੌੜਾਈ
+    min_content: ਛੋਟਾ ਜਿੰਨਾ ਹੋ ਸਕਦਾ ਹੈ
+  padding: ਪੈਡਿੰਗ
+  show_end_task: ਟਾਸਕਬਾਰ ਵਿੱਚ ਅੰਤ ਦਾ ਕੰਮ ਵੇਖੋ
+  width: ਚੌੜਾਈ
+welcome:
+  give_a_review: ਇੱਕ ਸਮੀਖਿਆ ਦਿਓ
+  message: >-
+    Seelen UI ਵਿੰਡੋਜ਼ ਲਈ ਇੱਕ ਮੁਫਤ ਅਤੇ ਓਪਨ ਸੋਰਸ ਡੈਸਕਟਾਪ ਵਾਤਾਵਰਣ ਹੈ। ਇੱਥੇ ਤੁਹਾਡੇ
+    ਕੋਲ ਤੁਹਾਡੇ ਡੈਸਕਟੌਪ ਦੇ ਦਿੱਖ ਅਤੇ ਵਿਵਹਾਰ 'ਤੇ ਪੂਰਾ ਨਿਯੰਤਰਣ ਹੈ, ਜਿਸ ਨਾਲ ਤੁਸੀਂ
+    ਆਪਣੇ ਵਰਕਫਲੋ ਅਤੇ ਸ਼ੈਲੀ ਨਾਲ ਮੇਲ ਕਰਨ ਲਈ ਹਰ ਵੇਰਵੇ ਨੂੰ ਅਨੁਕੂਲਿਤ ਕਰ ਸਕਦੇ ਹੋ।
+  ok: ਆਓ ਸ਼ੁਰੂ ਕਰੀਏ!
+  review: >-
+    ਜੇਕਰ ਤੁਸੀਂ ਸੀਲੇਨ UI ਦੀ ਵਰਤੋਂ ਕਰਨ ਦਾ ਅਨੰਦ ਲੈਂਦੇ ਹੋ, ਤਾਂ ਸਟੋਰ 'ਤੇ ਇੱਕ ਸਮੀਖਿਆ
+    ਛੱਡਣ 'ਤੇ ਵਿਚਾਰ ਕਰੋ — ਤੁਹਾਡਾ ਫੀਡਬੈਕ ਪ੍ਰੋਜੈਕਟ ਨੂੰ ਵਧਣ ਅਤੇ ਬਿਹਤਰ ਬਣਾਉਣ ਵਿੱਚ ਮਦਦ
+    ਕਰਦਾ ਹੈ।
+  title: Seelen UI ਵਿੱਚ ਸੁਆਗਤ ਹੈ!
+widget:
+  enable: ਇਸ ਵਿਦਜਿਟ ਨੂੰ ਸਮਰੱਥ ਕਰੋ
+  enable_for_monitor: ਇਸ ਮਾਨੀਟਰ ਨੂੰ ਸਮਰੱਥ ਕਰੋ
+  instances: ਉਦਾਹਰਣ
+wm:
+  animations:
+    duration: ਐਨੀਮੇਸ਼ਨ ਅੰਤਰਾਲ (ਐਮਐਸ)
+    ease_function: ਐਨੀਮੇਸ਼ਨ ਆਸਾਨ ਫੰਕਸ਼ਨ
+    enable: ਵਿੰਡੋ ਦੇ ਐਨੀਮੇਸ਼ਨ ਨੂੰ ਸਮਰੱਥ ਕਰੋ
+  author: ਲੇਖਕ
+  border:
+    enable: ਵਿੰਡੋ ਦੇ ਬਾਰਡਰ ਨੂੰ ਸਮਰੱਥ ਬਣਾਓ
+    offset: ਬਾਰਡਰ ਆਫਸੈੱਟ
+    width: ਬਾਰਡਰ ਚੌੜਾਈ
+  description: ਵਰਣਨ
+  drag_behavior: ਡਰੈਗ ਵਿਵਹਾਰ
+  drag_behavior_options:
+    sort: ਕ੍ਰਮਬੱਧ (ਖਿੱਚਣ ਵੇਲੇ ਵਿੰਡੋਜ਼ ਨੂੰ ਮੁੜ ਕ੍ਰਮਬੱਧ ਕਰੋ)
+    swap: ਸਵੈਪ (ਡਰੈਗ ਐਂਡ 'ਤੇ ਵਿੰਡੋਜ਼ ਨੂੰ ਸਵੈਪ ਕਰੋ)
+  enable: ਵਿੰਡੋ ਮੈਨੇਜਰ ਟਾਇਲਿੰਗ ਯੋਗ ਕਰੋ
+  layout: ਖਾਕਾ
+  resize_delta: ਡੈਲਟਾ ਦਾ ਆਕਾਰ ਬਦਲੋ (%)
+  space_between_containers: ਕੰਟੇਨਰਾਂ ਵਿਚਕਾਰ ਸਪੇਸ
+  workspace_offset: ਵਰਕਸਪੇਸ ਆਫਸੈੱਟ (ਮਾਰਜਿਨ)
+  workspace_padding: ਵਰਕਸਪੇਸ ਪੈਡਿੰਗ
+'yes': ਹਾਂ

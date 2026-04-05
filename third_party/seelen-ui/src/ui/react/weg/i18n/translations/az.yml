@@ -1,0 +1,35 @@
+app_menu:
+  close: Yaxın
+  close_multiple: Hamısını bağlayın
+  copy_handles: Copular
+  kill: Öldürmə prosesi
+  kill_multiple: Bütün prosesləri öldürün
+  open_file_location: Fayl yeri açın
+  pin: Pin
+  pin_to_center: Mərkəzə pin
+  pin_to_left: Pin sola
+  pin_to_right: Sağa pin
+  run_as: İdarəçi kimi qaçmaq
+  unpin: Qeyri-pəncələmək
+context_menu:
+  remove_module: Modulu çıxarın
+  reorder_disable: Tapşırıq çubuğunu kilidləyin
+  reorder_enable: Tapşırıq çubuğunu açın
+media:
+  not_playing: Heç nə oynamır
+show_desktop:
+  label: Masaüstünü göstər
+start:
+  label: Başlat Menyu
+taskbar_menu:
+  add_file: Xüsusi faylı pin edin
+  desktop: Masaüstü Modulu əlavə edin
+  media: Media modulu əlavə edin
+  settings: Parametrlər
+  start: Başlama modulu əlavə edin
+  task_manager: Tapşırıq meneceri
+  trash_bin: Zibil qutusu modulu əlavə edin
+trash_bin:
+  empty_bin: Zibil qutusunu boşaldın
+weg:
+  empty: Göstəriləcək element yoxdur

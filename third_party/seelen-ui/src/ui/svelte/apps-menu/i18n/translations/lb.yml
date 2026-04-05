@@ -1,0 +1,18 @@
+all: All Apps
+back: Zréck
+disband: Opléisen Dossier
+folder: Dossier
+no_matching_items: Keng Artikele fonnt déi mat Ärer Sich passen
+open_file_location: Open Datei Location
+pin: Pin
+pin_to_dock: Pin an Dock
+query:
+  all: All
+  apps: Apps
+  files: Fichieren
+  web: Web
+run_as_admin: Run als Administrator
+unpin: Unpin
+web_search: Dréckt Enter fir um Internet ze sichen
+welcome_message: Wëllkomm op der Seelen UI App Menü.
+welcome_message2: Op dëser Tab kënnt Dir Är Liiblingsapps pin.

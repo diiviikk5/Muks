@@ -1,0 +1,35 @@
+app_menu:
+  close: Закрити
+  close_multiple: Закрити все
+  copy_handles: Копіювати ідентифікатор
+  kill: Зупинити процес
+  kill_multiple: Зупинити всі процеси
+  open_file_location: Розташування відкритого файлу
+  pin: Закріпити
+  pin_to_center: Закріпити по центру
+  pin_to_left: Закріпити зліва
+  pin_to_right: Закріпити зправа
+  run_as: Запустити від імені адміністратора
+  unpin: Відкріпити
+context_menu:
+  remove_module: Видалити модуль
+  reorder_disable: Блокування панелі завдань
+  reorder_enable: Розблокувати панель завдань
+media:
+  not_playing: Аудіо не відтворюється
+show_desktop:
+  label: Показати робочий стіл
+start:
+  label: Меню Пуск
+taskbar_menu:
+  add_file: Закріпити власний файл
+  desktop: Додайте модуль робочого столу
+  media: Додати медіа модуль
+  settings: Налаштування
+  start: Додати кнопку Пуск
+  task_manager: Диспетчер задач
+  trash_bin: Додайте модуль кошика
+trash_bin:
+  empty_bin: Очистити корзину
+weg:
+  empty: Немає елементів для показу

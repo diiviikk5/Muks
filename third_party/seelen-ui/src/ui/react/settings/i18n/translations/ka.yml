@@ -1,0 +1,387 @@
+action:
+  confirm: დარწმუნებული ხარ?
+  confirm_body: ეს ქმედება შეუძლებელია.
+apps_configurations:
+  app:
+    bindings: სავალდებულო (შენიშვნა საჭიროა ორივე ვარიანტი)
+    category: კატეგორია
+    category_placeholder: არაფერი
+    monitor: შემოწმება
+    monitor_placeholder: არაფერი
+    name: სახელი
+    ok_create: Შექმნა
+    ok_edit: განახლება
+    ok_readonly: რედაქტირება როგორც ახალი
+    options:
+      NoInteractive: არ არის ინტერაქტიული
+      VdPinned: ჩვენება ყველა სამუშაო სივრცეში
+      WmFloat: Twm - დაიწყე მცურავი
+      WmForce: Twm - ძალის მართვა
+      WmUnmanage: Twm - გაუქმება
+    options_label: დამატებითი პარამეტრები
+    title_create: '{{სახელის შექმნა}}'
+    title_edit: რედაქტირება {{სახელი}}
+    title_readonly: ნახვა {{სახელი}}
+    weg_options_label: დოკ/დავალების პანელის პარამეტრები
+    wm_options_label: ფანჯრის მენეჯერის პარამეტრები
+    workspace: სამუშაო ადგილი
+    workspace_placeholder: არაფერი
+  bundled_msg: >-
+    ეს შეფუთული კონფიგურაციები არ არის რედაქტირებული და შექმნილია იმისთვის, რომ
+    საუკეთესო გამოცდილება მოგაწოდოთ პერსონალიზაციის გარეშე. ისინი ავტომატურად
+    კონფიგურაციას უკეთებენ თქვენთვის ყველაზე გავრცელებულ პროგრამებს.
+  bundled_title: აპლიკაციის კონფიგურაცია შეფუთულია Seelen- ით
+  confirm_delete: დარწმუნებული ხართ, რომ გსურთ ამ კონფიგურაციის წაშლა?
+  confirm_delete_title: დაადასტურეთ წაშლა
+  delete: წაშლა
+  export: ექსპორტი
+  export_full: ექსპორტის პარამეტრები განაცხადით
+  extra_info: >-
+    Seelen ui გამოიყენეთ მხოლოდ ერთი იდენტიფიკატორი თითო აპლიკაციაში (პირველი
+    მატჩი ნაპოვნი), ასე რომ, თუ როგორ არის სპეციფიკურია სპეციფიკური, შეკვეთა,
+    უახლესი დამატებული პრიორიტეტული იქნება, რადგან შენიშვნა ცხრილი დალაგებულია
+    ნაგულისხმევი უახლესიდან ძველამდე.
+  identifier:
+    add_block: ბლოკის დამატება
+    and: და
+    id: პირადობა
+    kind: იდენტიფიცირება
+    matching_strategy: შესაბამისი სტრატეგია
+    matching_strategy_option:
+      contains: შეიცავს
+      ends_with: მთავრდება
+      equals: უდრის
+      regex: რეგულარული გამოხატულება
+      starts_with: იწყება იმით
+    negation: უარყოფითი შესატყვისი
+    or: ან
+    remove: წაშალეთ ბლოკი
+    type:
+      class: კლასი
+      exe: exe
+      path: ბილიკი
+      title: სათაური
+  import: იმპორტი
+  import_full: იმპორტის პარამეტრები განაცხადის საშუალებით
+  new: ახალი
+  search: ძებნა
+  swap: გაცვლა
+cancel: გაუქმება
+close: ახლო
+delete: წაშლა
+devtools:
+  app_folders: აპლიკაციის საქაღალდეები
+  custom_config_file: ჩატვირთეთ პერსონალური კონფიგურაციის ფაილი
+  data_folder: მონაცემთა საქაღალდე
+  enable: ჩართეთ დეველოპერის ინსტრუმენტები
+  install_folder: ინსტალაციის საქაღალდე
+  load: დატვირთვა
+  settings_file: პარამეტრების ფაილი
+  simulate_perm:
+    label: ვიჯეტის ნებართვის მოთხოვნის სიმულაცია
+    result_allowed: ✓ გაცემულია ნებართვა
+    result_denied: ✗ ნებართვა უარყოფილია
+    trigger: სიმულაცია
+    widget_id_placeholder: '@author/widget-name'
+extras:
+  clear_icons: სუფთა სისტემის ხატები ქეში
+  clear_icons_tooltip: გადატვირთვა შეიძლება საჭირო გახდეს, რომ სრულად იმოქმედოს ყველა ვიჯეტზე
+  exit: დატოვება/გასვლა
+  links: ოფიციალური ბმულები
+  relaunch: გაუქმება
+  version: ვერსია
+  version_fixed: >-
+    აპლიკაციისა და WebView2 Runtime ვერსიები დაფიქსირდა. ეს ნიშნავს, რომ
+    აპლიკაცია არ მიიღებს განახლებებს და WebView2 Runtime ავტომატურად არ
+    განახლდება Windows-ის განახლებებით.
+general:
+  accent_color: აქცენტის ფერი
+  date_format: თარიღის ფორმატი
+  date_format_how_to: როგორ დავწეროთ თარიღის ფორმატი?
+  hardware_acceleration: აპარატურის აჩქარება
+  hardware_acceleration_description: >-
+    ტექნიკის აჩქარების გამორთვა შეამცირებს მეხსიერების გამოყენებას, მაგრამ
+    შეიძლება გამოიწვიოს მუშაობის პრობლემები. უსაფრთხოა გამორთვა, თუ არ
+    გამოიყენებთ ცოცხალ ფონებს.
+  icon_pack:
+    available: ხელმისაწვდომი ხატების პაკეტები
+    selected: აქტიური ხატების პაკეტები
+  language: Ენა
+  monday: ორშაბათი
+  performance_mode:
+    on_battery: ბატარეაზე
+    on_energy_saver: ენერგიის დაზოგვაზე
+    options:
+      disabled: უუნარო
+      extreme: უკიდურესი
+      minimal: მინიმალური
+    plugged: ჩართული ან დატენვა
+  polling_interval: სისტემის გამოკითხვის ინტერვალი
+  polling_interval_description: >-
+    რამდენად ხშირად (წამებში) Seelen UI ამოწმებს სისტემის რესურსებს, როგორიცაა
+    CPU, RAM, ქსელი და დისკის აქტივობა. უფრო მცირე რაოდენობა ნიშნავს უფრო ხშირ
+    განახლებებს, მაგრამ ოდნავ უფრო მეტ რესურსს.
+  saturday: შაბათი
+  start_of_week: კვირის დასაწყისი
+  startup: გაშვებით გაშვებით?
+  sunday: კვირა
+  theme:
+    available: ხელმისაწვდომი თემები
+    selected: აქტიური თემები
+header:
+  labels:
+    config: კონფიგურაცია
+    developer: დეველოპერებისთვის
+    extras: ზედმეტი
+    general: გენერალი
+    home: სახლი
+    icon_pack_editor: დაცული ხატები
+    iconpack: ხატის პაკეტები
+    monitors: მონიტორები
+    plugin: ამხებო
+    resources: რესურსები
+    shortcuts: მალსახმობები
+    soundpack: ხმის პაკეტები
+    specific_apps: პარამეტრები აპლიკაციით
+    theme: თემები
+    virtual_desk: ვირტუალური სამუშაო მაგიდა
+    wallpaper: ფონები
+    widget: ვიჯეტები
+home:
+  new_resources: ახალი რესურსები
+inherit: მემკვიდრეობით მიღება
+inProgress: Პროგრესირებს...
+insert: ჩასმა
+loading: Ჩატვირთვა...
+miscellaneous: შერეული
+monitors_configurations:
+  label: მონიტორი {{ინდექსი}}
+more: მეტი
+'no': არა
+open: გახსნა
+quit: მიტოვება
+remove: ამოღება
+reset_all_to_default: ყველა ნაგულისხმევი მნიშვნელობებისთვის
+reset_to_default: ნაგულისხმევი მნიშვნელობის გადატვირთვა
+resources:
+  app_outdated: ეს რესურსი მოითხოვს Seelen UI– ს ახალ ვერსიას, რომ სწორად იმუშაოს.
+  corrupted_wallpaper: ესკიზის ამოღება ვერ მოხერხდა - ვიდეო ფორმატი დაზიანებულია ან მხარდაუჭერელია
+  delete: წაშალეთ რესურსი
+  discover: აღმოაჩინეთ მეტი რესურსი
+  has_update: განახლება ხელმისაწვდომია
+  high_impact: მაღალი გავლენა შესრულებაზე
+  import_wallpapers: ადგილობრივი ფონების იმპორტი
+  open_folder: ღია რესურსების საქაღალდე
+  outdated: >-
+    ეს რესურსი შეიქმნა Seelen UI- ს ძველი ვერსიისთვის და შესაძლოა არ იმუშაოს
+    სწორად.
+  see_on_website: იხილეთ საიტზე
+review_request:
+  not_now: ახლა არა
+  sure: რა თქმა უნდა!
+  title: მოგწონთ Seelen UI?
+save: Გადარჩენა
+save_and_restart: შენახვა და გადატვირთვა
+search: ძიება
+see_more: იხილეთ მეტი
+shortcuts:
+  duplicate_error: ეს მალსახმობი დუბლირებულია
+  enable: ჩართეთ ჩამონტაჟებული მალსახმობების სისტემა
+  enable_tooltip: >-
+    გამორთეთ, თუ თქვენ განახორციელებთ თქვენს მალსახმობების სისტემას Seelen UI
+    კლიენტის გამოყენებით
+  labels:
+    create_new_workspace: შექმენით ახალი სამუშაო ადგილი
+    cycle_stack_next: ციკლის დასტის შემდეგ
+    cycle_stack_prev: ციკლის დასტის წინა
+    cycle_wallpaper_next: შეცვალეთ შემდეგი ფონი
+    cycle_wallpaper_prev: წინა ფონიზე შეცვლა
+    decrease_height: სიმაღლის შემცირება
+    decrease_width: სიგანის შემცირება
+    destroy_current_workspace: გაანადგურე ამჟამინდელი სამუშაო ადგილი
+    focus_bottom: ფოკუსირება
+    focus_latest: ფოკუსირება უახლესი
+    focus_left: ფოკუსირება მარცხნივ
+    focus_right: ფოკუსირება სწორად
+    focus_top: ფოკუსირება
+    increase_height: სიმაღლის გაზრდა
+    increase_width: სიგანის გაზრდა
+    misc_force_quit: ძალის დატოვება
+    misc_force_restart: ძალის გადატვირთვა
+    misc_open_settings: ღია პარამეტრები
+    misc_toggle_lock_tracing: ჩაკეტილი საკეტის კვალი (ჟურნალი)
+    misc_toggle_win_event_tracing: გადარიცხეთ მოიგეთ ღონისძიების კვალი (ჟურნალი)
+    move_to_workspace: გადავიდეთ სამუშაო ადგილებზე {{0}}
+    move_window_down: ფანჯრის ქვედა ნაწილზე გადატანა
+    move_window_left: ფანჯრის მარცხნივ გადაადგილება
+    move_window_right: ფანჯრის მარჯვნივ გადაადგილება
+    move_window_up: ფანჯრის გადატანა ზემოდან
+    pause_tiling: პაუზის ჩამოსხმის ფანჯრის მენეჯერი
+    reserve_bottom: სარეზერვო ქვედა
+    reserve_float: სარეზერვო float
+    reserve_left: ნაკრძალი დარჩა
+    reserve_right: უფლება
+    reserve_stack: სარეზერვო დასტა
+    reserve_top: სარეზერვო ზედა
+    restore_sizes: აღადგინეთ ზომები
+    send_to_workspace: გაგზავნეთ სამუშაო სივრცეში {{0}}
+    start_weg_app: ფოკუსირება ან დაწყება განაცხადი {{0}}
+    switch_to_next_workspace: გადადით შემდეგ სამუშაო ადგილებზე
+    switch_to_previous_workspace: გადახვიდეთ წინა სამუშაო ადგილებზე
+    switch_workspace: გადადით სამუშაო ადგილებზე {{0}}
+    toggle_float: გადარიცხეთ ფანჯრის float რეჟიმი
+    toggle_monocle: გადართეთ სამუშაო ადგილის მონოკლის რეჟიმი
+  readonly_tooltip: ეს არის მხოლოდ წაკითხული მალსახმობი
+  reset: გადატვირთვა ნაგულისხმევებზე
+sides:
+  bottom: ძირი
+  left: მარცხენა
+  right: სწორი
+  top: თავი
+toolbar:
+  auto_hide: ავტო დამალვა
+  delay_to_hide: დაგვიანებით დამალვა
+  delay_to_show: დაგვიანებით ჩვენება
+  dock_side: პოზიცია
+  enable: ჩართეთ ლამაზი პანელი
+  hide_mode:
+    always: ყოველთვის
+    never: არასოდეს
+    on_overlap: გადახურვაზე
+  item_size: ნივთის ზომა
+  label: ინსტრუმენტთა პანელი
+  margin: მარჟის ზომა
+  padding: ბალიშის ზომა
+  placeholder: {}
+update:
+  available: განახლება ხელმისაწვდომია!
+  channel: განაახლეთ არხი
+  downloading: ჩამოტვირთვა ...
+wall:
+  backgrounds: ფონები
+  blur: დაბენა
+  cancel: გაუქმება
+  close: დახურვა
+  collection_name: კოლექციის სახელი
+  collections: კოლექციები
+  contrast: წინააღმდეგობა
+  corrupted_wallpapers_message: 'დაზიანებული ფონები, განიხილეთ მათი წაშლა:'
+  create: შექმნა
+  create_collection: შექმენით კოლექცია
+  default_collection: ნაგულისხმევი კოლექცია
+  delete_collection: კოლექციის წაშლა
+  edit_collection: კოლექციის რედაქტირება
+  enable: ჩართეთ ფონი მენეჯერი
+  extend: გააფართოვეთ პირველადი
+  fit:
+    contain: დატევა
+    cover: სახურავი
+    fill: გავსება
+  flipHorizontal: Flip Horizontal
+  flipVertical: ფლიპ ვერტიკალური
+  generating_thumbnails: ფონის მინიატურების გენერირება
+  hours: საათი
+  interval: შეცვალეთ ფონი ყველა
+  minutes: წუთი
+  monitor_collection: მონიტორების კოლექცია
+  multimonitor_behaviour: მულტიმონიტორის ქცევა
+  muted: ვიდეო აუდიოს დადუმება
+  no_background: ცარიელი სლაიდშოუ, სამაგიეროდ თემის ფონის გამოყენებით.
+  no_collections: კოლექციები ჯერ არ არის შექმნილი. ერთის შესაქმნელად დააწკაპუნეთ + ღილაკს.
+  objectFit: ფონის შესაფერისი
+  objectPosition: ფონის პოზიცია
+  overlayColor: გადახურული ფერი
+  overlayMixBlendMode: Overlay Mix Blend Mode
+  per_monitor: თითო მონიტორზე
+  playback: აღწარმოების სიჩქარე
+  position:
+    bottom: ძირი
+    center: ცენტრი
+    left: მარცხენა
+    right: სწორი
+    top: თავი
+  processing_video: მიმდინარეობს ვიდეოს დამუშავება
+  random: რანდომიზაცია სლაიდშოუ
+  saturation: გაჯერება
+  seconds: წამები
+  select_collection: აირჩიეთ კოლექცია
+  thumbnail_generation_complete: მინიატურების გენერაცია დასრულებულია
+  thumbnail_generation_finished: ესკიზების შექმნა წარმატებით დასრულდა
+  wallpaper_collection: ფონების კოლექცია
+  wallpaper_settings: ფონი პარამეტრები
+  withOverlay: გადახურვით
+  workspace_collections: სამუშაო სივრცის კოლექციები
+weg:
+  auto_hide: Ავტომატური დამალვა
+  delay_to_hide: დაგვიანებით დამალვა
+  delay_to_show: დაგვიანებით ჩვენება
+  dock_side: პოზიცია
+  enable: ჩართეთ dock/taskbar
+  filtering: ნივთის ფილტრაცია
+  gap: ხარპი
+  hide_mode:
+    always: ყოველთვის
+    never: არასოდეს
+    on_overlap: გადახურვაზე
+  items:
+    gap: სივრცე ნივთებს შორის
+    label: ნივთები
+    pinned_visibility:
+      always: ყოველთვის
+      label: ჩამაგრებული ელემენტების ხილვადობა
+      when_primary: როცა მონიტორი პირველადია
+    show_instance_counter: აჩვენეთ ღია Windows Counter
+    show_window_title: აჩვენეთ ღია ფანჯრის სათაური (მხოლოდ ჰორიზონტალური)
+    size: ნივთის ზომა
+    split_windows: Windows-ის გაყოფა (თითო ელემენტი თითო ფანჯარაში)
+    temporal_visibility:
+      all: ყველა
+      label: ჩამაგრებული ერთეულების ხილვადობა
+      on_monitor: მონიტორზე
+    visible_separators: ხილული გამყოფი
+  label: დოკ/დავალების ზოლი
+  margin: ზღვარი
+  mode:
+    full_width: სრული ეკრანის სიგანე
+    min_content: რაც შეიძლება პატარა იყოს
+  padding: ბადება
+  show_end_task: აჩვენეთ საბოლოო დავალება დავალების ზოლში
+  width: სიგანე
+welcome:
+  give_a_review: მიეცით მიმოხილვა
+  message: >-
+    Seelen UI არის უფასო და ღია კოდის დესკტოპის გარემო Windows-ისთვის. აქ თქვენ
+    გაქვთ სრული კონტროლი იმაზე, თუ როგორ გამოიყურება და იქცევა თქვენი დესკტოპი,
+    რაც საშუალებას გაძლევთ დააკონფიგურიროთ ყველა დეტალი თქვენს სამუშაო პროცესსა
+    და სტილში.
+  ok: დავიწყოთ!
+  review: >-
+    თუ გსურთ Seelen UI-ის გამოყენება, განიხილეთ მიმოხილვის დატოვება მაღაზიაში –
+    თქვენი გამოხმაურება ეხმარება პროექტს ზრდასა და გაუმჯობესებაში.
+  title: კეთილი იყოს თქვენი მობრძანება Seelen UI-ში!
+widget:
+  enable: ჩართეთ ეს ვიჯეტი
+  enable_for_monitor: ჩართეთ ამ მონიტორზე
+  instances: შემთხვევები
+wm:
+  animations:
+    duration: ანიმაციის ხანგრძლივობა (MS)
+    ease_function: ანიმაციის შემსუბუქებული ფუნქცია
+    enable: ფანჯრის ანიმაციების ჩართვა
+  author: ავტორი
+  border:
+    enable: ფანჯრის საზღვრის ჩართვა
+    offset: სასაზღვრო ოფსეტური
+    width: საზღვრის სიგანე
+  description: აღწერილობა
+  drag_behavior: Drag Behavior
+  drag_behavior_options:
+    sort: სორტირება (გადააწყვეთ ფანჯრები გადატანისას)
+    swap: შეცვალეთ (გაცვალეთ ფანჯრები ჩავლებით)
+  enable: ჩართეთ ფილების ფანჯრის მენეჯერი
+  layout: გამოფენა
+  resize_delta: დელტას ზომის შეცვლა (%)
+  space_between_containers: სივრცე კონტეინერებს შორის
+  workspace_offset: სამუშაო ადგილები ოფსეტური (ზღვარი)
+  workspace_padding: სამუშაო ადგილები padding
+'yes': დიახ

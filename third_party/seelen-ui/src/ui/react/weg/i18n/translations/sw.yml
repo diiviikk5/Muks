@@ -1,0 +1,35 @@
+app_menu:
+  close: Karibu
+  close_multiple: Funga yote
+  copy_handles: Nakili Hushughulikia
+  kill: Mchakato wa kuua
+  kill_multiple: Kuua Taratibu Zote
+  open_file_location: Fungua eneo la faili
+  pin: Pini
+  pin_to_center: Pini katikati
+  pin_to_left: Pini kushoto
+  pin_to_right: Pini kulia
+  run_as: Kukimbia kama msimamizi
+  unpin: Unpin
+context_menu:
+  remove_module: Ondoa Moduli
+  reorder_disable: Lock Taskbar
+  reorder_enable: Fungua Taskbar
+media:
+  not_playing: Hakuna kinachocheza
+show_desktop:
+  label: Onyesha Eneo-kazi
+start:
+  label: Anza Menyu
+taskbar_menu:
+  add_file: Piga faili ya kawaida
+  desktop: Ongeza Moduli ya Eneo-kazi
+  media: Ongeza moduli ya media
+  settings: Mipangilio
+  start: Ongeza moduli ya kuanza
+  task_manager: Meneja wa Kazi
+  trash_bin: Ongeza moduli ya Recycle Bin
+trash_bin:
+  empty_bin: Bin Tupu ya Kusaga
+weg:
+  empty: Hakuna vipengee vya kuonyesha

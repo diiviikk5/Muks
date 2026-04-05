@@ -1,0 +1,388 @@
+action:
+  confirm: Er du sikker?
+  confirm_body: Denne handling kan ikke fortrydes.
+apps_configurations:
+  app:
+    bindings: Binding (note begge muligheder er påkrævet)
+    category: Kategori
+    category_placeholder: Ingen
+    monitor: Overvåge
+    monitor_placeholder: Ingen
+    name: Navn
+    ok_create: skab
+    ok_edit: Opdatering
+    ok_readonly: Rediger som ny
+    options:
+      NoInteractive: Ingen interaktiv
+      VdPinned: Vis i alle arbejdsområder
+      WmFloat: Twm - Start flydende
+      WmForce: Twm - Force Manage
+      WmUnmanage: Twm - Unmanage
+    options_label: Ekstra muligheder
+    title_create: Oprettelse af {{navn}}
+    title_edit: Redigering {{navn}}
+    title_readonly: Visning {{navn}}
+    weg_options_label: Dock/proceslinjemuligheder
+    wm_options_label: Vindueschefindstillinger
+    workspace: Arbejdsområde
+    workspace_placeholder: Ingen
+  bundled_msg: >-
+    Disse samlede konfigurationer kan ikke redigeres og er designet til at give
+    dig den bedste oplevelse uden tilpasning. De konfigurerer automatisk de mest
+    almindelige applikationer til dig.
+  bundled_title: App Config bundtet med Seelen
+  confirm_delete: Er du sikker på, at du vil slette denne konfiguration/er?
+  confirm_delete_title: Bekræft slet
+  delete: Slet
+  export: Eksport
+  export_full: Eksporter indstillinger efter program
+  extra_info: >-
+    Seelen UI bruger kun én identifikator pr. app (første match fundet), så
+    rækkefølgen i, hvordan de specificeres, er vigtig, det senest tilføjede vil
+    blive prioriteret, da bemærk, at tabellen er sorteret som standard fra
+    seneste til gammel.
+  identifier:
+    add_block: Tilføj blok
+    and: OG
+    id: Identifikator
+    kind: Identificer ved
+    matching_strategy: Matchende strategi
+    matching_strategy_option:
+      contains: Indeholder
+      ends_with: Slutter med
+      equals: Lige til
+      regex: Regelmæssigt udtryk
+      starts_with: Starter med
+    negation: Negat matchning
+    or: ELLER
+    remove: Slet blok
+    type:
+      class: klasse
+      exe: Exe
+      path: Sti
+      title: Titel
+  import: Importere
+  import_full: Importer indstillinger efter program
+  new: Ny
+  search: Søg
+  swap: Bytte rundt
+cancel: Afbestille
+close: Tæt
+delete: Slet
+devtools:
+  app_folders: Appmapper
+  custom_config_file: Indlæs brugerdefineret konfigurationsfil
+  data_folder: Datamappe
+  enable: Aktivér udviklerværktøjer
+  install_folder: Installationsmappe
+  load: belastning
+  settings_file: Indstillinger fil
+  simulate_perm:
+    label: Simuler anmodning om widgettilladelse
+    result_allowed: ✓ Tilladelse givet
+    result_denied: ✗ Tilladelse nægtet
+    trigger: Simuler
+    widget_id_placeholder: '@forfatter/widget-navn'
+extras:
+  clear_icons: Ryd cache for systemikoner
+  clear_icons_tooltip: En genstart kan være nødvendig for at få fuld effekt på alle widgets
+  exit: Afslut/exit
+  links: Officielle links
+  relaunch: Relancering
+  version: Version
+  version_fixed: >-
+    Applikationen og WebView2 Runtime-versionerne er faste. Det betyder, at
+    applikationen ikke vil modtage opdateringer, og WebView2 Runtime vil ikke
+    automatisk blive opdateret med Windows-opdateringer.
+general:
+  accent_color: Accentfarve
+  date_format: Datoformat
+  date_format_how_to: Hvordan skriver man et datoformat?
+  hardware_acceleration: Hardwareacceleration
+  hardware_acceleration_description: >-
+    Deaktivering af hardwareacceleration vil reducere hukommelsesforbruget, men
+    kan forårsage ydeevneproblemer. Er sikkert at deaktivere, hvis du ikke vil
+    bruge levende tapeter.
+  icon_pack:
+    available: Tilgængelige ikonpakker
+    selected: Aktive ikonpakker
+  language: Sprog
+  monday: mandag
+  performance_mode:
+    on_battery: På batteri
+    on_energy_saver: På energibesparende
+    options:
+      disabled: Handicappet
+      extreme: Ekstrem
+      minimal: Minimal
+    plugged: Tilsluttet eller opladning
+  polling_interval: System polling interval
+  polling_interval_description: >-
+    Hvor ofte (i sekunder) Seelen UI kontrollerer systemressourcer som CPU, RAM,
+    netværk og diskaktivitet. Et mindre antal betyder hyppigere opdateringer,
+    men lidt højere ressourceforbrug.
+  saturday: lørdag
+  start_of_week: Start på ugen
+  startup: Kør ved opstart?
+  sunday: søndag
+  theme:
+    available: Tilgængelige temaer
+    selected: Aktive temaer
+header:
+  labels:
+    config: Konfigurationer
+    developer: For udviklere
+    extras: Ekstramateriale
+    general: Generel
+    home: Hjem
+    icon_pack_editor: Cachelagrede ikoner
+    iconpack: Ikon-pakker
+    monitors: Monitors
+    plugin: Plugins
+    resources: Ressourcer
+    shortcuts: Genveje
+    soundpack: Lydpakker
+    specific_apps: Indstillinger efter applikation
+    theme: Temaer
+    virtual_desk: Virtuelle desktops
+    wallpaper: Baggrunde
+    widget: Widgets
+home:
+  new_resources: Nye ressourcer
+inherit: Arve
+inProgress: I gang...
+insert: Indsæt
+loading: Indlæser...
+miscellaneous: Diverse
+monitors_configurations:
+  label: Monitor {{index}}
+more: Mere
+'no': Ingen
+open: Åben
+quit: Afslut
+remove: Fjerne
+reset_all_to_default: Nulstil alt til standardværdier
+reset_to_default: Nulstil til standardværdi
+resources:
+  app_outdated: Denne ressource kræver en nyere version af Seelen UI for at fungere korrekt.
+  corrupted_wallpaper: >-
+    Kunne ikke udtrække miniaturebilledet - beskadiget eller ikke-understøttet
+    videoformat
+  delete: Slet ressource
+  discover: Opdag flere ressourcer
+  has_update: En opdatering er tilgængelig
+  high_impact: Stor indflydelse på ydeevnen
+  import_wallpapers: Importer lokale baggrunde
+  open_folder: Åbn ressourcemappen
+  outdated: >-
+    Denne ressource er designet til en ældre version af Seelen UI og fungerer
+    muligvis ikke korrekt.
+  see_on_website: Se på hjemmesiden
+review_request:
+  not_now: Ikke nu
+  sure: Sikker!
+  title: Nyder du Seelen UI?
+save: Gemme
+save_and_restart: Gem & genstart
+search: Søge
+see_more: Se mere
+shortcuts:
+  duplicate_error: Denne genvej er duplikeret
+  enable: Aktivér det indbyggede genvejssystem
+  enable_tooltip: >-
+    Deaktiver, hvis du vil implementere dit eget genvejssystem ved hjælp af
+    Seelen UI Client
+  labels:
+    create_new_workspace: Opret et nyt arbejdsområde
+    cycle_stack_next: Cyklus-stak Næste
+    cycle_stack_prev: Cyklus-stak Tidligere
+    cycle_wallpaper_next: Skift til næste baggrund
+    cycle_wallpaper_prev: Skift til forrige baggrund
+    decrease_height: Reducer højden
+    decrease_width: Reducer bredden
+    destroy_current_workspace: Ødelæg det nuværende arbejdsområde
+    focus_bottom: Fokus på bunden
+    focus_latest: Fokus på det seneste
+    focus_left: Fokus til venstre
+    focus_right: Fokuser rigtigt
+    focus_top: Fokus på toppen
+    increase_height: Forøg højden
+    increase_width: Øg bredden
+    misc_force_quit: Force stopper
+    misc_force_restart: Fremtving genstart
+    misc_open_settings: Åbn indstillinger
+    misc_toggle_lock_tracing: Skift låsesporing (logfiler)
+    misc_toggle_win_event_tracing: Slå Win Event Tracing til (logfiler)
+    move_to_workspace: Flyt til arbejdsområde {{0}}
+    move_window_down: Flyt vinduet til bunden
+    move_window_left: Flyt vinduet til venstre
+    move_window_right: Flyt vinduet til højre
+    move_window_up: Flyt vinduet til toppen
+    pause_tiling: Sæt Tiling Window Manager på pause
+    reserve_bottom: Reserve bund
+    reserve_float: Reserve Float
+    reserve_left: Reserve til venstre
+    reserve_right: Reserver ret
+    reserve_stack: Reserve-stak
+    reserve_top: Reserver top
+    restore_sizes: Gendan størrelser
+    send_to_workspace: Send til arbejdsområde {{0}}
+    start_weg_app: Fokuser eller start programmet {{0}}
+    switch_to_next_workspace: Skift til næste arbejdsområde
+    switch_to_previous_workspace: Skift til forrige arbejdsområde
+    switch_workspace: Skift til arbejdsområde {{0}}
+    toggle_float: Skift mellem vinduets flydende tilstand
+    toggle_monocle: Skift arbejdsområdets Monocle-tilstand
+  readonly_tooltip: Dette er en skrivebeskyttet genvej
+  reset: Nulstil til standardindstillinger
+sides:
+  bottom: Bund
+  left: Venstre
+  right: Højre
+  top: Top
+toolbar:
+  auto_hide: Auto skjul
+  delay_to_hide: Forsink med at skjule
+  delay_to_show: Forsinket fremvisning
+  dock_side: Position
+  enable: Aktivér fancy værktøjslinje
+  hide_mode:
+    always: Altid
+    never: Aldrig
+    on_overlap: På overlapning
+  item_size: Varestørrelse
+  label: Værktøjslinje
+  margin: Marginstørrelse
+  padding: Polstring størrelse
+  placeholder: {}
+update:
+  available: Opdatering tilgængelig!
+  channel: Opdateringskanal
+  downloading: Download ...
+wall:
+  backgrounds: Baggrunde
+  blur: Sløring
+  cancel: Ophæve
+  close: Tæt
+  collection_name: Samlingens navn
+  collections: Samlinger
+  contrast: Kontrast
+  corrupted_wallpapers_message: 'Ødelagte tapeter, overvej at slette disse:'
+  create: Skabe
+  create_collection: Opret samling
+  default_collection: Standard samling
+  delete_collection: Slet samling
+  edit_collection: Rediger samling
+  enable: Aktivér tapet manager
+  extend: Forlæng primær
+  fit:
+    contain: Indeholder
+    cover: Omslag
+    fill: Fyld
+  flipHorizontal: Vend vandret
+  flipVertical: Vend lodret
+  generating_thumbnails: Generering af tapetminiaturer
+  hours: timer
+  interval: Skift tapet hver
+  minutes: minutter
+  monitor_collection: Monitor Indsamling
+  multimonitor_behaviour: Multimonitor-adfærd
+  muted: Slå videolyd fra
+  no_background: Tom lysbilledshow ved hjælp af temas baggrund i stedet.
+  no_collections: Ingen samlinger oprettet endnu. Klik på knappen + for at oprette en.
+  objectFit: Baggrundstilpasning
+  objectPosition: Baggrundsposition
+  overlayColor: Overlay-farve
+  overlayMixBlendMode: Overlay Mix Blend Mode
+  per_monitor: Per skærm
+  playback: Afspilningshastighed
+  position:
+    bottom: I bunden
+    center: Center
+    left: Til venstre
+    right: Til højre
+    top: Til toppen
+  processing_video: Behandler video
+  random: Randomiser slideshow
+  saturation: Mætning
+  seconds: sekunder
+  select_collection: Vælg Samling
+  thumbnail_generation_complete: Generering af miniaturebilleder er fuldført
+  thumbnail_generation_finished: Generering af miniaturebilleder er afsluttet
+  wallpaper_collection: Tapet samling
+  wallpaper_settings: Baggrundsindstillinger
+  withOverlay: Med overlay
+  workspace_collections: Arbejdsrumssamlinger
+weg:
+  auto_hide: Auto skjul
+  delay_to_hide: Forsink med at skjule
+  delay_to_show: Forsinket fremvisning
+  dock_side: Position
+  enable: Aktivér dock/proceslinje
+  filtering: Filtrering af varer
+  gap: Gap
+  hide_mode:
+    always: Altid
+    never: Aldrig
+    on_overlap: På overlapning
+  items:
+    gap: Rum mellem genstande
+    label: Genstande
+    pinned_visibility:
+      always: Altid
+      label: Fastgjorte elementers synlighed
+      when_primary: Når monitoren er primær
+    show_instance_counter: Vis tæller for åbne vinduer
+    show_window_title: Vis titel på åbent vindue (kun vandret)
+    size: Varestørrelse
+    split_windows: Opdelte vinduer (et element pr. vindue)
+    temporal_visibility:
+      all: Alle
+      label: Synlighed af frigjorte elementer
+      on_monitor: På monitor
+    visible_separators: Synlige separatorer
+  label: Dock/proceslinje
+  margin: Margin
+  mode:
+    full_width: Fuld skærmbredde
+    min_content: Så lille som det kan være
+  padding: Polstring
+  show_end_task: Vis afslutning af opgave på proceslinjen
+  width: Bredde
+welcome:
+  give_a_review: Giv en anmeldelse
+  message: >-
+    Seelen UI er et gratis og open source-skrivebordsmiljø til Windows. Her har
+    du fuld kontrol over, hvordan dit skrivebord ser ud og opfører sig, så du
+    kan tilpasse hver eneste detalje, så den matcher din arbejdsgang og stil.
+  ok: Lad os starte!
+  review: >-
+    Hvis du kan lide at bruge Seelen UI, kan du overveje at skrive en anmeldelse
+    i butikken – din feedback hjælper projektet med at vokse og forbedre.
+  title: Velkommen til Seelen UI!
+widget:
+  enable: Aktivér denne widget
+  enable_for_monitor: Aktiver på denne skærm
+  instances: Forekomster
+wm:
+  animations:
+    duration: Animationsvarighed (MS)
+    ease_function: Animationsaflastningsfunktion
+    enable: Aktivér vindues animationer
+  author: Forfatter
+  border:
+    enable: Aktivér vindues grænse
+    offset: Border Offset
+    width: Grænsebredde
+  description: Beskrivelse
+  drag_behavior: Træk adfærd
+  drag_behavior_options:
+    sort: Sorter (omarranger vinduer, mens du trækker)
+    swap: Swap (byt vinduer ved træk-enden)
+  enable: Aktivér flisevindue manager
+  layout: Layout
+  resize_delta: Ændre størrelse på Delta (%)
+  space_between_containers: Rum mellem containere
+  workspace_offset: Arbejdsområder offset (marginer)
+  workspace_padding: Arbejdsområder polstring
+'yes': Ja

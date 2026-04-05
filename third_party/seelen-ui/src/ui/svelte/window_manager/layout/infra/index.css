@@ -1,0 +1,89 @@
+#root {
+  /* Root container always should use all the screen, independently of the grow factor */
+  > .wm-container {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.wm-container {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0%;
+  min-height: 0;
+  min-width: 0;
+  gap: var(--config-containers-gap);
+
+  /* if no siblings, ignore grow factor */
+  &:first-child:last-child {
+    flex-grow: 1 !important;
+  }
+
+  &.wm-leaf {
+    border-radius: 10px; /* windows 11 border radius */
+  }
+
+  &.wm-horizontal {
+    display: flex;
+  }
+
+  &.wm-vertical {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &.wm-reserved {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    opacity: 0.8;
+
+    &:not(.wm-reserved-float) {
+      transition-property: width, height, left, top;
+      transition-duration: 100ms;
+      transition-timing-function: ease-in;
+    }
+
+    &.wm-reserved-float {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      translate: -50% -50%;
+      opacity: 0;
+      animation: fromCenter 200ms ease-in forwards;
+      animation-delay: 10ms;
+    }
+
+    &.wm-reserved-left {
+      width: 50%;
+    }
+
+    &.wm-reserved-right {
+      left: 50%;
+      width: 50%;
+    }
+
+    &.wm-reserved-top {
+      height: 50%;
+    }
+
+    &.wm-reserved-bottom {
+      top: 50%;
+      height: 50%;
+    }
+  }
+}
+
+@keyframes fromCenter {
+  0% {
+    scale: 0;
+    opacity: 0;
+  }
+  100% {
+    scale: 1;
+    opacity: 0.8;
+  }
+}

@@ -1,0 +1,391 @@
+action:
+  confirm: Jeste li sigurni?
+  confirm_body: Ova se radnja ne može poništiti.
+apps_configurations:
+  app:
+    bindings: Vezivanje (napomena potrebne su obje opcije)
+    category: Kategorija
+    category_placeholder: Nijedan
+    monitor: Monitor
+    monitor_placeholder: Nijedan
+    name: Ime
+    ok_create: Stvoriti
+    ok_edit: Ažuriraj
+    ok_readonly: Uredi kao novo
+    options:
+      NoInteractive: Nema interaktivnosti
+      VdPinned: Prikaži u svim radnim prostorima
+      WmFloat: Twm - Počnite plutati
+      WmForce: Twm - Force Manage
+      WmUnmanage: Twm - Poništi upravljanje
+    options_label: Dodatne opcije
+    title_create: Stvaranje {{name}}
+    title_edit: Uređivanje {{name}}
+    title_readonly: Pregled {{name}}
+    weg_options_label: Opcije pristaništa/trake
+    wm_options_label: Opcije upravitelja prozora
+    workspace: Radni prostor
+    workspace_placeholder: Nijedan
+  bundled_msg: >-
+    Ove paketne konfiguracije nisu moguće uređivati ​​i dizajnirane su tako da
+    vam pruže najbolje iskustvo bez prilagodbe. Oni automatski konfiguriraju
+    najčešće aplikacije za vas.
+  bundled_title: Aplikacija config sa Seelen
+  confirm_delete: Jeste li sigurni da želite izbrisati ovu konfiguraciju?
+  confirm_delete_title: Potvrdi Delete
+  delete: Izbrisati
+  export: Izvoz
+  export_full: Postavke izvoza putem aplikacije
+  extra_info: >-
+    Seelen UI koristi samo jedan identifikator po aplikaciji (prvo pronađeno
+    podudaranje) tako da je redoslijed u načinu na koji su specificirani važan,
+    najnovije dodano će imati prioritet, imajte na umu da je tablica sortirana
+    prema zadanim postavkama od najnovijeg prema starom.
+  identifier:
+    add_block: Dodajte blok
+    and: I
+    id: Identifikator
+    kind: Identificirati
+    matching_strategy: Podudarna strategija
+    matching_strategy_option:
+      contains: Sadrži
+      ends_with: Završava s
+      equals: Jednako
+      regex: Uobičajeni izraz
+      starts_with: Počinje s
+    negation: Negiranje podudaranja
+    or: ILI
+    remove: Izbriši blok
+    type:
+      class: Klasa
+      exe: Exe
+      path: Put
+      title: Titula
+  import: Uvoz
+  import_full: Postavke uvoza putem aplikacije
+  new: Novi
+  search: traži
+  swap: Mijenjati
+cancel: Otkazati
+close: Zatvoriti
+delete: Izbrisati
+devtools:
+  app_folders: Mape aplikacija
+  custom_config_file: Učitajte prilagođenu konfiguracijsku datoteku
+  data_folder: Mapa podataka
+  enable: Omogućite alate za razvojne programere
+  install_folder: Mapa za instalaciju
+  load: Opterećenje
+  settings_file: Datoteka postavki
+  simulate_perm:
+    label: Zahtjev za dopuštenje za simulaciju widgeta
+    result_allowed: ✓ Dopuštenje dano
+    result_denied: ✗ Dopuštenje odbijeno
+    trigger: Simulirati
+    widget_id_placeholder: '@autor/ime-widgeta'
+extras:
+  clear_icons: Očistite predmemoriju ikona sustava
+  clear_icons_tooltip: Ponovno pokretanje moglo bi se u potpunosti stupiti na sve widgete
+  exit: Prestati/izaći
+  links: Službene veze
+  relaunch: Ponovno pokretanje
+  version: Verzija
+  version_fixed: >-
+    Verzije aplikacije i WebView2 Runtime su popravljene. To znači da aplikacija
+    neće primati ažuriranja i WebView2 Runtime neće biti automatski ažuriran
+    ažuriranjima za Windows.
+general:
+  accent_color: Akcentna boja
+  date_format: Format datuma
+  date_format_how_to: Kako napisati format datuma?
+  hardware_acceleration: Hardversko ubrzanje
+  hardware_acceleration_description: >-
+    Onemogućavanje hardverskog ubrzanja smanjit će upotrebu memorije, ali može
+    uzrokovati probleme s performansama. Sigurno je onemogućiti ako ne želite
+    koristiti žive pozadine.
+  icon_pack:
+    available: Dostupni paketi ikona
+    selected: Aktivni paketi ikona
+  language: Jezik
+  monday: ponedjeljak
+  performance_mode:
+    on_battery: Na bateriji
+    on_energy_saver: Na uštedu energije
+    options:
+      disabled: Onemogućen
+      extreme: Ekstrem
+      minimal: Minimalan
+    plugged: Priključeno ili punjenje
+  polling_interval: Interval prozivanja sustava
+  polling_interval_description: >-
+    Koliko često (u sekundama) Seelen UI provjerava sistemske resurse kao što su
+    CPU, RAM, mreža i aktivnost diska. Manji broj znači češća ažuriranja, ali
+    malo veću upotrebu resursa.
+  saturday: subota
+  start_of_week: Početak tjedna
+  startup: Trčati na startup?
+  sunday: nedjelja
+  theme:
+    available: Dostupne teme
+    selected: Aktivne teme
+header:
+  labels:
+    config: Konfiguracije
+    developer: Za programere
+    extras: Dodaci
+    general: Općenito
+    home: Dom
+    icon_pack_editor: Ikone predmemorirane
+    iconpack: Ikona pakiranja
+    monitors: Monitori
+    plugin: Dodaci
+    resources: Resursi
+    shortcuts: Prečac
+    soundpack: Zvučni paketi
+    specific_apps: Postavke prema aplikaciji
+    theme: Teme
+    virtual_desk: Virtualna radna računala
+    wallpaper: Pozadine
+    widget: Widgeti
+home:
+  new_resources: Novi resursi
+inherit: Naslijediti
+inProgress: U nastajanju...
+insert: Umetnuti
+loading: Učitavam...
+miscellaneous: Razni
+monitors_configurations:
+  label: Monitor {{index}}
+more: Više
+'no': Ne
+open: Otvoren
+quit: Prestati
+remove: Ukloniti
+reset_all_to_default: Resetirajte sve na zadane vrijednosti
+reset_to_default: Poništite na zadanu vrijednost
+resources:
+  app_outdated: >-
+    Ovaj resurs zahtijeva da novija verzija Seelen korisničkog sučelja radi
+    ispravno.
+  corrupted_wallpaper: >-
+    Izdvajanje minijature nije uspjelo - format videozapisa je oštećen ili nije
+    podržan
+  delete: Izbriši resurs
+  discover: Otkrijte više resursa
+  has_update: Dostupno je ažuriranje
+  high_impact: Veliki utjecaj na performanse
+  import_wallpapers: Uvoz lokalnih pozadina
+  open_folder: Mapa otvorenih resursa
+  outdated: >-
+    Ovaj je resurs dizajniran za stariju verziju seelen korisničkog sučelja i
+    možda neće raditi ispravno.
+  see_on_website: Vidi na web stranici
+review_request:
+  not_now: Ne sad
+  sure: Naravno!
+  title: Uživate li u Seelen korisničkom sučelju?
+save: Uštedjeti
+save_and_restart: Spremi i ponovno pokrenite
+search: Pretraživanje
+see_more: Pogledajte više
+shortcuts:
+  duplicate_error: Ovaj prečac je dupliciran
+  enable: Omogući ugrađeni sustav prečaca
+  enable_tooltip: >-
+    Onemogući ako ćete implementirati vlastiti sustav prečaca pomoću klijenta
+    Seelen UI
+  labels:
+    create_new_workspace: Stvorite novi radni prostor
+    cycle_stack_next: Sljedeći snop ciklusa
+    cycle_stack_prev: STAM STAKU PRETHONI
+    cycle_wallpaper_next: Promijenite na sljedeću pozadinu
+    cycle_wallpaper_prev: Promijenite na prethodnu pozadinu
+    decrease_height: Visina smanjenja
+    decrease_width: Širina smanjenja
+    destroy_current_workspace: Uništiti trenutni radni prostor
+    focus_bottom: Fokus dna
+    focus_latest: Fokus najnovije
+    focus_left: Usredotočite se lijevo
+    focus_right: Usredotočite se u pravu
+    focus_top: Fokus na vrhu
+    increase_height: Povećati visinu
+    increase_width: Povećati širinu
+    misc_force_quit: Sila je odustala
+    misc_force_restart: Ponovno pokrenite
+    misc_open_settings: Otvorene postavke
+    misc_toggle_lock_tracing: Preklopljenje zaključavanja (zapisnici)
+    misc_toggle_win_event_tracing: Pregazivanje traganja događaja (zapisnici)
+    move_to_workspace: Pomaknite se na radni prostor {{0}}
+    move_window_down: Pomaknite prozor na dno
+    move_window_left: Pomaknite prozor u lijevo
+    move_window_right: Pomaknite prozor udesno
+    move_window_up: Pomaknite prozor na vrh
+    pause_tiling: Upravitelj prozora za pauzu
+    reserve_bottom: Rezervirati
+    reserve_float: Rezervirati plutaj
+    reserve_left: Rezerva
+    reserve_right: Rezervirati
+    reserve_stack: Rezerva
+    reserve_top: Rezervirajte vrh
+    restore_sizes: Vrati veličine
+    send_to_workspace: Pošaljite u radni prostor {{0}}
+    start_weg_app: Fokus ili pokretanje aplikacije {{0}}
+    switch_to_next_workspace: Prebacite se na sljedeći radni prostor
+    switch_to_previous_workspace: Prebacite se na prethodni radni prostor
+    switch_workspace: Prebacite se na radni prostor {{0}}
+    toggle_float: Prebacivanje prozora plutajući način
+    toggle_monocle: Prebacite Monocle način rada radnog prostora
+  readonly_tooltip: Ovo je prečac samo za čitanje
+  reset: Ponovno postavite na zadane vrijednosti
+sides:
+  bottom: Dno
+  left: Lijevo
+  right: Pravo
+  top: Vrh
+toolbar:
+  auto_hide: Auto sakrij
+  delay_to_hide: Odgoda za skrivanje
+  delay_to_show: Odgoditi prikaz
+  dock_side: Položaj
+  enable: Omogućite maštovitu alatnu traku
+  hide_mode:
+    always: Uvijek
+    never: Nikada
+    on_overlap: Na preklapanju
+  item_size: Veličina artikla
+  label: Alatna traka
+  margin: Veličina margine
+  padding: Veličina podloge
+  placeholder: {}
+update:
+  available: Ažuriranje dostupno!
+  channel: Kanal za ažuriranje
+  downloading: Preuzimanje ...
+wall:
+  backgrounds: Pozadine
+  blur: Zamutiti
+  cancel: Otkazati
+  close: Zatvoriti
+  collection_name: Naziv zbirke
+  collections: Zbirke
+  contrast: Kontrast
+  corrupted_wallpapers_message: 'Oštećene pozadine, razmislite o brisanju ovih:'
+  create: Stvoriti
+  create_collection: Stvori zbirku
+  default_collection: Zadana zbirka
+  delete_collection: Izbriši zbirku
+  edit_collection: Uredi zbirku
+  enable: Omogući upravitelja pozadina
+  extend: Proširi primarni
+  fit:
+    contain: Obuzdati
+    cover: Poklopac
+    fill: Ispuniti
+  flipHorizontal: Okrenuti vodoravni
+  flipVertical: Okrenuti okomit
+  generating_thumbnails: Generiranje sličica pozadine
+  hours: sate
+  interval: Promijenite pozadinu svaku
+  minutes: minute
+  monitor_collection: Zbirka monitora
+  multimonitor_behaviour: Ponašanje više monitora
+  muted: Isključi video zvuk
+  no_background: Prazni prezentacija, umjesto toga, koristeći pozadinu teme.
+  no_collections: Još nije stvorena nijedna zbirka. Kliknite gumb + da biste ga izradili.
+  objectFit: Fit
+  objectPosition: Pozadinski položaj
+  overlayColor: Boja prekrivanja
+  overlayMixBlendMode: Način miješanja preklapanja mješavine
+  per_monitor: Po monitoru
+  playback: Brzina reprodukcije
+  position:
+    bottom: Dno
+    center: Centar
+    left: Lijevo
+    right: Pravo
+    top: Vrh
+  processing_video: Obrada videa
+  random: Randomizirana prezentacija
+  saturation: Zasićenost
+  seconds: sekundi
+  select_collection: Odaberite Zbirka
+  thumbnail_generation_complete: Generiranje sličica dovršeno
+  thumbnail_generation_finished: Generiranje sličica je uspješno završeno
+  wallpaper_collection: Zbirka tapeta
+  wallpaper_settings: Postavke pozadine
+  withOverlay: S prekrivanjem
+  workspace_collections: Zbirke radnog prostora
+weg:
+  auto_hide: Auto sakrij
+  delay_to_hide: Odgoda za skrivanje
+  delay_to_show: Odgoditi prikaz
+  dock_side: Položaj
+  enable: Omogućite pristanište/zadaću
+  filtering: Filtriranje predmeta
+  gap: Jaz
+  hide_mode:
+    always: Uvijek
+    never: Nikada
+    on_overlap: Na preklapanju
+  items:
+    gap: Prostor između predmeta
+    label: Predmeti
+    pinned_visibility:
+      always: Uvijek
+      label: Vidljivost prikvačenih stavki
+      when_primary: Kada je monitor primarni
+    show_instance_counter: Prikaži otvoreni prozorni brojač
+    show_window_title: Prikaži naslov otvorenog prozora (samo vodoravni)
+    size: Veličina predmeta
+    split_windows: Podijeljeni prozori (jedna stavka po prozoru)
+    temporal_visibility:
+      all: Sve
+      label: Vidljivost otkvačenih stavki
+      on_monitor: Na monitoru
+    visible_separators: Vidljivi separatori
+  label: Pristanište/trag
+  margin: Margina
+  mode:
+    full_width: Puna širina zaslona
+    min_content: Mali koliko može biti
+  padding: Jadnja
+  show_end_task: Pokažite krajnji zadatak na zadaćama
+  width: Širina
+welcome:
+  give_a_review: Dajte recenziju
+  message: >-
+    Seelen UI je besplatno desktop okruženje otvorenog koda za Windows. Ovdje
+    imate potpunu kontrolu nad izgledom i ponašanjem vaše radne površine, što
+    vam omogućuje da prilagodite svaki detalj kako bi odgovarao vašem tijeku
+    rada i stilu.
+  ok: Počnimo!
+  review: >-
+    Ako volite koristiti Seelen UI, razmislite o tome da ostavite recenziju u
+    trgovini - vaše povratne informacije pomažu razvoju i poboljšanju projekta.
+  title: Dobro došli u Seelen UI!
+widget:
+  enable: Omogući ovaj widget
+  enable_for_monitor: Omogućite ovaj monitor
+  instances: Slučajevi
+wm:
+  animations:
+    duration: Trajanje animacije (MS)
+    ease_function: Funkcija ublažavanja animacije
+    enable: Omogući animacije prozora
+  author: Autor
+  border:
+    enable: Omogućite obrub prozora
+    offset: Offset
+    width: Širina granice
+  description: Opis
+  drag_behavior: Ponašanje povlačenja
+  drag_behavior_options:
+    sort: Poredaj (promjena redoslijeda prozora tijekom povlačenja)
+    swap: Zamjena (zamjena prozora na kraju povlačenja)
+  enable: Omogući upravitelj prozora za plod
+  layout: Raspored
+  resize_delta: Promijenite veličinu delta (%)
+  space_between_containers: Prostor između spremnika
+  workspace_offset: Pomak radnog prostora (margine)
+  workspace_padding: Radni prostori jastučići
+'yes': Da

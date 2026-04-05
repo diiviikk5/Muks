@@ -84,7 +84,7 @@
     </div>
   {/if}
 
-  <div class="taskbar horizontal bottom">
+  <div class="taskbar horizontal bottom" class:compact={!expanded}>
     <div class="weg-items-container">
       {#each pinnedApps as app}
         <button class="weg-item" onclick={stopAnd(() => launchApp(app.id))} title={app.name}>
@@ -256,6 +256,26 @@
 
   .shell-frame:not(.expanded) .taskbar {
     width: min(1240px, calc(100vw - 22px));
+  }
+
+  .taskbar.compact {
+    width: min(760px, calc(100vw - 22px));
+  }
+
+  .taskbar.compact .weg-separator {
+    display: none;
+  }
+
+  .taskbar.compact .weg-item {
+    min-width: var(--config-item-size);
+    max-width: var(--config-item-size);
+    padding: 5px;
+    justify-content: center;
+  }
+
+  .taskbar.compact .weg-item-title,
+  .taskbar.compact .window-actions {
+    display: none;
   }
 
   .taskbar > .weg-items-container::-webkit-scrollbar {

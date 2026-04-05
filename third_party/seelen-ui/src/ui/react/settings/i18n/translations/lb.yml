@@ -1,0 +1,389 @@
+action:
+  confirm: Bass du secher?
+  confirm_body: Dës Aktioun kann net annuléiert ginn.
+apps_configurations:
+  app:
+    bindings: Bindend (Notiz béid Optiounen sinn erfuerderlech)
+    category: Gemengen
+    category_placeholder: Keen
+    monitor: Bonitor
+    monitor_placeholder: Keen
+    name: Numm vum Numm
+    ok_create: Erreeiert eng kreéieren
+    ok_edit: Olaangs
+    ok_readonly: Ännert als nei
+    options:
+      NoInteractive: Keng interaktiv
+      VdPinned: Show an all Aarbechtsberäicher
+      WmFloat: Twm - Start Floating
+      WmForce: Twm - Force Manage
+      WmUnmanage: Twm - Unmanage
+    options_label: Extra Optiounen
+    title_create: Erstellen {{Numm}}
+    title_edit: Ännert {{Numm}}
+    title_readonly: '{{{Numm}}'
+    weg_options_label: Dock / Taskbaroptiounen
+    wm_options_label: Fenster Manager Optiounen
+    workspace: Konschtpas
+    workspace_placeholder: Keen
+  bundled_msg: >-
+    Dës gebündelt Konfiguratiounen sinn net geännert a sinn entwéckelt fir Iech
+    déi bescht Erfahrung ouni Personnalisatioun ze ginn. Si konfiguréieren
+    automatesch déi heefegst Uwendungen fir Iech.
+  bundled_title: App con conflüchteg mat Seelen
+  confirm_delete: Sidd Dir sécher, datt Dir dës Configuratioun / s läscht braucht?
+  confirm_delete_title: Confirméieren Leedung
+  delete: Läschen
+  export: Export
+  export_full: Export Astellunge vun der Uwendung
+  extra_info: >-
+    Svelt UI benotzen nëmmen een identifizéierer pro App (Virdeel net fonnt),
+    sou wéi kënne bestëmmten onbestëmmt ass wichteg, well den Dësch bestëmmt
+    gëtt geschafaf, wéi Den Tabell aus alstoën ass, sou wéi den Dësch par
+    rapport ass.
+  identifier:
+    add_block: Füügt Block
+    and: An an
+    id: Identifizéierer
+    kind: Identifizéieren duerch
+    matching_strategy: Passende Strategie
+    matching_strategy_option:
+      contains: Enthält
+      ends_with: Enn mat
+      equals: Gläichzäiteg
+      regex: Regelméisseg Ausdrock
+      starts_with: Fänkt mat
+    negation: Negate passend
+    or: Oder
+    remove: Läschen Block
+    type:
+      class: Klass
+      exe: Exe
+      path: Wee
+      title: Titel
+  import: Importéieren
+  import_full: Import Astellunge per Uwendung
+  new: Nei
+  search: Sichen
+  swap: Zort
+cancel: Ofbriechen
+close: Zoumaachen
+delete: Läschen
+devtools:
+  app_folders: App Classeure
+  custom_config_file: Luede personaliséiert Konfiguratiounsdatei
+  data_folder: Etabond Dossier
+  enable: Aktivéiert Entwéckler Tools
+  install_folder: Installatioun Dossier
+  load: Lueden
+  settings_file: Settytout-Datei
+  simulate_perm:
+    label: Simulatioun Widget Erlaabnis Ufro
+    result_allowed: ✓ Erlaabnis gëtt
+    result_denied: ✗ Erlaabnis refuséiert
+    trigger: Simuléieren
+    widget_id_placeholder: '@auteur/widget-name'
+extras:
+  clear_icons: Kloer System Symboler Cache
+  clear_icons_tooltip: E Restart konnt noutwendeg sinn fir ganz wéi all Widgets ze maachen
+  exit: Ophalen / erausfannen
+  links: Offiziell Linken
+  relaunch: Relatioun
+  version: Erëm
+  version_fixed: >-
+    D'Applikatioun an d'WebView2 Runtime Versioune si fixéiert. Dëst bedeit datt
+    d'Applikatioun keng Updates kritt an de WebView2 Runtime gëtt net
+    automatesch mat Windows Updates aktualiséiert.
+general:
+  accent_color: Akzenter Faarf
+  date_format: Datum Format
+  date_format_how_to: Wéi schreiwen ech en Datumformat
+  hardware_acceleration: Hardware Beschleunegung
+  hardware_acceleration_description: >-
+    Desaktivéiere vun Hardware Beschleunegung reduzéiert d'Erënnerungsverbrauch,
+    awer kann Performanceprobleemer verursaachen. Ass sécher ze deaktivéieren
+    wann Dir keng Live Wallpaper benotzt.
+  icon_pack:
+    available: Verfügbar Ikon Packs
+    selected: Aktiv Ikon Packs
+  language: Sprooche
+  monday: Méindeg
+  performance_mode:
+    on_battery: Op Batterie
+    on_energy_saver: Op Energiespuer
+    options:
+      disabled: Behënnert
+      extreme: Extrem
+      minimal: Minimal
+    plugged: Ugeschloss oder opluede
+  polling_interval: System Ëmfro Intervall
+  polling_interval_description: >-
+    Wéi dacks (a Sekonnen) Seelen UI iwwerpréift Systemressourcen wéi CPU, RAM,
+    Netzwierk an Diskaktivitéit. Eng méi kleng Zuel bedeit méi heefeg Updates,
+    awer e bësse méi héich Ressourceverbrauch.
+  saturday: Samschdeg
+  start_of_week: Start vun der Woch
+  startup: Run op Startup?
+  sunday: Sonndeg
+  theme:
+    available: Verfügbar Themen
+    selected: Aktiv Themen
+header:
+  labels:
+    config: Konfiguratioun
+    developer: Fir Entwéckler
+    extras: Extras
+    general: Generol
+    home: Doheem
+    icon_pack_editor: Cacked Symboler
+    iconpack: ICON Tass
+    monitors: Iwwerschwannegkeeten
+    plugin: Plugins
+    resources: Ressourcen
+    shortcuts: Ofkierpsen
+    soundpack: Tounpacken
+    specific_apps: Astellunge per Uwendung
+    theme: Themen
+    virtual_desk: Virtuell Desktops
+    wallpaper: Wallpapers
+    widget: Widgets
+home:
+  new_resources: Nei Insidder
+inherit: Ontherrit
+inProgress: A Beaarbechtung...
+insert: INor andafen
+loading: Lueden ...
+miscellaneous: Erleeën
+monitors_configurations:
+  label: Monitor {{index}}
+more: Méi kleng
+'no': Nee
+open: Ëmen e gratis
+quit: Ness
+remove: Ofwäschen
+reset_all_to_default: Reset all op Standardwäerter
+reset_to_default: Reset op Standardwäert
+resources:
+  app_outdated: Dës Ressource brauch eng nei Versioun vu Seelen Ui fir richteg ze schaffen.
+  corrupted_wallpaper: Ausgefall Miniatur Extrait - korrupt oder net ënnerstëtzt Video Format
+  delete: Läschen Ressource
+  discover: Entdeckt méi Ressourcen
+  has_update: En Update ass verfügbar
+  high_impact: Héich Impakt op Leeschtung
+  import_wallpapers: Import lokal Wallpapers
+  open_folder: Oppen Ressource Dossier
+  outdated: >-
+    Dës Ressource gouf fir eng méi al Versioun vu seelen UI entworf a sech net
+    richteg schaffen.
+  see_on_website: Gesinn op Websäit
+review_request:
+  not_now: Net elo
+  sure: Sécher!
+  title: Genéisst Seelen UI?
+save: Spuerwäit
+save_and_restart: Spuert & nei starten
+search: Sichen
+see_more: Méi gesinn
+shortcuts:
+  duplicate_error: Dës Ofkiirzung gëtt duplizéiert
+  enable: Aktivéiert agebaut-in Shortcuts System
+  enable_tooltip: >-
+    Desaktivéiere wann Dir Ären eegene Ofkierzungsystem implementéiert, mat dem
+    Segen UI Client
+  labels:
+    create_new_workspace: Neie Aarbechtsberäich erstellen
+    cycle_stack_next: Zyklus Stack nieft
+    cycle_stack_prev: Cycle Stack virdrun
+    cycle_wallpaper_next: Ännerung op den nächsten Tapeten
+    cycle_wallpaper_prev: Ännerung op déi virdrun Tapeten
+    decrease_height: Reduzéiert Héicht
+    decrease_width: Reduzéiert Breet
+    destroy_current_workspace: Zerstéiert aktuell Aarbechtsberäich
+    focus_bottom: Fokus ënnen
+    focus_latest: Fokusséieren dat lescht
+    focus_left: Fokusséiert lénks
+    focus_right: Fokusséiert richteg
+    focus_top: Fokusséieren Top
+    increase_height: Erhéijen Héicht
+    increase_width: Erhéijung vun der Breet
+    misc_force_quit: Kraaft opzehalen
+    misc_force_restart: Kraaft Restart
+    misc_open_settings: Oppen Astellungen
+    misc_toggle_lock_tracing: Toggle Lock Tracing (Logbicher)
+    misc_toggle_win_event_tracing: Toggle gewannen Event Tracing (Logbicher)
+    move_to_workspace: Plënnert op Aarbechtsberäich {{0}}
+    move_window_down: Géifen Fënster op ënnen
+    move_window_left: Giddfen Fënster op lénks
+    move_window_right: Réckelt Fënster op riets
+    move_window_up: Réckelt Fënster op Top
+    pause_tiling: Pause filt Fenstermanager
+    reserve_bottom: Reservéiert ënnen
+    reserve_float: Reservéiert Float
+    reserve_left: Reserve lénks
+    reserve_right: Reservéiert richteg
+    reserve_stack: Reserve Stack
+    reserve_top: Reserve Top
+    restore_sizes: Restauréiert Gréissten
+    send_to_workspace: Schéckt op Aarbechtsberäich {{0}}
+    start_weg_app: Fokusséieren oder ufänken Applikatioun {{0}}
+    switch_to_next_workspace: Wiesselt op d'nächst Aarbechtsberäich
+    switch_to_previous_workspace: Wiesselt op virdrun Aarbechtsberäich
+    switch_workspace: Schalt op Aarbechtsberäich {{0}}
+    toggle_float: Toggle Fenster Float Modus
+    toggle_monocle: Toggle Workspace Monocle Modus
+  readonly_tooltip: Dëst ass e Lies-nëmme Mangel
+  reset: Reset op Defaults
+sides:
+  bottom: Siwenn
+  left: Lénks
+  right: Riets
+  top: Uewen
+toolbar:
+  auto_hide: Automatesch
+  delay_to_hide: Verspéidung ze verstoppen
+  delay_to_show: Verspéidung fir ze weisen
+  dock_side: Positioun un
+  enable: Aktivéiert Fore Toolbar
+  hide_mode:
+    always: Ëmmer
+    never: Ni
+    on_overlap: Op Iwwerlappung
+  item_size: Artikel Gréisst
+  label: TO-tcstar
+  margin: Margin Gréisst
+  padding: Padding Gréisst
+  placeholder: {}
+update:
+  available: Update verfügbar!
+  channel: Update Kanal
+  downloading: NËMMEN ...
+wall:
+  backgrounds: Wallpapers
+  blur: Blour
+  cancel: Ofbriechen
+  close: Zoumaachen
+  collection_name: Sammlung Numm
+  collections: Kollektiounen
+  contrast: Kontrad
+  corrupted_wallpapers_message: 'Korrupt Tapeten, betruecht dës ze läschen:'
+  create: Schafen
+  create_collection: Schafen Kollektioun
+  default_collection: Standard Kollektioun
+  delete_collection: Läschen Kollektioun
+  edit_collection: Kollektioun änneren
+  enable: Aktivéiert Wallpaper Manager
+  extend: Primär verlängeren
+  fit:
+    contain: Enthalen
+    cover: Zouzedoen
+    fill: Fëllt
+  flipHorizontal: Flip horizontal
+  flipVertical: Flip vertikal
+  generating_thumbnails: Generéiere Wallpaper Thumbnails
+  hours: Stonnen.
+  interval: Änneren Wallpaper all
+  minutes: Minutte vun der Minutten
+  monitor_collection: Monitor Kollektioun
+  multimonitor_behaviour: Multimonitor Behuelen
+  muted: Demp Video Audio
+  no_background: Eidel Slatswhow, benotzt den Thema vum Thema amplaz.
+  no_collections: >-
+    Keng Kollektiounen erstallt nach. Klickt op de + Knäppchen fir een ze
+    kreéieren.
+  objectFit: Hannergrond fit
+  objectPosition: Hannergrënn Positioun
+  overlayColor: Iwwerlauschteren Faarf
+  overlayMixBlendMode: Overlay Mix vermëschen Modus
+  per_monitor: Pro Monitor
+  playback: Spillversuch
+  position:
+    bottom: Siwenn
+    center: Center
+    left: Lénks
+    right: Riets
+    top: Uewen
+  processing_video: Video veraarbecht
+  random: Zoufälleg Slideshow
+  saturation: Saturatioun
+  seconds: Sekonnen
+  select_collection: Wielt Kollektioun
+  thumbnail_generation_complete: Thumbnail Generatioun Komplett
+  thumbnail_generation_finished: Thumbnail Generatioun ass erfollegräich ofgeschloss
+  wallpaper_collection: Wallpaper Kollektioun
+  wallpaper_settings: Wallpaper Astellunge
+  withOverlay: Mat Overlay
+  workspace_collections: Aarbechtsberäich Kollektiounen
+weg:
+  auto_hide: Automatesch
+  delay_to_hide: Verspéidung ze verstoppen
+  delay_to_show: Verspéidung fir ze weisen
+  dock_side: Positioun un
+  enable: Aktivéiert Dock / Taskbar
+  filtering: Item Filter
+  gap: Knënn
+  hide_mode:
+    always: Ëmmer
+    never: Ni
+    on_overlap: Op Iwwerlappung
+  items:
+    gap: Raum tëscht Artikelen
+    label: Artikelen
+    pinned_visibility:
+      always: Ëmmer
+      label: Pinned Elementer Visibilitéit
+      when_primary: Wann de Monitor primär ass
+    show_instance_counter: Show oppe Windows Konter
+    show_window_title: Show Open Fenster Titel (nëmmen horizontal)
+    size: Telefonsgrouss
+    split_windows: Split Windows (een Element pro Fënster)
+    temporal_visibility:
+      all: All
+      label: Unpinned Elementer Visibilitéit
+      on_monitor: Op Monitor
+    visible_separators: Sechsi seichtbar Seperure
+  label: Dock / Taskbar
+  margin: Den Jean-Margin
+  mode:
+    full_width: Voll Écran Breet
+    min_content: Kleng wéi méiglech
+  padding: Padding
+  show_end_task: Show Enn Aufgab an der Taskbar
+  width: Breet
+welcome:
+  give_a_review: Gëff eng Iwwerpréiwung
+  message: >-
+    Seelen UI ass e gratis an Open Source Desktop-Ëmfeld fir Windows. Hei hutt
+    Dir voll Kontroll iwwer wéi Ären Desktop ausgesäit a behuelen, wat Iech
+    erlaabt all Detail ze personaliséieren fir Äre Workflow a Stil ze passen.
+  ok: Loosst eis ufänken!
+  review: >-
+    Wann Dir genéisst Seelen UI ze benotzen, betruecht eng Iwwerpréiwung am
+    Geschäft ze loossen - Äre Feedback hëlleft de Projet ze wuessen a
+    verbesseren.
+  title: Wëllkomm op Seelen UI!
+widget:
+  enable: Aktivéiert dëse Widget
+  enable_for_monitor: Aktivéiert op dësem Monitor
+  instances: Instanzen
+wm:
+  animations:
+    duration: Animatioun Dauer (MS)
+    ease_function: Animatioun ausserhalb Funktioun
+    enable: Aktivéiert Fenster Animatiounen
+  author: Auteur
+  border:
+    enable: Aktivéiert Fenster Grenz
+    offset: Grenz Offäll
+    width: Grenz Breet
+  description: Broessdatsch
+  drag_behavior: Drag Behuelen
+  drag_behavior_options:
+    sort: Sortéieren (Fënstere nei bestellen beim zéien)
+    swap: Tauschen (Swap Fënsteren um Drag End)
+  enable: Aktivéiert Fenster-Manager
+  layout: Lueden
+  resize_delta: Resize Delta (%)
+  space_between_containers: Raum tëscht Behälter
+  workspace_offset: Workspaces Offset (Rand)
+  workspace_padding: Aarbechtsberäich padding
+'yes': Jo
