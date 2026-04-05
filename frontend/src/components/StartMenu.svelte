@@ -9,10 +9,10 @@
   let featuredApps = $derived(apps.filter((app) => featuredIds.includes(app.id)).slice(0, 6))
   let filteredApps = $derived(
     query.trim()
-      ? apps.filter((app) => app.name.toLowerCase().includes(query.toLowerCase())).slice(0, 28)
-      : apps.slice(0, 28)
+      ? apps.filter((app) => app.name.toLowerCase().includes(query.toLowerCase())).slice(0, 36)
+      : apps.slice(0, 36)
   )
-  let liveWindows = $derived(windows.slice(0, 4))
+  let liveWindows = $derived(windows.slice(0, 5))
 
   async function launch(app) {
     try {
@@ -29,18 +29,17 @@
     <div class="title-wrap">
       <span class="eyebrow">Vortex Launcher</span>
       <h2>Everything, right now</h2>
-      <p>Low-latency launch, active window control, and profile-ready layouts.</p>
+      <p>Fast launch, quick context, no clutter.</p>
     </div>
     <button class="close" onclick={onclose}>x</button>
   </header>
 
   <div class="search-wrap">
-    <input type="text" placeholder="Type to launch apps or jump into a workflow" bind:value={query} />
+    <input type="text" placeholder="Search apps" bind:value={query} />
     <div class="hints">
       <kbd>Alt</kbd>
       <span>+</span>
       <kbd>Space</kbd>
-      <small>Palette</small>
     </div>
   </div>
 
@@ -51,8 +50,10 @@
         {#each featuredApps as app}
           <button class="hero-card" onclick={() => launch(app)}>
             <span class="seed"></span>
-            <strong>{app.name}</strong>
-            <small>Open instantly</small>
+            <div>
+              <strong>{app.name}</strong>
+              <small>Open instantly</small>
+            </div>
           </button>
         {/each}
       </div>
@@ -105,38 +106,48 @@
           </div>
           <div>
             <span>Theme</span>
-            <strong>Nebula</strong>
-          </div>
-          <div>
-            <span>Engine</span>
-            <strong>Rust Live</strong>
+            <strong>{activePreset}</strong>
           </div>
         </div>
       </section>
     </aside>
   </div>
+
+  <footer>
+    <div class="footer-left">
+      <button class="footer-pill">diviikk5</button>
+      <button class="footer-pill">Workspace A</button>
+    </div>
+    <div class="footer-right">
+      <button class="footer-icon">Settings</button>
+      <button class="footer-icon">Power</button>
+      <button class="footer-icon">Expand</button>
+    </div>
+  </footer>
 </div>
 
 <style>
   .menu-shell {
     position: absolute;
     left: 50%;
-    bottom: 128px;
+    top: 74px;
+    bottom: 118px;
     transform: translateX(-50%);
-    width: min(1220px, calc(100vw - 30px));
-    max-height: min(78vh, 920px);
-    border-radius: 30px;
-    border: 1px solid color-mix(in oklab, var(--accent-a) 34%, transparent);
+    width: min(1240px, calc(100vw - 72px));
+    border-radius: 24px;
+    border: 1px solid color-mix(in oklab, var(--accent-a) 32%, transparent);
     background:
-      radial-gradient(120% 90% at 8% 0%, color-mix(in oklab, var(--accent-a) 14%, transparent), transparent 58%),
-      radial-gradient(110% 100% at 95% 0%, color-mix(in oklab, var(--accent-b) 12%, transparent), transparent 60%),
-      linear-gradient(180deg, color-mix(in oklab, #141d38 74%, transparent), color-mix(in oklab, #0d1329 78%, transparent));
-    box-shadow: 0 40px 90px rgba(2, 8, 18, 0.62), inset 0 1px 0 rgba(255, 255, 255, 0.09);
-    backdrop-filter: blur(20px) saturate(145%);
+      radial-gradient(120% 90% at 8% 0%, color-mix(in oklab, var(--accent-a) 12%, transparent), transparent 56%),
+      radial-gradient(110% 100% at 95% 0%, color-mix(in oklab, var(--accent-b) 11%, transparent), transparent 58%),
+      linear-gradient(180deg, color-mix(in oklab, #131a32 78%, transparent), color-mix(in oklab, #0b1223 84%, transparent));
+    box-shadow: 0 30px 72px rgba(3, 8, 18, 0.58), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px) saturate(138%);
     color: #eef5ff;
     z-index: 170;
     overflow: hidden;
-    animation: rise 180ms ease;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    animation: rise 160ms ease;
   }
 
   header,
@@ -144,9 +155,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
-    padding: 16px 18px;
-    border-bottom: 1px solid color-mix(in oklab, #bdd1ff 16%, transparent);
+    gap: 10px;
+    padding: 12px 14px;
+    border-bottom: 1px solid color-mix(in oklab, var(--accent-a) 14%, transparent);
   }
 
   .eyebrow,
@@ -158,16 +169,16 @@
   }
 
   .title-wrap h2 {
-    margin: 6px 0 0;
-    font-size: 38px;
-    line-height: 0.96;
-    letter-spacing: -0.03em;
+    margin: 4px 0 0;
+    font-size: 26px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
   }
 
   .title-wrap p {
-    margin: 10px 0 0;
-    color: color-mix(in oklab, #f2f7ff 67%, transparent);
-    font-size: 14px;
+    margin: 6px 0 0;
+    font-size: 13px;
+    color: color-mix(in oklab, #f0f6ff 64%, transparent);
   }
 
   .close,
@@ -179,17 +190,17 @@
   .metrics div,
   .muted {
     border: 1px solid color-mix(in oklab, var(--accent-a) 22%, transparent);
-    border-radius: 14px;
-    background: color-mix(in oklab, #edf3ff 7%, transparent);
+    border-radius: 12px;
+    background: color-mix(in oklab, #edf3ff 6%, transparent);
     color: inherit;
   }
 
   .close {
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
     border-radius: 999px;
     cursor: pointer;
-    transition: transform 150ms ease, background-color 150ms ease;
+    transition: transform 120ms ease, background-color 120ms ease;
   }
 
   .close:hover,
@@ -197,32 +208,29 @@
   .catalog-row:hover,
   .stack button:hover {
     transform: translateY(-1px);
-    background: color-mix(in oklab, #edf3ff 14%, transparent);
+    background: color-mix(in oklab, #edf3ff 12%, transparent);
   }
 
   input {
     width: 100%;
-    min-height: 46px;
-    padding: 0 16px;
-    font-size: 15px;
-    letter-spacing: 0.02em;
-    background: color-mix(in oklab, #edf3ff 9%, transparent);
+    min-height: 40px;
+    padding: 0 13px;
+    font-size: 14px;
   }
 
   .hints {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    white-space: nowrap;
-    color: color-mix(in oklab, #eff6ff 70%, transparent);
+    gap: 5px;
     font-size: 11px;
+    color: color-mix(in oklab, #eff6ff 68%, transparent);
   }
 
   kbd {
-    min-width: 24px;
-    height: 24px;
+    min-width: 23px;
+    height: 23px;
     padding: 0 8px;
-    border-radius: 8px;
+    border-radius: 7px;
     border: 1px solid color-mix(in oklab, var(--accent-a) 28%, transparent);
     display: inline-flex;
     align-items: center;
@@ -233,134 +241,180 @@
   }
 
   .content {
-    padding: 14px;
-    display: grid;
-    grid-template-columns: minmax(0, 1.7fr) minmax(280px, 0.9fr);
-    gap: 14px;
     min-height: 0;
+    padding: 12px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.85fr) minmax(280px, 0.85fr);
+    gap: 12px;
+  }
+
+  footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 12px;
+    border-top: 1px solid color-mix(in oklab, var(--accent-a) 14%, transparent);
+  }
+
+  .footer-left,
+  .footer-right {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .footer-pill,
+  .footer-icon {
+    min-height: 32px;
+    padding: 0 11px;
+    border-radius: 10px;
+    border: 1px solid color-mix(in oklab, var(--accent-a) 22%, transparent);
+    background: color-mix(in oklab, #edf3ff 6%, transparent);
+    color: color-mix(in oklab, #f0f6ff 82%, transparent);
+    font-size: 12px;
+    cursor: pointer;
+    transition: transform 120ms ease, background-color 120ms ease;
+  }
+
+  .footer-pill:hover,
+  .footer-icon:hover {
+    transform: translateY(-1px);
+    background: color-mix(in oklab, #edf3ff 12%, transparent);
   }
 
   .panel {
-    border-radius: 20px;
-    border: 1px solid color-mix(in oklab, var(--accent-a) 16%, transparent);
-    background: color-mix(in oklab, #f2f7ff 4%, transparent);
-    padding: 14px;
     min-height: 0;
+    border-radius: 16px;
+    border: 1px solid color-mix(in oklab, var(--accent-a) 14%, transparent);
+    background: color-mix(in oklab, #f2f7ff 3%, transparent);
+    padding: 10px;
+  }
+
+  .stage {
+    display: grid;
+    grid-template-rows: auto auto auto 1fr;
+    gap: 8px;
   }
 
   h3 {
-    margin: 0 0 10px;
+    margin: 0;
   }
 
   .hero-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 10px;
-    margin-bottom: 16px;
+    gap: 8px;
+    margin-bottom: 2px;
   }
 
   .hero-card {
-    min-height: 72px;
-    padding: 10px 12px;
-    display: grid;
-    gap: 4px;
+    min-height: 58px;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     text-align: left;
     cursor: pointer;
-    transition: transform 150ms ease, background-color 150ms ease;
+    transition: transform 120ms ease, background-color 120ms ease;
   }
 
   .hero-card strong {
-    font-size: 14px;
-    letter-spacing: 0.01em;
+    display: block;
+    font-size: 13px;
+    line-height: 1.2;
   }
 
   .hero-card small {
-    color: color-mix(in oklab, #eef5ff 62%, transparent);
+    color: color-mix(in oklab, #eff5ff 60%, transparent);
     font-size: 11px;
   }
 
   .seed {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     border-radius: 99px;
     background: color-mix(in oklab, var(--accent-a) 90%, white 10%);
-    box-shadow: 0 0 16px color-mix(in oklab, var(--accent-a) 60%, transparent);
+    box-shadow: 0 0 12px color-mix(in oklab, var(--accent-a) 60%, transparent);
+    flex-shrink: 0;
   }
 
   .seed.small {
-    width: 8px;
-    height: 8px;
+    width: 7px;
+    height: 7px;
   }
 
   .catalog-list {
+    min-height: 0;
     display: grid;
-    gap: 8px;
-    max-height: 365px;
+    gap: 7px;
     overflow-y: auto;
-    scrollbar-width: thin;
+    padding-right: 2px;
   }
 
   .catalog-row {
-    min-height: 40px;
-    padding: 0 12px;
+    min-height: 38px;
+    padding: 0 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
-    transition: transform 150ms ease, background-color 150ms ease;
     font-size: 13px;
+    transition: transform 120ms ease, background-color 120ms ease;
   }
 
   .row-left {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 9px;
     min-width: 0;
     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .catalog-row small {
-    color: color-mix(in oklab, #f0f6ff 52%, transparent);
-    font-size: 11px;
+    font-size: 10px;
+    color: color-mix(in oklab, #f0f6ff 50%, transparent);
     text-transform: lowercase;
   }
 
   .side {
     display: grid;
     align-content: start;
-    gap: 14px;
+    gap: 10px;
   }
 
   .stack {
     display: grid;
-    gap: 8px;
+    gap: 7px;
   }
 
   .stack button,
   .window-row,
   .muted {
-    min-height: 38px;
-    padding: 0 12px;
+    min-height: 34px;
+    padding: 0 10px;
     display: flex;
     align-items: center;
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .stack button {
     cursor: pointer;
     text-align: left;
-    transition: transform 150ms ease, background-color 150ms ease;
+    transition: transform 120ms ease, background-color 120ms ease;
   }
 
   .stack button.active {
     background:
-      linear-gradient(120deg, color-mix(in oklab, var(--accent-a) 26%, transparent), color-mix(in oklab, var(--accent-b) 14%, transparent)),
+      linear-gradient(120deg, color-mix(in oklab, var(--accent-a) 24%, transparent), color-mix(in oklab, var(--accent-b) 13%, transparent)),
       color-mix(in oklab, #edf3ff 7%, transparent);
-    border-color: color-mix(in oklab, var(--accent-a) 44%, transparent);
+    border-color: color-mix(in oklab, var(--accent-a) 42%, transparent);
   }
 
   .window-row {
-    color: color-mix(in oklab, #f0f6ff 76%, transparent);
+    color: color-mix(in oklab, #f0f6ff 75%, transparent);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -372,12 +426,12 @@
 
   .metrics {
     display: grid;
-    gap: 8px;
+    gap: 7px;
   }
 
   .metrics div {
-    min-height: 38px;
-    padding: 0 12px;
+    min-height: 34px;
+    padding: 0 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -389,19 +443,17 @@
   }
 
   .metrics strong {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 650;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.02em;
+    text-transform: capitalize;
   }
 
   @media (max-width: 980px) {
     .menu-shell {
-      bottom: 114px;
-      max-height: calc(100vh - 148px);
-    }
-
-    .title-wrap h2 {
-      font-size: 30px;
+      width: calc(100vw - 26px);
+      top: 68px;
+      bottom: 108px;
     }
 
     .content {
@@ -416,7 +468,7 @@
   @keyframes rise {
     from {
       opacity: 0;
-      transform: translateX(-50%) translateY(8px) scale(0.99);
+      transform: translateX(-50%) translateY(6px) scale(0.995);
     }
     to {
       opacity: 1;

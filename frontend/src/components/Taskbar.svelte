@@ -9,15 +9,11 @@
 
   let systemInfo = $state({ battery: null, username: 'User', hostname: 'Windows' })
   let pinnedApps = $derived(pinnedIds.map((id) => apps.find((app) => app.id === id)).filter(Boolean).slice(0, 6))
-  let liveWindows = $derived(windows.slice(0, 7))
+  let liveWindows = $derived(windows.slice(0, 6))
   let activeWorkspace = $state(0)
 
   function formatTime(date) {
     return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false })
-  }
-
-  function formatDate(date) {
-    return date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })
   }
 
   async function loadSystemInfo() {
@@ -59,40 +55,38 @@
   }
 </script>
 
-<div class="shell-stripe">
-  <div class="topbar glass-card">
-    <div class="cluster left">
-      <button class="seg primary" onclick={stopAnd(onToggleStart)}>Vortex</button>
-      <button class="seg" onclick={stopAnd(onToggleCommandPalette)}>Search</button>
+<div class="shell-frame">
+  <div class="topbar glass">
+    <div class="left-cluster">
+      <button class="chip strong" onclick={stopAnd(onToggleStart)}>Vortex</button>
+      <button class="chip" onclick={stopAnd(onToggleCommandPalette)}>Search</button>
     </div>
 
-    <div class="cluster center workspace-strip" role="tablist" aria-label="Workspaces">
+    <div class="workspace-strip" role="tablist" aria-label="Workspaces">
       {#each workspaceLabels as label, index}
         <button class="workspace" class:active={index === activeWorkspace} onclick={() => (activeWorkspace = index)}>{label}</button>
       {/each}
     </div>
 
-    <div class="cluster right">
-      <button class="seg" onclick={stopAnd(onToggleAI)}>AI</button>
-      <div class="meta">
-        <strong>{formatTime(time)}</strong>
-        <span>{formatDate(time)} • {presetName}</span>
-      </div>
-      <div class="battery">{systemInfo.battery == null ? '--' : `${systemInfo.battery}%`}</div>
+    <div class="right-cluster">
+      <button class="chip" onclick={stopAnd(onToggleAI)}>AI</button>
+      <div class="clock">{formatTime(time)}</div>
+      <div class="chip tiny">{presetName}</div>
+      <div class="chip tiny">{systemInfo.battery == null ? '--' : `${systemInfo.battery}%`}</div>
     </div>
   </div>
 
-  <div class="dock glass-card">
-    <div class="dock-lane apps">
+  <div class="dock glass">
+    <div class="dock-apps">
       {#each pinnedApps as app}
-        <button class="dock-chip" onclick={stopAnd(() => launchApp(app.id))} title={app.name}>
-          <span class="pulse"></span>
+        <button class="app-chip" onclick={stopAnd(() => launchApp(app.id))} title={app.name}>
+          <span class="dot"></span>
           <span>{app.name}</span>
         </button>
       {/each}
     </div>
 
-    <div class="dock-lane windows">
+    <div class="dock-windows">
       {#if liveWindows.length === 0}
         <div class="empty">No active windows</div>
       {:else}
@@ -111,255 +105,236 @@
 </div>
 
 <style>
-  .shell-stripe {
+  .shell-frame {
     position: absolute;
-    inset: 12px 14px 12px;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
+    inset: 10px 16px 10px;
     pointer-events: none;
-    z-index: 100;
+    z-index: 110;
   }
 
-  .glass-card {
+  .glass {
     pointer-events: auto;
-    border-radius: 22px;
-    border: 1px solid color-mix(in oklab, var(--accent-a) 34%, transparent);
+    border: 1px solid color-mix(in oklab, var(--accent-a) 30%, transparent);
     background:
-      linear-gradient(180deg, color-mix(in oklab, #111a33 70%, transparent), color-mix(in oklab, #0b1227 66%, transparent)),
-      linear-gradient(140deg, color-mix(in oklab, var(--accent-a) 8%, transparent), color-mix(in oklab, var(--accent-b) 9%, transparent));
-    box-shadow: 0 22px 44px rgba(2, 7, 18, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(17px) saturate(140%);
+      linear-gradient(180deg, color-mix(in oklab, #10152b 78%, transparent), color-mix(in oklab, #0b1022 72%, transparent)),
+      linear-gradient(140deg, color-mix(in oklab, var(--accent-a) 6%, transparent), color-mix(in oklab, var(--accent-b) 8%, transparent));
+    box-shadow: 0 16px 30px rgba(1, 4, 12, 0.48), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px) saturate(132%);
   }
 
   .topbar {
-    height: 62px;
+    width: min(1320px, calc(100vw - 38px));
+    margin: 0 auto;
+    min-height: 52px;
+    border-radius: 16px;
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    padding: 0 10px;
     gap: 10px;
+    padding: 7px 10px;
   }
 
-  .cluster {
+  .left-cluster,
+  .right-cluster {
     display: flex;
     align-items: center;
-    gap: 8px;
-    min-width: 0;
+    gap: 7px;
   }
 
-  .center {
-    justify-content: center;
-  }
-
-  .right {
+  .right-cluster {
     justify-content: flex-end;
   }
 
-  .seg,
-  .workspace,
-  .battery,
-  .meta {
-    border-radius: 13px;
-    border: 1px solid color-mix(in oklab, var(--accent-a) 25%, transparent);
-    background: color-mix(in oklab, #edf3ff 8%, transparent);
-    color: #eef4ff;
-    min-height: 36px;
-    padding: 0 14px;
+  .chip,
+  .clock,
+  .workspace {
+    min-height: 32px;
+    padding: 0 12px;
+    border-radius: 10px;
+    border: 1px solid color-mix(in oklab, var(--accent-a) 20%, transparent);
+    background: color-mix(in oklab, #f0f4ff 7%, transparent);
+    color: #eff5ff;
+    font-size: 13px;
     display: inline-flex;
     align-items: center;
-    font-size: 13px;
     letter-spacing: 0.02em;
   }
 
-  .seg,
-  .workspace {
-    cursor: pointer;
-    transition: transform 140ms ease, background-color 140ms ease, border-color 140ms ease;
+  .chip,
+  .workspace,
+  .app-chip,
+  .window-chip {
+    transition: transform 120ms ease, border-color 120ms ease, background-color 120ms ease;
   }
 
-  .seg:hover,
+  .chip {
+    cursor: pointer;
+  }
+
+  .chip:hover,
   .workspace:hover,
-  .dock-chip:hover,
+  .app-chip:hover,
   .window-chip:hover {
     transform: translateY(-1px);
   }
 
-  .seg.primary {
+  .chip.strong {
     background:
-      linear-gradient(140deg, color-mix(in oklab, var(--accent-a) 26%, transparent), color-mix(in oklab, var(--accent-b) 20%, transparent)),
-      color-mix(in oklab, #edf3ff 8%, transparent);
-    border-color: color-mix(in oklab, var(--accent-a) 48%, transparent);
+      linear-gradient(130deg, color-mix(in oklab, var(--accent-a) 22%, transparent), color-mix(in oklab, var(--accent-b) 15%, transparent)),
+      color-mix(in oklab, #f0f4ff 7%, transparent);
+    border-color: color-mix(in oklab, var(--accent-a) 42%, transparent);
     font-weight: 600;
   }
 
+  .chip.tiny {
+    min-height: 30px;
+    padding: 0 10px;
+    font-size: 12px;
+  }
+
+  .clock {
+    min-width: 72px;
+    justify-content: center;
+    font-weight: 640;
+  }
+
   .workspace-strip {
-    gap: 6px;
-    padding: 5px;
-    border-radius: 15px;
-    border: 1px solid color-mix(in oklab, var(--accent-a) 32%, transparent);
-    background: color-mix(in oklab, #ecf2ff 5%, transparent);
+    display: flex;
+    gap: 5px;
+    padding: 3px;
+    border-radius: 12px;
+    border: 1px solid color-mix(in oklab, var(--accent-a) 26%, transparent);
+    background: color-mix(in oklab, #edf3ff 5%, transparent);
   }
 
   .workspace {
-    border: 1px solid transparent;
+    min-height: 26px;
+    padding: 0 10px;
+    border-color: transparent;
     background: transparent;
-    min-height: 30px;
-    padding: 0 12px;
     font-size: 12px;
-    color: color-mix(in oklab, #eff5ff 75%, transparent);
+    cursor: pointer;
+    color: color-mix(in oklab, #eff5ff 74%, transparent);
   }
 
   .workspace.active {
     background: color-mix(in oklab, var(--accent-a) 24%, transparent);
     border-color: color-mix(in oklab, var(--accent-a) 44%, transparent);
-    color: #f4f8ff;
-  }
-
-  .meta {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1px;
-    padding: 0 12px;
-    min-height: 36px;
-  }
-
-  .meta strong {
-    font-size: 14px;
-    font-weight: 680;
-    line-height: 1;
-  }
-
-  .meta span {
-    color: color-mix(in oklab, #edf4ff 58%, transparent);
-    font-size: 11px;
-    line-height: 1;
-  }
-
-  .battery {
-    min-width: 56px;
-    justify-content: center;
-    font-weight: 600;
   }
 
   .dock {
-    align-self: end;
-    min-height: 118px;
-    padding: 8px;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: min(1240px, calc(100vw - 34px));
+    border-radius: 18px;
+    min-height: 96px;
+    padding: 7px;
     display: grid;
-    gap: 8px;
+    gap: 7px;
   }
 
-  .dock-lane {
+  .dock-apps,
+  .dock-windows {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 7px;
     overflow-x: auto;
     scrollbar-width: none;
   }
 
-  .dock-lane::-webkit-scrollbar {
+  .dock-apps::-webkit-scrollbar,
+  .dock-windows::-webkit-scrollbar {
     display: none;
   }
 
-  .dock-chip,
+  .app-chip,
   .window-chip,
   .empty,
   .window-actions button {
-    border: 1px solid color-mix(in oklab, var(--accent-a) 20%, transparent);
-    background: color-mix(in oklab, #eef4ff 7%, transparent);
-    border-radius: 12px;
-    color: #eff4ff;
+    border: 1px solid color-mix(in oklab, var(--accent-a) 18%, transparent);
+    background: color-mix(in oklab, #eff4ff 7%, transparent);
+    color: #eff5ff;
+    border-radius: 10px;
   }
 
-  .dock-chip {
-    min-height: 40px;
-    padding: 0 13px;
+  .app-chip {
+    min-height: 34px;
+    padding: 0 10px;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    cursor: pointer;
+    gap: 7px;
+    font-size: 12px;
     white-space: nowrap;
-    font-size: 13px;
-    transition: transform 140ms ease, background-color 140ms ease;
+    cursor: pointer;
   }
 
-  .pulse {
-    width: 8px;
-    height: 8px;
+  .dot {
+    width: 7px;
+    height: 7px;
     border-radius: 99px;
-    background: color-mix(in oklab, var(--accent-a) 92%, white 8%);
-    box-shadow: 0 0 11px color-mix(in oklab, var(--accent-a) 72%, transparent);
-    flex-shrink: 0;
+    background: color-mix(in oklab, var(--accent-a) 88%, white 12%);
+    box-shadow: 0 0 9px color-mix(in oklab, var(--accent-a) 64%, transparent);
   }
 
   .window-chip {
-    min-width: 240px;
-    max-width: 320px;
-    min-height: 40px;
+    min-height: 36px;
+    min-width: 220px;
+    max-width: 310px;
     padding: 0 10px;
     display: flex;
     align-items: center;
     gap: 8px;
     cursor: pointer;
-    transition: transform 140ms ease, background-color 140ms ease, border-color 140ms ease;
   }
 
   .window-chip.focused {
     background:
-      linear-gradient(130deg, color-mix(in oklab, var(--accent-a) 28%, transparent), color-mix(in oklab, var(--accent-b) 18%, transparent)),
-      color-mix(in oklab, #eef4ff 7%, transparent);
-    border-color: color-mix(in oklab, var(--accent-a) 46%, transparent);
+      linear-gradient(120deg, color-mix(in oklab, var(--accent-a) 24%, transparent), color-mix(in oklab, var(--accent-b) 16%, transparent)),
+      color-mix(in oklab, #eff4ff 7%, transparent);
+    border-color: color-mix(in oklab, var(--accent-a) 48%, transparent);
   }
 
   .title {
+    flex: 1;
     min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     font-size: 12px;
-    letter-spacing: 0.02em;
   }
 
   .window-actions {
     display: flex;
-    gap: 6px;
+    gap: 5px;
   }
 
   .window-actions button {
-    width: 22px;
-    height: 22px;
-    padding: 0;
+    width: 20px;
+    height: 20px;
     display: grid;
     place-items: center;
-    font-size: 12px;
+    font-size: 11px;
     cursor: pointer;
   }
 
   .empty {
-    min-height: 40px;
-    padding: 0 14px;
+    min-height: 36px;
+    padding: 0 10px;
     display: inline-flex;
     align-items: center;
-    color: color-mix(in oklab, #eff4ff 68%, transparent);
     font-size: 12px;
-    letter-spacing: 0.02em;
+    color: color-mix(in oklab, #eff5ff 70%, transparent);
   }
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1160px) {
     .workspace-strip {
       display: none;
     }
 
     .topbar {
       grid-template-columns: 1fr auto;
-    }
-
-    .center {
-      display: none;
-    }
-
-    .window-chip {
-      min-width: 210px;
     }
   }
 </style>

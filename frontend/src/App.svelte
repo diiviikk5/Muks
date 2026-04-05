@@ -253,11 +253,11 @@
   }
 
   .scan-grid {
-    opacity: 0.3;
+    opacity: 0.14;
     background-image:
       linear-gradient(90deg, color-mix(in oklab, #d2e5ff 6%, transparent) 1px, transparent 1px),
       linear-gradient(0deg, color-mix(in oklab, #d2e5ff 5%, transparent) 1px, transparent 1px);
-    background-size: 96px 96px;
+    background-size: 128px 128px;
     mask-image: linear-gradient(180deg, transparent 0%, black 28%, black 74%, transparent 100%);
   }
 
