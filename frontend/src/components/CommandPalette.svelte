@@ -130,10 +130,10 @@
     width: min(860px, calc(100vw - 34px));
     max-height: min(70vh, 620px);
     border-radius: 24px;
-    border: 1px solid color-mix(in oklab, #99bcff 36%, transparent);
+    border: 1px solid color-mix(in oklab, var(--accent-a) 36%, transparent);
     background:
-      radial-gradient(120% 80% at 12% -10%, color-mix(in oklab, #89c7ff 16%, transparent), transparent 55%),
-      radial-gradient(120% 80% at 92% -20%, color-mix(in oklab, #b390ff 14%, transparent), transparent 58%),
+      radial-gradient(120% 80% at 12% -10%, color-mix(in oklab, var(--accent-a) 16%, transparent), transparent 55%),
+      radial-gradient(120% 80% at 92% -20%, color-mix(in oklab, var(--accent-b) 14%, transparent), transparent 58%),
       linear-gradient(180deg, color-mix(in oklab, #141d38 84%, transparent), color-mix(in oklab, #0b1228 86%, transparent));
     box-shadow: 0 34px 80px rgba(2, 9, 22, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(20px) saturate(145%);
@@ -173,7 +173,7 @@
   .row,
   .empty {
     border-radius: 12px;
-    border: 1px solid color-mix(in oklab, #c2d6ff 23%, transparent);
+    border: 1px solid color-mix(in oklab, var(--accent-a) 23%, transparent);
     background: color-mix(in oklab, #edf4ff 8%, transparent);
     color: inherit;
   }
@@ -205,7 +205,7 @@
     height: 26px;
     padding: 0 8px;
     border-radius: 8px;
-    border: 1px solid color-mix(in oklab, #c5d9ff 28%, transparent);
+    border: 1px solid color-mix(in oklab, var(--accent-a) 28%, transparent);
     background: color-mix(in oklab, #edf4ff 10%, transparent);
     font-size: 11px;
     color: color-mix(in oklab, #eef6ff 80%, transparent);
@@ -247,8 +247,8 @@
     width: 8px;
     height: 8px;
     border-radius: 100px;
-    background: color-mix(in oklab, #8fc9ff 92%, white 8%);
-    box-shadow: 0 0 12px color-mix(in oklab, #8fc9ff 56%, transparent);
+    background: color-mix(in oklab, var(--accent-a) 92%, white 8%);
+    box-shadow: 0 0 12px color-mix(in oklab, var(--accent-a) 56%, transparent);
     flex-shrink: 0;
   }
 
@@ -260,9 +260,9 @@
   .row.active,
   .row:hover {
     background:
-      linear-gradient(120deg, color-mix(in oklab, #89c4ff 26%, transparent), color-mix(in oklab, #bb94ff 16%, transparent)),
+      linear-gradient(120deg, color-mix(in oklab, var(--accent-a) 26%, transparent), color-mix(in oklab, var(--accent-b) 16%, transparent)),
       color-mix(in oklab, #edf4ff 8%, transparent);
-    border-color: color-mix(in oklab, #9ec2ff 50%, transparent);
+    border-color: color-mix(in oklab, var(--accent-a) 50%, transparent);
     transform: translateY(-1px);
   }
 

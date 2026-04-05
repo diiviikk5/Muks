@@ -2,7 +2,7 @@
   import { invoke } from '@tauri-apps/api/core'
   import { onMount } from 'svelte'
 
-  let { time, apps, windows, onToggleStart, onToggleCommandPalette, onToggleAI } = $props()
+  let { time, apps, windows, presetName, onToggleStart, onToggleCommandPalette, onToggleAI } = $props()
 
   const pinnedIds = ['explorer', 'browser', 'terminal', 'code', 'settings', 'notepad']
   const workspaceLabels = ['Studio', 'Flow', 'Focus', 'Play']
@@ -76,7 +76,7 @@
       <button class="seg" onclick={stopAnd(onToggleAI)}>AI</button>
       <div class="meta">
         <strong>{formatTime(time)}</strong>
-        <span>{formatDate(time)}</span>
+        <span>{formatDate(time)} • {presetName}</span>
       </div>
       <div class="battery">{systemInfo.battery == null ? '--' : `${systemInfo.battery}%`}</div>
     </div>
@@ -123,10 +123,10 @@
   .glass-card {
     pointer-events: auto;
     border-radius: 22px;
-    border: 1px solid color-mix(in oklab, #97b6ff 34%, transparent);
+    border: 1px solid color-mix(in oklab, var(--accent-a) 34%, transparent);
     background:
       linear-gradient(180deg, color-mix(in oklab, #111a33 70%, transparent), color-mix(in oklab, #0b1227 66%, transparent)),
-      linear-gradient(140deg, color-mix(in oklab, #7bb7ff 8%, transparent), color-mix(in oklab, #ae7dff 9%, transparent));
+      linear-gradient(140deg, color-mix(in oklab, var(--accent-a) 8%, transparent), color-mix(in oklab, var(--accent-b) 9%, transparent));
     box-shadow: 0 22px 44px rgba(2, 7, 18, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(17px) saturate(140%);
   }
@@ -160,7 +160,7 @@
   .battery,
   .meta {
     border-radius: 13px;
-    border: 1px solid color-mix(in oklab, #b8ceff 25%, transparent);
+    border: 1px solid color-mix(in oklab, var(--accent-a) 25%, transparent);
     background: color-mix(in oklab, #edf3ff 8%, transparent);
     color: #eef4ff;
     min-height: 36px;
@@ -186,9 +186,9 @@
 
   .seg.primary {
     background:
-      linear-gradient(140deg, color-mix(in oklab, #82bfff 26%, transparent), color-mix(in oklab, #b78fff 20%, transparent)),
+      linear-gradient(140deg, color-mix(in oklab, var(--accent-a) 26%, transparent), color-mix(in oklab, var(--accent-b) 20%, transparent)),
       color-mix(in oklab, #edf3ff 8%, transparent);
-    border-color: color-mix(in oklab, #8ab9ff 48%, transparent);
+    border-color: color-mix(in oklab, var(--accent-a) 48%, transparent);
     font-weight: 600;
   }
 
@@ -196,7 +196,7 @@
     gap: 6px;
     padding: 5px;
     border-radius: 15px;
-    border: 1px solid color-mix(in oklab, #9ab8ff 32%, transparent);
+    border: 1px solid color-mix(in oklab, var(--accent-a) 32%, transparent);
     background: color-mix(in oklab, #ecf2ff 5%, transparent);
   }
 
@@ -210,8 +210,8 @@
   }
 
   .workspace.active {
-    background: color-mix(in oklab, #9bc4ff 24%, transparent);
-    border-color: color-mix(in oklab, #93bcff 44%, transparent);
+    background: color-mix(in oklab, var(--accent-a) 24%, transparent);
+    border-color: color-mix(in oklab, var(--accent-a) 44%, transparent);
     color: #f4f8ff;
   }
 
@@ -265,7 +265,7 @@
   .window-chip,
   .empty,
   .window-actions button {
-    border: 1px solid color-mix(in oklab, #b8ccff 20%, transparent);
+    border: 1px solid color-mix(in oklab, var(--accent-a) 20%, transparent);
     background: color-mix(in oklab, #eef4ff 7%, transparent);
     border-radius: 12px;
     color: #eff4ff;
@@ -287,8 +287,8 @@
     width: 8px;
     height: 8px;
     border-radius: 99px;
-    background: color-mix(in oklab, #8cc4ff 92%, white 8%);
-    box-shadow: 0 0 11px color-mix(in oklab, #8cc4ff 72%, transparent);
+    background: color-mix(in oklab, var(--accent-a) 92%, white 8%);
+    box-shadow: 0 0 11px color-mix(in oklab, var(--accent-a) 72%, transparent);
     flex-shrink: 0;
   }
 
@@ -306,9 +306,9 @@
 
   .window-chip.focused {
     background:
-      linear-gradient(130deg, color-mix(in oklab, #8fc4ff 28%, transparent), color-mix(in oklab, #b18bff 18%, transparent)),
+      linear-gradient(130deg, color-mix(in oklab, var(--accent-a) 28%, transparent), color-mix(in oklab, var(--accent-b) 18%, transparent)),
       color-mix(in oklab, #eef4ff 7%, transparent);
-    border-color: color-mix(in oklab, #94beff 46%, transparent);
+    border-color: color-mix(in oklab, var(--accent-a) 46%, transparent);
   }
 
   .title {

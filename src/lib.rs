@@ -45,6 +45,9 @@ pub fn run() {
     tracing::info!("VORTEX Shell v0.1.0");
     tracing::info!("===============================================================");
 
+    #[cfg(windows)]
+    install_panic_recovery_hook();
+
     let app = tauri::Builder::default()
         .plugin(tauri_plugin_shell::init())
         .plugin(tauri_plugin_process::init())
@@ -53,6 +56,12 @@ pub fn run() {
         .plugin(tauri_plugin_log::Builder::default().build())
         .setup(|app| {
             tracing::info!("Setting up VORTEX Shell...");
+
+            #[cfg(windows)]
+            {
+                // Fail-safe recovery: if a previous crash left taskbar hidden, always restore first.
+                set_windows_taskbar_visibility(true);
+            }
 
             let core = VortexCore::new()?;
             app.manage(core);
@@ -108,9 +117,26 @@ pub fn run() {
             maximize_window,
             set_menu_open,
             close_window,
+            restore_taskbar,
             open_app,
             show_desktop,
         ])
+        .on_window_event(|window, event| {
+            #[cfg(windows)]
+            if window.label() == "main" {
+                match event {
+                    tauri::WindowEvent::CloseRequested { api, .. } => {
+                        set_windows_taskbar_visibility(true);
+                        api.prevent_close();
+                        window.app_handle().exit(0);
+                    }
+                    tauri::WindowEvent::Destroyed => {
+                        set_windows_taskbar_visibility(true);
+                    }
+                    _ => {}
+                }
+            }
+        })
         .build(tauri::generate_context!())
         .expect("error while building tauri application");
 
@@ -123,6 +149,15 @@ pub fn run() {
             set_windows_taskbar_visibility(true);
         }
     });
+}
+
+#[cfg(windows)]
+fn install_panic_recovery_hook() {
+    let previous = std::panic::take_hook();
+    std::panic::set_hook(Box::new(move |panic_info| {
+        set_windows_taskbar_visibility(true);
+        previous(panic_info);
+    }));
 }
 
 #[cfg(windows)]
@@ -459,6 +494,12 @@ async fn close_window(app: tauri::AppHandle) -> Result<(), String> {
 
     app.exit(0);
     Ok(())
+}
+
+#[tauri::command]
+fn restore_taskbar() {
+    #[cfg(windows)]
+    set_windows_taskbar_visibility(true);
 }
 
 #[tauri::command]

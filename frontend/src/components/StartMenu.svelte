@@ -1,7 +1,7 @@
 ﻿<script>
   import { invoke } from '@tauri-apps/api/core'
 
-  let { apps, windows = [], onclose } = $props()
+  let { apps, windows = [], activePreset, onSelectPreset, onclose } = $props()
   let query = $state('')
 
   const featuredIds = ['explorer', 'browser', 'terminal', 'code', 'settings', 'notepad']
@@ -75,9 +75,9 @@
       <section>
         <h3>Profiles</h3>
         <div class="stack">
-          <button>Nix Mist</button>
-          <button>Glass Horizon</button>
-          <button>Mono Focus</button>
+          <button class:active={activePreset === 'graphite-flare'} onclick={() => onSelectPreset('graphite-flare')}>Graphite Flare</button>
+          <button class:active={activePreset === 'forest-glass'} onclick={() => onSelectPreset('forest-glass')}>Forest Glass</button>
+          <button class:active={activePreset === 'rose-dusk'} onclick={() => onSelectPreset('rose-dusk')}>Rose Dusk</button>
         </div>
       </section>
 
@@ -126,10 +126,10 @@
     width: min(1220px, calc(100vw - 30px));
     max-height: min(78vh, 920px);
     border-radius: 30px;
-    border: 1px solid color-mix(in oklab, #9dbdff 34%, transparent);
+    border: 1px solid color-mix(in oklab, var(--accent-a) 34%, transparent);
     background:
-      radial-gradient(120% 90% at 8% 0%, color-mix(in oklab, #8dc5ff 14%, transparent), transparent 58%),
-      radial-gradient(110% 100% at 95% 0%, color-mix(in oklab, #b58fff 12%, transparent), transparent 60%),
+      radial-gradient(120% 90% at 8% 0%, color-mix(in oklab, var(--accent-a) 14%, transparent), transparent 58%),
+      radial-gradient(110% 100% at 95% 0%, color-mix(in oklab, var(--accent-b) 12%, transparent), transparent 60%),
       linear-gradient(180deg, color-mix(in oklab, #141d38 74%, transparent), color-mix(in oklab, #0d1329 78%, transparent));
     box-shadow: 0 40px 90px rgba(2, 8, 18, 0.62), inset 0 1px 0 rgba(255, 255, 255, 0.09);
     backdrop-filter: blur(20px) saturate(145%);
@@ -178,7 +178,7 @@
   .window-row,
   .metrics div,
   .muted {
-    border: 1px solid color-mix(in oklab, #bdd1ff 22%, transparent);
+    border: 1px solid color-mix(in oklab, var(--accent-a) 22%, transparent);
     border-radius: 14px;
     background: color-mix(in oklab, #edf3ff 7%, transparent);
     color: inherit;
@@ -223,7 +223,7 @@
     height: 24px;
     padding: 0 8px;
     border-radius: 8px;
-    border: 1px solid color-mix(in oklab, #c3d6ff 28%, transparent);
+    border: 1px solid color-mix(in oklab, var(--accent-a) 28%, transparent);
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -242,7 +242,7 @@
 
   .panel {
     border-radius: 20px;
-    border: 1px solid color-mix(in oklab, #bdd1ff 16%, transparent);
+    border: 1px solid color-mix(in oklab, var(--accent-a) 16%, transparent);
     background: color-mix(in oklab, #f2f7ff 4%, transparent);
     padding: 14px;
     min-height: 0;
@@ -283,8 +283,8 @@
     width: 10px;
     height: 10px;
     border-radius: 99px;
-    background: color-mix(in oklab, #8cc7ff 90%, white 10%);
-    box-shadow: 0 0 16px color-mix(in oklab, #8cc7ff 60%, transparent);
+    background: color-mix(in oklab, var(--accent-a) 90%, white 10%);
+    box-shadow: 0 0 16px color-mix(in oklab, var(--accent-a) 60%, transparent);
   }
 
   .seed.small {
@@ -350,6 +350,13 @@
     cursor: pointer;
     text-align: left;
     transition: transform 150ms ease, background-color 150ms ease;
+  }
+
+  .stack button.active {
+    background:
+      linear-gradient(120deg, color-mix(in oklab, var(--accent-a) 26%, transparent), color-mix(in oklab, var(--accent-b) 14%, transparent)),
+      color-mix(in oklab, #edf3ff 7%, transparent);
+    border-color: color-mix(in oklab, var(--accent-a) 44%, transparent);
   }
 
   .window-row {
