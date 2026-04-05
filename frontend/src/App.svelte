@@ -1,0 +1,297 @@
+<script>
+  import { onMount } from 'svelte'
+  import { invoke } from '@tauri-apps/api/core'
+  import { listen } from '@tauri-apps/api/event'
+  import Taskbar from './components/Taskbar.svelte'
+  import StartMenu from './components/StartMenu.svelte'
+  import CommandPalette from './components/CommandPalette.svelte'
+
+  let showStartMenu = $state(false)
+  let showCommandPalette = $state(false)
+  let time = $state(new Date())
+  let appCatalog = $state([])
+  let statusMessage = $state('')
+
+  let shellState = $state({
+    mode: 'normal',
+    healthy: false,
+    uptimeSeconds: 0,
+    startupTimeMs: 0,
+    activeWorkspaceId: 'ws-1',
+    performance: {
+      appIndexSize: 0,
+      launchCount: 0,
+      commandCount: 0,
+      lastIndexedEpochMs: null,
+    },
+  })
+
+  async function updateMenuState() {
+    try {
+      await invoke('set_menu_open', { isOpen: showStartMenu || showCommandPalette })
+    } catch (error) {
+      console.log('Failed to resize window:', error)
+    }
+  }
+
+  async function loadShellState() {
+    try {
+      shellState = await invoke('shell_get_state')
+    } catch (error) {
+      console.log('Failed to load shell state:', error)
+    }
+  }
+
+  async function loadAppCatalog() {
+    try {
+      appCatalog = await invoke('apps_search', { query: '', limit: 300 })
+    } catch (error) {
+      console.log('Failed to load app catalog:', error)
+    }
+  }
+
+  function showStatus(message) {
+    statusMessage = message
+    setTimeout(() => {
+      if (statusMessage === message) {
+        statusMessage = ''
+      }
+    }, 2800)
+  }
+
+  function formatSince(epochMs) {
+    if (!epochMs) return 'Never'
+    const diff = Date.now() - epochMs
+    const sec = Math.max(0, Math.round(diff / 1000))
+    if (sec < 60) return `${sec}s ago`
+    const min = Math.round(sec / 60)
+    return `${min}m ago`
+  }
+
+  onMount(() => {
+    updateMenuState()
+    loadShellState()
+    loadAppCatalog()
+
+    invoke('shell_subscribe').catch((error) => {
+      console.log('Subscribe command failed:', error)
+    })
+
+    const timer = setInterval(() => {
+      time = new Date()
+    }, 1000)
+
+    const handleKeydown = (event) => {
+      if (event.altKey && event.code === 'Space') {
+        event.preventDefault()
+        toggleCommandPalette()
+      }
+
+      if (event.key === 'Meta') {
+        toggleStartMenu()
+      }
+
+      if (event.key === 'Escape') {
+        closeMenus()
+      }
+    }
+
+    window.addEventListener('keydown', handleKeydown)
+
+    const unlistenPromises = [
+      listen('system.state.changed', (event) => {
+        shellState = event.payload
+      }),
+      listen('apps.index.updated', () => {
+        loadAppCatalog()
+      }),
+      listen('workspace.changed', () => {
+        loadShellState()
+      }),
+      listen('theme.changed', () => {
+        showStatus('Theme applied')
+      }),
+      listen('plugin.health', (event) => {
+        const name = event.payload?.name ?? 'Plugin'
+        showStatus(`${name} status updated`)
+      }),
+    ]
+
+    return () => {
+      clearInterval(timer)
+      window.removeEventListener('keydown', handleKeydown)
+      Promise.all(unlistenPromises).then((unsubscribers) => {
+        unsubscribers.forEach((unsub) => unsub())
+      })
+    }
+  })
+
+  function toggleStartMenu() {
+    showStartMenu = !showStartMenu
+    showCommandPalette = false
+    updateMenuState()
+  }
+
+  function toggleCommandPalette() {
+    showCommandPalette = !showCommandPalette
+    showStartMenu = false
+    updateMenuState()
+  }
+
+  function closeMenus() {
+    showStartMenu = false
+    showCommandPalette = false
+    updateMenuState()
+  }
+
+  function handleAIAction() {
+    showStatus('AI stays disabled until there is a real local or cloud backend wired into the shell.')
+  }
+
+  function handleAIRequest(query) {
+    showStatus(`Saved as an AI placeholder request: ${query}`)
+  }
+</script>
+
+<div class="shell-container" onclick={closeMenus} onkeydown={(event) => event.key === 'Escape' && closeMenus()} role="presentation">
+  <div class="shell-chrome"></div>
+
+  <div class="runtime-ribbon">
+    <div class="runtime-chip" class:ok={shellState.healthy}>
+      <span>Shell</span>
+      <strong>{shellState.healthy ? 'Healthy' : 'Starting'}</strong>
+    </div>
+    <div class="runtime-chip">
+      <span>Mode</span>
+      <strong>{shellState.mode}</strong>
+    </div>
+    <div class="runtime-chip">
+      <span>Indexed</span>
+      <strong>{shellState.performance.appIndexSize}</strong>
+    </div>
+    <div class="runtime-chip">
+      <span>Startup</span>
+      <strong>{shellState.startupTimeMs}ms</strong>
+    </div>
+    <div class="runtime-chip">
+      <span>Index Refresh</span>
+      <strong>{formatSince(shellState.performance.lastIndexedEpochMs)}</strong>
+    </div>
+  </div>
+
+  <Taskbar
+    {time}
+    apps={appCatalog}
+    onToggleStart={toggleStartMenu}
+    onToggleCommandPalette={toggleCommandPalette}
+    onToggleAI={handleAIAction}
+  />
+
+  {#if showStartMenu}
+    <StartMenu apps={appCatalog} onclose={closeMenus} />
+  {/if}
+
+  {#if showCommandPalette}
+    <CommandPalette apps={appCatalog} onclose={closeMenus} onExecute={handleAIRequest} />
+  {/if}
+
+  {#if statusMessage}
+    <div class="status-indicator">
+      <div class="status-pulse"></div>
+      <span>{statusMessage}</span>
+    </div>
+  {/if}
+</div>
+
+<style>
+  .shell-container {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 15% -30%, rgba(83, 162, 255, 0.18), transparent 36%),
+      radial-gradient(circle at 88% -50%, rgba(64, 200, 255, 0.14), transparent 40%),
+      linear-gradient(180deg, rgba(12, 17, 26, 0.98), rgba(8, 11, 16, 1));
+  }
+
+  .shell-chrome {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(100deg, rgba(255, 255, 255, 0.05) 0, rgba(255, 255, 255, 0) 18%, rgba(255, 255, 255, 0.03) 100%),
+      radial-gradient(circle at 82% -60%, rgba(86, 173, 255, 0.18), transparent 52%);
+    pointer-events: none;
+  }
+
+  .runtime-ribbon {
+    position: absolute;
+    top: 10px;
+    left: 16px;
+    right: 16px;
+    z-index: 40;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+  }
+
+  .runtime-chip {
+    display: grid;
+    gap: 1px;
+    min-width: 118px;
+    padding: 8px 10px;
+    border-radius: 13px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(9, 12, 18, 0.7);
+    backdrop-filter: blur(12px) saturate(135%);
+    color: #c9d7f1;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .runtime-chip strong {
+    font-size: 12px;
+    text-transform: none;
+    color: #f1f7ff;
+    letter-spacing: normal;
+  }
+
+  .runtime-chip.ok {
+    border-color: rgba(99, 235, 191, 0.3);
+    box-shadow: inset 0 0 0 1px rgba(99, 235, 191, 0.12);
+  }
+
+  .status-indicator {
+    position: fixed;
+    right: 20px;
+    bottom: 124px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    max-width: 360px;
+    padding: 10px 14px;
+    background: rgba(6, 8, 12, 0.92);
+    border: 1px solid rgba(91, 155, 255, 0.25);
+    border-radius: 16px;
+    color: #d8e6ff;
+    font-size: 12px;
+    z-index: 1000;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  .status-pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: #5b9bff;
+    box-shadow: 0 0 0 0 rgba(91, 155, 255, 0.45);
+    animation: pulse 1.8s infinite;
+    flex: 0 0 auto;
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(91, 155, 255, 0.45); }
+    50% { box-shadow: 0 0 0 8px rgba(91, 155, 255, 0); }
+  }
+</style>

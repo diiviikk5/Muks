@@ -4,10 +4,10 @@
   "version": "0.1.0",
   "identifier": "com.vortex.shell",
   "build": {
-    "beforeDevCommand": "",
-    "devUrl": "http://localhost:1420",
-    "beforeBuildCommand": "",
-    "frontendDist": "dist"
+    "beforeDevCommand": "npm --prefix frontend run dev -- --host 127.0.0.1 --port 1420",
+    "beforeBuildCommand": "npm --prefix frontend run build",
+    "devUrl": "http://127.0.0.1:1420",
+    "frontendDist": "frontend/dist"
   },
   "app": {
     "withGlobalTauri": true,
@@ -16,7 +16,7 @@
         "title": "VORTEX Shell",
         "label": "main",
         "width": 1920,
-        "height": 48,
+        "height": 112,
         "resizable": false,
         "fullscreen": false,
         "decorations": false,

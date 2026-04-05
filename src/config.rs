@@ -1,129 +1,195 @@
-//! VORTEX Configuration
+//! VORTEX Configuration v1
 
+use anyhow::{Context, Result};
 use serde::{Deserialize, Serialize};
+use std::fs;
+use std::path::{Path, PathBuf};
 
-/// VORTEX Configuration
+pub const CONFIG_V1_PATH: &str = "config/v1.toml";
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct Config {
-    /// Shell settings
+pub struct AppConfigV1 {
     pub shell: ShellConfig,
-    /// Visual settings
-    pub visual: VisualConfig,
-    /// AI settings
-    pub ai: AIConfig,
-    /// Performance settings
+    pub workspaces: WorkspaceConfig,
+    pub theme: ThemeConfig,
+    pub widgets: WidgetConfig,
+    pub plugins: PluginConfig,
     pub performance: PerformanceConfig,
+    pub accessibility: AccessibilityConfig,
 }
 
-impl Default for Config {
+impl Default for AppConfigV1 {
     fn default() -> Self {
         Self {
             shell: ShellConfig::default(),
-            visual: VisualConfig::default(),
-            ai: AIConfig::default(),
+            workspaces: WorkspaceConfig::default(),
+            theme: ThemeConfig::default(),
+            widgets: WidgetConfig::default(),
+            plugins: PluginConfig::default(),
             performance: PerformanceConfig::default(),
+            accessibility: AccessibilityConfig::default(),
         }
     }
 }
 
-/// Shell-specific configuration
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ShellConfig {
-    /// Auto-start with Windows
     pub auto_start: bool,
-    /// Show system tray icon
-    pub show_tray: bool,
-    /// Replace explorer taskbar
-    pub replace_taskbar: bool,
-    /// Default biome on startup
-    pub default_biome: String,
+    pub replace_explorer_opt_in: bool,
+    pub start_in_safe_mode: bool,
+    pub default_mode: String,
 }
 
 impl Default for ShellConfig {
     fn default() -> Self {
         Self {
             auto_start: false,
-            show_tray: true,
-            replace_taskbar: false,
-            default_biome: "AuraFlow".to_string(),
+            replace_explorer_opt_in: false,
+            start_in_safe_mode: false,
+            default_mode: "normal".to_string(),
         }
     }
 }
 
-/// Visual configuration
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct VisualConfig {
-    /// Enable animations
+pub struct WorkspaceConfig {
+    pub default_count: u8,
+    pub per_monitor: bool,
+    pub remember_last_active: bool,
+}
+
+impl Default for WorkspaceConfig {
+    fn default() -> Self {
+        Self {
+            default_count: 3,
+            per_monitor: true,
+            remember_last_active: true,
+        }
+    }
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ThemeConfig {
+    pub current_theme: String,
     pub animations: bool,
-    /// Animation speed (0.5 - 2.0)
-    pub animation_speed: f32,
-    /// Enable particles
-    pub particles: bool,
-    /// Enable blur effects
+    pub gpu_effects: bool,
     pub blur: bool,
-    /// Custom accent color
-    pub accent_color: Option<String>,
 }
 
-impl Default for VisualConfig {
+impl Default for ThemeConfig {
     fn default() -> Self {
         Self {
+            current_theme: "aura-flow".to_string(),
             animations: true,
-            animation_speed: 1.0,
-            particles: true,
+            gpu_effects: true,
             blur: true,
-            accent_color: None,
         }
     }
 }
 
-/// AI configuration
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct AIConfig {
-    /// Enable AI features
+pub struct WidgetConfig {
     pub enabled: bool,
-    /// Enable context agent
-    pub context_agent: bool,
-    /// Enable predictive workspace
-    pub predictive_workspace: bool,
-    /// Enable summarizer
-    pub summarizer: bool,
-    /// Model path (for custom models)
-    pub model_path: Option<String>,
+    pub sandboxed_js: bool,
+    pub max_widgets: u16,
 }
 
-impl Default for AIConfig {
+impl Default for WidgetConfig {
     fn default() -> Self {
         Self {
-            enabled: false,
-            context_agent: false,
-            predictive_workspace: false,
-            summarizer: false,
-            model_path: None,
+            enabled: true,
+            sandboxed_js: true,
+            max_widgets: 24,
         }
     }
 }
 
-/// Performance configuration
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct PluginConfig {
+    pub enabled: bool,
+    pub curated_beta_only: bool,
+    pub max_restart_attempts: u8,
+}
+
+impl Default for PluginConfig {
+    fn default() -> Self {
+        Self {
+            enabled: true,
+            curated_beta_only: true,
+            max_restart_attempts: 3,
+        }
+    }
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct PerformanceConfig {
-    /// Target FPS
-    pub target_fps: u32,
-    /// Enable vsync
-    pub vsync: bool,
-    /// Hardware acceleration
-    pub hardware_acceleration: bool,
-    /// Maximum memory (MB)
-    pub max_memory_mb: u32,
+    pub target_fps: u16,
+    pub launcher_budget_ms_p95: u16,
+    pub search_budget_ms_p95: u16,
+    pub idle_memory_budget_mb: u16,
 }
 
 impl Default for PerformanceConfig {
     fn default() -> Self {
         Self {
             target_fps: 60,
-            vsync: true,
-            hardware_acceleration: true,
-            max_memory_mb: 512,
+            launcher_budget_ms_p95: 250,
+            search_budget_ms_p95: 40,
+            idle_memory_budget_mb: 120,
         }
     }
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct AccessibilityConfig {
+    pub high_contrast: bool,
+    pub keyboard_only_mode: bool,
+    pub reduced_motion: bool,
+    pub scale_factor: f32,
+}
+
+impl Default for AccessibilityConfig {
+    fn default() -> Self {
+        Self {
+            high_contrast: false,
+            keyboard_only_mode: false,
+            reduced_motion: false,
+            scale_factor: 1.0,
+        }
+    }
+}
+
+pub fn config_v1_path() -> PathBuf {
+    Path::new(CONFIG_V1_PATH).to_path_buf()
+}
+
+pub fn load_or_create_v1() -> Result<AppConfigV1> {
+    let path = config_v1_path();
+
+    if path.exists() {
+        let raw = fs::read_to_string(&path)
+            .with_context(|| format!("failed to read config file at {}", path.display()))?;
+        let parsed: AppConfigV1 =
+            toml::from_str(&raw).context("failed to parse config/v1.toml")?;
+        return Ok(parsed);
+    }
+
+    let default = AppConfigV1::default();
+    save_v1(&default)?;
+    Ok(default)
+}
+
+pub fn save_v1(config: &AppConfigV1) -> Result<()> {
+    let path = config_v1_path();
+    if let Some(parent) = path.parent() {
+        fs::create_dir_all(parent).with_context(|| {
+            format!("failed to create config directory {}", parent.display())
+        })?;
+    }
+
+    let encoded = toml::to_string_pretty(config).context("failed to serialize config v1")?;
+    fs::write(&path, encoded)
+        .with_context(|| format!("failed to write config file at {}", path.display()))?;
+
+    Ok(())
 }

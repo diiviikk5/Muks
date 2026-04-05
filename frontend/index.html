@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VORTEX Shell</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html, body {
+        height: 100%;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at top, rgba(76, 154, 255, 0.16), transparent 32%),
+          linear-gradient(180deg, #10131a 0%, #090b10 100%);
+        font-family: "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
+        user-select: none;
+      }
+
+      #app {
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

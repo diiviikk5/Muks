@@ -1,0 +1,38 @@
+[shell]
+auto_start = false
+replace_explorer_opt_in = false
+start_in_safe_mode = false
+default_mode = "normal"
+
+[workspaces]
+default_count = 3
+per_monitor = true
+remember_last_active = true
+
+[theme]
+current_theme = "aura-flow"
+animations = true
+gpu_effects = true
+blur = true
+
+[widgets]
+enabled = true
+sandboxed_js = true
+max_widgets = 24
+
+[plugins]
+enabled = true
+curated_beta_only = true
+max_restart_attempts = 3
+
+[performance]
+target_fps = 60
+launcher_budget_ms_p95 = 250
+search_budget_ms_p95 = 40
+idle_memory_budget_mb = 120
+
+[accessibility]
+high_contrast = false
+keyboard_only_mode = false
+reduced_motion = false
+scale_factor = 1.0
