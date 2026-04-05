@@ -199,7 +199,7 @@
   :global(html),
   :global(body) {
     background: transparent;
-    font-family: 'Segoe UI Variable Display', 'Bahnschrift', 'Trebuchet MS', sans-serif;
+    font-family: 'Outfit', 'Segoe UI Variable Display', 'Bahnschrift', 'Trebuchet MS', sans-serif;
   }
 
   .shell {
@@ -208,9 +208,9 @@
     height: 100vh;
     overflow: hidden;
     --text-main: #eff4ff;
-    --text-soft: color-mix(in oklab, #eff4ff 58%, transparent);
-    --line-soft: color-mix(in oklab, #9ab9ff 22%, transparent);
-    --line-strong: color-mix(in oklab, #92b2ff 42%, transparent);
+    --text-soft: color-mix(in oklab, #eff4ff 56%, transparent);
+    --line-soft: color-mix(in oklab, var(--accent-a) 22%, transparent);
+    --line-strong: color-mix(in oklab, var(--accent-a) 38%, transparent);
     --panel-hi: color-mix(in oklab, #11172c 72%, transparent);
     --panel-lo: color-mix(in oklab, #0a1023 62%, transparent);
     color: var(--text-main);
@@ -226,15 +226,15 @@
 
   .atmosphere {
     background:
-      radial-gradient(1300px 640px at 12% -20%, color-mix(in oklab, var(--accent-a) 20%, transparent), transparent 62%),
-      radial-gradient(1100px 520px at 96% -20%, color-mix(in oklab, var(--accent-b) 24%, transparent), transparent 60%),
-      radial-gradient(960px 440px at 50% 120%, color-mix(in oklab, var(--accent-c) 13%, transparent), transparent 66%),
+      radial-gradient(1280px 620px at 12% -20%, color-mix(in oklab, var(--accent-a) 17%, transparent), transparent 62%),
+      radial-gradient(1080px 500px at 96% -20%, color-mix(in oklab, var(--accent-b) 20%, transparent), transparent 60%),
+      radial-gradient(920px 420px at 50% 120%, color-mix(in oklab, var(--accent-c) 10%, transparent), transparent 66%),
       linear-gradient(168deg, var(--base-top) 0%, color-mix(in oklab, var(--base-top) 64%, var(--base-bottom)) 40%, var(--base-bottom) 100%);
   }
 
   .glow {
-    opacity: 0.5;
-    animation: drift 26s ease-in-out infinite;
+    opacity: 0.36;
+    animation: drift 30s ease-in-out infinite;
   }
 
   .glow-left {
@@ -253,11 +253,11 @@
   }
 
   .scan-grid {
-    opacity: 0.14;
+    opacity: 0.09;
     background-image:
       linear-gradient(90deg, color-mix(in oklab, #d2e5ff 6%, transparent) 1px, transparent 1px),
       linear-gradient(0deg, color-mix(in oklab, #d2e5ff 5%, transparent) 1px, transparent 1px);
-    background-size: 128px 128px;
+    background-size: 144px 144px;
     mask-image: linear-gradient(180deg, transparent 0%, black 28%, black 74%, transparent 100%);
   }
 
