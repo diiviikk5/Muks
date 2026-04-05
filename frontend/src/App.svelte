@@ -11,6 +11,7 @@
   let time = $state(new Date())
   let appCatalog = $state([])
   let statusMessage = $state('')
+  let themes = $state([])
 
   let shellState = $state({
     mode: 'normal',
@@ -22,7 +23,9 @@
       appIndexSize: 0,
       launchCount: 0,
       commandCount: 0,
+      indexRefreshCount: 0,
       lastIndexedEpochMs: null,
+      lastRefreshDeltaApps: 0,
     },
   })
 
@@ -50,6 +53,44 @@
     }
   }
 
+  async function loadThemes() {
+    try {
+      themes = await invoke('themes_list')
+    } catch (error) {
+      console.log('Failed to load themes:', error)
+    }
+  }
+
+  async function setMode(mode) {
+    try {
+      shellState = await invoke('shell_set_mode', { mode })
+      showStatus(`Shell mode: ${mode}`)
+    } catch (error) {
+      console.log('Failed to set shell mode:', error)
+    }
+  }
+
+  async function applyTheme(themeId) {
+    try {
+      await invoke('themes_apply', { themeId })
+      await loadThemes()
+      showStatus(`Theme applied: ${themeId}`)
+    } catch (error) {
+      console.log('Failed to apply theme:', error)
+    }
+  }
+
+  async function refreshIndex() {
+    try {
+      const stats = await invoke('apps_refresh_index')
+      await loadAppCatalog()
+      await loadShellState()
+      showStatus(`Index refreshed: ${stats.newCount} apps (${stats.delta >= 0 ? '+' : ''}${stats.delta})`)
+    } catch (error) {
+      console.log('Failed to refresh app index:', error)
+    }
+  }
+
   function showStatus(message) {
     statusMessage = message
     setTimeout(() => {
@@ -72,6 +113,7 @@
     updateMenuState()
     loadShellState()
     loadAppCatalog()
+    loadThemes()
 
     invoke('shell_subscribe').catch((error) => {
       console.log('Subscribe command failed:', error)
@@ -102,14 +144,15 @@
       listen('system.state.changed', (event) => {
         shellState = event.payload
       }),
-      listen('apps.index.updated', () => {
-        loadAppCatalog()
+      listen('apps.index.updated', async () => {
+        await loadAppCatalog()
+        await loadShellState()
       }),
       listen('workspace.changed', () => {
         loadShellState()
       }),
-      listen('theme.changed', () => {
-        showStatus('Theme applied')
+      listen('theme.changed', async () => {
+        await loadThemes()
       }),
       listen('plugin.health', (event) => {
         const name = event.payload?.name ?? 'Plugin'
@@ -174,9 +217,34 @@
       <strong>{shellState.startupTimeMs}ms</strong>
     </div>
     <div class="runtime-chip">
-      <span>Index Refresh</span>
+      <span>Refresh</span>
       <strong>{formatSince(shellState.performance.lastIndexedEpochMs)}</strong>
     </div>
+    <div class="runtime-chip">
+      <span>Delta</span>
+      <strong>{shellState.performance.lastRefreshDeltaApps >= 0 ? '+' : ''}{shellState.performance.lastRefreshDeltaApps}</strong>
+    </div>
+  </div>
+
+  <div
+    class="control-dock"
+    onclick={(event) => event.stopPropagation()}
+    onkeydown={(event) => event.key === 'Escape' && closeMenus()}
+    role="presentation"
+  >
+    <div class="mode-group">
+      <button class:active={shellState.mode === 'normal'} onclick={() => setMode('normal')}>Normal</button>
+      <button class:active={shellState.mode === 'performance'} onclick={() => setMode('performance')}>Performance</button>
+      <button class:active={shellState.mode === 'safe'} onclick={() => setMode('safe')}>Safe</button>
+    </div>
+
+    <div class="theme-group">
+      {#each themes as theme}
+        <button class:active={theme.isActive} onclick={() => applyTheme(theme.id)}>{theme.name}</button>
+      {/each}
+    </div>
+
+    <button class="refresh-button" onclick={refreshIndex}>Refresh Index</button>
   </div>
 
   <Taskbar
@@ -260,6 +328,55 @@
   .runtime-chip.ok {
     border-color: rgba(99, 235, 191, 0.3);
     box-shadow: inset 0 0 0 1px rgba(99, 235, 191, 0.12);
+  }
+
+  .control-dock {
+    position: absolute;
+    top: 76px;
+    left: 16px;
+    right: 16px;
+    z-index: 41;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .mode-group,
+  .theme-group {
+    display: flex;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 14px;
+    background: rgba(9, 12, 18, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px) saturate(135%);
+  }
+
+  .mode-group button,
+  .theme-group button,
+  .refresh-button {
+    border: none;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 12px;
+    color: #e6efff;
+    background: rgba(255, 255, 255, 0.06);
+    cursor: pointer;
+    transition: transform 0.14s ease, background 0.14s ease;
+  }
+
+  .mode-group button:hover,
+  .theme-group button:hover,
+  .refresh-button:hover,
+  .mode-group button.active,
+  .theme-group button.active {
+    transform: translateY(-1px);
+    background: rgba(91, 155, 255, 0.28);
+  }
+
+  .refresh-button {
+    background: linear-gradient(135deg, rgba(91, 155, 255, 0.32), rgba(74, 128, 255, 0.14));
   }
 
   .status-indicator {

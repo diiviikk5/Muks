@@ -11,7 +11,10 @@ mod shell;
 mod system;
 
 use core::VortexCore;
-use runtime::{AppRuntime, PluginInfo, ShellSnapshot, ThemeInfo, WindowInfo, WorkspaceInfo};
+use runtime::{
+    AppIndexRefreshResult, AppRuntime, PluginInfo, ShellSnapshot, ThemeInfo, WindowInfo,
+    WorkspaceInfo,
+};
 use serde::Serialize;
 use system::get_system_info as read_system_info;
 use tauri::Emitter;
@@ -78,6 +81,7 @@ pub fn run() {
             shell_subscribe,
             shell_set_mode,
             apps_search,
+            apps_refresh_index,
             apps_launch,
             windows_list,
             windows_act,
@@ -200,6 +204,17 @@ fn apps_search(
     limit: Option<usize>,
 ) -> Vec<system::AppEntry> {
     runtime.apps_search(&query, limit.unwrap_or(50))
+}
+
+#[tauri::command]
+fn apps_refresh_index(
+    app: tauri::AppHandle,
+    runtime: tauri::State<'_, AppRuntime>,
+) -> AppIndexRefreshResult {
+    let stats = runtime.refresh_app_index();
+    emit_topic(&app, TOPIC_APPS_INDEX_UPDATED, &stats);
+    emit_topic(&app, TOPIC_SYSTEM_STATE_CHANGED, &runtime.shell_get_state());
+    stats
 }
 
 #[tauri::command]

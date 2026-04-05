@@ -1,7 +1,11 @@
+mod app_index;
+mod rules;
+
 use crate::config::{self, AppConfigV1};
 use crate::system::{discover_apps, launch_target, resolve_app_target, AppEntry};
 use anyhow::Result;
 use parking_lot::RwLock;
+use rules::{default_rules, AppRule};
 use serde::{Deserialize, Serialize};
 use std::time::{Instant, SystemTime, UNIX_EPOCH};
 
@@ -22,7 +26,9 @@ pub struct PerformanceSnapshot {
     pub app_index_size: usize,
     pub launch_count: u64,
     pub command_count: u64,
+    pub index_refresh_count: u64,
     pub last_indexed_epoch_ms: Option<u64>,
+    pub last_refresh_delta_apps: i64,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -62,6 +68,15 @@ pub struct PluginInfo {
     pub restart_count: u32,
 }
 
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct AppIndexRefreshResult {
+    pub previous_count: usize,
+    pub new_count: usize,
+    pub delta: i64,
+    pub indexed_epoch_ms: u64,
+}
+
 pub struct AppRuntime {
     state: RwLock<RuntimeState>,
     config: RwLock<AppConfigV1>,
@@ -76,9 +91,12 @@ struct RuntimeState {
     last_indexed_epoch_ms: Option<u64>,
     launch_count: u64,
     command_count: u64,
+    index_refresh_count: u64,
+    last_refresh_delta_apps: i64,
     active_workspace_id: String,
     workspaces: Vec<WorkspaceInfo>,
     windows: Vec<WindowInfo>,
+    rules: Vec<AppRule>,
     themes: Vec<ThemeInfo>,
     plugins: Vec<PluginInfo>,
 }
@@ -86,6 +104,9 @@ struct RuntimeState {
 impl AppRuntime {
     pub fn new() -> Result<Self> {
         let cfg = config::load_or_create_v1()?;
+        let cached_apps = app_index::load_cache()?
+            .map(|cache| cache.apps)
+            .unwrap_or_default();
 
         let runtime = Self {
             state: RwLock::new(RuntimeState {
@@ -93,10 +114,12 @@ impl AppRuntime {
                 healthy: false,
                 started_at: Instant::now(),
                 startup_time_ms: 0,
-                app_index: Vec::new(),
+                app_index: cached_apps,
                 last_indexed_epoch_ms: None,
                 launch_count: 0,
                 command_count: 0,
+                index_refresh_count: 0,
+                last_refresh_delta_apps: 0,
                 active_workspace_id: "ws-1".to_string(),
                 workspaces: vec![
                     WorkspaceInfo {
@@ -106,16 +129,17 @@ impl AppRuntime {
                     },
                     WorkspaceInfo {
                         id: "ws-2".to_string(),
-                        name: "Secondary".to_string(),
+                        name: "Dev".to_string(),
                         monitor_id: "monitor-1".to_string(),
                     },
                     WorkspaceInfo {
                         id: "ws-3".to_string(),
-                        name: "Tertiary".to_string(),
+                        name: "Comms".to_string(),
                         monitor_id: "monitor-1".to_string(),
                     },
                 ],
                 windows: Vec::new(),
+                rules: default_rules(),
                 themes: vec![
                     ThemeInfo {
                         id: "aura-flow".to_string(),
@@ -135,6 +159,16 @@ impl AppRuntime {
                             "surface": "#0f1320",
                             "accent": "#a8c9ff",
                             "elevation": "sharp-glass"
+                        }),
+                    },
+                    ThemeInfo {
+                        id: "midnight-pulse".to_string(),
+                        name: "Midnight Pulse".to_string(),
+                        is_active: cfg.theme.current_theme == "midnight-pulse",
+                        tokens: serde_json::json!({
+                            "surface": "#0a0c14",
+                            "accent": "#7fd0ff",
+                            "elevation": "neon-glass"
                         }),
                     },
                 ],
@@ -170,26 +204,51 @@ impl AppRuntime {
                 app_index_size: state.app_index.len(),
                 launch_count: state.launch_count,
                 command_count: state.command_count,
+                index_refresh_count: state.index_refresh_count,
                 last_indexed_epoch_ms: state.last_indexed_epoch_ms,
+                last_refresh_delta_apps: state.last_refresh_delta_apps,
             },
         }
     }
 
     pub fn shell_set_mode(&self, mode: &str) -> ShellSnapshot {
         self.bump_command_count();
+        let normalized = match mode.trim().to_lowercase().as_str() {
+            "safe" | "performance" | "normal" => mode.trim().to_lowercase(),
+            _ => "normal".to_string(),
+        };
+
         let mut state = self.state.write();
-        state.mode = mode.to_string();
+        state.mode = normalized;
         drop(state);
         self.shell_get_state()
     }
 
-    pub fn refresh_app_index(&self) -> usize {
+    pub fn refresh_app_index(&self) -> AppIndexRefreshResult {
         self.bump_command_count();
         let catalog = discover_apps();
-        let mut state = self.state.write();
-        state.app_index = catalog;
-        state.last_indexed_epoch_ms = Some(current_epoch_ms());
-        state.app_index.len()
+        let previous_count;
+        {
+            let mut state = self.state.write();
+            previous_count = state.app_index.len();
+            state.app_index = catalog;
+            state.last_indexed_epoch_ms = Some(current_epoch_ms());
+            state.index_refresh_count += 1;
+            state.last_refresh_delta_apps = state.app_index.len() as i64 - previous_count as i64;
+        }
+
+        let state = self.state.read();
+        let _ = app_index::save_cache(&state.app_index);
+        let indexed_epoch_ms = state.last_indexed_epoch_ms.unwrap_or_default();
+        let new_count = state.app_index.len();
+        let delta = new_count as i64 - previous_count as i64;
+
+        AppIndexRefreshResult {
+            previous_count,
+            new_count,
+            delta,
+            indexed_epoch_ms,
+        }
     }
 
     pub fn apps_search(&self, query: &str, limit: usize) -> Vec<AppEntry> {
@@ -207,12 +266,15 @@ impl AppRuntime {
             .iter()
             .filter_map(|app| {
                 let name = app.name.to_lowercase();
+                let source = app.source.to_lowercase();
                 let score = if name == needle {
                     1000
                 } else if name.starts_with(&needle) {
-                    750
+                    800
                 } else if name.contains(&needle) {
-                    500
+                    620
+                } else if source.contains(&needle) {
+                    430
                 } else {
                     return None;
                 };
@@ -245,6 +307,16 @@ impl AppRuntime {
 
         let mut state = self.state.write();
         state.launch_count += 1;
+
+        if let Some(rule) = state
+            .rules
+            .iter()
+            .find(|rule| rule.matches_process(app_id))
+            .cloned()
+        {
+            state.active_workspace_id = rule.workspace_id;
+        }
+
         Ok(())
     }
 

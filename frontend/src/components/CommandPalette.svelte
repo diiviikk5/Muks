@@ -6,6 +6,7 @@
   let query = $state('')
   let selectedIndex = $state(0)
   let inputRef = $state()
+  let backendResults = $state([])
 
   const commandGroups = [
     { id: 'explorer', name: 'Open File Explorer', type: 'app', icon: 'folder', group: 'Launch' },
@@ -26,6 +27,13 @@
       icon: 'folder',
       group: 'Indexed',
     })),
+    ...backendResults.map((app) => ({
+      id: app.id,
+      name: app.name,
+      type: 'app',
+      icon: 'folder',
+      group: 'Live Search',
+    })),
   ])
 
   let filteredCommands = $derived(
@@ -38,6 +46,25 @@
     if (inputRef) {
       inputRef.focus()
     }
+  })
+
+  $effect(() => {
+    const activeQuery = query.trim()
+
+    if (!activeQuery) {
+      backendResults = []
+      return
+    }
+
+    const timer = setTimeout(async () => {
+      try {
+        backendResults = await invoke('apps_search', { query: activeQuery, limit: 20 })
+      } catch (error) {
+        console.log('Backend search error:', error)
+      }
+    }, 120)
+
+    return () => clearTimeout(timer)
   })
 
   function handleKeydown(event) {
@@ -58,7 +85,7 @@
   async function executeCommand(command) {
     if (command.type === 'app') {
       try {
-        await invoke('open_app', { appId: command.id })
+        await invoke('apps_launch', { appId: command.id })
       } catch (error) {
         console.log('Execute error:', error)
       }
