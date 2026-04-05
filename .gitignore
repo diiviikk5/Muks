@@ -5,3 +5,4 @@ frontend/dist/
 dist/
 temp/
 gen/
+config/app_index_cache.json
