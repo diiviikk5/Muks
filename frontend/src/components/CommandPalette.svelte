@@ -10,8 +10,8 @@
 
   let commands = $derived([
     ...apps.map((app) => ({ id: app.id, name: app.name, type: 'app', group: 'App' })),
-    { id: 'restart-shell', name: 'Restart shell (placeholder)', type: 'system', group: 'System' },
     { id: 'open-settings', name: 'Open settings', type: 'system', group: 'System' },
+    { id: 'toggle-mode', name: 'Toggle shell mode', type: 'system', group: 'System' },
   ])
 
   let shown = $derived(
@@ -80,14 +80,14 @@
   <div class="palette">
     <div class="top">
       <div>
-        <span class="kicker">Command Palette</span>
-        <h2>Launch fast</h2>
+        <span class="kicker">Palette</span>
+        <h2>Fast Commands</h2>
       </div>
       <div class="badge">{merged.length}</div>
     </div>
 
     <div class="search">
-      <input type="text" bind:value={query} bind:this={inputRef} placeholder="Search apps and shell commands" />
+      <input type="text" bind:value={query} bind:this={inputRef} placeholder="Search command or app" />
       <kbd>Esc</kbd>
     </div>
 
@@ -106,29 +106,29 @@
   .palette-overlay {
     position: fixed;
     inset: 0;
-    padding-top: 120px;
+    padding-top: 100px;
     display: flex;
     justify-content: center;
-    background: rgba(5, 8, 14, 0.56);
+    background: rgba(8, 10, 18, 0.58);
     z-index: 1400;
   }
 
   .palette {
-    width: min(760px, calc(100vw - 20px));
-    max-height: 520px;
-    border-radius: 24px;
-    border: 1px solid rgba(163, 190, 255, 0.22);
-    background: rgba(10, 16, 26, 0.9);
-    backdrop-filter: blur(18px) saturate(126%);
-    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.55);
-    color: #eaf2ff;
+    width: min(740px, calc(100vw - 20px));
+    max-height: 500px;
+    border-radius: 22px;
+    border: 1px solid rgba(171, 194, 255, 0.24);
+    background: rgba(27, 30, 50, 0.9);
+    backdrop-filter: blur(16px) saturate(126%);
+    box-shadow: 0 26px 64px rgba(0, 0, 0, 0.55);
+    color: #e8edff;
     display: grid;
     grid-template-rows: auto auto 1fr;
   }
 
   .top,
   .search {
-    padding: 14px 16px;
+    padding: 12px 14px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     display: flex;
     align-items: center;
@@ -140,74 +140,72 @@
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: rgba(214, 227, 255, 0.62);
+    color: rgba(208, 218, 248, 0.66);
   }
 
   h2 {
     margin: 3px 0 0;
-    font-size: 24px;
+    font-size: 22px;
     line-height: 1;
   }
 
-  .badge {
-    min-width: 34px;
-    height: 28px;
-    border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+  .badge,
+  input,
+  .row {
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 10px;
     background: rgba(255, 255, 255, 0.06);
+    color: inherit;
+  }
+
+  .badge {
+    min-width: 32px;
+    height: 24px;
     display: grid;
     place-items: center;
-    font-size: 12px;
+    font-size: 11px;
   }
 
   .search input {
     flex: 1;
-    height: 40px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    background: rgba(255, 255, 255, 0.05);
-    color: #f3f8ff;
-    padding: 0 12px;
+    height: 36px;
+    padding: 0 10px;
   }
 
   .search kbd {
-    padding: 6px 9px;
-    border-radius: 9px;
+    padding: 5px 8px;
+    border-radius: 8px;
     background: rgba(255, 255, 255, 0.08);
     color: rgba(215, 228, 255, 0.74);
     font-size: 11px;
   }
 
   .results {
-    padding: 10px;
+    padding: 8px;
     display: grid;
     gap: 6px;
     overflow-y: auto;
   }
 
   .row {
-    min-height: 40px;
-    padding: 0 12px;
+    min-height: 36px;
+    padding: 0 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     text-align: left;
-    border-radius: 11px;
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    background: rgba(255, 255, 255, 0.04);
-    color: inherit;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .row.active,
   .row:hover {
-    background: rgba(102, 167, 255, 0.24);
-    border-color: rgba(102, 167, 255, 0.45);
+    background: rgba(126, 200, 255, 0.22);
+    border-color: rgba(126, 200, 255, 0.45);
   }
 
   .row small {
-    font-size: 11px;
-    color: rgba(214, 227, 255, 0.62);
+    font-size: 10px;
+    color: rgba(208, 218, 248, 0.64);
   }
 </style>

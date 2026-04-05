@@ -20,7 +20,7 @@
       .slice(0, 6)
   )
 
-  let liveWindows = $derived(windows.slice(0, 6))
+  let liveWindows = $derived(windows.slice(0, 5))
 
   function formatTime(date) {
     return date.toLocaleTimeString('en-US', {
@@ -85,114 +85,127 @@
   }
 </script>
 
+<div class="top-strip">
+  <div class="seg left">
+    <button class="seg-btn" onclick={stopAnd(onToggleStart)}>Vortex</button>
+    <button class="seg-btn" onclick={stopAnd(onToggleCommandPalette)}>Search</button>
+  </div>
+
+  <div class="seg center">
+    <span>{formatDate(time)}</span>
+    <strong>{formatTime(time)}</strong>
+  </div>
+
+  <div class="seg right">
+    <button class="seg-btn" onclick={stopAnd(onToggleAI)}>AI</button>
+    <span>{systemInfo.battery == null ? '--' : `${systemInfo.battery}%`}</span>
+  </div>
+</div>
+
 <div class="dock-shell" role="banner">
-  <div class="dock-left">
-    <button class="logo-btn" onclick={stopAnd(onToggleStart)} title="Open launcher">
-      <span class="logo-mark">V</span>
-      <span class="logo-text">VORTEX</span>
-    </button>
-
-    <button class="action-btn" onclick={stopAnd(onToggleCommandPalette)} title="Search">
-      Search
-    </button>
-
-    <button class="action-btn" onclick={stopAnd(onToggleAI)} title="AI">
-      AI
-    </button>
+  <div class="icon-row">
+    {#each pinnedApps as app}
+      <button class="icon-pill" title={app.name} onclick={stopAnd(() => launchApp(app.id))}>
+        <span class="icon-dot"></span>
+        <span>{app.name}</span>
+      </button>
+    {/each}
   </div>
 
-  <div class="dock-center">
-    <div class="icon-row">
-      {#each pinnedApps as app}
-        <button class="icon-pill" title={app.name} onclick={stopAnd(() => launchApp(app.id))}>
-          <span class="icon-dot"></span>
-          <span>{app.name}</span>
-        </button>
-      {/each}
-    </div>
-
-    <div class="window-row">
-      {#if liveWindows.length === 0}
-        <div class="window-empty">No active windows yet</div>
-      {:else}
-        {#each liveWindows as window}
-          <div
-            class="window-pill"
-            class:focused={window.isFocused}
-            role="button"
-            tabindex="0"
-            onclick={stopAnd(() => focusWindow(window.id))}
-            onkeydown={(event) => event.key === 'Enter' && focusWindow(window.id)}
-            title={window.title}
-          >
-            <span class="window-title">{window.title}</span>
-            <div class="window-tools">
-              <button type="button" onclick={(event) => windowAction(window.id, 'minimize', event)}>_</button>
-              <button type="button" onclick={(event) => windowAction(window.id, 'close', event)}>x</button>
-            </div>
+  <div class="window-row">
+    {#if liveWindows.length === 0}
+      <div class="window-empty">No active windows</div>
+    {:else}
+      {#each liveWindows as window}
+        <div
+          class="window-pill"
+          class:focused={window.isFocused}
+          role="button"
+          tabindex="0"
+          onclick={stopAnd(() => focusWindow(window.id))}
+          onkeydown={(event) => event.key === 'Enter' && focusWindow(window.id)}
+          title={window.title}
+        >
+          <span class="window-title">{window.title}</span>
+          <div class="window-tools">
+            <button type="button" onclick={(event) => windowAction(window.id, 'minimize', event)}>_</button>
+            <button type="button" onclick={(event) => windowAction(window.id, 'close', event)}>x</button>
           </div>
-        {/each}
-      {/if}
-    </div>
-  </div>
-
-  <div class="dock-right">
-    <div class="stat-chip">
-      <span>{formatDate(time)}</span>
-    </div>
-    <div class="stat-chip strong">
-      <strong>{formatTime(time)}</strong>
-    </div>
-    <div class="stat-chip">
-      <span>{systemInfo.hostname}</span>
-      <small>{systemInfo.username}</small>
-    </div>
-    <div class="stat-chip">
-      <span>Battery</span>
-      <small>{systemInfo.battery == null ? '--' : `${systemInfo.battery}%`}</small>
-    </div>
+        </div>
+      {/each}
+    {/if}
   </div>
 </div>
 
 <style>
+  .top-strip {
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    top: 8px;
+    height: 32px;
+    border-radius: 14px;
+    background: rgba(35, 40, 74, 0.72);
+    border: 1px solid rgba(175, 196, 255, 0.26);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 0 8px;
+    gap: 8px;
+    color: #dce5ff;
+    backdrop-filter: blur(12px) saturate(128%);
+    z-index: 60;
+  }
+
+  .seg {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+  }
+
+  .seg.center {
+    justify-content: center;
+    min-width: 170px;
+  }
+
+  .seg.right {
+    justify-content: flex-end;
+  }
+
+  .seg-btn {
+    height: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    color: inherit;
+    font-size: 11px;
+    padding: 0 8px;
+    cursor: pointer;
+  }
+
+  .seg strong {
+    font-size: 12px;
+    color: #eff4ff;
+  }
+
   .dock-shell {
     position: absolute;
     left: 14px;
     right: 14px;
     bottom: 12px;
-    height: 92px;
-    padding: 10px;
+    height: 80px;
+    padding: 8px;
     display: grid;
-    grid-template-columns: 250px 1fr 260px;
-    gap: 10px;
-    border-radius: 24px;
-    border: 1px solid rgba(164, 190, 255, 0.24);
-    background: rgba(12, 18, 28, 0.72);
-    backdrop-filter: blur(16px) saturate(130%);
-    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-    color: #e8f1ff;
-    z-index: 50;
-  }
-
-  .dock-left,
-  .dock-right {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .dock-left {
-    justify-content: flex-start;
-  }
-
-  .dock-right {
-    justify-content: flex-end;
-  }
-
-  .dock-center {
-    display: grid;
+    grid-template-rows: 1fr 1fr;
     gap: 6px;
-    min-width: 0;
+    border-radius: 20px;
+    border: 1px solid rgba(171, 194, 255, 0.24);
+    background: rgba(30, 34, 58, 0.72);
+    backdrop-filter: blur(16px) saturate(126%);
+    box-shadow: 0 14px 26px rgba(0, 0, 0, 0.38);
+    color: #e8efff;
+    z-index: 55;
   }
 
   .icon-row,
@@ -200,92 +213,51 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    min-width: 0;
     overflow-x: auto;
+    min-width: 0;
   }
 
-  .logo-btn,
-  .action-btn,
   .icon-pill,
   .window-pill,
-  .stat-chip {
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    background: rgba(255, 255, 255, 0.05);
-    color: inherit;
-    border-radius: 14px;
+  .window-empty {
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 11px;
+    background: rgba(255, 255, 255, 0.07);
   }
 
-  .logo-btn,
-  .action-btn,
   .icon-pill {
-    height: 32px;
-    padding: 0 10px;
+    height: 26px;
+    padding: 0 8px;
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    color: inherit;
     cursor: pointer;
-  }
-
-  .logo-btn {
-    background: linear-gradient(135deg, rgba(102, 167, 255, 0.28), rgba(102, 167, 255, 0.1));
-  }
-
-  .logo-mark {
-    width: 18px;
-    height: 18px;
-    display: grid;
-    place-items: center;
-    border-radius: 7px;
     font-size: 11px;
-    font-weight: 700;
-    background: rgba(255, 255, 255, 0.16);
-  }
-
-  .logo-text {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-  }
-
-  .action-btn,
-  .icon-pill,
-  .window-pill {
-    transition: transform 0.15s ease, background 0.15s ease;
-  }
-
-  .action-btn:hover,
-  .icon-pill:hover,
-  .window-pill:hover,
-  .logo-btn:hover {
-    transform: translateY(-1px);
-    background: rgba(255, 255, 255, 0.11);
   }
 
   .icon-dot {
-    width: 8px;
-    height: 8px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
-    background: #7eb8ff;
-    box-shadow: 0 0 8px rgba(102, 167, 255, 0.56);
-  }
-
-  .icon-pill span:last-child {
-    font-size: 11px;
+    background: #7ec8ff;
+    box-shadow: 0 0 8px rgba(126, 200, 255, 0.62);
   }
 
   .window-pill {
+    height: 26px;
+    min-width: 170px;
+    max-width: 240px;
+    padding: 0 7px;
     display: flex;
     align-items: center;
-    min-width: 180px;
-    max-width: 260px;
-    height: 32px;
-    padding: 0 8px;
+    color: inherit;
     cursor: pointer;
   }
 
   .window-pill.focused {
-    border-color: rgba(102, 167, 255, 0.42);
-    background: rgba(102, 167, 255, 0.2);
+    border-color: rgba(126, 200, 255, 0.55);
+    background: rgba(126, 200, 255, 0.2);
   }
 
   .window-title {
@@ -299,54 +271,27 @@
 
   .window-tools {
     display: flex;
-    gap: 6px;
+    gap: 5px;
     margin-left: 8px;
   }
 
   .window-tools button {
-    width: 18px;
-    height: 18px;
+    width: 17px;
+    height: 17px;
     border: none;
     border-radius: 6px;
-    color: rgba(232, 241, 255, 0.86);
     background: rgba(255, 255, 255, 0.11);
-    cursor: pointer;
+    color: rgba(234, 242, 255, 0.86);
     font-size: 11px;
-    line-height: 1;
+    cursor: pointer;
   }
 
   .window-empty {
-    height: 32px;
+    height: 26px;
     padding: 0 10px;
     display: flex;
     align-items: center;
-    border-radius: 12px;
-    color: rgba(215, 229, 255, 0.6);
-    border: 1px dashed rgba(255, 255, 255, 0.18);
+    color: rgba(214, 227, 255, 0.66);
     font-size: 11px;
-  }
-
-  .stat-chip {
-    height: 32px;
-    padding: 0 10px;
-    display: grid;
-    align-content: center;
-    gap: 1px;
-    font-size: 11px;
-    color: rgba(219, 232, 255, 0.76);
-  }
-
-  .stat-chip strong {
-    font-size: 13px;
-    color: #f1f7ff;
-  }
-
-  .stat-chip small {
-    font-size: 10px;
-    color: rgba(219, 232, 255, 0.66);
-  }
-
-  .stat-chip.strong {
-    background: rgba(255, 255, 255, 0.1);
   }
 </style>
