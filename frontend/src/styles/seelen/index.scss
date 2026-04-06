@@ -1,0 +1,51 @@
+@import './vendor/shared-index.scss';
+@import './vendor/toolbar-structure.scss';
+@import './vendor/toolbar-theme.scss';
+@import './vendor/weg-structure.scss';
+@import './vendor/weg-theme.scss';
+@import './vendor/apps-menu-theme.scss';
+
+:root {
+  --config-item-size: 40px;
+  --config-padding: 8px;
+  --config-margin: 10px;
+  --config-space-between-items: 8px;
+  --config-height: 56px;
+
+  --system-accent-color: #6ea8fe;
+  --system-accent-light-color: #9ec5fe;
+  --system-accent-lighter-color: #cfe2ff;
+  --system-accent-dark-color: #3d8bfd;
+  --system-accent-darker-color: #0a58ca;
+
+  --color-gray-50: #f8f9fb;
+  --color-gray-100: #eef1f6;
+  --color-gray-300: #cfd6e2;
+  --color-gray-400: #a6b1c4;
+  --color-gray-500: #8c98ad;
+  --color-gray-600: #6c7688;
+  --color-gray-700: #525a69;
+  --color-gray-900: #1b2029;
+
+  --color-fixed-gray-100: #f5f7fb;
+  --color-fixed-gray-900: #111722;
+}
+
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: transparent;
+  color: var(--color-gray-900);
+  font-family: 'Segoe UI Variable Text', 'Segoe UI', sans-serif;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
